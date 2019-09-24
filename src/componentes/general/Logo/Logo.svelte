@@ -39,54 +39,72 @@ figure {
     opacity: 0;
   }
   100% {
-    transform: translate(-215px);
+    whitensform: translate(-215px);
     opacity: 1;
   }
 }
 @keyframes logoMovimiento {
   0% {
     transform: scale(1);
+    fill: pink;
+    opacity: 0.9;
   }
   20% {
-    transform: scale(0.98);
+    transform: scale(1.02);
+    fill: white;
   }
   30% {
-    transform: scale(0.98);
+    transform: scale(1.02);
+    opacity: 1;
   }
   32% {
     transform: scale(1);
+    fill: pink;
+    opacity: 0.9;
   }
   35% {
-    transform: scale(0.98);
+    transform: scale(1.02);
+    fill: whitesmoke;
+    opacity: 1;
   }
   55% {
-    transform: scale(0.97);
+    transform: scale(1.03);
   }
   100% {
-    transform: scale(0.97);
+    transform: scale(1.03);
+    opacity: 0.9;
   }
 }
 @-webkit-keyframes logoMovimiento {
   0% {
     transform: scale(1);
+    fill: pink;
+    opacity: 0.9;
   }
   20% {
-    transform: scale(0.98);
+    transform: scale(1.02);
+    fill: white;
   }
   30% {
-    transform: scale(0.98);
+    transform: scale(1.02);
+    opacity: 1;
   }
   32% {
     transform: scale(1);
+    fill: pink;
+    opacity: 0.9;
   }
   35% {
-    transform: scale(0.98);
+    transform: scale(1.02);
+    fill: whitesmoke;
+    opacity: 1;
   }
   55% {
-    transform: scale(0.97);
+    transform: scale(1.03);
   }
   100% {
-    transform: scale(0.97);
+    transform: scale(1.03);
+    opacity: 0.9;
   }
 }
 </style>

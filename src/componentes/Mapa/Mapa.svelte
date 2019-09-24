@@ -1,5 +1,7 @@
 <script>
+import FamiliasLinguisticas from './FamiliasLinguisticas.svelte'
 let svgPadre//svg
+//
 $: height = window.innerHeight//altura default
 $: width = window.innerWidth// ancho default
 //
@@ -22,7 +24,8 @@ resize()
 }
 #MapaGrupoEstados {
   /* transform: scale(0.8) translate(-420px, 55px); */
-  transform: translate(-0px, 55px);
+  /* transform: translate(-100px, 100px); */
+
 }
 </style>
 
@@ -40,16 +43,15 @@ inkscape:version="0.92.3 (2405546, 2018-03-11)"
 version="1.0"
 sodipodi:docname="mapa.mexico.mili.svg"
 inkscape:output_extension="org.inkscape.output.svg.inkscape"
-viewBox="0 0 {height} {width}"
-width={width}
-height={height}
+viewBox="0 0 {height*0.1} {width*0.5}"
+width={width + 'px'}
+height={height + 'px'}
+preserveAspectRatio="xMidYMid meet"
 id="SVGMapa"
 bind:this={svgPadre}
 >
   <g
   id="MapaGrupoEstados"
-  style="stroke:none"
-
   >
 
     <path
@@ -373,5 +375,8 @@ d="m 111.06746,47.394382 c -2.58848,-5.681078 -0.64897,-7.226614 3.39194,-2.7029
 id="path3930"
 inkscape:connector-curvature="0" />
   </g>
+
+<FamiliasLinguisticas />
+
 </svg>
 <!--  -->

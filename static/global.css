@@ -39,7 +39,7 @@ code {
 :root {
 	--color-fondo: #72A6AA;
 }
-* {outline: 1px solid lightgray;}
+/* * {outline: 1px solid lightgray;} */
 body {
 	background-color: var(--color-fondo);
 	height: 100vh;
