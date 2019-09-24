@@ -39,3 +39,4 @@ import Mapa from '../componentes/Mapa/Mapa.svelte'
 <svelte:head>
 	<title>INALI | Mapa interactívo</title>
 </svelte:head>
+
