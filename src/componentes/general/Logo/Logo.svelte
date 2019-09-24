@@ -13,16 +13,15 @@ figure {
   transition: all 2s;
   opacity: 0;
   transform: translate(-210px, 0px);
-  /* animation: logoAnim 2s infinite; */
   animation: logoEntra 2s 1;
   animation-delay:1s;
   animation-fill-mode: forwards;
 }
 #LogoSimbolo {
-  transform-origin: 100% 100%;
-  animation: logoGira 0.5s infinite;
-  animation-delay:4s;
-  animation-fill-mode: forwards;
+  transform-origin: center right;
+  animation: logoMovimiento 2s infinite;
+  animation-delay:3s;
+  /* animation-fill-mode: forwards; */
 }
 @keyframes logoEntra {
   0% {
@@ -44,20 +43,50 @@ figure {
     opacity: 1;
   }
 }
-@keyframes logoGira {
+@keyframes logoMovimiento {
   0% {
-    transform: rotate(45deg);
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(0.98);
+  }
+  30% {
+    transform: scale(0.98);
+  }
+  32% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(0.98);
+  }
+  55% {
+    transform: scale(0.97);
   }
   100% {
-    transform: rotate(-45deg);
+    transform: scale(0.97);
   }
 }
-@-webkit-keyframes logoGira {
+@-webkit-keyframes logoMovimiento {
   0% {
-    transform: rotate(45deg);
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(0.98);
+  }
+  30% {
+    transform: scale(0.98);
+  }
+  32% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(0.98);
+  }
+  55% {
+    transform: scale(0.97);
   }
   100% {
-    transform: rotate(-45deg);
+    transform: scale(0.97);
   }
 }
 </style>
