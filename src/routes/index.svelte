@@ -12,6 +12,6 @@ import Mapa from '../componentes/Mapa/Mapa.svelte'
 </svelte:head>
 
 <!-- Interactividad -->
-<!-- <Drag /> -->
+<Drag />
 <!-- Elementos -->
 <Mapa />

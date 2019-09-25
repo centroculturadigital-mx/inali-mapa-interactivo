@@ -1,10 +1,5 @@
 <script>
 import interact from 'interactjs'
-//Colores
-const colorArea = 'purple'
-const colorArrastre = 'lime'
-const colorEntraArea = 'lightgray'
-const colorJuntos = 'gray'
 //
 const itemDrag = '.dragall'
 const Drag = () => {
@@ -19,7 +14,6 @@ const Drag = () => {
     // autoScroll: true,
     onmove: dragMoveListener,
     onend: (e) => {
-      e.target.style.fill = colorArrastre
       console.log('Fin Drag')
     }
 
