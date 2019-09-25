@@ -1,5 +1,5 @@
 <script>
-import DragDrop from '../componentes/general/DragDrop/DragDrop.svelte'
+import Drag from '../componentes/general/DragDrop/Drag.svelte'
 import Mapa from '../componentes/Mapa/Mapa.svelte'
 </script>
 
@@ -12,6 +12,6 @@ import Mapa from '../componentes/Mapa/Mapa.svelte'
 </svelte:head>
 
 <!-- Interactividad -->
-<DragDrop />
+<!-- <Drag /> -->
 <!-- Elementos -->
 <Mapa />

@@ -1,5 +1,13 @@
 <script>
 	import Cabecera from '../componentes/general/Cabecera/Cabecera.svelte';
+
+	import { setContext } from 'svelte'
+	import drop from '../funciones/drop'
+
+	setContext('DragDrop', {
+		drop
+	})
+
 </script>
 
 <style>

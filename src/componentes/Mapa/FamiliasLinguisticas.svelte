@@ -1,7 +1,12 @@
 <script>
-import { ConfiguraDrop } from '../general/DragDrop/DragDrop.svelte'
+
+import { getContext } from 'svelte'
+// import Drop from '../general/DragDrop/Drop.svelte'
 // exporta colores
 export const colorFamilia1 = '#E5E5E5'
+
+const { drop } = getContext('DragDrop')
+
 
 const zonasFamilias = [
   {
@@ -25,16 +30,21 @@ const zonasFamilias = [
 
 {#each zonasFamilias as zona}
 
-  <path
-  id={zona.id}
-  class={zona.class}
-  d={zona.d}
-  fill={zona.fill}
-  opacity="1"
-  />
-  <!-- si es una zona de drop: -->
-  {#if zona.class === "dropall"}
-  {ConfiguraDrop(zona.id, zona.related)}
-  {/if}
+<path
+id={zona.id}
+class={zona.class}
+d={zona.d}
+fill={zona.fill}
+opacity="1"
+/>
+<!-- si es una zona de drop: -->
+{#if zona.class === "dropall"}
+<p>KJSNDICJ SDUCJD I</p>
+{console.log('#'+zona.id,'#'+zona.related)}
+{:else}
+
+  { drop('#'+zona.id,'#'+zona.related) }
+
+{/if}
 
 {/each}

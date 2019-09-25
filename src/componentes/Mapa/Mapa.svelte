@@ -2,19 +2,31 @@
 import FamiliasLinguisticas from './FamiliasLinguisticas.svelte'
 let svgPadre//svg
 //
-$: height = window.innerHeight//altura default
-$: width = window.innerWidth// ancho default
-//
-const resize = () => {
-  window.onresize = (e) => {
-    width = e.target.innerWidth
-    height = e.target.innerHeight
-    console.log("Ancho: ", width)
-    console.log("Alto: ", height)
+let height
+let width
+
+if (typeof window !== 'undefined') {
+
+  height = window.innerHeight//altura default
+  width = window.innerWidth// ancho default
+  console.log("Default Ancho: ", width)
+  console.log("Default Alto: ", height)
+  //
+
+
+  const resize = () => {
+    window.onresize = (e) => {
+      width = e.target.innerWidth
+      height = e.target.innerHeight
+      console.log("Window Ancho: ", width)
+      console.log("Window Alto: ", height)
+    }
   }
+  // llamadas
+  resize()
+
 }
-// llamadas
-resize()
+
 </script>
 
 <style>
@@ -25,7 +37,6 @@ resize()
 #MapaGrupoEstados {
   /* transform: scale(0.8) translate(-420px, 55px); */
   /* transform: translate(-100px, 100px); */
-
 }
 </style>
 
@@ -43,12 +54,12 @@ inkscape:version="0.92.3 (2405546, 2018-03-11)"
 version="1.0"
 sodipodi:docname="mapa.mexico.mili.svg"
 inkscape:output_extension="org.inkscape.output.svg.inkscape"
-viewBox="0 0 {height*0.1} {width*0.5}"
+preserveAspectRatio="xMidYMid meet"
+viewBox="0 0 {height} {width}"
 width={width + 'px'}
 height={height + 'px'}
-preserveAspectRatio="xMidYMid meet"
-id="SVGMapa"
 bind:this={svgPadre}
+id="SVGMapa"
 >
   <g
   id="MapaGrupoEstados"
