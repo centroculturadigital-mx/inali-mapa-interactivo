@@ -179,8 +179,20 @@ const zonasFamilias = [
   }
 ]
 
+function distribucionAreas() {
+  console.log("Distribuye");
+  
+}
+
 </script>
-<style></style>
+<style>
+#Familia-4-Area {
+  transform: translate(50%, 42%);
+}
+#Familia-4-Drag {
+  transform: translate(20%, 72%);
+}
+</style>
 
 {#each zonasFamilias as zona}
   <path

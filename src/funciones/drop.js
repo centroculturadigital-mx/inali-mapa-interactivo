@@ -28,8 +28,8 @@ export default (interactObj, acceptObj, colorDefault) => {
       obj.setAttribute('data-x', x)
       obj.setAttribute('data-y', y)
       //
-      e.target.style.fill = colorDeafult
-      e.relatedTarget.style.fill = colorDeafult
+      e.target.style.fill = colorDefult
+      e.relatedTarget.style.fill = colorDefult
     },
     ondragleave: (e) => {
       e.target.style.fill = colorArrastre

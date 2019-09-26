@@ -25,7 +25,12 @@ const dragMoveListener = (e) => {
   let target = e.target//objeto arrastrado
   var x = (parseFloat(target.getAttribute('data-x')) || 0) + e.dx
   var y = (parseFloat(target.getAttribute('data-y')) || 0) + e.dy
-  target.style.webkitTransform =
+// 
+console.log(target.style.transform);
+
+// 
+
+target.style.webkitTransform =
   target.style.transform =
   'translate(' + x + 'px, ' + y + 'px)'
 

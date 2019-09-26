@@ -1,6 +1,7 @@
 <script>
 import Drag from '../componentes/general/DragDrop/Drag.svelte'
 import Mapa from '../componentes/Mapa/Mapa.svelte'
+import Pie from '../componentes/general/Pie/Pie.svelte'
 </script>
 
 <style>
@@ -15,3 +16,4 @@ import Mapa from '../componentes/Mapa/Mapa.svelte'
 <Drag />
 <!-- Elementos -->
 <Mapa />
+<Pie />
