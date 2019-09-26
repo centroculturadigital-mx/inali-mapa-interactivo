@@ -48,10 +48,13 @@
   version="1.0"
   sodipodi:docname="mapa.mexico.mili.svg"
   inkscape:output_extension="org.inkscape.output.svg.inkscape"
-  viewBox="0 0 {width} {height}"
-  width={width + 'px'}
-  height={height + 'px'}
+  viewBox="0 0 999.73236 679.94141"
+  width='999.73236px'
+  height='679.94141px'
   id="SVGMapa">
+  <!-- viewBox="0 0 {width} {height}"
+  width={width + 'px'}
+  height={height + 'px'} -->
 
   <MexicoPaths />
 
