@@ -8,7 +8,7 @@
   const win = window;
 
   onMount(() => {
-    console.log("OnMount: ")
+    // console.log("OnMount: ")
     
   });
 

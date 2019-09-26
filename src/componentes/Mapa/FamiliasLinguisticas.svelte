@@ -1,14 +1,20 @@
 <script>
 import drop from '../../funciones/drop'
 import { onMount } from 'svelte'
+let zonaFamilia
 
 onMount(()=>{
   // aplica funcion drop a area zona linguistica
   zonasFamilias.forEach((zona)=>{
+  const xxx = zonaFamilia
     if (zona.class === "dropall") {
       drop('#'+zona.id,'#'+zona.related,zona.fill)
     }
+  console.log(xxx);
   })
+  // DEBUG: Distribucion aleatoria
+  // distribucionAreas(xxx)
+  
 })
 
 const zonasFamilias = [
@@ -179,11 +185,21 @@ const zonasFamilias = [
   }
 ]
 
-function distribucionAreas() {
-  console.log("Distribuye");
+function distribucionAreas(elem) {
+
+  console.log("Distribuye OK: ", elem)
+
+  zonasFamilias.forEach((zona)=>{
+    if (zona.class != 'dragall') {
+      //areas sobre el mapa
+      // console.log(zona.id) 
+    } else {
+      // areas arrastrables fuera del mapa
+      //  console.log(zona.class);
+    }    
+  })
   
 }
-
 </script>
 <style>
 #Familia-4-Area {
@@ -194,12 +210,13 @@ function distribucionAreas() {
 }
 </style>
 
-{#each zonasFamilias as zona}
+{#each zonasFamilias as zona,i}
   <path
+  bind:this={zonaFamilia}
   id={zona.id}
   class={zona.class}
   d={zona.d}
   fill={zona.fill}
-  opacity="1"
+  opacity="0.75"
   />
 {/each}
