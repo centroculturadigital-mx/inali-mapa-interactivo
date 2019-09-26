@@ -14,7 +14,7 @@ const Drag = () => {
     // autoScroll: true,
     onmove: dragMoveListener,
     onend: (e) => {
-      console.log('Fin Drag')
+      // console.log('Fin Drag')
     }
 
   })

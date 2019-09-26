@@ -1,14 +1,12 @@
 import interact from 'interactjs'
 //Colores
-const colorArea = 'purple'
+const colorArea = 'gray'
 const colorArrastre = 'lime'
 const colorEntraArea = 'lightgray'
-const colorJuntos = 'gray'
-// const interact = require('interact')
-export default (interactObj, acceptObj) => {
-  // DEBUG:
-  console.log("DropDebug",interactObj,acceptObj)
-  const interactRef = interact(interactObj).dropzone({
+
+export default (interactObj, acceptObj, colorDefault) => {
+  // 
+  interact(interactObj).dropzone({
     accept: acceptObj,
     overlap: 0.10,//10% encima del area
     ondropactivate: (e) => {
@@ -25,20 +23,21 @@ export default (interactObj, acceptObj) => {
       let x = 0
       let y = 0
       obj.style.webkitTransform =
-      obj.style.transform =
-      'translate(' + x + 'px, ' + y    + 'px)'
+        obj.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)'
       obj.setAttribute('data-x', x)
       obj.setAttribute('data-y', y)
       //
-      e.target.style.fill = colorJuntos
-      e.relatedTarget.style.fill = colorJuntos
+      e.target.style.fill = colorDeafult
+      e.relatedTarget.style.fill = colorDeafult
     },
     ondragleave: (e) => {
       e.target.style.fill = colorArrastre
       e.relatedTarget.style.fill = colorArrastre
     },
     ondropdeactivate: (e) => {
-      e.target.style.fill = colorArea// area
+      e.target.style.fill = colorArea
+      e.relatedTarget.style.fill = colorDefault
     }
   })
 
