@@ -1,10 +1,8 @@
 
 <style>
   #MapaGrupoEstados {
-    -webkit-transform: scale(0.25);
-    transform: scale(0.25);
     -webkit-transform: translate(10%, 10%);
-    transform: translate(10%, 10%);
+    transform: translate(10%, 15%) scale(0.82);
   }
 
 </style>
