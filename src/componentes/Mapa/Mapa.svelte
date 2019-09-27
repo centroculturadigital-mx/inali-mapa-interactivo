@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import FamiliasLinguisticas from "./FamiliasLinguisticas.svelte";
   import MexicoPaths from "./MexicoPaths.svelte";
+  import MexicoPaths1366x768 from "./MexicoPaths1366x768.svelte";
   //
   let width = 1000
   let height = 680
@@ -53,7 +54,11 @@
   id="SVGMapa">
 
   <MexicoPaths />
-  <FamiliasLinguisticas />
+  <!-- <MexicoPaths1366x768 /> -->
+    <FamiliasLinguisticas />
+    <article x="0" y="0" width="100" height="100">
+      <div style="border:1px green solid">I'm a div inside a SVG.</div>
+    </article>
 
 </svg>
 <!--  -->

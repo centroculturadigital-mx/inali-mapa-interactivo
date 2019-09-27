@@ -9,7 +9,7 @@ export default (interactObj, acceptObj, colorDefault) => {
   //
   interact(interactObj).dropzone({
     accept: acceptObj,
-    overlap: 0.10,//10% encima del area
+    overlap: 0.50,//10% encima del area
     ondropactivate: (e) => {
       e.target.style.fill = colorArrastre// area
       e.target.style.opacity = 1// area
@@ -22,20 +22,19 @@ export default (interactObj, acceptObj, colorDefault) => {
     ondrop: (e) => {
       let dropzone = e.target.getBoundingClientRect()//drop
       let dragzone = e.relatedTarget//drag
-      let x = dropzone.x
-      let y = dropzone.y
+      let xDrag = dropzone.x
+      let yDrag = dropzone.y
+      //DEBUG: snap
+      // console.log("Area: ",dropzone,xDrag,yDrag);
+      // console.log("Drag: ",e.relatedTarget.getBoundingClientRect(),e.relatedTarget.getBoundingClientRect().x,e.relatedTarget.getBoundingClientRect().y);
       //
-        // console.log(e.target,dragzone.getBoundingClientRect(),dropzone);
-      //
-
       dragzone.style.webkitTransform =
       dragzone.style.transform =
-      'translate(' + x + 'px, ' + y + 'px)'
-      dragzone.setAttribute('data-x', x)
-      dragzone.setAttribute('data-y', y)
+      'translate(' + xDrag + 'px, ' + yDrag + 'px)'
+      dragzone.setAttribute('data-x', xDrag)
+      dragzone.setAttribute('data-y', yDrag)
       //
-      e.target.style.fill = colorDefault
-      e.relatedTarget.style.fill = colorDefault
+      
     },
     ondragleave: (e) => {
       e.target.style.fill = colorArrastre
