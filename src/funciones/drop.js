@@ -1,4 +1,5 @@
 import interact from 'interactjs'
+//
 //Colores
 const colorArea = 'gray'
 const colorArrastre = 'lime'
@@ -11,6 +12,7 @@ export default (interactObj, acceptObj, colorDefault) => {
     overlap: 0.10,//10% encima del area
     ondropactivate: (e) => {
       e.target.style.fill = colorArrastre// area
+      e.target.style.opacity = 1// area
       e.relatedTarget.style.fill = colorArrastre//dragged obj
     },
     ondragenter: (e) => {
@@ -18,15 +20,19 @@ export default (interactObj, acceptObj, colorDefault) => {
       e.relatedTarget.style.fill = colorEntraArea
     },
     ondrop: (e) => {
-      let dropzone = e.target.getBoundingClientRect()
-      let obj = e.relatedTarget
-      let x = dropozone.x
+      let dropzone = e.target.getBoundingClientRect()//drop
+      let dragzone = e.relatedTarget//drag
+      let x = dropzone.x
       let y = dropzone.y
-      obj.style.webkitTransform =
-        obj.style.transform =
-        'translate(' + x + 'px, ' + y + 'px)'
-      obj.setAttribute('data-x', x)
-      obj.setAttribute('data-y', y)
+      //
+        console.log(e.target,dragzone.getBoundingClientRect(),dropzone);
+      //
+
+      dragzone.style.webkitTransform =
+      dragzone.style.transform =
+      'translate(' + x + 'px, ' + y + 'px)'
+      dragzone.setAttribute('data-x', x)
+      dragzone.setAttribute('data-y', y)
       //
       e.target.style.fill = colorDefault
       e.relatedTarget.style.fill = colorDefault
@@ -36,7 +42,7 @@ export default (interactObj, acceptObj, colorDefault) => {
       e.relatedTarget.style.fill = colorArrastre
     },
     ondropdeactivate: (e) => {
-      e.target.style.fill = colorArea
+      e.target.style.opacity = 0
       e.relatedTarget.style.fill = colorDefault
     }
   })

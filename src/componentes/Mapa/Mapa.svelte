@@ -3,14 +3,14 @@
   import FamiliasLinguisticas from "./FamiliasLinguisticas.svelte";
   import MexicoPaths from "./MexicoPaths.svelte";
   //
-  // let height;
-  // let width;
-  const win = window;
+  let width = 1000
+  let height = 680
 
   onMount(() => {
     // console.log("OnMount: ")
   });
 
+  // const win = window;
   // if (typeof win !== "undefined") {
   //   height = win.innerHeight; //altura default
   //   width = win.innerWidth; // ancho default
@@ -47,16 +47,13 @@
   version="1.0"
   sodipodi:docname="mapa.mexico.mili.svg"
   inkscape:output_extension="org.inkscape.output.svg.inkscape"
-  viewBox="0 0 999.73236 679.94141"
-  width='999.73236px'
-  height='679.94141px'
+  viewBox="0 0 {width} {height}"
+  width={width+'px'}
+  height={height+'px'}
   id="SVGMapa">
 
   <MexicoPaths />
-
   <FamiliasLinguisticas />
-
-
 
 </svg>
 <!--  -->
