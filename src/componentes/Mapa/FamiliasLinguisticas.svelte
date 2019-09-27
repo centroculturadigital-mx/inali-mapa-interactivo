@@ -17,27 +17,24 @@ onMount(() => {
     let dropall = document.querySelectorAll(".dropall")
     let xArea = ['399.019','149.536','268.972','325.142','799.57','595.341','675.751','368.93','709.178','506.241','464.281']//coordenadas area
     let yArea = ['418.746','88.824','162.737','250.553','429.057','534.237','521.048','231.324','485.425','419.078','252.864']//coordenadas area
+    let xDrag = ['19','62','230','378','33','335','603','652','830','853','863']//coordenadas drag
+    let yDrag = ['80','309','443','519','523','42','112','361','266','550','72']//coordenadas drag
+
+    // let scramble = dropall.sort(()=>{}) Math.random() * window.innerWidth
 
     //Posicion areas sobre el mapa
     dropall.forEach((item,index) => {
-      let x = Math.random() * window.innerWidth
-      let y = Math.random() * window.innerHeight
-
       item.style.webkitTransform =
-      // item.style.transform = `translate(${x}px, ${y}px)`;
-      item.style.transform = `translate(${xArea[index]}px, ${yArea[index]}px)`;
-      item.setAttribute('data-x', x)
-      item.setAttribute('data-y', y)
+      item.style.transform = `translate(${xArea[index]}px, ${yArea[index]}px)`
+      item.setAttribute('data-x', xArea[index])
+      item.setAttribute('data-y', yArea[index])
     })
-
     //Posicion areas arrastrables fuera del mapa
-    dragall.forEach((item) => {
-      let x = Math.random() * window.innerWidth
-      let y = Math.random() * window.innerHeight
+    dragall.forEach((item,index) => {
       item.style.webkitTransform =
-      item.style.transform = `translate(${x}px, ${y}px)`;
-      item.setAttribute('data-x', x)
-      item.setAttribute('data-y', y)
+      item.style.transform = `translate(${xDrag[index]}px, ${yDrag[index]}px)`;
+      item.setAttribute('data-x', xDrag[index])
+      item.setAttribute('data-y', yDrag[index])
     })
   }
   distribucionAreas()

@@ -25,7 +25,7 @@ export default (interactObj, acceptObj, colorDefault) => {
       let x = dropzone.x
       let y = dropzone.y
       //
-        console.log(e.target,dragzone.getBoundingClientRect(),dropzone);
+        // console.log(e.target,dragzone.getBoundingClientRect(),dropzone);
       //
 
       dragzone.style.webkitTransform =
