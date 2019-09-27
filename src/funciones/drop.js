@@ -9,7 +9,7 @@ export default (interactObj, acceptObj, colorDefault) => {
   //
   interact(interactObj).dropzone({
     accept: acceptObj,
-    overlap: 0.50,//10% encima del area
+    overlap: 0.2,//10% encima del area
     ondropactivate: (e) => {
       e.target.style.fill = colorArrastre// area
       e.target.style.opacity = 1// area
@@ -24,6 +24,12 @@ export default (interactObj, acceptObj, colorDefault) => {
       let dragzone = e.relatedTarget//drag
       let xDrag = dropzone.x
       let yDrag = dropzone.y
+      // suaviza el drop + fix
+      e.relatedTarget.style.transition = '0.5s'
+      setTimeout(()=>{
+        e.relatedTarget.style.transition = null
+      },600)
+      //
       dragzone.style.webkitTransform =
       dragzone.style.transform =
       'translate(' + xDrag + 'px, ' + yDrag + 'px)'
@@ -32,7 +38,6 @@ export default (interactObj, acceptObj, colorDefault) => {
       //
       //TODO: Al ejecutarce el snap, aparece un div con textoa un lado de la zona arrojada
       // = anclar texto a area
-
 
       //
     },
