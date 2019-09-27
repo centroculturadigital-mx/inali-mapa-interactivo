@@ -6,7 +6,7 @@ const linkUrl = '#'
 </script>
 <style>
 figure {
-  padding: 0.5rem;
+  padding: 0.4rem;
   margin: 0;
 }
 #LogoPathGroup {

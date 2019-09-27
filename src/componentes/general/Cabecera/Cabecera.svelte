@@ -1,5 +1,6 @@
 <script>
 import  Logo  from '../Logo/Logo.svelte'
+import  Ayuda  from '../Ayuda/Ayuda.svelte'
 </script>
 
 <style>
@@ -17,5 +18,6 @@ header {
 <header>
 
 	<Logo />
+	<Ayuda />
 
 </header>

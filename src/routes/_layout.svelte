@@ -1,5 +1,7 @@
 <script>
 	import Cabecera from '../componentes/general/Cabecera/Cabecera.svelte';
+	import Pie from '../componentes/general/Pie/Pie.svelte'
+
 
 </script>
 
@@ -14,9 +16,11 @@
 		width: 100%;
 	}
 </style>
-
+<!--  -->
 <Cabecera />
 
 <main>
 	<slot></slot>
 </main>
+
+<Pie />
