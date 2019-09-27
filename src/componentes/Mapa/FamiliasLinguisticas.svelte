@@ -1,5 +1,6 @@
 <script>
 import drop from "../../funciones/drop"
+import shuffle from "../../funciones/shuffle"
 import { onMount } from "svelte"
 
 onMount(() => {
@@ -15,26 +16,24 @@ onMount(() => {
   function distribucionAreas() {
     let dragall = document.querySelectorAll(".dragall")
     let dropall = document.querySelectorAll(".dropall")
-    let xArea = ['399.019','149.536','268.972','325.142','799.57','595.341','675.751','368.93','709.178','506.241','464.281']//coordenadas area
-    let yArea = ['418.746','88.824','162.737','250.553','429.057','534.237','521.048','231.324','485.425','419.078','252.864']//coordenadas area
-    let xDrag = ['19','62','230','378','33','335','603','652','830','853','863']//coordenadas drag
-    let yDrag = ['80','309','443','519','523','42','112','361','266','550','72']//coordenadas drag
+    let posArea = [['399.019','418.746'],['149.536','88.824'],['268.972','162.737'],['325.142','250.553'],['799.57','429.057'],['595.341','534.237'],['675.751','521.048'],['368.93','231.324'],['709.178','485.425'],['506.241','419.078'],['464.281','252.864']]//coordenadas area
+    let posDrag = [['19','80'],['62','309'],['230','443'],['377','509'],['33','523'],['335','42'],['603','112'],['652','361'],['830','266'],['853','550'],['863','72']]//coordenadas drag
 
-    // let scramble = dropall.sort(()=>{}) Math.random() * window.innerWidth
-
+    // shuffle posicion elementos
+    let posDragShuffled = shuffle(posDrag)
     //Posicion areas sobre el mapa
     dropall.forEach((item,index) => {
       item.style.webkitTransform =
-      item.style.transform = `translate(${xArea[index]}px, ${yArea[index]}px)`
-      item.setAttribute('data-x', xArea[index])
-      item.setAttribute('data-y', yArea[index])
+      item.style.transform = `translate(${posArea[index][0]}px, ${posArea[index][1]}px)`
+      item.setAttribute('data-x', posArea[index][0])
+      item.setAttribute('data-y', posArea[index][1])
     })
     //Posicion areas arrastrables fuera del mapa
     dragall.forEach((item,index) => {
       item.style.webkitTransform =
-      item.style.transform = `translate(${xDrag[index]}px, ${yDrag[index]}px)`;
-      item.setAttribute('data-x', xDrag[index])
-      item.setAttribute('data-y', yDrag[index])
+      item.style.transform = `translate(${posDragShuffled[index][0]}px, ${posDragShuffled[index][1]}px)`
+      item.setAttribute('data-x', posDragShuffled[index][0])
+      item.setAttribute('data-y', posDragShuffled[index][1])
     })
   }
   distribucionAreas()
