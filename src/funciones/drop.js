@@ -24,17 +24,17 @@ export default (interactObj, acceptObj, colorDefault) => {
       let dragzone = e.relatedTarget//drag
       let xDrag = dropzone.x
       let yDrag = dropzone.y
-      //DEBUG: snap
-      // console.log("Area: ",dropzone,xDrag,yDrag);
-      // console.log("Drag: ",e.relatedTarget.getBoundingClientRect(),e.relatedTarget.getBoundingClientRect().x,e.relatedTarget.getBoundingClientRect().y);
-      //
       dragzone.style.webkitTransform =
       dragzone.style.transform =
       'translate(' + xDrag + 'px, ' + yDrag + 'px)'
       dragzone.setAttribute('data-x', xDrag)
       dragzone.setAttribute('data-y', yDrag)
       //
-      
+      //TODO: Al ejecutarce el snap, aparece un div con textoa un lado de la zona arrojada
+      // = anclar texto a area
+
+
+      //
     },
     ondragleave: (e) => {
       e.target.style.fill = colorArrastre
