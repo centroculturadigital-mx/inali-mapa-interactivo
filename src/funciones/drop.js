@@ -5,7 +5,7 @@ const colorArrastre = 'lime'
 const colorEntraArea = 'lightgray'
 
 export default (interactObj, acceptObj, colorDefault) => {
-  // 
+  //
   interact(interactObj).dropzone({
     accept: acceptObj,
     overlap: 0.10,//10% encima del area
@@ -20,8 +20,8 @@ export default (interactObj, acceptObj, colorDefault) => {
     ondrop: (e) => {
       let dropzone = e.target.getBoundingClientRect()
       let obj = e.relatedTarget
-      let x = 0
-      let y = 0
+      let x = dropozone.x
+      let y = dropzone.y
       obj.style.webkitTransform =
         obj.style.transform =
         'translate(' + x + 'px, ' + y + 'px)'

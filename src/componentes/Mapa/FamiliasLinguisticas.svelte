@@ -1,42 +1,43 @@
 <script>
-import drop from "../../funciones/drop";
-import { onMount } from "svelte";
-
+import drop from "../../funciones/drop"
+import { onMount } from "svelte"
 
 onMount(() => {
-  let dropall = document.querySelectorAll(".dropall");
-  let dragall = document.querySelectorAll(".dragall");
+
   // aplica funcion drop a area zona linguistica
   zonasFamilias.forEach(zona => {
+    // console.log(index)
     if (zona.class === "dropall") {
       drop("#" + zona.id, "#" + zona.related, zona.fill);
     }
   });
-  // DEBUG: Distribucion aleatoria
-  // function distribucionAreas() {
-  //   let i = 0;
-  //
-  //   zonasFamilias.forEach(zona => {
-  //     if (zona.class === "dropall") {
-  //       //areas sobre el mapa
-  //       let x = Math.random() * window.innerWidth;
-  //       let y = Math.random() * window.innerHeight;
-  //       console.log(x, y);
-  //       console.log(dropall);
-  //
-  //       dropall[i].style.webkitTransform =
-  //       dropall[i].style.transform = `translate(${x}px, ${y}px)`;
-  //
-  //     } else if (zona.class === "dragall") {
-  //       // areas arrastrables fuera del mapa
-  //       // dragall[i].style.webkitTransform =
-  //       // dragall[i].style.transform = 'translate(300px, 500px)'
-  //     }
-  //     i = i + 1;
-  //   });
-  // }
-  // distribucionAreas();
-});
+  // PLACEHOLDER: Distribucion aleatoria
+  function distribucionAreas() {
+    let dragall = document.querySelectorAll(".dragall")
+    let dropall = document.querySelectorAll(".dropall")
+
+    //areas sobre el mapa
+    dropall.forEach((item) => {
+      let x = Math.random() * window.innerWidth
+      let y = Math.random() * window.innerHeight
+      item.style.webkitTransform =
+      item.style.transform = `translate(${x}px, ${y}px)`;
+      item.setAttribute('data-x', x)
+      item.setAttribute('data-y', y)
+    })
+
+    // areas arrastrables fuera del mapa
+    dragall.forEach((item) => {
+      let x = Math.random() * window.innerWidth
+      let y = Math.random() * window.innerHeight
+      item.style.webkitTransform =
+      item.style.transform = `translate(${x}px, ${y}px)`;
+      item.setAttribute('data-x', x)
+      item.setAttribute('data-y', y)
+    })
+  }
+  distribucionAreas();
+});//onMount
 
 const zonasFamilias = [
   {
@@ -119,8 +120,7 @@ const zonasFamilias = [
   {
     id: "Familia-5-Drag",
     class: "dragall",
-    d:
-    "M54.7882 4.8158C41.7998 -3.3955 25.1822 0.99659 10.8567 5.7706C9.13768 6.53444 7.8006 6.72541 6.46356 7.87117C5.12652 8.82597 4.3625 10.5446 3.78948 12.2633C-2.70473 27.5401 1.11539 45.6813 8.56464 60.3853C10.2837 63.4407 12.0028 66.496 14.6769 68.5966C17.733 70.8881 21.171 71.652 24.6092 72.6068C31.6764 74.3254 38.9347 76.426 46.0019 78.1446C53.0691 79.8632 61.0914 81.9638 67.3946 78.1446C73.1248 75.0892 76.1809 68.2147 78.664 61.722C82.6751 51.2192 85.5402 39.1887 80.956 29.2587C78.2819 23.148 73.1248 18.7559 68.3496 14.5548L54.7882 4.8158Z",
+    d: "M54.7882 4.8158C41.7998 -3.3955 25.1822 0.99659 10.8567 5.7706C9.13768 6.53444 7.8006 6.72541 6.46356 7.87117C5.12652 8.82597 4.3625 10.5446 3.78948 12.2633C-2.70473 27.5401 1.11539 45.6813 8.56464 60.3853C10.2837 63.4407 12.0028 66.496 14.6769 68.5966C17.733 70.8881 21.171 71.652 24.6092 72.6068C31.6764 74.3254 38.9347 76.426 46.0019 78.1446C53.0691 79.8632 61.0914 81.9638 67.3946 78.1446C73.1248 75.0892 76.1809 68.2147 78.664 61.722C82.6751 51.2192 85.5402 39.1887 80.956 29.2587C78.2819 23.148 73.1248 18.7559 68.3496 14.5548L54.7882 4.8158Z",
     opacity: "1",
     fill: "#5EA279"
   },
@@ -128,8 +128,7 @@ const zonasFamilias = [
     id: "Familia-6-Area",
     related: "Familia-6-Drag",
     class: "dropall",
-    d:
-    "M111.265 49.7176C110.883 44.7526 107.827 40.5515 105.726 36.1594C103.625 31.7673 102.097 26.2294 104.771 22.0283C106.872 18.591 111.647 16.2995 110.501 12.2893C110.119 11.1435 109.355 9.80682 108.4 9.04298C98.4677 -0.505049 80.8951 0.831674 72.4908 11.9074C71.1538 13.626 69.0527 16.1085 67.1426 15.5357C66.1876 15.1537 65.4236 14.3899 64.6596 13.4351C60.8394 8.4701 55.8733 3.12322 49.9521 4.07802C45.7499 4.6509 42.5028 8.08817 38.4917 9.04298C32.3795 10.5707 26.2673 6.36953 20.7281 3.31416C15.1889 0.0678326 7.35764 -1.65081 3.1555 3.31416C1.05443 5.98761 0.290398 9.61585 0.481405 13.2441C1.05442 25.2746 7.93066 36.5413 17.863 42.0791C20.7281 43.6068 23.5932 44.7526 26.0763 46.8532C31.8065 51.6272 33.7165 60.2204 39.0647 65.1854C40.9748 67.095 44.2219 68.4317 46.705 66.713C49.57 64.9944 49.9521 60.4114 53.0082 59.4566C56.2553 60.0294 58.5474 62.5119 61.6035 63.4667C64.6596 64.4215 69.0527 63.0848 68.8617 59.6475C68.8617 57.9289 67.5246 56.2102 66.1876 54.8735C63.5135 51.0543 63.1315 45.8984 65.0416 41.6972L66.7606 40.9334C75.9289 38.8328 85.2883 43.0339 93.1195 48.5718C97.8947 51.8181 103.052 55.8283 108.4 54.1097C109.164 53.9187 109.928 53.5368 110.31 52.9639C111.265 52.0091 111.456 50.6724 111.265 49.7176Z",
+    d: "M111.265 49.7176C110.883 44.7526 107.827 40.5515 105.726 36.1594C103.625 31.7673 102.097 26.2294 104.771 22.0283C106.872 18.591 111.647 16.2995 110.501 12.2893C110.119 11.1435 109.355 9.80682 108.4 9.04298C98.4677 -0.505049 80.8951 0.831674 72.4908 11.9074C71.1538 13.626 69.0527 16.1085 67.1426 15.5357C66.1876 15.1537 65.4236 14.3899 64.6596 13.4351C60.8394 8.4701 55.8733 3.12322 49.9521 4.07802C45.7499 4.6509 42.5028 8.08817 38.4917 9.04298C32.3795 10.5707 26.2673 6.36953 20.7281 3.31416C15.1889 0.0678326 7.35764 -1.65081 3.1555 3.31416C1.05443 5.98761 0.290398 9.61585 0.481405 13.2441C1.05442 25.2746 7.93066 36.5413 17.863 42.0791C20.7281 43.6068 23.5932 44.7526 26.0763 46.8532C31.8065 51.6272 33.7165 60.2204 39.0647 65.1854C40.9748 67.095 44.2219 68.4317 46.705 66.713C49.57 64.9944 49.9521 60.4114 53.0082 59.4566C56.2553 60.0294 58.5474 62.5119 61.6035 63.4667C64.6596 64.4215 69.0527 63.0848 68.8617 59.6475C68.8617 57.9289 67.5246 56.2102 66.1876 54.8735C63.5135 51.0543 63.1315 45.8984 65.0416 41.6972L66.7606 40.9334C75.9289 38.8328 85.2883 43.0339 93.1195 48.5718C97.8947 51.8181 103.052 55.8283 108.4 54.1097C109.164 53.9187 109.928 53.5368 110.31 52.9639C111.265 52.0091 111.456 50.6724 111.265 49.7176Z",
     opacity: "1",
     fill: "#6D6DB3"
   },
@@ -230,31 +229,20 @@ const zonasFamilias = [
 </script>
 
 <style>
-#Familia-4-Area {
-  transform: translate(50%, 42%);
+/* #Familia-4-Area {
+transform: translate(50%, 42%);
 }
 #Familia-4-Drag {
-  transform: translate(20%, 72%);
-}
+transform: translate(20%, 72%);
+} */
 </style>
 
-{#each zonasFamilias as zona, i}
-<!-- opcional -->
-  {#if zona.class === 'dragall'}
-    <defs>
-      <filter id="shadow" x="0" y="0" width="100%" height="100%">
-        <feOffset result="offOut" in="SourceGraphic" dx="20" dy="20" />
-        <feGaussianBlur result="blurOut" in="onOut" stdDeviation="5" />
-        <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-      </filter>
-    </defs>
-  {/if}
-<!--  -->
-  <path
-  id={zona.id}
-  class={zona.class}
-  d={zona.d}
-  fill={zona.fill}
-  opacity="0.75"
-  filter=""/>
+{#each zonasFamilias as zona,i}
+<path
+id={zona.id}
+class={zona.class}
+d={zona.d}
+fill={zona.fill}
+opacity="0.75"
+filter="  "/>
 {/each}

@@ -3,28 +3,27 @@
   import FamiliasLinguisticas from "./FamiliasLinguisticas.svelte";
   import MexicoPaths from "./MexicoPaths.svelte";
   //
-  let height;
-  let width;
+  // let height;
+  // let width;
   const win = window;
 
   onMount(() => {
     // console.log("OnMount: ")
-    
   });
 
-  if (typeof win !== "undefined") {
-    height = win.innerHeight; //altura default
-    width = win.innerWidth; // ancho default
-    //
-    const resize = () => {
-      win.onresize = e => {
-        width = e.target.innerWidth;
-        height = e.target.innerHeight;
-      };
-    };
-    // llamadas
-    resize();
-  }
+  // if (typeof win !== "undefined") {
+  //   height = win.innerHeight; //altura default
+  //   width = win.innerWidth; // ancho default
+  //   //
+  //   const resize = () => {
+  //     win.onresize = e => {
+  //       width = e.target.innerWidth;
+  //       height = e.target.innerHeight;
+  //     };
+  //   };
+  //   // llamadas
+  //   resize();
+  // }
 </script>
 
 <style>
@@ -52,13 +51,12 @@
   width='999.73236px'
   height='679.94141px'
   id="SVGMapa">
-  <!-- viewBox="0 0 {width} {height}"
-  width={width + 'px'}
-  height={height + 'px'} -->
 
   <MexicoPaths />
 
   <FamiliasLinguisticas />
+
+
 
 </svg>
 <!--  -->
