@@ -22,7 +22,9 @@ const Drag = () => {
 
 const dragMoveListener = (e) => {
 
-  let target = e.target//objeto arrastrado
+  let target = e.target//objeto
+
+
   var x = (parseFloat(target.getAttribute('data-x')) || 0) + e.dx
   var y = (parseFloat(target.getAttribute('data-y')) || 0) + e.dy
 
@@ -32,6 +34,7 @@ const dragMoveListener = (e) => {
 
   target.setAttribute('data-x', x)
   target.setAttribute('data-y', y)
+
 }
 //
 Drag()
