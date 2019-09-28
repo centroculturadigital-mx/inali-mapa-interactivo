@@ -36,7 +36,7 @@
                 posicion += 4 - variador
                 lineas.push(
                     paper.path(`M ${posicion}, 0 L ${posicion}, ${window.innerHeight}`)
-                    .attr({stroke: "#ddd"})
+                    .attr({stroke: "#5a7187"})
                 )
             }
         }
@@ -77,7 +77,6 @@
             .then((something) => {
                 Raphael=something.default
             });
-            console.log(Raphael);
             
             
             paper= Raphael(0, 0, window.innerWidth, window.innerHeight);
@@ -87,7 +86,6 @@
             document.body.addEventListener("click",(e)=>{
                 ultimoClickX = e.clientX
                 ultimoClickY = e.clientY
-                console.log(ultimoClickX, ultimoClickY)
                 // dibujarLineas()
                 // circle.attr({
                 //     cx: mouseX,

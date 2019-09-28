@@ -25,7 +25,6 @@ export default (interactObj, acceptObj, colorDefault) => {
     ondrop: (e) => {
       let dropzone = e.target.getBoundingClientRect()//drop
       let dragzone = e.relatedTarget//drag
-      // console.log(dropzone);
       
 
       
@@ -39,37 +38,39 @@ export default (interactObj, acceptObj, colorDefault) => {
       let altoReal = 0
       
       if( window.innerWidth > window.innerHeight ) {
-        anchoReal = window.innerHeight * proporcionViewBoxX 
         altoReal = window.innerHeight
-        console.log('anchoReal', anchoReal);
+        anchoReal = altoReal * proporcionViewBoxX 
         
-        offsetX = (window.innerWidth - anchoReal)/2
-        offsetY = 0
+        if(anchoReal < window.innerWidth ) {
+          altoReal = window.innerHeight
+          anchoReal = window.innerHeight * proporcionViewBoxX 
+          
+          
+          offsetX = (window.innerWidth - anchoReal)/2
+          offsetY = 0
+        } else {
+          anchoReal = window.innerWidth
+          altoReal = window.innerWidth * proporcionViewBoxY
+          
+          offsetX = (window.innerWidth - anchoReal)/2
+          offsetY = (window.innerHeight - altoReal)/2
+        }
+
+        
       } else {
         anchoReal = window.innerWidth
         altoReal = window.innerWidth * proporcionViewBoxY
-        console.log('altoReal', altoReal);
         
         offsetY = (window.innerHeight - altoReal)/2
         offsetX = 0        
       }
       
-console.log(dropzone.x,dropzone.y);
-      let puntito = document.createElement('div')
-      puntito.style.display='block'
-      puntito.style.position='fixed'
-      puntito.style.backgroundColor='red'
-      puntito.style.top=dropzone.y+'px'
-      puntito.style.left=dropzone.x+'px'
-      puntito.style.width='16px'
-      puntito.style.height='16px'
 
-      document.body.append(puntito)
-      console.log('offsetX', offsetX);
-      console.log('offsetY', offsetY);
       
-      let xDrag = (dropzone.x - offsetX) / (anchoReal/1366)
-      let yDrag = (dropzone.y - offsetY) / (altoReal/768)
+      let xDrag = (dropzone.x - offsetX ) / (anchoReal/1366 )
+      let yDrag = (dropzone.y - offsetY ) / (altoReal/768)
+      // let xDrag = ((dropzone.x - offsetX - (window.innerWidth-anchoReal)/2 ) / (anchoReal/1366) )
+      // let yDrag = ((dropzone.y - offsetY - (window.innerHeight-altoReal)/2 ) / (altoReal/768))
       // let xDrag = (dropzone.x * ( 1366/window.innerWidth )) 
       // let yDrag = (dropzone.y - offsetY) / proporcionViewBoxY
       // suaviza el drop + elimia transicion

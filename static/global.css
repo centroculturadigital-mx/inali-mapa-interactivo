@@ -19,3 +19,8 @@ main {
 	width: 100%;
 }
 /*  Fin estilos customizados*/
+
+
+body > svg {
+	z-index: -1;
+}

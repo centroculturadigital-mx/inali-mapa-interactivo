@@ -52,6 +52,8 @@ height={height+'px'}
 id="SVGMapa">
 <!-- viewBox="0 0 {width} {height}" -->
 
+
+<rect width="1365" height="768" stroke="red" fill="none"/>
 <!-- <MexicoPaths /> -->
 <MexicoPaths1366x768 />
 <FamiliasLinguisticas />
