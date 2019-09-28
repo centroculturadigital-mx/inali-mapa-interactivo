@@ -1,28 +1,28 @@
 <script>
 import { onMount } from "svelte";
 import FamiliasLinguisticas from "./FamiliasLinguisticas.svelte";
-import MexicoPaths from "./MexicoPaths.svelte";
+// import MexicoPaths from "./MexicoPaths.svelte";
 import MexicoPaths1366x768 from "./MexicoPaths1366x768.svelte";
 //
 // let width = 1000
 // let height = 680
-let width = 1366
-let height = 768
 
 const win = window;
-if (typeof win !== "undefined") {
-  height = win.innerHeight; //altura default
-  width = win.innerWidth; // ancho default
+// if (typeof win !== "undefined") {
+  // $: width = 1366
+  // $: height = 768
+  $: height = win.innerHeight; //altura default
+  $: width = win.innerWidth; // ancho default
   //
-  const resize = () => {
-    win.onresize = e => {
-      width = e.target.innerWidth;
-      height = e.target.innerHeight;
-    };
-  };
+  // const resize = () => {
+  //   win.onresize = e => {
+  //     width = e.target.innerWidth;
+  //     height = e.target.innerHeight;
+  //   };
+  // };
   // llamadas
   // resize();
-}
+// }
 </script>
 
 <style>
@@ -46,17 +46,16 @@ inkscape:version="0.92.3 (2405546, 2018-03-11)"
 version="1.0"
 sodipodi:docname="mapa.mexico.mili.svg"
 inkscape:output_extension="org.inkscape.output.svg.inkscape"
-viewBox="0 0 {width} {height}"
+viewBox="0 0 1366 768"
 width={width+'px'}
 height={height+'px'}
 id="SVGMapa">
 
+<!-- viewBox="0 0 {width} {height}" -->
 <!-- <MexicoPaths /> -->
+<rect width="1365" height="767" stroke="red" />
 <MexicoPaths1366x768 />
 <FamiliasLinguisticas />
-<article x="0" y="0" width="100" height="100">
-<div style="border:1px green solid">I'm a div inside a SVG.</div>
-</article>
 
 </svg>
 <!--  -->
