@@ -1,5 +1,7 @@
 /* Estilos default: */
-
+html, body {
+	overflow: hidden;
+}
 /* Estilos customizados */
 :root {
 	--color-fondo: #465D72;

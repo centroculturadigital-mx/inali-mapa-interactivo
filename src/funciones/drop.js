@@ -1,4 +1,5 @@
 import interact from 'interactjs'
+import calculaPosicionMapa from "./calculaPosicionMapa";
 //
 const velocidadTransision = '0.5s'
 //Colores
@@ -27,53 +28,8 @@ export default (interactObj, acceptObj, colorDefault) => {
       let dragzone = e.relatedTarget//drag
       
 
-      
-      let offsetX
-      let offsetY
-      // 0.5622254758418741
-      const proporcionViewBoxY = 768/1366
-      const proporcionViewBoxX = 1366/768
-      
-      let anchoReal = 0
-      let altoReal = 0
-      
-      if( window.innerWidth > window.innerHeight ) {
-        altoReal = window.innerHeight
-        anchoReal = altoReal * proporcionViewBoxX 
-        
-        if(anchoReal < window.innerWidth ) {
-          altoReal = window.innerHeight
-          anchoReal = window.innerHeight * proporcionViewBoxX 
-          
-          
-          offsetX = (window.innerWidth - anchoReal)/2
-          offsetY = 0
-        } else {
-          anchoReal = window.innerWidth
-          altoReal = window.innerWidth * proporcionViewBoxY
-          
-          offsetX = (window.innerWidth - anchoReal)/2
-          offsetY = (window.innerHeight - altoReal)/2
-        }
+      let {x, y} = calculaPosicionMapa(dropzone.x, dropzone.y)
 
-        
-      } else {
-        anchoReal = window.innerWidth
-        altoReal = window.innerWidth * proporcionViewBoxY
-        
-        offsetY = (window.innerHeight - altoReal)/2
-        offsetX = 0        
-      }
-      
-
-      
-      let xDrag = (dropzone.x - offsetX ) / (anchoReal/1366 )
-      let yDrag = (dropzone.y - offsetY ) / (altoReal/768)
-      // let xDrag = ((dropzone.x - offsetX - (window.innerWidth-anchoReal)/2 ) / (anchoReal/1366) )
-      // let yDrag = ((dropzone.y - offsetY - (window.innerHeight-altoReal)/2 ) / (altoReal/768))
-      // let xDrag = (dropzone.x * ( 1366/window.innerWidth )) 
-      // let yDrag = (dropzone.y - offsetY) / proporcionViewBoxY
-      // suaviza el drop + elimia transicion
       e.relatedTarget.style.transition = velocidadTransision
       setTimeout(()=>{
         e.relatedTarget.style.transition = null
@@ -81,9 +37,9 @@ export default (interactObj, acceptObj, colorDefault) => {
       //
       dragzone.style.webkitTransform =
       dragzone.style.transform =
-      'translate(' + xDrag + 'px, ' + yDrag + 'px)'
-      dragzone.setAttribute('data-x', xDrag )
-      dragzone.setAttribute('data-y', yDrag )
+      'translate(' + x + 'px, ' + y + 'px)'
+      dragzone.setAttribute('data-x', x )
+      dragzone.setAttribute('data-y', y )
       //
       //TODO: Al ejecutarce el snap, aparece un div con textoa un lado de la zona arrojada
       // = anclar texto a area

@@ -1,5 +1,6 @@
 <script>
 import interact from 'interactjs'
+import calculaPosicionMapa from '../../../funciones/calculaPosicionMapa'
 //
 const itemDrag = '.dragall'
 const Drag = () => {
@@ -22,18 +23,14 @@ const Drag = () => {
 
 const dragMoveListener = (e) => {
 
-  let target = e.target//objeto
+  const {x, y} = calculaPosicionMapa(e.clientX, e.clientY)
 
-
-  var x = (parseFloat(target.getAttribute('data-x')) || 0) + e.dx
-  var y = (parseFloat(target.getAttribute('data-y')) || 0) + e.dy
-
-  target.style.webkitTransform =
-  target.style.transform =
+  e.target.style.webkitTransform =
+  e.target.style.transform =
   'translate(' + x + 'px, ' + y + 'px)'
 
-  target.setAttribute('data-x', x)
-  target.setAttribute('data-y', y)
+  e.target.setAttribute('data-x', x)
+  e.target.setAttribute('data-y', y)
 
 }
 //
