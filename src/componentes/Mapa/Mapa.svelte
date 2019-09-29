@@ -3,6 +3,7 @@ import { onMount } from "svelte";
 import FamiliasLinguisticas from "./FamiliasLinguisticas.svelte";
 // import MexicoPaths from "./MexicoPaths.svelte";
 import MexicoPaths1366x768 from "./MexicoPaths1366x768.svelte";
+import Voluta from "./Voluta.svelte";
 //
 // let width = 1000
 // let height = 680
@@ -56,6 +57,8 @@ id="SVGMapa">
 <!-- <MexicoPaths /> -->
 <MexicoPaths1366x768 />
 <FamiliasLinguisticas />
+<Voluta />
+
 
 </svg>
 <!--  -->
