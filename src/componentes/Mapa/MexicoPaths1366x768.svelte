@@ -1,12 +1,5 @@
 
 <style>
-  #MapaGrupoEstados {
-    /* -webkit-transform: translate(10%, 13%) scale(1);
-    /*
-    transform: translate(10%, 13%) scale(0.8); */
-    /* -webkit-transform: scale(0.9);
-    transform:  scale(0.9); */
-  }
 </style>
 <metadata
    id="metadata3924">

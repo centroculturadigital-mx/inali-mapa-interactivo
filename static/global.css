@@ -3,6 +3,7 @@ html, body {
 	overflow: hidden;
 }
 /* Estilos customizados */
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
 :root {
 	--color-fondo: #465D72;
 }
@@ -21,7 +22,6 @@ main {
 	width: 100%;
 }
 /*  Fin estilos customizados*/
-
 
 body > svg {
 	z-index: -1;

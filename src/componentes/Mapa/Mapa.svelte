@@ -30,6 +30,7 @@ const win = window;
 #SVGMapa {
   height: 100%;
   width: 100%;
+  transform-origin: 50% 50%;
 }
 </style>
 

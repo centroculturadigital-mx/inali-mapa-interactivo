@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte"
+  import VolutaTexto from "./VolutaTexto.svelte"
   // import calculaPosicionMapa from "./calculaPosicionMapa"
 
   const posVolutas = [
@@ -15,13 +16,16 @@
   onMount(() => {
     function distribucionVolutas() {
       let volutas = document.querySelectorAll(".voluta");
-      let volutasTexto = document.querySelectorAll(".voluta");
-
+      let volutasTexto = document.querySelectorAll(".voluta-info");
+      let volutaTextoX = volutas[0].getBoundingClientRect().width*2
+      console.log(volutaTextoX);
+      
+      
       volutas.forEach((item, index) => {
         // translate multiplicado por 2 por que estan escaladas a la mitad
-        item.style.webkitTransform = item.style.transform = `translate(${posVolutas[index][0]*2}px, ${posVolutas[index][1]*2}px)`;
-        volutasTexto[index].style.webkitTransform = volutasTexto[index].style.transform = `translate(${posVolutas[index][0]*2}px, ${posVolutas[index][1]*2}px)`;
-      });
+        item.style.webkitTransform = item.style.transform = `translate(${posVolutas[index][0] * 2}px, ${posVolutas[index][1] * 2}px)`;
+        volutasTexto[index].style.webkitTransform = volutasTexto[index].style.transform = `translate(${(posVolutas[index][0] * 2) + volutaTextoX}px, ${posVolutas[index][1] * 2}px)`
+      })
     }
     if (typeof window != "undefined") {
       distribucionVolutas();
@@ -32,20 +36,18 @@
 </script>
 
 <style>
-.voluta {
-  transform-origin: center;
-}
-.GrupoVoluta {
-  -webkit-transform: scale(0.5);
-  transform: scale(0.5);
-  cursor: pointer;
-
-}
-.GrupoVoluta:hover {
-  animation: flota 1s 1 forwards;
-
-}
- @keyframes flota {
+  .voluta {
+    transform-origin: center;
+  }
+  .GrupoVoluta {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    cursor: pointer;
+  }
+  .GrupoVoluta:hover {
+    animation: flota 1s 1 forwards;
+  }
+  @keyframes flota {
     0% {
       transform: scale(0.5);
     }
@@ -58,39 +60,35 @@
     width: 100px;
   }
 </style>
+
 <!-- la cantidad de volutas depende del tamano del array de posiciones -->
 {#each posVolutas as voluta, i}
-<g class="GrupoVoluta">
-<foreignObject 
-x="300" 
-y="300"
-class={voluta_info}
->
-
-lskfnvokefnvoeinvf
-</foreignObject>
-  <path
-    id={voluta_id + i}
-    class={voluta_class}
-    d="M5.87921 26.5925C6.00169 26.5925 28.0486 32.7166 38.7046 38.4733C45.4412
-    42.0253 50.8305 46.0673 55.9747 49.9867C56.8321 50.5991 57.567 51.2115
-    58.4244 51.824L58.6694 51.9464C69.3254 60.1528 78.6341 67.3793 93.3321
-    67.6243C102.396 67.8692 111.092 64.5622 117.584 58.3156C124.075 52.0689
-    127.872 43.7401 127.995 34.6763C128.24 20.5908 119.911 8.3425 107.785
-    2.95324C103.743 1.23848 99.3337 0.136136 94.8019 0.0136531C85.7381 -0.231313
-    77.7767 2.83076 72.3875 8.3425C71.1626 9.68981 70.0603 11.0371 69.2029
-    12.5069C68.468 13.8542 67.8556 15.324 67.4881 16.9163C66.9982 18.9985
-    66.6308 21.2032 66.5083 23.4079C66.0184 27.6948 67.3657 32.1042 69.9378
-    35.4112C71.1626 37.0035 72.8774 38.4733 74.5922 39.4532C76.4294 40.433
-    78.3891 41.0455 80.4714 41.1679C84.5133 41.5354 88.6777 40.433 92.5972
-    38.9632L94.0669 41.7804C91.7398 42.7602 89.5351 43.3726 87.2079
-    43.7401C84.8807 44.1075 82.5536 44.1075 80.1039 43.7401C77.7767 43.3726
-    75.4495 42.5153 73.4898 41.2904C71.5301 39.9431 68.8355 37.7384 67.1207
-    35.0438C65.161 32.1042 64.0586 26.7149 64.4261 22.673C64.5486 21.5707
-    64.7935 20.3458 64.916 19.2435C60.9965 17.5287 52.5452 14.7116 37.3573
-    15.2015C25.2315 15.569 5.87919 22.7955 5.63423 22.7955L0 24.8777L5.87921
-    26.5925Z"
-    fill="#72A6AA" 
-    on:click={console.log("Click en voluta ")}/>
-</g>
+  <g class="GrupoVoluta">
+    <foreignObject class={voluta_info} x y>
+      <VolutaTexto />
+    </foreignObject>
+    <path
+      id={voluta_id + i}
+      class={voluta_class}
+      d="M5.87921 26.5925C6.00169 26.5925 28.0486 32.7166 38.7046
+      38.4733C45.4412 42.0253 50.8305 46.0673 55.9747 49.9867C56.8321 50.5991
+      57.567 51.2115 58.4244 51.824L58.6694 51.9464C69.3254 60.1528 78.6341
+      67.3793 93.3321 67.6243C102.396 67.8692 111.092 64.5622 117.584
+      58.3156C124.075 52.0689 127.872 43.7401 127.995 34.6763C128.24 20.5908
+      119.911 8.3425 107.785 2.95324C103.743 1.23848 99.3337 0.136136 94.8019
+      0.0136531C85.7381 -0.231313 77.7767 2.83076 72.3875 8.3425C71.1626 9.68981
+      70.0603 11.0371 69.2029 12.5069C68.468 13.8542 67.8556 15.324 67.4881
+      16.9163C66.9982 18.9985 66.6308 21.2032 66.5083 23.4079C66.0184 27.6948
+      67.3657 32.1042 69.9378 35.4112C71.1626 37.0035 72.8774 38.4733 74.5922
+      39.4532C76.4294 40.433 78.3891 41.0455 80.4714 41.1679C84.5133 41.5354
+      88.6777 40.433 92.5972 38.9632L94.0669 41.7804C91.7398 42.7602 89.5351
+      43.3726 87.2079 43.7401C84.8807 44.1075 82.5536 44.1075 80.1039
+      43.7401C77.7767 43.3726 75.4495 42.5153 73.4898 41.2904C71.5301 39.9431
+      68.8355 37.7384 67.1207 35.0438C65.161 32.1042 64.0586 26.7149 64.4261
+      22.673C64.5486 21.5707 64.7935 20.3458 64.916 19.2435C60.9965 17.5287
+      52.5452 14.7116 37.3573 15.2015C25.2315 15.569 5.87919 22.7955 5.63423
+      22.7955L0 24.8777L5.87921 26.5925Z"
+      fill="#72A6AA"
+      on:click={console.log('Click en voluta *')} />
+  </g>
 {/each}
