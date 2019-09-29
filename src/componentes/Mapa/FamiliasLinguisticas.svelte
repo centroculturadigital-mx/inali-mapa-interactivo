@@ -297,6 +297,7 @@
         opacity={zona.opacity} />
     </g>
   {:else}
+  <!-- evita animacion en las areas fijas -->
     <path
       id={zona.id}
       class={zona.class}

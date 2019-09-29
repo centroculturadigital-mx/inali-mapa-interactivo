@@ -1,10 +1,10 @@
 <script>
-  import { onMount } from "svelte"
-  import VolutaTexto from "./VolutaTexto.svelte"
+  import { onMount } from "svelte";
+  import VolutaTexto from "./VolutaTexto.svelte";
   // import calculaPosicionMapa from "./calculaPosicionMapa"
 
   const posVolutas = [
-    ["-60", "285"],
+    ["0", "285"],
     ["274", "593"],
     ["839", "200"],
     ["1286", "554"]
@@ -12,21 +12,35 @@
   let voluta_id = "voluta_";
   let voluta_class = "voluta";
   let voluta_info = "voluta-info";
+  let toggleVoluta
 
   onMount(() => {
+
     function distribucionVolutas() {
       let volutas = document.querySelectorAll(".voluta");
       let volutasTexto = document.querySelectorAll(".voluta-info");
-      let volutaTextoX = volutas[0].getBoundingClientRect().width*2
-      console.log(volutaTextoX);
-      
-      
+      let volutaTextoX = volutas[0].getBoundingClientRect().width * 2;
+      let volutaTextoIzquierda;
+
       volutas.forEach((item, index) => {
-        // translate multiplicado por 2 por que estan escaladas a la mitad
-        item.style.webkitTransform = item.style.transform = `translate(${posVolutas[index][0] * 2}px, ${posVolutas[index][1] * 2}px)`;
-        volutasTexto[index].style.webkitTransform = volutasTexto[index].style.transform = `translate(${(posVolutas[index][0] * 2) + volutaTextoX}px, ${posVolutas[index][1] * 2}px)`
-      })
+
+        // al ultimo objeto posiciona a la derecha
+        if (index != volutas.length-1) {
+          volutaTextoIzquierda = posVolutas[index][0] * 2 + volutaTextoX;
+        } else {
+          volutaTextoIzquierda = posVolutas[index][0] * 1.79 - volutaTextoX;          
+        }
+
+        // translate multiplicado por 2 por que el svg tiene scale(0.5)
+        item.style.webkitTransform = item.style.transform = `translate(${posVolutas[index][0] * 2}px, ${posVolutas[index][1] * 2}px)`; 
+        volutasTexto[index].style.webkitTransform = volutasTexto[index].style.transform = `translate(${volutaTextoIzquierda}px, ${posVolutas[index][1] * 2}px)`;
+      });
     }
+    toggleVoluta = () => {
+        console.log("toogleVoluta");
+        
+    }
+    // checa si existe window
     if (typeof window != "undefined") {
       distribucionVolutas();
     }
@@ -38,6 +52,7 @@
 <style>
   .voluta {
     transform-origin: center;
+    transition: 1s;
   }
   .GrupoVoluta {
     -webkit-transform: scale(0.5);
@@ -47,6 +62,11 @@
   .GrupoVoluta:hover {
     animation: flota 1s 1 forwards;
   }
+  foreignObject {
+    height: 350px;
+    width: 800px;
+    background-color: transparent;
+  }
   @keyframes flota {
     0% {
       transform: scale(0.5);
@@ -55,16 +75,17 @@
       transform: scale(0.505);
     }
   }
-  foreignObject {
-    height: 100px;
-    width: 100px;
-  }
 </style>
 
 <!-- la cantidad de volutas depende del tamano del array de posiciones -->
 {#each posVolutas as voluta, i}
   <g class="GrupoVoluta">
-    <foreignObject class={voluta_info} x y>
+    <!-- "<foreignobject>" necesita que los valores de altura y ancho sean > 0 -->
+    <foreignObject
+      class={voluta_info}
+      x="0"
+      y="0"
+      requiredExtensions="http://www.w3.org/1999/xhtml">
       <VolutaTexto />
     </foreignObject>
     <path
@@ -89,6 +110,6 @@
       52.5452 14.7116 37.3573 15.2015C25.2315 15.569 5.87919 22.7955 5.63423
       22.7955L0 24.8777L5.87921 26.5925Z"
       fill="#72A6AA"
-      on:click={console.log('Click en voluta *')} />
+      on:click={toggleVoluta} />
   </g>
 {/each}

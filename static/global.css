@@ -1,18 +1,25 @@
-/* Estilos default: */
+/* Estilos generales customizados */
+:root {
+	/* colores */
+	--color-fondo: #465D72;
+	/* textos */
+	--fuente-1: 0.75em;
+	--fuente-2: 1em;
+	--fuente-3: 1.25em;
+}
 html, body {
 	overflow: hidden;
 }
-/* Estilos customizados */
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
-:root {
-	--color-fondo: #465D72;
-}
 /* * {outline: 1px solid lightgray;} */
 body {
 	background-color: var(--color-fondo);
 	margin: 0;
 	height: 100vh;
 	width: 100vw;
+}
+body > svg {
+	z-index: -1;
 }
 main {
 	padding: 0 !important;
@@ -21,8 +28,5 @@ main {
 	height: 100%;
 	width: 100%;
 }
-/*  Fin estilos customizados*/
 
-body > svg {
-	z-index: -1;
-}
+/*  Fin estilos customizados*/
