@@ -9,21 +9,10 @@ import Voluta from "./Voluta.svelte";
 // let height = 680
 
 const win = window;
-// if (typeof win !== "undefined") {
-  // $: width = 1366
-  // $: height = 768
-  $: height = win.innerHeight; //altura default
-  $: width = win.innerWidth; // ancho default
-  //
-  // const resize = () => {
-  //   win.onresize = e => {
-  //     width = e.target.innerWidth;
-  //     height = e.target.innerHeight;
-  //   };
-  // };
-  // llamadas
-  // resize();
-// }
+
+$: height = win.innerHeight; //altura default
+$: width = win.innerWidth; // ancho default
+
 </script>
 
 <style>
@@ -59,7 +48,7 @@ id="SVGMapa">
 
 <!-- <MexicoPaths /> -->
 <MexicoPaths1366x768 />
-<FamiliasLinguisticas />
+<FamiliasLinguisticas on:seleccionar/>
 <Voluta />
 
 
