@@ -1,7 +1,16 @@
-  
+<script>
+let botonCierra
+
+
+
+</script>
 <style>
- 
+  figure:hover {
+    cursor:pointer;
+  }
+
 </style>
+
 
 <figure>
   <svg
