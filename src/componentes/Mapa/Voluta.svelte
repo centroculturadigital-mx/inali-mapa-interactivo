@@ -1,11 +1,11 @@
 <script>
   import { onMount } from "svelte";
-  import VolutaTexto from "./VolutaTexto.svelte";
+  // import VolutaTexto from "./VolutaTexto.svelte";
   // import calculaPosicionMapa from "./calculaPosicionMapa"
 
   const posVolutas = [
     ["0", "285"],
-    ["274", "593"],
+    ["360", "643"],
     ["839", "200"],
     ["1286", "554"]
   ]; //4 volutas
@@ -62,11 +62,7 @@
   .GrupoVoluta:hover {
     animation: flota 1s 1 forwards;
   }
-  foreignObject {
-    height: 350px;
-    width: 800px;
-    background-color: transparent;
-  }
+
   @keyframes flota {
     0% {
       transform: scale(0.5);
@@ -83,10 +79,10 @@
     <!-- "<foreignobject>" necesita que los valores de altura y ancho sean > 0 -->
     <foreignObject
       class={voluta_info}
-      x="0"
-      y="0"
+      x=0
+      y=0
       requiredExtensions="http://www.w3.org/1999/xhtml">
-      <VolutaTexto />
+      <!-- <VolutaTexto /> -->
     </foreignObject>
     <path
       id={voluta_id + i}

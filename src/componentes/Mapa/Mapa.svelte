@@ -28,9 +28,11 @@ const win = window;
 
 <style>
 #SVGMapa {
+  position: fixed;
+  transform-origin: 50% 50%;
   height: 100%;
   width: 100%;
-  transform-origin: 50% 50%;
+  z-index: 0;
 }
 </style>
 

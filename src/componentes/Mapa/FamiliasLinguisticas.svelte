@@ -34,7 +34,7 @@
         ["190", "386"],
         ["430", "512"],
         ["594", "632"],
-        ["75", "554"],
+        ["828", "65"],
         ["621", "74"],
         ["1300", "120"],
         ["874", "402"],
@@ -75,7 +75,7 @@
 
   const zonasFamilias = [
     {
-      id: "Familia-1-Area",
+      id: "Familia-Area-1",
       related: "Familia-1-Drag",
       class: "dropall",
       d:
@@ -92,7 +92,7 @@
       fill: "#E6AA30"
     },
     {
-      id: "Familia-2-Area",
+      id: "Familia-Area-2",
       related: "Familia-2-Drag",
       class: "dropall",
       d:
@@ -109,7 +109,7 @@
       fill: "#F45C92"
     },
     {
-      id: "Familia-3-Area",
+      id: "Familia-Area-3",
       related: "Familia-3-Drag",
       class: "dropall",
       d:
@@ -126,7 +126,7 @@
       fill: "#D31A27"
     },
     {
-      id: "Familia-4-Area",
+      id: "Familia-Area-4",
       related: "Familia-4-Drag",
       class: "dropall",
       d:
@@ -143,7 +143,7 @@
       fill: "#7D8796"
     },
     {
-      id: "Familia-5-Area",
+      id: "Familia-Area-5",
       related: "Familia-5-Drag",
       class: "dropall",
       d:
@@ -160,7 +160,7 @@
       fill: "#5EA279"
     },
     {
-      id: "Familia-6-Area",
+      id: "Familia-Area-6",
       related: "Familia-6-Drag",
       class: "dropall",
       d:
@@ -177,7 +177,7 @@
       fill: "#6D6DB3"
     },
     {
-      id: "Familia-7-Area",
+      id: "Familia-Area-7",
       related: "Familia-7-Drag",
       class: "dropall",
       d:
@@ -194,7 +194,7 @@
       fill: "#4B84FA"
     },
     {
-      id: "Familia-8-Area",
+      id: "Familia-Area-8",
       related: "Familia-8-Drag",
       class: "dropall",
       d:
@@ -211,7 +211,7 @@
       fill: "#48CBFF"
     },
     {
-      id: "Familia-9-Area",
+      id: "Familia-Area-9",
       related: "Familia-9-Drag",
       class: "dropall",
       d:
@@ -228,7 +228,7 @@
       fill: "#877477"
     },
     {
-      id: "Familia-10-Area",
+      id: "Familia-Area-10",
       related: "Familia-10-Drag",
       class: "dropall",
       d:
@@ -245,7 +245,7 @@
       fill: "#F46E7E"
     },
     {
-      id: "Familia-11-Area",
+      id: "Familia-Area-11",
       related: "Familia-11-Drag",
       class: "dropall",
       d:
@@ -286,7 +286,7 @@
   }
 </style>
 
-{#each zonasFamilias as zona, i}
+{#each zonasFamilias as zona}
   {#if zona.class == "dragall"} 
     <g class="zonaDragAnim">
       <path
