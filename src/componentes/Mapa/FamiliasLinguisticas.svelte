@@ -14,9 +14,7 @@
     
   const funcionDrag = ( id  ) => {
       
-    dispatch('seleccionar', {
-      id: id
-    });
+    dispatch('seleccionar', {id});
     
   }
 
