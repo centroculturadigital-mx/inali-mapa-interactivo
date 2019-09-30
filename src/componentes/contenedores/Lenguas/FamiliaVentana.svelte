@@ -5,8 +5,12 @@
   import Flecha from "../iconos/Flecha.svelte";
   import Carrousel from "../iconos/Carrousel.svelte";
 
+  import Icon from "fa-svelte";
+  import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+
   export let familia;
   export let cerrar;
+  let cierraIcono = faTimesCircle
 
   let elemento = { activo: false };
   const Mostrar = () => {
@@ -35,8 +39,7 @@
 </script>
 
 <style>
-
-    article {
+  article {
     max-width: 360px;
     max-height: 420px;
   }
@@ -56,11 +59,7 @@
     overflow-y: auto;
     z-index: 10000;
     background: #f7f7f7;
-    border-radius: 10px;  
-    }
-
-  .Encabezado {
-    margin-top: -3rem;
+    border-radius: 10px;
   }
 
   .Contenedor-1 {
@@ -70,13 +69,6 @@
     /* flex-wrap: nowrap; */
     /* justify-content: space-between; */
     overflow-y: auto;
-  }
-
-  .Cerrar {
-    margin-left: 36rem;
-    border: 0;
-    background-color: #f7f7f7;
-    padding: 1rem;
   }
 
   i {
@@ -164,74 +156,84 @@
     padding: 0 0.5rem 0 0;
   }
   .FamiliaWrapper {
-      height: 100%;
-      width: 100%;
+    height: 100%;
+    width: 100%;
+  }
+  /* new */
+  .BotonWrapper {
+    display: flex;
+    justify-content: right;
+    height: 50px;
+    width: 100%;
+  }
+  .BotonIcono {
+    color: #878787;
+    font-size: 1rem;
   }
 </style>
 
 <article class="Familia">
 
   <div class="FamiliaWrapper">
-
-  <button class="Cerrar" on:click={cerrarVentana}>
-    <i class="far fa-times-circle fa-2x" />
-    <i class="fas fas-close" />
-  </button>
-
-  <header class="Encabezado">
-    <p class="Titulo">FAMILIA</p>
-    <h1 class="Principal">Yuto-nahua</h1>
-  </header>
-  {#if elemento.activo}
-    <button class="Saber" on:click={Mostrar}>Saber más</button>
-    <div class="FamiliaDetalle">
-      <FamiliaDetalle />
-    </div>
-  {/if}
-
-  {#if !elemento.activo}
-    <button class="Saber" on:click={Mostrar}>Saber más</button>
-  {/if}
-  <div class="Contenedor-1">
-    <img
-      class="Imagen"
-      src={`http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`}
-      alt="img" />
-    <div class="TextoFotos">
-      <p>Titulo Foto</p>
-      <p>Descripción</p>
+    <div class="BotonWrapper">
+      <button class="BotonConIcono" on:click={cerrarVentana}>
+        <Icon class="BotonIcono" icon={cierraIcono} />
+      </button>
     </div>
 
-    <div class="Carrousel">
-      <i id="Point" class="fas fa-circle fa-xs" />
-      <i id="Point" class="fas fa-circle fa-xs" />
-      <i id="Point" class="fas fa-circle fa-xs" />
-      <i id="Point" class="fas fa-circle fa-xs" />
-      <i id="Point" class="fas fa-circle fa-xs" />
-      <i id="Point" class="fas fa-circle fa-xs" />
-      <i id="Point" class="fas fa-circle fa-xs" />
-      <i id="Point" class="fas fa-circle fa-xs" />
-      <i id="Point" class="fas fa-circle fa-xs" />
+    <header class="Encabezado">
+      <p class="Titulo">FAMILIA</p>
+      <h1 class="Principal">Yuto-nahua</h1>
+    </header>
+    {#if elemento.activo}
+      <button class="Saber" on:click={Mostrar}>Saber más</button>
+      <div class="FamiliaDetalle">
+        <FamiliaDetalle />
+      </div>
+    {/if}
+
+    {#if !elemento.activo}
+      <button class="Saber" on:click={Mostrar}>Saber más</button>
+    {/if}
+    <div class="Contenedor-1">
+      <img
+        class="Imagen"
+        src={`http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`}
+        alt="img" />
+      <div class="TextoFotos">
+        <p>Titulo Foto</p>
+        <p>Descripción</p>
+      </div>
+
+      <div class="Carrousel">
+        <i id="Point" class="fas fa-circle fa-xs" />
+        <i id="Point" class="fas fa-circle fa-xs" />
+        <i id="Point" class="fas fa-circle fa-xs" />
+        <i id="Point" class="fas fa-circle fa-xs" />
+        <i id="Point" class="fas fa-circle fa-xs" />
+        <i id="Point" class="fas fa-circle fa-xs" />
+        <i id="Point" class="fas fa-circle fa-xs" />
+        <i id="Point" class="fas fa-circle fa-xs" />
+        <i id="Point" class="fas fa-circle fa-xs" />
+      </div>
+
+      <article class="Contenedor-2">
+        <span class="Flecha">
+          <i class="fas fa-chevron-down fa-3x" />
+        </span>
+        <header class="TitulosLista">
+          <h4>Agrupaciones Lingüísticas</h4>
+          <h4>Riesgo de desaparición</h4>
+        </header>
+        <section class="Lista">
+          <ul>
+            <Agrupacion />
+            <Agrupacion />
+            <Agrupacion />
+          </ul>
+        </section>
+      </article>
     </div>
-
-    <article class="Contenedor-2">
-      <span class="Flecha">
-        <i class="fas fa-chevron-down fa-3x" />
-      </span>
-      <header class="TitulosLista">
-        <h4>Agrupaciones Lingüísticas</h4>
-        <h4>Riesgo de desaparición</h4>
-      </header>
-      <section class="Lista">
-        <ul>
-          <Agrupacion />
-          <Agrupacion />
-          <Agrupacion />
-        </ul>
-      </section>
-    </article>
-  </div>
-
 
   </div>
 </article>

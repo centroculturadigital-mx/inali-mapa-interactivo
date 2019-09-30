@@ -12,7 +12,9 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "compression": "^1.7.1",
+    "fa-svelte": "^3.0.0",
     "interactjs": "^1.6.2",
     "polka": "next",
     "raphael": "^2.3.0",
