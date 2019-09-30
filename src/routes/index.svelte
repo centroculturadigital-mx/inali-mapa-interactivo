@@ -2,7 +2,6 @@
 import Drag from '../componentes/general/DragDrop/Drag.svelte'
 import Mapa from '../componentes/Mapa/Mapa.svelte'
 import Pie from '../componentes/general/Pie/Pie.svelte'
-import Animacion1 from '../componentes/animacion/Animacion1.svelte'
 import VentanaFamilia from '../componentes/contenedores/VentanaFamilia/VentanaFamilia.svelte'
 </script>
 
@@ -18,6 +17,5 @@ import VentanaFamilia from '../componentes/contenedores/VentanaFamilia/VentanaFa
 <Drag />
 <!-- Elementos -->
 <Mapa />
-<Animacion1 />
 <VentanaFamilia />
 <Pie />

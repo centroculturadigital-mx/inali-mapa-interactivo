@@ -143,19 +143,3 @@
         z-index: -1;
     }
 </style>
-
-
-<!-- <canvas
-id="canvas"
-bind:this={canvas}
-width={1000}
-height={400}
-resize>
-</canvas> -->
-
-
-<h1>
-    Raphael
-</h1>
-
-
