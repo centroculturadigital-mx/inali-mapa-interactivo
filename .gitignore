@@ -5,3 +5,5 @@ yarn-error.log
 /cypress/screenshots/
 /__sapper__/
 .config
+.env.local.js
+.env.dev.js

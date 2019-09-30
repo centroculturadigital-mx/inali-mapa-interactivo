@@ -1,7 +1,9 @@
 /* Estilos generales customizados */
 :root {
 	/* colores */
+	--color-texto: #fff;
 	--color-fondo: #465D72;
+	--color-fondo-claro-1: #637789;
 	/* textos */
 	--fuente-1: 0.75em;
 	--fuente-2: 1em;
@@ -9,6 +11,10 @@
 }
 html, body {
 	overflow: hidden;
+}
+
+* {
+	color: var(--color-texto);
 }
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
 /* * {outline: 1px solid lightgray;} */

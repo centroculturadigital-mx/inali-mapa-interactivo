@@ -29,7 +29,7 @@
     </rdf:RDF>
   </metadata>
   <sodipodi:namedview
-     pagecolor="#ffffff"
+     pagecolor="var(--color-texto)fff"
      bordercolor="#666666"
      borderopacity="1"
      objecttolerance="10"

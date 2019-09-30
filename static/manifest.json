@@ -1,5 +1,5 @@
 {
-	"background_color": "#ffffff",
+	"background_color": "var(--color-texto)fff",
 	"theme_color": "#333333",
 	"name": "TODO",
 	"short_name": "TODO",

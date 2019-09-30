@@ -15,12 +15,12 @@
         max-height: 950px;
         padding: 0 1.7em;
         float: right;
-        background-color: #fff;
+        background-color: var(--color-texto);
     }
 
     .Texto {
         max-height: 790px;
-        background:#fff;
+        background:var(--color-texto);
         font-size: 14px;
         line-height: 28px;
         text-align: justify;

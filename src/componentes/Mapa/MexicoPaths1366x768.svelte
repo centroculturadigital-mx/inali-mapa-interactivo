@@ -33,7 +33,7 @@
    objecttolerance="10.0"
    borderopacity="1.0"
    bordercolor="#666666"
-   pagecolor="#ffffff"
+   pagecolor="var(--color-texto)fff"
    id="base"
    inkscape:zoom="0.31616135"
    inkscape:cx="210.74834"

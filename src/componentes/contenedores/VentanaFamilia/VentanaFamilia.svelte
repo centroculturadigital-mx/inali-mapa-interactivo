@@ -103,7 +103,7 @@
         position: relative;
         top: -102px;
         left: -220px;
-        color: #fff;
+        color: var(--color-texto);
     }
 
     .Flecha {

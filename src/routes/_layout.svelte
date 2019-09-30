@@ -2,14 +2,16 @@
 	import Cabecera from '../componentes/general/Cabecera/Cabecera.svelte';
 	import Pie from '../componentes/general/Pie/Pie.svelte'
 	import Animacion1 from '../componentes/animacion/Animacion1.svelte'
+	import env from '../.env.local.js'
 
 	let nombreUsuario = '';
 	let contrasenna = '';
 	let ingresado = false;
+	let cargando = false;
+
+	$: ingresoDev = env.modo == "dev"
+	$: ingreso = (nombreUsuario=='ccd' && contrasenna == 'ccdinali' && ingresado) || ingresoDev
 	
-	$: ingreso = nombreUsuario=='ccd' && contrasenna == 'ccdinali' && ingresado
-	
-	let cargando
 
 	const ingresar = () => {
 	
@@ -20,7 +22,7 @@
 
 			cargando=false
 
-		}, 3000)
+		}, 1500)
 	
 	}
 
@@ -35,6 +37,7 @@
 		margin: 0 auto;
 		height: 100%;
 		width: 100%;
+		color: var(--color-texto);
 	}
 
 	.Contenedor {
@@ -55,9 +58,14 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		background: var(--color-fondo);
-		
+		color: var(--color-texto);
+
 	}
+
+	form, form * {
+		text-align: center;
+	}
+	
 </style>
 <!--  -->
 
@@ -69,7 +77,7 @@
 
 	{#if ingreso }
 
-		{#if cargando }
+		{#if cargando && ! ingresoDev }
 
 			<h1>
 				Cargando
@@ -103,13 +111,13 @@
 					<h5>
 						Nombre de usuario
 					</h5>
-					<input type="text" name="nombreUsuario" placeholder="Nombre de usuario" bind:value={nombreUsuario}>
+					<input type="text" name="nombreUsuario" bind:value={nombreUsuario}>
 				</label>
 				<label>
 					<h5>
 						Contraseña
 					</h5>
-					<input type="contrasenna" name="contrasenna" placeholder="***" bind:value={contrasenna}>`
+					<input type="password" name="contrasenna" bind:value={contrasenna}>`
 				</label>
 
 				<input type="submit" value="Ingresar">

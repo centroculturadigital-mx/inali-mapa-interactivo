@@ -11,7 +11,7 @@
         height: 60px;
         margin: 1em;
         padding: 0 0.9em;
-        background: #FFFFFF;
+        background: var(--color-texto)FFF;
         border: 1px solid #DBDBDB;
         box-sizing: border-box;
         box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.06);
