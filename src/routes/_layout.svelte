@@ -4,31 +4,56 @@
 	import Animacion1 from '../componentes/animacion/Animacion1.svelte'
 	import env from '../.env.local.js'
 
+	import { tweened } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
+
 	let nombreUsuario = '';
 	let contrasenna = '';
 	let ingresado = false;
 	let cargando = false;
 
+	import { fade } from 'svelte/transition';
+
+	const progress = tweened(0, {
+		duration: 600,
+		easing: cubicOut
+	});
+
 	$: ingresoDev = env.modo == "dev"
 	$: ingreso = (nombreUsuario=='ccd' && contrasenna == 'ccdinali' && ingresado) || ingresoDev
 	
+	let progreso = 0;
+	let progresoFalso = 0;
 
-	const ingresar = () => {
+	const ingresar = (e) => {
 	
 		cargando = true
 		ingresado = true
 	
-		setTimeout(()=>{
+		progresoFalso = setInterval(()=>{
+			
+			console.log( progreso );
+			if(progreso>=1.2) {
+				
+				cargando=false
+				clearInterval(progresoFalso)
 
-			cargando=false
+			}
+			
+			progreso += 0.2
+			progress.set(progreso)
+			
 
-		}, 1500)
+		}, 200)
 	
+		e.preventDefault()
 	}
 
 </script>
 
 <style>
+
+
 	main {
 		background-color: transparent;
 		box-sizing: border-box;
@@ -40,15 +65,19 @@
 		color: var(--color-texto);
 	}
 
-	.Contenedor {
-		
+	.Contenedor,
+	.Contenedor > div {
 		height: 100%;
 		width: 100%;
+	}
+
+	.Contenedor > div {	
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-	
 	}
+	
 
 	form {
 
@@ -79,26 +108,31 @@
 
 		{#if cargando && ! ingresoDev }
 
-			<h1>
-				Cargando
-			</h1>
+			<div class="Loading" transition:fade>
+				<p>
+					Cargando
+				</p>
 
+				<progress value={$progress}></progress>
+			</div>
 
 		{:else}
 
-			<Cabecera />
+			<div transition:fade>
+				<Cabecera />
 
-			<main>
-				<slot></slot>
-			</main>
+				<main>
+					<slot></slot>
+				</main>
 
-			<Pie />
+				<Pie />
+			</div>
 		
 		{/if}
 
 	{:else}
 
-		<section class="LogIn">
+		<div class="LogIn" transition:fade>
 
 			<h1>
 				Ingresa
@@ -124,7 +158,7 @@
 
 			</form>
 
-		</section>
+		</div>
 
 	{/if}
 
