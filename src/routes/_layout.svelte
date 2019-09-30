@@ -6,13 +6,13 @@
 
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
+	import { fade } from 'svelte/transition';
 
 	let nombreUsuario = '';
 	let contrasenna = '';
 	let ingresado = false;
 	let cargando = false;
 
-	import { fade } from 'svelte/transition';
 
 	const progress = tweened(0, {
 		duration: 600,
