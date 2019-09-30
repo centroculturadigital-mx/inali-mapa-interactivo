@@ -1,0 +1,9 @@
+.BotonConIcono {
+    background-color: transparent;
+    border: none;
+    color: #878787;
+    cursor: pointer;
+    font-size: 18px;
+    height: auto;
+    width: auto;
+}
