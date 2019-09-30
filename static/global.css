@@ -2,6 +2,7 @@
 :root {
 	/* colores */
 	--color-texto: #fff;
+	--color-texto-oscuro: #000;
 	--color-fondo: #465D72;
 	--color-fondo-claro-1: #637789;
 	/* textos */

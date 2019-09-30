@@ -16,6 +16,9 @@
 
 <style>
 
+    * {
+        color: var(--color-texto-oscuro);
+    }
 
     .FamiliaResumen {
 
