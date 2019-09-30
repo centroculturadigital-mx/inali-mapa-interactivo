@@ -1,17 +1,14 @@
 <script>
 import Drag from '../componentes/general/DragDrop/Drag.svelte'
 import Mapa from '../componentes/Mapa/Mapa.svelte'
-import FamiliaResumen from '../componentes/contenedores/Familia/FamiliaResumen.svelte'
-import FamiliaDetalle from '../componentes/contenedores/Familia/FamiliaDetalle.svelte'
+import FamiliaVentana from '../componentes/contenedores/Lenguas/FamiliaVentana.svelte'
 
 import { fade } from 'svelte/transition';
 
 import familiasFake from "../datosFalsos/familiasFake"
 
-let familiaResumenMostrar
-let familiaDetalleMostrar
+let familiaMostrar
 
-$: familia = familiaDetalleMostrar
 
 
 const seleccionar = (e) => {
@@ -20,22 +17,11 @@ const seleccionar = (e) => {
 	
 	
 	if( !! id ) {
-		familiaResumenMostrar = familiasFake[Math.floor(Math.random()*familiasFake.length)]
+		familiaMostrar = familiasFake[Math.floor(Math.random()*familiasFake.length)]
 	} else {
-		familiaResumenMostrar = null;
+		familiaMostrar = null;
 	}
 
-}
-
-
-const abrir = async (e) => {
-	if( id ) {
-		familiaDetalleMostrar = await familiasFake[e.detail.id]
-	}
-}
-
-const cerrar = () => {
-	familiaDetalleMostrar = null
 }
 
 
@@ -54,14 +40,9 @@ const cerrar = () => {
 <!-- Elementos -->
 <Mapa on:seleccionar={seleccionar}/>
 
-	{#if !! familiaDetalleMostrar }
+	{#if !! familiaMostrar }
 		<div transition:fade>
-			<FamiliaDetalle familia={familia} on:cerrar={cerrar}/>
-		</div>
-	{/if}
-	{#if !! familiaResumenMostrar }
-		<div transition:fade>
-			<FamiliaResumen familia={familiaResumenMostrar} on:abrir={abrir}/>
+			<FamiliaVentana familia={familiaMostrar}/>
 		</div>
 	{/if}
 

@@ -1,40 +1,50 @@
 <script>
-    import Ocultar from "../iconos/Ocultar.svelte";
 
 </script>
 
 <style>
-    
-    .Ocultar {
-        margin-left: 270px;
-        margin-top: -10px;
+    /* * {
+        outline: 1px solid blue;
+    } */
+
+    section {
+        width: 360px;
     }
+
         
     .Detalle {
-        max-width: 330px;
-        max-height: 950px;
-        padding: 0 1.7em;
-        float: right;
-        background-color: var(--color-texto);
+        padding: 0 1.5em;
+        background-color: #fff;
     }
 
     .Texto {
-        max-height: 790px;
-        background:var(--color-texto);
-        font-size: 14px;
-        line-height: 28px;
-        text-align: justify;
+        max-height: 42.7rem;
+        background:#fff;
+        font-size: 1rem;
+        line-height: 2rem;
         overflow-y: auto;
+        text-align: justify;
         color: #454344;
+    }
+
+    .Ocultar {
+        margin-left: 20rem;
+        border: 0;
+        background-color: #fff;
+        padding: 1rem 0 1rem 1rem;
+    }
+    
+    i {
+        color: #bababa;
     }
 
 </style>
 
 
 <section class="Detalle">
-    <figure class="Ocultar">
-        <Ocultar/>
-    </figure>
+    <button class="Ocultar">
+        <i class="far fa-arrow-alt-circle-left fa-2x"></i>
+    </button>
     <section class="Texto">
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quod quidem delectus hic aspernatur sit eum rem laborum sequi, recusandae similique ut totam, dolores dignissimos veniam. Voluptatem error ipsam ipsa!

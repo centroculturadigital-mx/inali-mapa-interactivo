@@ -1,4 +1,5 @@
 <script>
+    import FamiliaDetalle from "./FamiliaDetalle.svelte";
     import Agrupacion from "./Agrupacion.svelte";
     import BotonCerrar from "../botones/BotonCerrar.svelte";
     import Flecha from "../iconos/Flecha.svelte";
@@ -11,6 +12,17 @@
 	const Mostrar = () => {
 		elemento.activo = !elemento.activo;
     }
+
+
+
+    const abrir = async (e) => {
+    }
+
+    const cerrar = () => {
+    }
+
+    // on:cerrar={cerrar}
+    // on:abrir={abrir}
     
 </script>
 
@@ -204,9 +216,9 @@
             </header>
                 <section class="Lista">
                     <ul>
-                    <Agrupacion/>
-                    <Agrupacion/>
-                    <Agrupacion/>
+                        <Agrupacion/>
+                        <Agrupacion/>
+                        <Agrupacion/>
                     </ul>
                 </section>
         </div>
