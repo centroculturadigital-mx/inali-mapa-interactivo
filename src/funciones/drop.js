@@ -6,9 +6,9 @@ const velocidadTransision = '0.5s'
 const colorArea = 'gray'
 const colorArrastre = 'lime'
 const colorEntraArea = 'lightgray'
-const ventanaFamilia = document.querySelector('.VentanaFamilia');
 
 export default (interactObj, acceptObj, colorDefault) => {
+  const ventanaFamilia = document.querySelector('.VentanaFamilia');
   
   interact(interactObj).dropzone({
     accept: acceptObj,
@@ -52,6 +52,9 @@ export default (interactObj, acceptObj, colorDefault) => {
     ondragleave: (e) => {
       e.target.style.fill = colorArrastre
       e.relatedTarget.style.fill = colorArrastre
+      console.log(ventanaFamilia);
+      ventanaFamilia.style.opacity = 0
+      ventanaFamilia.style.display = "block"
     },
     ondropdeactivate: (e) => {
       e.target.style.opacity = 0.6
@@ -59,9 +62,6 @@ export default (interactObj, acceptObj, colorDefault) => {
       e.relatedTarget.style.opacity = 0.9
       e.relatedTarget.style.fill = colorDefault
       
-      console.log(ventanaFamilia);
-      ventanaFamilia.style.opacity = 0
-      ventanaFamilia.style.display = "block"
     }
   })
 
