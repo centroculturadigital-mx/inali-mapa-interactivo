@@ -7,8 +7,8 @@ const colorArea = 'gray'
 const colorArrastre = 'lime'
 const colorEntraArea = 'lightgray'
 
-export default (interactObj, acceptObj, colorDefault) => {
-  const ventanaFamilia = document.querySelector('.VentanaFamilia');
+export default (interactObj, acceptObj, colorDefault, callback ) => {
+  // // const ventanaFamilia = document.querySelector('.VentanaFamilia');
   
   interact(interactObj).dropzone({
     accept: acceptObj,
@@ -42,16 +42,19 @@ export default (interactObj, acceptObj, colorDefault) => {
       dragzone.setAttribute('data-y', y )
 
       // apare ceventana datos
-      ventanaFamilia.style.display = "block"
-      ventanaFamilia.style.opacity = 1  
-      console.log(e.target.id);
+      // ventanaFamilia.style.display = "block"
+      // ventanaFamilia.style.opacity = 1  
+      
+      callback(e.target.id)
+
        
     },
     ondragleave: (e) => {
       e.target.style.fill = colorArrastre
       e.relatedTarget.style.fill = colorArrastre  
-      ventanaFamilia.style.opacity = 0
-      ventanaFamilia.style.display = "block"
+      // ventanaFamilia.style.opacity = 0
+      // ventanaFamilia.style.display = "block"
+      callback()
       
     },
     ondropdeactivate: (e) => {
