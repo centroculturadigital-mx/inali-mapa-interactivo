@@ -40,21 +40,19 @@ export default (interactObj, acceptObj, colorDefault) => {
       'translate(' + x + 'px, ' + y + 'px)'
       dragzone.setAttribute('data-x', x )
       dragzone.setAttribute('data-y', y )
-      //
-      //TODO: Al ejecutarce el snap, aparece un div con textoa un lado de la zona arrojada
-      // = anclar texto a area
 
-      // apareceventana datos
+      // apare ceventana datos
       ventanaFamilia.style.display = "block"
-      ventanaFamilia.style.opacity = 1      
-      //
+      ventanaFamilia.style.opacity = 1  
+      console.log(e.target.id);
+       
     },
     ondragleave: (e) => {
       e.target.style.fill = colorArrastre
-      e.relatedTarget.style.fill = colorArrastre
-      console.log(ventanaFamilia);
+      e.relatedTarget.style.fill = colorArrastre  
       ventanaFamilia.style.opacity = 0
       ventanaFamilia.style.display = "block"
+      
     },
     ondropdeactivate: (e) => {
       e.target.style.opacity = 0.6
