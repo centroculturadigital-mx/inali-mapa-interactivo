@@ -71,7 +71,8 @@
     height: 420px;
     width: 280px;
     /*  */
-    transform: translateX(316px);
+    /* transform: translateX(357px); con slider*/
+    transform: translateX(297px); /* con slider */
     /*  */
   }
   .Familia {

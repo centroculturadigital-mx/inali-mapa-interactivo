@@ -58,7 +58,7 @@ export default (interactObj, acceptObj, colorDefault, callback ) => {
       
     },
     ondropdeactivate: (e) => {
-      e.target.style.opacity = 0.6
+      e.target.style.opacity = 0
       e.target.style.fill = colorArea
       e.relatedTarget.style.opacity = 0.9
       e.relatedTarget.style.fill = colorDefault
