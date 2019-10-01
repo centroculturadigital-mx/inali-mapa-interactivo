@@ -20,23 +20,41 @@
     justify-content: space-between;
   }
 
-  .Riesgo {
-    position: relative;
-    top: 15px;
-    left: 142px;
+  .AgrupacionRiesgo {
+    width: 50%;
+    display: flex;
   }
-
-  .Cantidad {
-    position: relative;
-    top: -9px;
-    right: 21px;
+  .Riesgo {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .CantidadContenedor {
+    height: 100%;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
     text-align: center;
-    color: #454344;
+    padding-left: 16px;
+  }
+  .CantidadNumeros {
+    font-weight: bold;
+    width: 100%;
+    margin:0;
+  }
+  .CantidadTexto {
+    font-weight: lighter;
+    width: 100%;
+    margin:0;
   }
 </style>
 
 <div class="Agrupacion">
-  <div class="AgrupacionRiesgo">
+  <div class="AgrupacionNombre">
     <p>Nayeeri (Cora)</p>
   </div>
 
@@ -44,12 +62,10 @@
     <div class="Riesgo">
       <Riesgo />
     </div>
-    <div class="Cantidad">
-      <p>
-        28, 718
-        <br />
-        hablantes
-      </p>
+    <div class="CantidadContenedor">
+      <p class="CantidadNumeros">28, 718</p>
+      <br />
+      <p class="CantidadTexto">hablantes</p>
     </div>
   </div>
 </div>
