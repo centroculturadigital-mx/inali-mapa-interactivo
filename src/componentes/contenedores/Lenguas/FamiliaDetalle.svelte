@@ -9,6 +9,7 @@
   .Detalle {
     padding: 0;
     background-color: #fff;
+    height: 100%;
   }
   .TextoWrapper {
     max-height: 42.7rem;
@@ -18,6 +19,10 @@
     overflow-y: auto;
     text-align: justify;
     color: #454344;
+    height: 390px;
+  }
+  .Texto p {
+      padding: 0 0.5rem;
   }
   .OcultarWrapper {
     display: flex;
