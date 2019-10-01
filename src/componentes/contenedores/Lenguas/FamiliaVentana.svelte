@@ -13,7 +13,8 @@
   // let abajoIcono = faChevronDown;
 
   let elemento = { activo: false };
-  const Mostrar = () => {
+
+  const Mostrar = () => {//toggle
     elemento.activo = !elemento.activo;
   };
 
@@ -35,21 +36,21 @@
   .Titulo {
     text-align: center;
     font-weight: 200;
-    font-size: 1.5rem;
+    font-size: 0.7rem;
     line-height: 1rem;
     letter-spacing: 0.5rem;
     color: #454344;
-    margin: 0.5rem;
+    margin: 0;
   }
 
   .Principal {
     text-align: center;
     font-weight: 600;
-    font-size: 2.5rem;
+    font-size: 1.7rem;
     line-height: 3rem;
     text-align: center;
     color: #e6aa30;
-    margin: 0.5rem;
+    margin: 0;
   }
   .TitulosLista {
     display: flex;
@@ -60,12 +61,10 @@
   }
   .FamiliaDetalle {
     position: absolute;
-    left: 35.1%;
-    top: 0.6%;
-  }
-
-  #Point {
-    padding: 0 0.5rem 0 0;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
   }
   /*  */
   /*  */
@@ -87,7 +86,7 @@
   .BotonCierraWrapper {
     display: flex;
     justify-content: right;
-    height: 50px;
+    height: 30px;
     width: 100%;
   }
   .Encabezado {
@@ -98,7 +97,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
+    height: 30px;
     width: 100%;
   }
   .Saber {
@@ -220,6 +219,10 @@
         <h6 class="TituloLista">Riesgo de desaparición</h6>
       </div>
       <section class="ListaAgrupaciones">
+          <Agrupacion />
+          <Agrupacion />
+          <Agrupacion />
+          <Agrupacion />
           <Agrupacion />
           <Agrupacion />
           <Agrupacion />
