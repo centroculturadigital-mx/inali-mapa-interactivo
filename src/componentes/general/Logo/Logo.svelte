@@ -1,4 +1,5 @@
 <script>
+
 $: height = 99/2;
 $: width = 443/2;
 $: color = 'white'
@@ -46,7 +47,7 @@ figure {
 @keyframes logoMovimiento {
   0% {
     transform: scale(1);
-    fill: pink;
+    fill: whitesmoke;
     opacity: 0.9;
   }
   20% {
@@ -59,7 +60,7 @@ figure {
   }
   32% {
     transform: scale(1);
-    fill: pink;
+    fill: whitesmoke;
     opacity: 0.9;
   }
   35% {
@@ -78,7 +79,7 @@ figure {
 @-webkit-keyframes logoMovimiento {
   0% {
     transform: scale(1);
-    fill: pink;
+    fill: whitesmoke;
     opacity: 0.9;
   }
   20% {
@@ -91,7 +92,7 @@ figure {
   }
   32% {
     transform: scale(1);
-    fill: pink;
+    fill: whitesmoke;
     opacity: 0.9;
   }
   35% {
