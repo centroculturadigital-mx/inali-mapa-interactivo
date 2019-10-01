@@ -1,7 +1,7 @@
 <script>
 import  Logo  from '../Logo/Logo.svelte'
 import  Ayuda  from '../Ayuda/Ayuda.svelte'
-import Vivus from "vivus";
+// import Vivus from "vivus";
 </script>
 
 <style>

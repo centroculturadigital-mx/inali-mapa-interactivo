@@ -1,11 +1,13 @@
 <script>
   import FamiliaDetalle from "./FamiliaDetalle.svelte";
   import Agrupacion from "./Agrupacion.svelte";
-  import Carrousel from "../iconos/Carrousel.svelte";
-
-  import Fa from '../../../../node_modules/svelte-fa/dist/svelte-fa.mjs'
-  import { faTimesCircle, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-  import { fade } from 'svelte/transition';
+  import Slider from "../Slider/Slider.svelte";
+  import Fa from "../../../../node_modules/svelte-fa/dist/svelte-fa.mjs";
+  import {
+    faTimesCircle,
+    faChevronDown
+  } from "@fortawesome/free-solid-svg-icons";
+  import { fade } from "svelte/transition";
 
   export let familia;
   export let cerrar;
@@ -29,7 +31,6 @@
       cerrar();
     }
   }
-
 </script>
 
 <style>
@@ -85,7 +86,7 @@
     width: 100%;
   }
   .VentanaFamiliaWrapper {
-     position: absolute;
+    position: absolute;
     bottom: 4rem;
     left: 4rem;
     max-height: 420px;
@@ -93,7 +94,7 @@
   }
   .BotonCierraWrapper {
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     height: 30px;
     width: 100%;
   }
@@ -116,35 +117,14 @@
     height: auto;
     width: 35%;
   }
-  .ContenedorImagenes {
-    display: flex;
-    position: relative;
-    align-items: center;
-    padding: 0.5rem;
-    flex-direction: column;
-  }
-  .ContenedorImagenes img {
+  .ContenedorCarrusel {
+    height: 300px;
     width: 100%;
-    height: auto;
-    object-fit: cover;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
   }
-  .TextoFotos {
-    position: absolute;
-    bottom: 32px;
-    color: #fff;
-    left: 1rem;
-    height: auto;
-    width: 90%;
-  }
-  .TextoFotosSubTitulo {
-    font-size: 12px;
-  }
-  .Carrousel {
+  /* .Carrousel {
     padding: 8px 0;
     font-size: 0.5rem;
-  }
+  } */
   .ListaAgrupaciones {
     height: auto;
     width: 100%;
@@ -188,27 +168,8 @@
         <button class="Saber" on:click={mostrarDetalle}>Saber más</button>
       </div>
       <!--  -->
-      <div class="ContenedorImagenes">
-        <img
-          class="Imagen"
-          src={`http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`}
-          alt="img" />
-        <div class="TextoFotos">
-          <h4 class="TextoFotosTitulo">Titulo Foto</h4>
-          <p class="TextoFotosSubTitulo">Descripción</p>
-        </div>
-
-        <div class="Carrousel">
-          <!-- <i id="Point" class="fas fa-circle fa-xs" />
-          <i id="Point" class="fas fa-circle fa-xs" />
-          <i id="Point" class="fas fa-circle fa-xs" />
-          <i id="Point" class="fas fa-circle fa-xs" />
-          <i id="Point" class="fas fa-circle fa-xs" />
-          <i id="Point" class="fas fa-circle fa-xs" />
-          <i id="Point" class="fas fa-circle fa-xs" />
-          <i id="Point" class="fas fa-circle fa-xs" />
-          <i id="Point" class="fas fa-circle fa-xs" /> -->
-        </div>
+      <div class="ContenedorCarrusel">
+        <Slider />
       </div>
 
       <div class="ContenedorAgrupaciones">
@@ -234,7 +195,7 @@
   <!-- //muestra detalle -->
   {#if detalleMostrar}
     <div class="FamiliaDetalle" transition:fade>
-      <FamiliaDetalle cerrarDetalle={cerrarDetalle}/>
+      <FamiliaDetalle {cerrarDetalle} />
     </div>
   {/if}
 </section>

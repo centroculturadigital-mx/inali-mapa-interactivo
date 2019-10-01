@@ -12,6 +12,7 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
+    "@beyonk/svelte-carousel": "^2.1.0",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "compression": "^1.7.1",
     "interactjs": "^1.6.2",
@@ -19,6 +20,7 @@
     "raphael": "^2.3.0",
     "sirv": "^0.4.0",
     "svelte-fa": "^2.1.0",
+    "svelte-feather-icons": "^2.0.0",
     "vivus": "^0.4.5"
   },
   "devDependencies": {

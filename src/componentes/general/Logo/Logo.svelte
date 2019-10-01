@@ -4,6 +4,7 @@ $: height = 99/2;
 $: width = 443/2;
 $: color = 'white'
 const linkUrl = '#'
+
 </script>
 <style>
 figure {
