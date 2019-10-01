@@ -7,34 +7,39 @@
     width: 100%;
   }
   .Detalle {
-    padding: 0 1.5em;
+    padding: 0;
     background-color: #fff;
   }
-  .Texto {
+  .TextoWrapper {
     max-height: 42.7rem;
     background: #fff;
-    font-size: 1rem;
-    line-height: 2rem;
+    font-size: 0.85rem;
+    line-height: 1rem;
     overflow-y: auto;
     text-align: justify;
     color: #454344;
   }
+  .OcultarWrapper {
+    display: flex;
+    justify-content: right;
+    height: 30px;
+    width: 100%;
+  }
   .Ocultar {
-    margin-left: 20rem;
     border: 0;
     background-color: #fff;
     padding: 1rem 0 1rem 1rem;
   }
-  i {
-    color: #bababa;
-  }
 </style>
 
 <section class="Detalle">
-  <button class="Ocultar">
-    <i class="far fa-arrow-alt-circle-left fa-2x" />
-  </button>
-  <section class="Texto">
+  <div class="OcultarWrapper">
+    <button class="Ocultar">
+      <i class="far fa-arrow-alt-circle-left fa-2x" />
+    </button>
+  </div>
+  <section class="TextoWrapper">
+    <div class="Texto">
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quod
       quidem delectus hic aspernatur sit eum rem laborum sequi, recusandae
@@ -69,5 +74,6 @@
       voluptatum placeat est necessitatibus. Atque repudiandae laboriosam illum
       ea, magnam voluptatum sapiente architecto amet!
     </p>
+    </div>
   </section>
 </section>

@@ -4,8 +4,6 @@
 
 <style>
   .Agrupacion {
-    /* position: relative; */
-    /* left: -34px; */
     width: 100%;
     height: 48px;
     margin-bottom: 1rem;
@@ -48,6 +46,7 @@
   }
   .CantidadTexto {
     font-weight: lighter;
+    font-size: 0.8rem;
     width: 100%;
     margin:0;
   }
