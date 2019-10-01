@@ -5,6 +5,7 @@
 
   import Fa from '../../../../node_modules/svelte-fa/dist/svelte-fa.mjs'
   import { faTimesCircle, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+  import { fade } from 'svelte/transition';
 
   export let familia;
   export let cerrar;
@@ -232,7 +233,7 @@
   </article>
   <!-- //muestra detalle -->
   {#if detalleMostrar}
-    <div class="FamiliaDetalle">
+    <div class="FamiliaDetalle" transition:fade>
       <FamiliaDetalle cerrarDetalle={cerrarDetalle}/>
     </div>
   {/if}
