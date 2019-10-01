@@ -1,5 +1,5 @@
 <script>
-  // import Fa from "svelte-fa";
+  import Fa from '../../../../node_modules/svelte-fa/dist/svelte-fa.mjs';
   import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
   let cierraIcono = faArrowCircleLeft;

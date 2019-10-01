@@ -3,7 +3,7 @@
   import Agrupacion from "./Agrupacion.svelte";
   import Carrousel from "../iconos/Carrousel.svelte";
 
-  import Fa from 'svelte-fa';
+  import Fa from '../../../../node_modules/svelte-fa/dist/svelte-fa.mjs'
   import { faTimesCircle, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
   export let familia;
