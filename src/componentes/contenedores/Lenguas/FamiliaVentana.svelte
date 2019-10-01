@@ -233,8 +233,7 @@
   <!-- //muestra detalle -->
   {#if detalleMostrar}
     <div class="FamiliaDetalle">
-    familias detallleeee
-      <FamiliaDetalle cerrarDetalle={detalleMostrar}/>
+      <FamiliaDetalle cerrarDetalle={cerrarDetalle}/>
     </div>
   {/if}
 </section>
