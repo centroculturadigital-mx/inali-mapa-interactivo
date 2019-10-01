@@ -3,6 +3,12 @@
   import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
   let cierraIcono = faArrowCircleLeft;
+
+  const ocultar = (e) => {
+    
+   console.log("Cierra ventanita", e);
+    
+  }
 </script>
 
 <style>
@@ -41,7 +47,8 @@
 
 <section class="Detalle">
   <div class="OcultarWrapper">
-    <button class="BotonConIcono Ocultar">
+    <!-- <button class="BotonConIcono Ocultar" on:click={cierraDetalle}> -->
+    <button class="BotonConIcono Ocultar" on:click={ocultar}>
       <Fa icon={cierraIcono} />
     </button>
   </div>

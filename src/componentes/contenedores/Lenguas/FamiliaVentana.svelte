@@ -8,11 +8,11 @@
 
   export let familia;
   export let cerrar;
-  
+
   let cierraIcono = faTimesCircle;
   let abajoIcono = faChevronDown;
 
-  let elemento = { activo: false };
+  export let elemento = { activo: false };
 
   const Mostrar = () => {
     //toggle
