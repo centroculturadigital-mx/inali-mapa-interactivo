@@ -14,7 +14,8 @@
 
   let elemento = { activo: false };
 
-  const Mostrar = () => {//toggle
+  const Mostrar = () => {
+    //toggle
     elemento.activo = !elemento.activo;
   };
 
@@ -24,7 +25,6 @@
       cerrar();
     }
   }
-
 </script>
 
 <style>
@@ -63,25 +63,34 @@
     position: absolute;
     left: 0;
     top: 0;
-    height: 100%;
-    width: 100%;
+    overflow-y: hidden;
+    height: 420px;
+    width: 280px;
+    /*  */
+  transform: translateX(316px);
+    /*  */
   }
   /*  */
   /*  */
   /* new */
 
   .Familia {
-    position: absolute;
-    bottom: 4rem;
-    left: 4rem;
+    position: relative;
     overflow-y: auto;
     z-index: 10000;
     background: #f7f7f7;
     border-radius: 10px;
   }
-  .VentanaFamiliaWrapper {
+  .VentanaFamilia {
     height: 100%;
     width: 100%;
+  }
+  .VentanaFamiliaWrapper {
+     position: absolute;
+    bottom: 4rem;
+    left: 4rem;
+    max-height: 420px;
+    width: auto;
   }
   .BotonCierraWrapper {
     display: flex;
@@ -137,7 +146,7 @@
     padding: 8px 0;
     font-size: 0.5rem;
   }
-  .ListaAgrupaciones {    
+  .ListaAgrupaciones {
     height: auto;
     width: 100%;
   }
@@ -150,7 +159,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #C9C9C9;
+    color: #c9c9c9;
     height: auto;
     width: 100%;
   }
@@ -159,74 +168,74 @@
   }
 </style>
 
-<article class="Familia">
+<section class="VentanaFamiliaWrapper">
 
-  <div class="VentanaFamiliaWrapper">
+  <article class="Familia">
 
-    <div class="BotonCierraWrapper">
-      <button class="BotonConIcono" on:click={cerrarVentana}>
-        <!-- <Icon class="BotonIcono" icon={cierraIcono}></Icon> -->
-      </button>
-    </div>
-    <!--  -->
-    <header class="Encabezado">
-      <p class="Titulo">FAMILIA</p>
-      <h1 class="Principal">Yuto-nahua</h1>
-    </header>
-    <!--  -->
-    <div class="BotonMasWrapper">
-      {#if elemento.activo}
+    <div class="VentanaFamilia">
+
+      <div class="BotonCierraWrapper">
+        <button class="BotonConIcono" on:click={cerrarVentana}>
+          <!-- <Icon class="BotonIcono" icon={cierraIcono}></Icon> -->
+        </button>
+      </div>
+      <!--  -->
+      <header class="Encabezado">
+        <p class="Titulo">FAMILIA</p>
+        <h1 class="Principal">Yuto-nahua</h1>
+      </header>
+      <!--  -->
+      <div class="BotonMasWrapper">
         <button class="Saber" on:click={Mostrar}>Saber más</button>
-        <div class="FamiliaDetalle">
-          <FamiliaDetalle />
+      </div>
+      <!--  -->
+      <div class="ContenedorImagenes">
+        <img
+          class="Imagen"
+          src={`http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`}
+          alt="img" />
+        <div class="TextoFotos">
+          <h4 class="TextoFotosTitulo">Titulo Foto</h4>
+          <p class="TextoFotosSubTitulo">Descripción</p>
         </div>
-      {/if}
 
-      {#if !elemento.activo}
-        <button class="Saber" on:click={Mostrar}>Saber más</button>
-      {/if}
-    </div>
-    <!--  -->
-    <div class="ContenedorImagenes">
-      <img
-        class="Imagen"
-        src={`http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`}
-        alt="img" />
-      <div class="TextoFotos">
-        <h4 class="TextoFotosTitulo">Titulo Foto</h4>
-        <p class="TextoFotosSubTitulo">Descripción</p>
+        <div class="Carrousel">
+          <i id="Point" class="fas fa-circle fa-xs" />
+          <i id="Point" class="fas fa-circle fa-xs" />
+          <i id="Point" class="fas fa-circle fa-xs" />
+          <i id="Point" class="fas fa-circle fa-xs" />
+          <i id="Point" class="fas fa-circle fa-xs" />
+          <i id="Point" class="fas fa-circle fa-xs" />
+          <i id="Point" class="fas fa-circle fa-xs" />
+          <i id="Point" class="fas fa-circle fa-xs" />
+          <i id="Point" class="fas fa-circle fa-xs" />
+        </div>
       </div>
 
-      <div class="Carrousel">
-        <i id="Point" class="fas fa-circle fa-xs" />
-        <i id="Point" class="fas fa-circle fa-xs" />
-        <i id="Point" class="fas fa-circle fa-xs" />
-        <i id="Point" class="fas fa-circle fa-xs" />
-        <i id="Point" class="fas fa-circle fa-xs" />
-        <i id="Point" class="fas fa-circle fa-xs" />
-        <i id="Point" class="fas fa-circle fa-xs" />
-        <i id="Point" class="fas fa-circle fa-xs" />
-        <i id="Point" class="fas fa-circle fa-xs" />
+      <div class="ContenedorAgrupaciones">
+        <span class="Flecha">
+          <!-- <Icon class="FlechaIcono" icon={abajoIcono}></Icon> -->
+        </span>
+        <div class="TitulosLista">
+          <h6 class="TituloLista">Agrupaciones Lingüísticas</h6>
+          <h6 class="TituloLista">Riesgo de desaparición</h6>
+        </div>
+        <section class="ListaAgrupaciones">
+          <Agrupacion />
+          <Agrupacion />
+          <Agrupacion />
+          <Agrupacion />
+          <Agrupacion />
+          <Agrupacion />
+          <Agrupacion />
+        </section>
       </div>
     </div>
-
-    <div class="ContenedorAgrupaciones">
-      <span class="Flecha">
-        <!-- <Icon class="FlechaIcono" icon={abajoIcono}></Icon> -->
-      </span>
-      <div class="TitulosLista">
-        <h6 class="TituloLista">Agrupaciones Lingüísticas</h6>
-        <h6 class="TituloLista">Riesgo de desaparición</h6>
-      </div>
-      <section class="ListaAgrupaciones">
-          <Agrupacion />
-          <Agrupacion />
-          <Agrupacion />
-          <Agrupacion />
-          <Agrupacion />
-          <Agrupacion />
-          <Agrupacion />
-      </section>
+  </article>
+  <!-- //muestra detalle -->
+  {#if elemento.activo}
+    <div class="FamiliaDetalle">
+      <FamiliaDetalle />
     </div>
-  </div>
-</article>
+  {/if}
+</section>
