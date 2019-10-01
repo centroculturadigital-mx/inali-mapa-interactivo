@@ -5,13 +5,7 @@
   let cierraIcono = faArrowCircleLeft;
 
   export let cerrarDetalle;
-  const ocultar = () => {
 
-   console.log(cerrarDetalle);
-   cerrarDetalle = false
-    
-  }
-  
 </script>
 
 <style>
@@ -50,7 +44,7 @@
 
 <section class="Detalle">
   <div class="OcultarWrapper">
-    <button class="BotonConIcono Ocultar" on:click={ocultar}>
+    <button class="BotonConIcono Ocultar" on:click={cerrarDetalle}>
       <Fa icon={cierraIcono} />
     </button>
   </div>
