@@ -1,16 +1,16 @@
 <script>
   import FamiliaDetalle from "./FamiliaDetalle.svelte";
   import Agrupacion from "./Agrupacion.svelte";
-  import BotonCerrar from "../botones/BotonCerrar.svelte";
-  import Flecha from "../iconos/Flecha.svelte";
   import Carrousel from "../iconos/Carrousel.svelte";
 
-  import Icon from "fa-svelte";
-  import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+  // import Icon from 'fa-svelte';
+  // import Icon from '../../../../node_modules/fa-svelte/index.js';
+  // import { faTimesCircle, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
   export let familia;
   export let cerrar;
-  let cierraIcono = faTimesCircle;
+  // let cierraIcono = faTimesCircle;
+  // let abajoIcono = faChevronDown;
 
   let elemento = { activo: false };
   const Mostrar = () => {
@@ -24,18 +24,6 @@
     }
   }
 
-  // const abrir = async (e) => {
-  //     console.log(e);
-
-  // }
-
-  // const cerrar = (e) => {
-  //     console.log(e);
-
-  // }
-
-  // on:cerrar={cerrar}
-  // on:abrir={abrir}
 </script>
 
 <style>
@@ -66,20 +54,10 @@
   .TitulosLista {
     display: flex;
     justify-content: space-between;
-    margin-right: -6rem;
-    margin-left: -6rem;
-  }
-
-  .Flecha {
-    width: 50%;
-    margin-left: 10rem;
-  }
-
-  .Contenedor-2 {
+    margin-bottom: 8px;
     width: 100%;
-    margin-top: 1rem;
+    height: auto;
   }
-
   .FamiliaDetalle {
     position: absolute;
     left: 35.1%;
@@ -94,15 +72,9 @@
   /* new */
 
   .Familia {
-    /* display: flex; */
     position: absolute;
     bottom: 4rem;
     left: 4rem;
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* flex-direction: column; */
-    /* flex-wrap: nowrap; */
-    /* justify-content: space-between; */
     overflow-y: auto;
     z-index: 10000;
     background: #f7f7f7;
@@ -153,7 +125,7 @@
   }
   .TextoFotos {
     position: absolute;
-    bottom: 1rem;
+    bottom: 32px;
     color: #fff;
     left: 1rem;
     height: auto;
@@ -166,9 +138,25 @@
     padding: 8px 0;
     font-size: 0.5rem;
   }
-  .Lista {
+  .ListaAgrupaciones {    
     height: auto;
     width: 100%;
+  }
+  .ContenedorAgrupaciones {
+    padding: 0.5rem;
+  }
+  .Flecha {
+    font-size: 24px;
+    font-weight: lighter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #C9C9C9;
+    height: auto;
+    width: 100%;
+  }
+  .TituloLista {
+    font-weight: bold;
   }
 </style>
 
@@ -178,7 +166,7 @@
 
     <div class="BotonCierraWrapper">
       <button class="BotonConIcono" on:click={cerrarVentana}>
-        <Icon class="BotonIcono" icon={cierraIcono} />
+        <!-- <Icon class="BotonIcono" icon={cierraIcono}></Icon> -->
       </button>
     </div>
     <!--  -->
@@ -223,20 +211,18 @@
       </div>
     </div>
 
-    <div class="Contenedor-2">
+    <div class="ContenedorAgrupaciones">
       <span class="Flecha">
-        <i class="fas fa-chevron-down fa-3x" />
+        <!-- <Icon class="FlechaIcono" icon={abajoIcono}></Icon> -->
       </span>
-      <header class="TitulosLista">
-        <h4>Agrupaciones Lingüísticas</h4>
-        <h4>Riesgo de desaparición</h4>
-      </header>
-      <section class="Lista">
-        <ul>
+      <div class="TitulosLista">
+        <h6 class="TituloLista">Agrupaciones Lingüísticas</h6>
+        <h6 class="TituloLista">Riesgo de desaparición</h6>
+      </div>
+      <section class="ListaAgrupaciones">
           <Agrupacion />
           <Agrupacion />
           <Agrupacion />
-        </ul>
       </section>
     </div>
   </div>

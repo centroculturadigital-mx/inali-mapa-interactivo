@@ -2,10 +2,11 @@
 /* Estilos generales customizados */
 :root {
 	/* colores */
-	--color-texto: #fff;
 	--color-texto-oscuro: #000;
 	--color-fondo: #465D72;
 	--color-fondo-claro-1: #637789;
+	--color-texto: #454344;
+	--color-texto-blanco: #fff;
 	/* textos */
 	--fuente-1: 0.75em;
 	--fuente-2: 1em;
@@ -22,6 +23,9 @@ body {
 	height: 100vh;
 	width: 100vw;
 }
+/* p {
+	color: var(--color-texto);
+} */
 body > svg {
 	z-index: -1;
 }
