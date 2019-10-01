@@ -17,13 +17,13 @@
     flex-wrap: nowrap;
     justify-content: space-between;
   }
-
   .AgrupacionRiesgo {
     width: 50%;
     display: flex;
   }
   .Riesgo {
-    width: 40px;
+    width: 20px;
+    padding-left: 36px;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -37,7 +37,7 @@
     flex-wrap: wrap;
     align-items: center;
     text-align: center;
-    padding-left: 16px;
+    padding: 0;
   }
   .CantidadNumeros {
     font-weight: bold;

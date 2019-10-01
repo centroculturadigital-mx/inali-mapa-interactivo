@@ -3,14 +3,14 @@
   import Agrupacion from "./Agrupacion.svelte";
   import Carrousel from "../iconos/Carrousel.svelte";
 
-  // import Icon from 'fa-svelte';
-  // import Icon from '../../../../node_modules/fa-svelte/index.js';
-  // import { faTimesCircle, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+  import Fa from 'svelte-fa';
+  import { faTimesCircle, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
   export let familia;
   export let cerrar;
-  // let cierraIcono = faTimesCircle;
-  // let abajoIcono = faChevronDown;
+  
+  let cierraIcono = faTimesCircle;
+  let abajoIcono = faChevronDown;
 
   let elemento = { activo: false };
 
@@ -32,7 +32,6 @@
     max-width: 360px;
     max-height: 420px;
   }
-
   .Titulo {
     text-align: center;
     font-weight: 200;
@@ -42,7 +41,6 @@
     color: #454344;
     margin: 0;
   }
-
   .Principal {
     text-align: center;
     font-weight: 600;
@@ -70,10 +68,6 @@
   transform: translateX(316px);
     /*  */
   }
-  /*  */
-  /*  */
-  /* new */
-
   .Familia {
     position: relative;
     overflow-y: auto;
@@ -176,7 +170,7 @@
 
       <div class="BotonCierraWrapper">
         <button class="BotonConIcono" on:click={cerrarVentana}>
-          <!-- <Icon class="BotonIcono" icon={cierraIcono}></Icon> -->
+          <Fa class="BotonIcono" icon={cierraIcono} />
         </button>
       </div>
       <!--  -->
@@ -214,7 +208,7 @@
 
       <div class="ContenedorAgrupaciones">
         <span class="Flecha">
-          <!-- <Icon class="FlechaIcono" icon={abajoIcono}></Icon> -->
+          <Fa class="FlechaIcono" icon={abajoIcono} />
         </span>
         <div class="TitulosLista">
           <h6 class="TituloLista">Agrupaciones Lingüísticas</h6>
