@@ -7,7 +7,7 @@
     /* position: relative; */
     /* left: -34px; */
     width: 100%;
-    height: 60px;
+    height: 48px;
     margin-bottom: 1rem;
     padding: 0 0.5rem;
     border: 1px solid #dbdbdb;
