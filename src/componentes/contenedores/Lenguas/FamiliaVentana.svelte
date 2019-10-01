@@ -212,7 +212,7 @@
 
       <div class="ContenedorAgrupaciones">
         <span class="Flecha">
-          <!-- <Fa class="FlechaIcono" icon={abajoIcono} /> -->
+          <Fa class="FlechaIcono" icon={abajoIcono} />
         </span>
         <div class="TitulosLista">
           <h6 class="TituloLista">Agrupaciones Lingüísticas</h6>
@@ -233,7 +233,8 @@
   <!-- //muestra detalle -->
   {#if detalleMostrar}
     <div class="FamiliaDetalle">
-      <FamiliaDetalle cerrarDetalle={cerrarDetalle}/>
+    familias detallleeee
+      <FamiliaDetalle cerrarDetalle={detalleMostrar}/>
     </div>
   {/if}
 </section>

@@ -50,9 +50,8 @@
 
 <section class="Detalle">
   <div class="OcultarWrapper">
-    <!-- <button class="BotonConIcono Ocultar" on:click={cerrarDetalle}> -->
     <button class="BotonConIcono Ocultar" on:click={ocultar}>
-      <!-- <Fa icon={cierraIcono} /> -->
+      <Fa icon={cierraIcono} />
     </button>
   </div>
   <section class="TextoWrapper">
