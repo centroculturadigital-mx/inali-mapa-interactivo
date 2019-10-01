@@ -10,8 +10,8 @@ services:
       dockerfile: ./Dockerfile.dev
     ports:
       - 3000:3000
-    # volumes:
-    #   - ./:/src/inali-mapa-interactivo
+    volumes:
+      - ./:/src/inali-mapa-interactivo
     environment:
       VIRTUAL_HOST: inali-mapa-interactivo.ccdadc.dev 
       VIRTUAL_PORT: 3000
