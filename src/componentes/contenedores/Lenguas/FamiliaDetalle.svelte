@@ -1,14 +1,17 @@
 <script>
-  import Fa from "svelte-fa";
+  // import Fa from "svelte-fa";
   import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
   let cierraIcono = faArrowCircleLeft;
 
-  const ocultar = (e) => {
-    
-   console.log("Cierra ventanita", e);
+  export let cerrarDetalle;
+  const ocultar = () => {
+
+   console.log(cerrarDetalle);
+   cerrarDetalle = false
     
   }
+  
 </script>
 
 <style>
@@ -47,9 +50,9 @@
 
 <section class="Detalle">
   <div class="OcultarWrapper">
-    <!-- <button class="BotonConIcono Ocultar" on:click={cierraDetalle}> -->
+    <!-- <button class="BotonConIcono Ocultar" on:click={cerrarDetalle}> -->
     <button class="BotonConIcono Ocultar" on:click={ocultar}>
-      <Fa icon={cierraIcono} />
+      <!-- <Fa icon={cierraIcono} /> -->
     </button>
   </div>
   <section class="TextoWrapper">

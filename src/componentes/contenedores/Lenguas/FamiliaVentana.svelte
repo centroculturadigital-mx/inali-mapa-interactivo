@@ -12,11 +12,14 @@
   let cierraIcono = faTimesCircle;
   let abajoIcono = faChevronDown;
 
-  export let elemento = { activo: false };
+  let detalleMostrar = false;
 
-  const Mostrar = () => {
+  const mostrarDetalle = () => {
     //toggle
-    elemento.activo = !elemento.activo;
+    detalleMostrar = !detalleMostrar;
+  };
+  const cerrarDetalle = () => {
+    detalleMostrar = false;
   };
 
   function cerrarVentana() {
@@ -25,6 +28,7 @@
       cerrar();
     }
   }
+
 </script>
 
 <style>
@@ -65,7 +69,7 @@
     height: 420px;
     width: 280px;
     /*  */
-  transform: translateX(316px);
+    transform: translateX(316px);
     /*  */
   }
   .Familia {
@@ -170,7 +174,7 @@
 
       <div class="BotonCierraWrapper">
         <button class="BotonConIcono" on:click={cerrarVentana}>
-          <Fa class="BotonIcono" icon={cierraIcono} />
+          <Fa icon={cierraIcono} class="BotonIcono" />
         </button>
       </div>
       <!--  -->
@@ -180,7 +184,7 @@
       </header>
       <!--  -->
       <div class="BotonMasWrapper">
-        <button class="Saber" on:click={Mostrar}>Saber más</button>
+        <button class="Saber" on:click={mostrarDetalle}>Saber más</button>
       </div>
       <!--  -->
       <div class="ContenedorImagenes">
@@ -194,6 +198,7 @@
         </div>
 
         <div class="Carrousel">
+          <!-- <i id="Point" class="fas fa-circle fa-xs" />
           <i id="Point" class="fas fa-circle fa-xs" />
           <i id="Point" class="fas fa-circle fa-xs" />
           <i id="Point" class="fas fa-circle fa-xs" />
@@ -201,14 +206,13 @@
           <i id="Point" class="fas fa-circle fa-xs" />
           <i id="Point" class="fas fa-circle fa-xs" />
           <i id="Point" class="fas fa-circle fa-xs" />
-          <i id="Point" class="fas fa-circle fa-xs" />
-          <i id="Point" class="fas fa-circle fa-xs" />
+          <i id="Point" class="fas fa-circle fa-xs" /> -->
         </div>
       </div>
 
       <div class="ContenedorAgrupaciones">
         <span class="Flecha">
-          <Fa class="FlechaIcono" icon={abajoIcono} />
+          <!-- <Fa class="FlechaIcono" icon={abajoIcono} /> -->
         </span>
         <div class="TitulosLista">
           <h6 class="TituloLista">Agrupaciones Lingüísticas</h6>
@@ -227,9 +231,9 @@
     </div>
   </article>
   <!-- //muestra detalle -->
-  {#if elemento.activo}
+  {#if detalleMostrar}
     <div class="FamiliaDetalle">
-      <FamiliaDetalle />
+      <FamiliaDetalle cerrarDetalle={cerrarDetalle}/>
     </div>
   {/if}
 </section>
