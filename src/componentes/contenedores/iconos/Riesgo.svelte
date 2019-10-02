@@ -1,8 +1,12 @@
+<script>
+export let fill
+</script>
+
 <svg
   width="25"
   height="25"
   viewBox="0 0 25 25"
-  fill="none"
+  fill={fill}
   xmlns="http://www.w3.org/2000/svg">
   <path
     d="M12.708 0C5.79733 0 0.208008 5.58932 0.208008 12.5C0.208008 19.3975

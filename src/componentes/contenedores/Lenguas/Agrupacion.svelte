@@ -1,9 +1,12 @@
 <script>
-  import familias from "../../../../datosFalsos/familiasFake.js"
+  import lenguas from "../../../../datosFalsos/familiasFake.js";
   import Riesgo from "../iconos/Riesgo.svelte";
 
-  console.log(familias);
-  
+  console.log(lenguas);
+
+  const fillRiesgoBajo = "red";
+  const fillRiesgoAlto = "orange";
+  const fillRiesgo = fillRiesgoAlto;
 </script>
 
 <style>
@@ -46,30 +49,33 @@
   .CantidadNumeros {
     font-weight: bold;
     width: 100%;
-    margin:0;
+    margin: 0;
   }
   .CantidadTexto {
     font-weight: lighter;
     font-size: 0.8rem;
     width: 100%;
-    margin:0;
+    margin: 0;
   }
 </style>
 
-<div class="Agrupacion">
-  <div class="AgrupacionNombre">
-    <p>Nayeeri (Cora)</p>
-  </div>
+{#each lenguas as lengua}
+  <!-- {console.log(lengua.id)} -->
+  <div class="Agrupacion">
+    <div class="AgrupacionNombre">
+      <p>Nayeeri (Cora)</p>
+    </div>
 
-  <div class="AgrupacionRiesgo">
-    <div class="Riesgo">
-      <Riesgo />
-    </div>
-    <div class="CantidadContenedor">
-      <p class="CantidadNumeros">28,718</p>
-      <!-- <p class="CantidadNumeros">riesgo.riesgoDesaparicion</p> -->
-      <br />
-      <p class="CantidadTexto">hablantes</p>
+    <div class="AgrupacionRiesgo">
+      <div class="Riesgo">
+        <Riesgo fill={fillRiesgo} />
+      </div>
+      <div class="CantidadContenedor">
+        <p class="CantidadNumeros">28,718</p>
+        <!-- <p class="CantidadNumeros">riesgo.riesgoDesaparicion</p> -->
+        <br />
+        <p class="CantidadTexto">hablantes</p>
+      </div>
     </div>
   </div>
-</div>
+{/each}

@@ -199,7 +199,7 @@
       </div>
     </div>
   </article>
-  <!-- //muestra detalle -->
+  <!-- muestra detalle -->
   {#if detalleMostrar}
     <div class="FamiliaDetalle" transition:fade>
       <FamiliaDetalle {cerrarDetalle} />
