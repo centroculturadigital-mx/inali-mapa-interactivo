@@ -51,6 +51,5 @@ id="SVGMapa">
 <FamiliasLinguisticas on:seleccionar/>
 <Voluta />
 
-
 </svg>
 <!--  -->

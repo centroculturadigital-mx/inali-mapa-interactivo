@@ -70,10 +70,10 @@
     overflow-y: hidden;
     height: 420px;
     width: 280px;
-    /*  */
-    /* transform: translateX(357px); con slider*/
-    transform: translateX(297px); /* con slider */
-    /*  */
+    /* con slider */
+    transform: translateX(359px);
+    /* sin slider */
+    /* transform: translateX(297px);  */
   }
   .Familia {
     position: relative;
@@ -117,10 +117,19 @@
     color: #e6aa30;
     height: auto;
     width: 35%;
+    cursor: pointer;
   }
   .ContenedorCarrusel {
     height: 300px;
     width: 100%;
+  }
+  .ContenedorCarrusel ul {
+    margin: 6px;
+    border-radius: 100%;
+    bottom: -20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 8px;
+    width: 8px;
   }
   /* .Carrousel {
     padding: 8px 0;

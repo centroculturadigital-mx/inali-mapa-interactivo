@@ -1,14 +1,17 @@
 <script>
+  import { onMount } from "svelte";
   import Carousel from "@beyonk/svelte-carousel";
   // import Carousel from "../../../../node_modules/@beyonk/svelte-carousel/src/Carousel.svelte";
   // import { ChevronLeftIcon, ChevronRightIcon } from "svelte-feather-icons";
-  import {
-    ChevronLeftIcon,
-    ChevronRightIcon
-  } from "../../../../node_modules/svelte-feather-icons/src/index.js";
+  import { ChevronLeftIcon, ChevronRightIcon } from "../../../../node_modules/svelte-feather-icons/src/index.js";
 
-  let slides = new Array(10);
-  //   .fill({
+  onMount(() => {
+    // fix para carga erronea de imagen
+    window.dispatchEvent(new Event("resize"));
+  });
+
+  // alternativas
+  // let slides = new Array(10).fill({
   //     imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
   //     credito: "Bernardo Gibraltar",
   //     propiedad: "INALI",
@@ -35,7 +38,20 @@
   //   })
   //   );
 
-slides = [
+  // slides = [
+  //     {
+  //       imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
+  //       credito: "Bernardo Gibraltar",
+  //       propiedad: "INALI",
+  //       nombre: "Nombre de imagen",
+  //       archivo: "Archivo INALI",
+  //       lengua: "Nombre Lengua",
+  //       derechos: "Derechos reservados.",
+  //       coleccion: "Colección INALI",
+  //       pieDeFoto: "Descripción corta de la imagen contenida en el slide."
+  //     }]
+
+  const slides = [
     {
       imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
       credito: "Bernardo Gibraltar",
@@ -46,56 +62,41 @@ slides = [
       derechos: "Derechos reservados.",
       coleccion: "Colección INALI",
       pieDeFoto: "Descripción corta de la imagen contenida en el slide."
-    }]
-
-
-//   slides = [
-//     {
-//       imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
-//       credito: "Bernardo Gibraltar",
-//       propiedad: "INALI",
-//       nombre: "Nombre de imagen",
-//       archivo: "Archivo INALI",
-//       lengua: "Nombre Lengua",
-//       derechos: "Derechos reservados.",
-//       coleccion: "Colección INALI",
-//       pieDeFoto: "Descripción corta de la imagen contenida en el slide."
-//     },
-//     {
-//       imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
-//       credito: "Bernardo Gibraltar",
-//       propiedad: "INALI",
-//       nombre: "Nombre de imagen",
-//       archivo: "Archivo INALI",
-//       lengua: "Nombre Lengua",
-//       derechos: "Derechos reservados.",
-//       coleccion: "Colección INALI",
-//       pieDeFoto: "Descripción corta de la imagen contenida en el slide."
-//     },
-//     {
-//       imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
-//       credito: "Bernardo Gibraltar",
-//       propiedad: "INALI",
-//       nombre: "Nombre de imagen",
-//       archivo: "Archivo INALI",
-//       lengua: "Nombre Lengua",
-//       derechos: "Derechos reservados.",
-//       coleccion: "Colección INALI",
-//       pieDeFoto: "Descripción corta de la imagen contenida en el slide."
-//     },
-//     {
-//       imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
-//       credito: "Bernardo Gibraltar",
-//       propiedad: "INALI",
-//       nombre: "Nombre de imagen",
-//       archivo: "Archivo INALI",
-//       lengua: "Nombre Lengua",
-//       derechos: "Derechos reservados.",
-//       coleccion: "Colección INALI",
-//       pieDeFoto: "Descripción corta de la imagen contenida en el slide."
-//     }
-//   ];
-
+    },
+    {
+      imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
+      credito: "Bernardo Gibraltar",
+      propiedad: "INALI",
+      nombre: "Nombre de imagen",
+      archivo: "Archivo INALI",
+      lengua: "Nombre Lengua",
+      derechos: "Derechos reservados.",
+      coleccion: "Colección INALI",
+      pieDeFoto: "Descripción corta de la imagen contenida en el slide."
+    },
+    {
+      imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
+      credito: "Bernardo Gibraltar",
+      propiedad: "INALI",
+      nombre: "Nombre de imagen",
+      archivo: "Archivo INALI",
+      lengua: "Nombre Lengua",
+      derechos: "Derechos reservados.",
+      coleccion: "Colección INALI",
+      pieDeFoto: "Descripción corta de la imagen contenida en el slide."
+    },
+    {
+      imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
+      credito: "Bernardo Gibraltar",
+      propiedad: "INALI",
+      nombre: "Nombre de imagen",
+      archivo: "Archivo INALI",
+      lengua: "Nombre Lengua",
+      derechos: "Derechos reservados.",
+      coleccion: "Colección INALI",
+      pieDeFoto: "Descripción corta de la imagen contenida en el slide."
+    }
+  ];
 </script>
 
 <style>
@@ -129,20 +130,14 @@ slides = [
   .TextoFotosSubTitulo {
     font-size: 12px;
   }
-  /* .ContenedorCarrusel img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-  } */
 </style>
-<!-- 
-<Carousel perPage={{ 1024: 1 }} loop>
+
+<!-- <Carousel perPage={{ 320: 1, 760: 1, 1024: 1, 1200: 1 }} loop> -->
+<Carousel perPage={{ 800: 1 }} loop>
 
   <span class="Control" slot="left-control">
     <ChevronLeftIcon />
-  </span> -->
+  </span>
 
   {#each slides as slide}
     <div class="SlideContent">
@@ -154,9 +149,8 @@ slides = [
     </div>
   {/each}
 
-<!-- 
   <span class="Control" slot="right-control">
     <ChevronRightIcon />
   </span>
 
-</Carousel> -->
+</Carousel>
