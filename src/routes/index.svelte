@@ -5,7 +5,7 @@
 
   import { fade } from "svelte/transition";
 
-  import familiasFake from "../datosFalsos/familiasFake";
+  import familiasFake from "../../datosFalsos/familiasFake";
 
   let familiaMostrar;
 

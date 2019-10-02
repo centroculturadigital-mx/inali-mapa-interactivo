@@ -1,5 +1,9 @@
 <script>
+  import familias from "../../../../datosFalsos/familiasFake.js"
   import Riesgo from "../iconos/Riesgo.svelte";
+
+  console.log(familias);
+  
 </script>
 
 <style>
@@ -62,7 +66,8 @@
       <Riesgo />
     </div>
     <div class="CantidadContenedor">
-      <p class="CantidadNumeros">28, 718</p>
+      <p class="CantidadNumeros">28,718</p>
+      <!-- <p class="CantidadNumeros">riesgo.riesgoDesaparicion</p> -->
       <br />
       <p class="CantidadTexto">hablantes</p>
     </div>

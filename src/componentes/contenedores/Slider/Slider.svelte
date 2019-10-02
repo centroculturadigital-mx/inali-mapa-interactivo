@@ -1,102 +1,15 @@
 <script>
   import { onMount } from "svelte";
   import Carousel from "@beyonk/svelte-carousel";
-  // import Carousel from "../../../../node_modules/@beyonk/svelte-carousel/src/Carousel.svelte";
-  // import { ChevronLeftIcon, ChevronRightIcon } from "svelte-feather-icons";
   import { ChevronLeftIcon, ChevronRightIcon } from "../../../../node_modules/svelte-feather-icons/src/index.js";
-
+  import slides from "../../../../datosFalsos/slidesFake";
+  
   onMount(() => {
     // fix para carga erronea de imagen
     window.dispatchEvent(new Event("resize"));
   });
 
-  // alternativas
-  // let slides = new Array(10).fill({
-  //     imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
-  //     credito: "Bernardo Gibraltar",
-  //     propiedad: "INALI",
-  //     nombre: "Nombre de imagen",
-  //     archivo: "Archivo INALI",
-  //     lengua: "Nombre Lengua",
-  //     derechos: "Derechos reservados.",
-  //     coleccion: "Colección INALI",
-  //     pieDeFoto: "Descripción corta de la imagen contenida en el slide."
-  //   });
 
-  //   slides = slides.map(s => ({
-
-  //       imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
-  //       credito: "Bernardo Gibraltar",
-  //       propiedad: "INALI",
-  //       nombre: "Nombre de imagen",
-  //       archivo: "Archivo INALI",
-  //       lengua: "Nombre Lengua",
-  //       derechos: "Derechos reservados.",
-  //       coleccion: "Colección INALI",
-  //       pieDeFoto: "Descripción corta de la imagen contenida en el slide."
-
-  //   })
-  //   );
-
-  // slides = [
-  //     {
-  //       imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
-  //       credito: "Bernardo Gibraltar",
-  //       propiedad: "INALI",
-  //       nombre: "Nombre de imagen",
-  //       archivo: "Archivo INALI",
-  //       lengua: "Nombre Lengua",
-  //       derechos: "Derechos reservados.",
-  //       coleccion: "Colección INALI",
-  //       pieDeFoto: "Descripción corta de la imagen contenida en el slide."
-  //     }]
-
-  const slides = [
-    {
-      imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
-      credito: "Bernardo Gibraltar",
-      propiedad: "INALI",
-      nombre: "Nombre de imagen",
-      archivo: "Archivo INALI",
-      lengua: "Nombre Lengua",
-      derechos: "Derechos reservados.",
-      coleccion: "Colección INALI",
-      pieDeFoto: "Descripción corta de la imagen contenida en el slide."
-    },
-    {
-      imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
-      credito: "Bernardo Gibraltar",
-      propiedad: "INALI",
-      nombre: "Nombre de imagen",
-      archivo: "Archivo INALI",
-      lengua: "Nombre Lengua",
-      derechos: "Derechos reservados.",
-      coleccion: "Colección INALI",
-      pieDeFoto: "Descripción corta de la imagen contenida en el slide."
-    },
-    {
-      imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
-      credito: "Bernardo Gibraltar",
-      propiedad: "INALI",
-      nombre: "Nombre de imagen",
-      archivo: "Archivo INALI",
-      lengua: "Nombre Lengua",
-      derechos: "Derechos reservados.",
-      coleccion: "Colección INALI",
-      pieDeFoto: "Descripción corta de la imagen contenida en el slide."
-    },
-    {
-      imgURI: `http://unsplash.it/300/${100 + Math.floor(Math.random() * 500)}`,
-      credito: "Bernardo Gibraltar",
-      propiedad: "INALI",
-      nombre: "Nombre de imagen",
-      archivo: "Archivo INALI",
-      lengua: "Nombre Lengua",
-      derechos: "Derechos reservados.",
-      coleccion: "Colección INALI",
-      pieDeFoto: "Descripción corta de la imagen contenida en el slide."
-    }
-  ];
 </script>
 
 <style>

@@ -3,10 +3,7 @@
   import Agrupacion from "./Agrupacion.svelte";
   import Slider from "../Slider/Slider.svelte";
   import Fa from "../../../../node_modules/svelte-fa/dist/svelte-fa.mjs";
-  import {
-    faTimesCircle,
-    faChevronDown
-  } from "@fortawesome/free-solid-svg-icons";
+  import { faTimesCircle, faChevronDown } from "@fortawesome/free-solid-svg-icons";
   import { fade } from "svelte/transition";
 
   export let familia;
