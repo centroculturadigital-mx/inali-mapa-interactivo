@@ -1,9 +1,7 @@
 export default [
     {
         id: 1,
-        extra: "Extra",
-        variantes: [1,2,3,4],
-        nombreOriginario: "",
+        nombreOriginario: "Kickapoo",
         nombreCastellanizado: "",
         otrosNombres: "",
         transcripcionFonetica: "",
@@ -14,9 +12,9 @@ export default [
             longitud: "",
         },
         categoriasLinguisticas: "",
-        riesgoDesaparicion: "0.45",
+        riesgoDesaparicion: "0.15",
         datosEstadisticos: {
-            cantidadHablantes: "",
+            cantidadHablantes: 11.111,
             distribucionDemografica: "",
         },
         audios: "",
@@ -26,15 +24,13 @@ export default [
         twitterHashtags: "",
         tweets: "",
         normaDeEscritura: "",
+        variantes: [1,2,3,4],
     },
     {
         id: 2,
-        nombreOriginario: "",
+        nombreOriginario: "Pápago",
         nombreCastellanizado: "",
         otrosNombres: "",
-        variantes: [
-            1,2,3
-        ],
         transcripcionFonetica: "",
         comunidadesHablantes: "",
         alfabeto: "",
@@ -43,9 +39,9 @@ export default [
             longitud: "",
         },
         categoriasLinguisticas: "",
-        riesgoDesaparicion: "0.45",
+        riesgoDesaparicion: "0.85",
         datosEstadisticos: {
-            cantidadHablantes: "",
+            cantidadHablantes: 4.328,
             distribucionDemografica: "",
         },
         audios: "",
@@ -55,15 +51,13 @@ export default [
         twitterHashtags: "",
         tweets: "",
         normaDeEscritura: "",
+        variantes: [1,2,3,4],
     },
     {
         id: 3,
-        nombreOriginario: "",
+        nombreOriginario: "paipai",
         nombreCastellanizado: "",
         otrosNombres: "",
-        variantes: [
-            1,2,3
-        ],
         transcripcionFonetica: "",
         comunidadesHablantes: "",
         alfabeto: "",
@@ -72,9 +66,9 @@ export default [
             longitud: "",
         },
         categoriasLinguisticas: "",
-        riesgoDesaparicion: "0.45",
+        riesgoDesaparicion: "0.49",
         datosEstadisticos: {
-            cantidadHablantes: "",
+            cantidadHablantes: 18.018,
             distribucionDemografica: "",
         },
         audios: "",
@@ -84,15 +78,13 @@ export default [
         twitterHashtags: "",
         tweets: "",
         normaDeEscritura: "",
+        variantes: [1,2,3,4],
     },
     {
         id: 4,
-        nombreOriginario: "",
+        nombreOriginario: "otomí",
         nombreCastellanizado: "",
         otrosNombres: "",
-        variantes: [
-            1,2,3
-        ],
         transcripcionFonetica: "",
         comunidadesHablantes: "",
         alfabeto: "",
@@ -101,9 +93,9 @@ export default [
             longitud: "",
         },
         categoriasLinguisticas: "",
-        riesgoDesaparicion: "0.45",
+        riesgoDesaparicion: "0.51",
         datosEstadisticos: {
-            cantidadHablantes: "",
+            cantidadHablantes: 28.718,
             distribucionDemografica: "",
         },
         audios: "",
@@ -113,5 +105,6 @@ export default [
         twitterHashtags: "",
         tweets: "",
         normaDeEscritura: "",
+        variantes: [1,2,3],
     }
 ]

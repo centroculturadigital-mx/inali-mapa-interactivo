@@ -189,12 +189,6 @@
         </div>
         <section class="ListaAgrupaciones">
           <Agrupacion />
-          <Agrupacion />
-          <Agrupacion />
-          <Agrupacion />
-          <Agrupacion />
-          <Agrupacion />
-          <Agrupacion />
         </section>
       </div>
     </div>

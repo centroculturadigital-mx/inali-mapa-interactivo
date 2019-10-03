@@ -1,12 +1,24 @@
 <script>
-  import lenguas from "../../../../datosFalsos/familiasFake.js";
+  import lenguas from "../../../../datosFalsos/lenguasFake.js";
   import Riesgo from "../iconos/Riesgo.svelte";
 
-  console.log(lenguas);
+  const obtenerColorRiesgo = ( riesgo ) => {
+    
+    const fillRiesgoBajo = "green";
+    const fillRiesgoAlto = "red";
+    let fillRiesgo = fillRiesgoBajo;
 
-  const fillRiesgoBajo = "red";
-  const fillRiesgoAlto = "orange";
-  const fillRiesgo = fillRiesgoAlto;
+    if (riesgo >= 0.5) {
+
+      fillRiesgo = fillRiesgoAlto;
+      
+    }
+
+   return fillRiesgo
+
+}
+ 
+
 </script>
 
 <style>
@@ -59,23 +71,22 @@
   }
 </style>
 
-{#each lenguas as lengua}
-  <!-- {console.log(lengua.id)} -->
+{#each lenguas.agrupaciones as lengua,i}
+
   <div class="Agrupacion">
     <div class="AgrupacionNombre">
-      <p>Nayeeri (Cora)</p>
+      <p>{lengua.nombreOriginario}</p>
     </div>
-
     <div class="AgrupacionRiesgo">
       <div class="Riesgo">
-        <Riesgo fill={fillRiesgo} />
+        <Riesgo fill={obtenerColorRiesgo(lengua.riesgoDesaparicion)} />
       </div>
       <div class="CantidadContenedor">
-        <p class="CantidadNumeros">28,718</p>
-        <!-- <p class="CantidadNumeros">riesgo.riesgoDesaparicion</p> -->
+        <p class="CantidadNumeros">{lengua.datosEstadisticos.cantidadHablantes}</p>
         <br />
         <p class="CantidadTexto">hablantes</p>
       </div>
     </div>
   </div>
+
 {/each}

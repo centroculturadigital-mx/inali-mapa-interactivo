@@ -34,9 +34,9 @@
   }
   .TextoFotos {
     position: absolute;
-    bottom: 32px;
+    bottom: 2rem;
     color: #fff;
-    left: 1rem;
+    left: 2rem;
     height: auto;
     width: 90%;
   }

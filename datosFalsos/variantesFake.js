@@ -2,7 +2,7 @@
 export default [
     {
         id: 1,
-        nombreOriginario: "",
+        nombreOriginario: "Kickapoo",
         nombreCastellanizado: "",
         otrosNombres: "",
         transcripcionFonetica: "",
@@ -27,8 +27,8 @@ export default [
         normaDeEscritura: "",
     },
     {
-        id: 1,
-        nombreOriginario: "",
+        id: 2,
+        nombreOriginario: "pápago",
         nombreCastellanizado: "",
         otrosNombres: "",
         transcripcionFonetica: "",
@@ -53,8 +53,8 @@ export default [
         normaDeEscritura: "",
     },
     {
-        id: 1,
-        nombreOriginario: "",
+        id: 3,
+        nombreOriginario: "paipai",
         nombreCastellanizado: "",
         otrosNombres: "",
         transcripcionFonetica: "",
@@ -79,8 +79,8 @@ export default [
         normaDeEscritura: "",
     },
     {
-        id: 1,
-        nombreOriginario: "",
+        id: 4,
+        nombreOriginario: "otomí de la Sierra ",
         nombreCastellanizado: "",
         otrosNombres: "",
         transcripcionFonetica: "",

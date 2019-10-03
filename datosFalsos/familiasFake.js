@@ -7,7 +7,7 @@
 export default [
     {
         id: 1,
-        nombreOriginario: "",
+        nombreOriginario: "Álgica",
         agrupaciones: [1,2,3,4],
         nombreCastellanizado: "",
         otrosNombres: "",
@@ -20,7 +20,7 @@ export default [
         },
         familia: [1,2,3,4],
         categoriasLinguisticas: "",
-        riesgoDesaparicion: "0.45",
+        riesgoDesaparicion: "0.25",
         datosEstadisticos: {
             cantidadHablantes: "",
             distribucionDemografica: "",
@@ -35,7 +35,7 @@ export default [
     },
     {
         id: 2,
-        nombreOriginario: "",
+        nombreOriginario: "Yuto-nahua",
         nombreCastellanizado: "",
         otrosNombres: "",
         agrupaciones: [1,2,3,4],
@@ -48,7 +48,7 @@ export default [
         },
         familia: [1,2,3,4],
         categoriasLinguisticas: "",
-        riesgoDesaparicion: "0.45",
+        riesgoDesaparicion: "0.85",
         datosEstadisticos: {
             cantidadHablantes: "",
             distribucionDemografica: "",
@@ -63,7 +63,7 @@ export default [
     },
     {
         id: 3,
-        nombreOriginario: "",
+        nombreOriginario: "Cochimí-yumana",
         nombreCastellanizado: "",
         otrosNombres: "",
         agrupaciones: [1,2,3,4],
@@ -91,7 +91,7 @@ export default [
     },
     {
         id: 4,
-        nombreOriginario: "",
+        nombreOriginario: "Oto-mangue",
         nombreCastellanizado: "",
         otrosNombres: "",
         agrupaciones: [1,2,3,4],
@@ -104,7 +104,7 @@ export default [
         },
         familia: [1,2,3,4],
         categoriasLinguisticas: "",
-        riesgoDesaparicion: "0.45",
+        riesgoDesaparicion: "0.5",
         datosEstadisticos: {
             cantidadHablantes: "",
             distribucionDemografica: "",
