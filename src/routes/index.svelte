@@ -7,6 +7,8 @@
 
   import familiasFake from "../../datosFalsos/familiasFake";
 
+  import Informacion from "../componentes/contenedores/Informacion/Informacion.svelte";
+
   let familiaMostrar;
 
   const seleccionar = e => {
@@ -45,3 +47,6 @@
     <FamiliaVentana familia={familiaMostrar} cerrar={cerrar} />
   </div>
 {/if}
+
+
+<Informacion/>

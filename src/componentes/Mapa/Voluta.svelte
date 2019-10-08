@@ -4,10 +4,10 @@
   // import calculaPosicionMapa from "./calculaPosicionMapa"
 
   const posVolutas = [
-    ["0", "285"],
-    ["360", "643"],
-    ["839", "200"],
-    ["1286", "554"]
+    ["100", "375"],
+    ["400", "790"],
+    ["1085", "275"],
+    ["1460", "655"]
   ]; //4 volutas
   let voluta_id = "voluta_";
   let voluta_class = "voluta";
@@ -55,20 +55,26 @@
     transition: 1s;
   }
   .GrupoVoluta {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
+    -webkit-transform: scale(0.4);
+    transform: scale(0.4);
     cursor: pointer;
   }
   .GrupoVoluta:hover {
     animation: flota 1s 1 forwards;
   }
+  path {
+    fill: #ffffff;
+  }
+   path:hover {
+    fill: #72A6AA;
+  }
 
   @keyframes flota {
     0% {
-      transform: scale(0.5);
+      transform: scale(0.4);
     }
     100% {
-      transform: scale(0.505);
+      transform: scale(0.404);
     }
   }
 </style>

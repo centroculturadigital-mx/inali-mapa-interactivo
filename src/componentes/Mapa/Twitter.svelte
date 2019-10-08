@@ -3,8 +3,8 @@
 
   const posTwitter= [
     // ["0", "285"],
-    ["200", "500"],
-    ["1000", "300"],
+    ["140", "550"],
+    ["1010", "300"]
     // ["1286", "554"]
   ]; //4 twitter
   let twitter_id = "twitter_";
@@ -80,7 +80,6 @@
       x=0
       y=0
       requiredExtensions="http://www.w3.org/1999/xhtml">
-      <!-- <VolutaTexto /> -->
     </foreignObject>
  
   <path
