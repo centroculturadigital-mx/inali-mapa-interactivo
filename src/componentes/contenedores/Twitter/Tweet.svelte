@@ -6,20 +6,18 @@
 
 <style>
 
-         /* * {
-            outline: 1px solid blue;
-        } */
+       
 
         article {
-            max-width: 300px;
-            height: 14rem;
+            width: 215px;
+            height: 11rem;
             background-color: rgb(255, 255, 255);
         }
 
         .Contenedor-1 {
             display: flex;
             flex-flow: row nowrap;
-            padding: 0 0.5rem;
+            /* padding: 0 0.5rem; */
         }
 
         .ContenedorTweet {
@@ -32,19 +30,16 @@
 
         .NombreActivista {
             font-weight: 700;
-            font-size: 1.2rem;
-            line-height: 0.5rem;
+            font-size: .5rem;
         }
 
         .TwitterCuenta {
             font-weight: 200;
-            font-size: 1rem;
+            font-size: .5rem;
         }
 
         .ContenidoTweet {
-            font-style: normal;
-            font-weight: 400;
-            font-size: 1rem;
+            font-size: .5rem;
         }
 
         .FotoPerfil {
@@ -53,8 +48,8 @@
         }
 
         img {
-		    width: 55px;
-		    height: 55px;
+		    width: 40px;
+		    height: 40px;
             object-fit: cover;
             border-radius: 50%;
         }

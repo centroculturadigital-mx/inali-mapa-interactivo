@@ -11,8 +11,10 @@
 
 
         .Twitter {
-            max-width: 360px;
-            height: 30rem;
+            position: absolute;
+            right: 250px;
+            width: 240px;
+            height: 18rem;
             display: flex;
             align-items: center;
             flex-direction: column;
@@ -26,21 +28,21 @@
 
         .Encabezado {
             width: 100%;
-            height: 5rem;
+            height: 3rem;
             background: #878787;;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             border-top-left-radius: 1rem;
             border-top-right-radius: 1rem;
         }
 
         .ContenedorTweets {
-            padding: 0 2rem;
+            padding: 0 1rem;
         }
 
         .Tweets {
             width: 100%;
-            max-height: 22rem;
+            max-height: 13rem;
             overflow: auto;
             font-style: normal;
             font-weight: normal;
@@ -49,9 +51,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* margin-bottom: 1rem; */
-            /* align-content: space-around; */
-            /* justify-content: space-around; */
         }
 
         .ContenedorEncabezado {
@@ -60,24 +59,25 @@
             flex-direction: row;
             flex-wrap: nowrap;
             justify-content: space-between;
+            margin-top: -1.3rem;
         }
 
         
         .IconoTwitter {
             justify-content: flex-start !important;
-            flex-basis: 60%;
+            /* flex-basis: 60%; */
             color: #fff;
-            margin-left: -2.5rem;
+            margin-left: -2rem;
         }
 
         .Activismo {
             display: flex;
             align-items: center;
-            flex-basis: 125%;
             font-weight: 400;
-            font-size: 1.4rem;
-            line-height: 1.5rem;
+            font-size: .9rem;
             color: #fff;
+            margin: 0 0.5rem;
+
         }
 
         .IconoCerrar {
@@ -86,6 +86,10 @@
             color: #fff;
             justify-content: center;
             margin-right: -0.5rem;
+        }
+
+        .TituloActivismo {
+            margin-left: -1.5rem;
         }
 
 
@@ -99,12 +103,12 @@
             <IconoTwitterVentana/>
         </div>
         <div class="Activismo">
-            <span>
+            <span class="TituloActivismo">
                 Activismo lingüístico
             </span>
         </div>
         <div class="IconoCerrar">
-           <i>icon</i>
+           <i class="far fa-times-circle"></i>
         </div>
     </div>
     </header>
