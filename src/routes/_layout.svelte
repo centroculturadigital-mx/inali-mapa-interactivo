@@ -1,6 +1,4 @@
 <script>
-	import Cabecera from '../componentes/general/Cabecera/Cabecera.svelte';
-	import Pie from '../componentes/general/Pie/Pie.svelte'
 	import Animacion1 from '../componentes/animacion/Animacion1.svelte'
 	import env from '../.env.local.js'
 
@@ -54,16 +52,6 @@
 <style>
 
 
-	main {
-		background-color: transparent;
-		box-sizing: border-box;
-		position: fixed;
-		padding: 1rem;
-		margin: 0 auto;
-		height: 100%;
-		width: 100%;
-		color: var(--color-texto);
-	}
 
 	.Contenedor,
 	.Contenedor > div {
@@ -119,13 +107,9 @@
 		{:else}
 
 			<div transition:fade>
-				<Cabecera />
-
-				<main>
-					<slot></slot>
-				</main>
-
-				<Pie />
+				
+				<slot></slot>
+				
 			</div>
 		
 		{/if}
@@ -163,5 +147,3 @@
 	{/if}
 
 </div>
-
-<Pie />

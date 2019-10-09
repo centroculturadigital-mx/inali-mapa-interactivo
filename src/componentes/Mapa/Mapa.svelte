@@ -3,8 +3,7 @@ import { onMount } from "svelte";
 import FamiliasLinguisticas from "./FamiliasLinguisticas.svelte";
 // import MexicoPaths from "./MexicoPaths.svelte";
 import MexicoPaths1366x768 from "./MexicoPaths1366x768.svelte";
-import Voluta from "./Voluta.svelte";
-import Twitter from "./Twitter.svelte";
+
 //
 // let width = 1000
 // let height = 680

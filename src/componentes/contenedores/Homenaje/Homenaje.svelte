@@ -1,5 +1,5 @@
 <script>
-let portilla = 'leon-portilla.png';
+    let portilla = 'leon-portilla.png';
 
 </script>
 
@@ -31,7 +31,7 @@ let portilla = 'leon-portilla.png';
         }
 
         .Semblanza {
-            padding: 0 1.3rem;
+            padding: 0 1.5rem;
             margin-top: 1rem;
 
         }
@@ -68,8 +68,8 @@ let portilla = 'leon-portilla.png';
         }
 
           img {
-		    width: 31px;
-		    height: 31px;
+		    width: 2rem;
+		    height: 2rem;
             object-fit: cover;
             border-radius: 50%;
         }
@@ -77,12 +77,12 @@ let portilla = 'leon-portilla.png';
         .Fecha {
             font-size: .4rem;
             color: #fff;
-            line-height: 0.2rem;
+            /* line-height: 1.2; */
 
         }
 
         .TituloNombre {
-            padding: .3rem;
+            padding: .5rem;
             margin-left: .5rem;
         }
     
