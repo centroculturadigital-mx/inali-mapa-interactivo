@@ -10,8 +10,10 @@
         } */
 
         .Informacion {
-            max-width: 360px;
-            height: 26rem;
+            position: absolute;
+            right: 0;
+            width: 240px;
+            height: 18rem;
             display: flex;
             align-items: center;
             flex-direction: column;
@@ -22,58 +24,59 @@
 
         .Encabezado {
             width: 100%;
-            height: 5rem;
+            height: 3rem;
             background: #516980;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 0px 0px 0px 40px;
+            border-radius: 0px 0px 0px 25px;
         }
 
         .Acerca {
-            padding: 0 2rem;
+            padding: 0 1.3rem;
             margin-top: 1rem;
 
         }
 
         .Texto {
             width: 100%;
-            max-height: 16rem;
+            max-height: 11rem;
             overflow: auto;
             color: #5E5E5E;
             font-style: normal;
             font-weight: normal;
-            font-size: 1rem;
-            line-height: 1.5rem;
+            font-size: .5rem;
+            line-height: 1rem;
+            margin-top: .5rem;
         }
 
         .Texto * {
-            padding-right: 1rem;
+            padding-right: .5rem;
+            padding-top: .5rem;
         }
 
         .Subtitulo {
             font-style: normal;
             font-weight: normal;
-            font-size: 1.2rem;
+            font-size: .8rem;
             color: #878787;
         }
 
         .TituloEncabezado {
             display: flex;
-            
-            margin-top: -1rem;
+            margin-top: -2rem;
+            align-items: center;
         }
 
         .TituloMapa {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 1;
+            -webkit-transform: scale(1.8);
+            transform: scale(1.8);
+            padding-left: 0.4rem;
         }
 
         .IconoInformacion {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 1.5;
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
         }
         
     
@@ -91,9 +94,9 @@
     </div>
     </header>
     <div class="Acerca">
-        <h6 class="Subtitulo">
+        <span class="Subtitulo">
             ACERCA DE 
-        </h6>
+        </span>
         <div class="Texto">
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quod quidem delectus hic aspernatur sit eum rem laborum sequi, recusandae similique ut totam, dolores dignissimos veniam. Voluptatem error ipsam ipsa!

@@ -8,6 +8,7 @@
   import familiasFake from "../../datosFalsos/familiasFake";
 
   import Informacion from "../componentes/contenedores/Informacion/Informacion.svelte";
+  import Twitter from "../componentes/contenedores/Twitter/Twitter.svelte";
 
   let familiaMostrar;
 
@@ -50,3 +51,6 @@
 
 
 <Informacion/>
+<div class="tw">
+<Twitter/>
+</div>
