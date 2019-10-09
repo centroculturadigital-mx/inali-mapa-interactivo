@@ -108,7 +108,7 @@
             </span>
         </div>
         <div class="IconoCerrar">
-           <i class="far fa-times-circle"></i>
+           <i class="fa fa-close"></i>
         </div>
     </div>
     </header>

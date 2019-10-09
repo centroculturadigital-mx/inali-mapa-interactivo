@@ -1,4 +1,6 @@
 <script>
+let portilla = 'leon-portilla.png';
+
 </script>
 
 <style>
@@ -7,7 +9,7 @@
             outline: 1px solid blue;
         } */
 
-        .Informacion {
+        .Homenaje {
             position: absolute;
             right: 500px;
             width: 240px;
@@ -28,7 +30,7 @@
             border-radius: 0px 0px 0px 22px;
         }
 
-        .Acerca {
+        .Semblanza {
             padding: 0 1.3rem;
             margin-top: 1rem;
 
@@ -51,69 +53,67 @@
             padding-top: .5rem;
         }
 
-        /* .Subtitulo {
-            font-style: normal;
-            font-weight: normal;
-            font-size: .8rem;
-            color: #878787;
-        } */
 
         .TituloEncabezado {
             display: flex;
-            margin-top: -2rem;
-            align-items: center;
+            flex-direction: row;
+            color: #fff;
         }
 
-        /* .TituloMapa {
-            display: flex;
-            -webkit-transform: scale(1.8);
-            transform: scale(1.8);
-            padding-left: 0.4rem;
-        }
-
-        .IconoInformacion {
-            display: flex;
-            -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-        } */
 
         .FotoHomenaje {
             display: flex;
-            margin-top: 1rem;
+            margin-top: .5rem;
+            margin-left: 1.5rem;
         }
 
           img {
-		    width: 38px;
-		    height: 38px;
+		    width: 31px;
+		    height: 31px;
             object-fit: cover;
             border-radius: 50%;
         }
-        
+
+        .Fecha {
+            font-size: .4rem;
+            color: #fff;
+            line-height: 0.2rem;
+
+        }
+
+        .TituloNombre {
+            padding: .3rem;
+            margin-left: .5rem;
+        }
     
 </style>
     
-<section class="Informacion">
+<section class="Homenaje">
     <header class="Encabezado">
     <div class="TituloEncabezado">
         <div class="FotoHomenaje">
-            <img class="Imagen" src={`http://unsplash.it/300/${100+Math.floor(Math.random()*500)}`} alt="img"/>
+            <!-- <img class="Imagen" src={`http://unsplash.it/300/${100+Math.floor(Math.random()*500)}`} alt="img"/> -->
+            <img src="{portilla}"  alt="homenaje">
+        </div>
+        <div class="TituloNombre">
+            <h6>
+                Miguel León Portilla
+            </h6>
+            <span class="Fecha">
+                <p>
+                    (Ciudad de México, 22 de febrero de
+                </p>
+                <p>
+                    1926-Ibidem, 1 de octubre de 2019)
+                </p>
+            </span>
         </div>
     </div>
     </header>
-    <div class="Acerca">
-        
+    <div class="Semblanza">
         <div class="Texto">
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quod quidem delectus hic aspernatur sit eum rem laborum sequi, recusandae similique ut totam, dolores dignissimos veniam. Voluptatem error ipsam ipsa!
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda veritatis hic illo dolore a voluptate perspiciatis, beatae nisi odit distinctio maiores reiciendis corporis obcaecati veniam, illum possimus at? Delectus, vitae.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit maxime quisquam optio quis aut nihil vero, ex fugiat non totam quidem modi, suscipit laboriosam molestiae placeat eligendi vel qui perspiciatis!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit maxime quisquam optio quis aut nihil vero, ex fugiat non totam quidem modi, suscipit laboriosam molestiae placeat eligendi vel qui perspiciatis!
-            </p>
-            <p>
-                Lore ipsum dolor sit amet consectetur adipisicing elit. Quo consequuntur autem repudiandae ducimus nobis possimus facere sunt sint vero laudantium ex aperiam ipsa a, beatae neque, nostrum dolor animi sit!
-                Lore ipsum dolor sit amet consectetur adipisicing elit. Quo consequuntur autem repudiandae ducimus nobis possimus facere sunt sint vero laudantium ex aperiam ipsa a, beatae neque, nostrum dolor animi sit!
+                Su nombre aparece en los documentos académicos como Miguel León-Portilla, fue un filósofo e historiador mexicano, experto reconocido en materia del pensamiento y la literatura de la cultura náhuatl.2​ Desde 1988, se desempeñó como investigador emérito de la Universidad Nacional Autónoma de México, recibió la Medalla Belisario Domínguez en 1995, y desde el 23 de marzo de 1971 era miembro de El Colegio Nacional, institución para cuyo ingreso presentó la ponencia La historia y los historiadores en el México antiguo, y fue recibido con discurso de Agustín Yáñez.
             </p>
         </div>
     </div>
