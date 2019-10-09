@@ -111,6 +111,7 @@
     <Informacion/>
   {/if}
   {#if mostrarTwitter }
+  <h1>HOLA TEST</h1>
     <TwitterVentana/>
   {/if}
   {#if mostrarHomenaje }

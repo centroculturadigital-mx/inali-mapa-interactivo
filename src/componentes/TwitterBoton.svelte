@@ -1,57 +1,6 @@
-<script>
-  import { onMount } from "svelte";
-
-  const posTwitter= [
-    // ["0", "285"],
-    ["140", "550"],
-    ["1010", "300"]
-    // ["1286", "554"]
-  ]; //4 twitter
-  let twitter_id = "twitter_";
-  let twitter_class = "twitter";
-  let twitter_info = "twitter-info";
-  let toggleTwitter
-
-  onMount(() => {
-
-    function distribucionTwitter() {
-      let twitters = document.querySelectorAll(".twitter");
-      let twitterTexto = document.querySelectorAll(".twitter-info");
-      let twitterTextoX = twitters[0].getBoundingClientRect().width * 2;
-      let twitterTextoIzquierda;
-
-      twitters.forEach((item, index) => {
-
-        // al ultimo objeto posiciona a la derecha
-        if (index != twitters.length-1) {
-          twitterTextoIzquierda = posTwitter[index][0] * 2 + twitterTextoX;
-        } else {
-          twitterTextoIzquierda = posTwitter[index][0] * 1.79 - twitterTextoX;          
-        }
-
-        // translate multiplicado por 2 por que el svg tiene scale(0.5)
-        item.style.webkitTransform = item.style.transform = `translate(${posTwitter[index][0] * 2}px, ${posTwitter[index][1] * 2}px)`; 
-        twitterTexto[index].style.webkitTransform = twitterTexto[index].style.transform = `translate(${twitterTextoIzquierda}px, ${posTwitter[index][1] * 2}px)`;
-      });
-    }
-    toggleTwitter = () => {
-        console.log("toogleTwitter");
-        
-    }
-    // checa si existe window
-    if (typeof window != "undefined") {
-      distribucionTwitter();
-    }
-  });
-
-  //
-</script>
 
 <style>
-  .twitter {
-    transform-origin: center;
-    transition: 1s;
-  }
+  
   svg {
     -webkit-transform: scale(0.5);
     transform: scale(0.5);
