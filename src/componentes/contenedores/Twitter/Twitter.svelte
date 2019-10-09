@@ -13,7 +13,7 @@
         .Twitter {
             position: absolute;
             right: 250px;
-            width: 240px;
+            width: 220px;
             height: 18rem;
             display: flex;
             align-items: center;
@@ -32,8 +32,8 @@
             background: #878787;;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
             margin-bottom: 1rem;
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
+            border-top-left-radius: .5rem;
+            border-top-right-radius: .5rem;
         }
 
         .ContenedorTweets {

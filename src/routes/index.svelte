@@ -9,6 +9,7 @@
 
   import Informacion from "../componentes/contenedores/Informacion/Informacion.svelte";
   import Twitter from "../componentes/contenedores/Twitter/Twitter.svelte";
+  import Homenaje from "../componentes/contenedores/Homenaje/Homenaje.svelte";
 
   let familiaMostrar;
 
@@ -51,6 +52,5 @@
 
 
 <Informacion/>
-<div class="tw">
 <Twitter/>
-</div>
+<Homenaje/>

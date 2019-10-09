@@ -1,6 +1,4 @@
 <script>
-    import IconoInformacion from "./Iconos/IconoInformacion.svelte";
-    import TituloMapa from "./Iconos/TituloMapa.svelte";
 </script>
 
 <style>
@@ -11,7 +9,7 @@
 
         .Informacion {
             position: absolute;
-            right: 0;
+            right: 500px;
             width: 240px;
             height: 18rem;
             display: flex;
@@ -38,7 +36,7 @@
 
         .Texto {
             width: 100%;
-            max-height: 11rem;
+            max-height: 12.5rem;
             overflow: auto;
             color: #5E5E5E;
             font-style: normal;
@@ -53,12 +51,12 @@
             padding-top: .5rem;
         }
 
-        .Subtitulo {
+        /* .Subtitulo {
             font-style: normal;
             font-weight: normal;
             font-size: .8rem;
             color: #878787;
-        }
+        } */
 
         .TituloEncabezado {
             display: flex;
@@ -66,7 +64,7 @@
             align-items: center;
         }
 
-        .TituloMapa {
+        /* .TituloMapa {
             display: flex;
             -webkit-transform: scale(1.8);
             transform: scale(1.8);
@@ -77,6 +75,18 @@
             display: flex;
             -webkit-transform: scale(1.2);
             transform: scale(1.2);
+        } */
+
+        .FotoHomenaje {
+            display: flex;
+            margin-top: 1rem;
+        }
+
+          img {
+		    width: 38px;
+		    height: 38px;
+            object-fit: cover;
+            border-radius: 50%;
         }
         
     
@@ -85,18 +95,13 @@
 <section class="Informacion">
     <header class="Encabezado">
     <div class="TituloEncabezado">
-        <figure class="TituloMapa">
-            <TituloMapa/>
-        </figure>
-        <figure class="IconoInformacion">
-            <IconoInformacion/>
-        </figure>
+        <div class="FotoHomenaje">
+            <img class="Imagen" src={`http://unsplash.it/300/${100+Math.floor(Math.random()*500)}`} alt="img"/>
+        </div>
     </div>
     </header>
     <div class="Acerca">
-        <span class="Subtitulo">
-            ACERCA DE 
-        </span>
+        
         <div class="Texto">
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quod quidem delectus hic aspernatur sit eum rem laborum sequi, recusandae similique ut totam, dolores dignissimos veniam. Voluptatem error ipsam ipsa!

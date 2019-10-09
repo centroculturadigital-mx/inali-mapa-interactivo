@@ -9,7 +9,7 @@
        
 
         article {
-            width: 215px;
+            width: 195px;
             height: 11rem;
             background-color: rgb(255, 255, 255);
         }
@@ -48,8 +48,8 @@
         }
 
         img {
-		    width: 40px;
-		    height: 40px;
+		    width: 38px;
+		    height: 38px;
             object-fit: cover;
             border-radius: 50%;
         }
