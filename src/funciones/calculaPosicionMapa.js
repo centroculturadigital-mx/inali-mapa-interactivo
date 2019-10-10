@@ -41,7 +41,7 @@ export default (x, y) => {
     
 
     return {
-        x: (x - offsetX ) / (anchoReal/1366 ),
-        y: (y - offsetY ) / (altoReal/768)
+        x: (x - offsetX ) / (anchoReal/35.5 ),
+        y: (y - offsetY ) / (altoReal/19.959004392386532)
     }
 }

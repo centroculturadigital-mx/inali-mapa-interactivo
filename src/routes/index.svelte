@@ -51,6 +51,6 @@
 {/if}
 
 
-<Informacion/>
+<!-- <Informacion/>
 <Twitter/>
-<Homenaje/>
+<Homenaje/> -->
