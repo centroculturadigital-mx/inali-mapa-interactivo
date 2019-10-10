@@ -44,6 +44,9 @@
 
   const alternarInformacion = () => {
     mostrarInformacion = !mostrarInformacion;
+    if (mostrarInformacion) {
+      mostrarHomenaje = false;
+    } 
     console.log("alternarInformacion",mostrarInformacion);
   }
   const alternarTwitter = () => {
@@ -52,6 +55,9 @@
   }
   const alternarHomenaje = () => {
     mostrarHomenaje = !mostrarHomenaje;
+    if (mostrarHomenaje){
+      mostrarInformacion = false;
+    } 
     console.log("alternarHomenaje",mostrarHomenaje);
   }
 

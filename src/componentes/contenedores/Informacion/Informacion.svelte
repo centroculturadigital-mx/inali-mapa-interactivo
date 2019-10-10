@@ -7,7 +7,7 @@
 
         .Informacion {
             position: absolute;
-            right: 5%;
+            right: 15%;
 
             width: 16rem;
             height: 18rem;

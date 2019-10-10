@@ -38,7 +38,7 @@
   .Titulo {
     text-align: center;
     font-weight: 200;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     line-height: 1;
     letter-spacing: 0.5rem;
     color: #454344;
@@ -47,7 +47,7 @@
   .Principal {
     text-align: center;
     font-weight: 600;
-    font-size: 1.7rem;
+    font-size: 1.75rem;
     line-height: 3rem;
     text-align: center;
     color: #e6aa30;
@@ -80,63 +80,63 @@
     border-radius: 10px;
   }
   .VentanaFamilia {
-    height: 100%;
     width: 100%;
+    height: 100%;
   }
   .VentanaFamiliaWrapper {
     position: absolute;
     bottom: 4rem;
     left: 4rem;
-    max-height: 420px;
     width: auto;
+    max-height: 420px;
   }
   .BotonCierraWrapper {
     display: flex;
     justify-content: flex-end;
-    height: 30px;
     width: 100%;
+    height: 2rem;
   }
   .Encabezado {
-    height: auto;
     width: 100%;
+    height: auto;
   }
   .BotonMasWrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30px;
     width: 100%;
+    height: 2rem;
   }
   .Saber {
     border: 1px solid #e6aa30;
     box-sizing: border-box;
     border-radius: 15px;
     color: #e6aa30;
-    height: auto;
     width: 35%;
+    height: auto;
     cursor: pointer;
     background-color: #f7f7f7;
 
   }
   .ContenedorCarrusel {
-    height: 300px;
     width: 100%;
+    height: 300px;
   }
   .ContenedorCarrusel ul {
-    margin: 6px;
+    margin: .5rem;
     border-radius: 100%;
     bottom: -20px;
     background-color: rgba(0, 0, 0, 0.5);
-    height: 8px;
     width: 8px;
+    height: 8px;
   }
   /* .Carrousel {
     padding: 8px 0;
     font-size: 0.5rem;
   } */
   .ListaAgrupaciones {
-    height: auto;
     width: 100%;
+    height: auto;
   }
   .ContenedorAgrupaciones {
     padding: 0.5rem;
@@ -148,8 +148,8 @@
     justify-content: center;
     align-items: center;
     color: #c9c9c9;
-    height: auto;
     width: 100%;
+    height: auto;
   }
   .TituloLista {
     font-weight: bold;
