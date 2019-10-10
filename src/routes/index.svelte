@@ -83,6 +83,19 @@
     top: 8rem;
     left: 8rem;
   }
+
+  .Homenaje {
+    position: absolute;
+    right: 5%;
+  }
+
+  .Informacion {
+    position: absolute;
+    right: 5%;
+  }
+
+  
+
 </style>
 
 <svelte:head>
@@ -114,18 +127,22 @@
 
 
   {#if mostrarInformacion }
-    <Informacion/>
+    <div class="Informacion">
+      <Informacion/>
+    </div>
   {/if}
   {#if mostrarTwitter }
-  <h1>HOLA TEST</h1>
     <TwitterVentana/>
   {/if}
   {#if mostrarHomenaje }
-    <Homenaje/>
+    <div class="Homenaje">
+      <Homenaje/>
+    </div>
   {/if}
 
 
 </main>
+
 
 <Voluta />
 

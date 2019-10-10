@@ -6,8 +6,6 @@
 <style>
 
         .Informacion {
-            position: absolute;
-            right: 15%;
 
             width: 16rem;
             height: 18rem;

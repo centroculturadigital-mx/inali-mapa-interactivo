@@ -7,8 +7,6 @@
 
 
         .Homenaje {
-            position: absolute;
-            right: 5%;
             
             width: 16rem;
             height: 18rem;

@@ -41,8 +41,7 @@
 
 
         .IconoCerrar {
-            align-self: flex-start;
-            padding: .5rem;
+            padding: 0;
             background-color: transparent;
             border: none;
             color: #fff;
@@ -71,9 +70,7 @@
     
 <section class="Twitter">
     <header class="Encabezado">
-        <div class="IconoTwitter">
             <IconoTwitterVentana/>
-        </div>
             <h4 class="Activismo">
                 Activismo lingüístico
             </h4>

@@ -1,13 +1,12 @@
 <style>
   svg {
-    width: 90%;
+    width: 10%;
     fill: white;
 
   }
 </style>
 
 
-<figure>
 <svg
   width="72"
   height="55"
@@ -32,4 +31,3 @@
     52.0343 11.5931Z"
      />
 </svg>
-</figure>
