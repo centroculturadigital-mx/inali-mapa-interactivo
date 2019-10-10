@@ -39,7 +39,7 @@
     text-align: center;
     font-weight: 200;
     font-size: 0.7rem;
-    line-height: 1rem;
+    line-height: 1;
     letter-spacing: 0.5rem;
     color: #454344;
     margin: 0;
@@ -115,6 +115,8 @@
     height: auto;
     width: 35%;
     cursor: pointer;
+    background-color: #f7f7f7;
+
   }
   .ContenedorCarrusel {
     height: 300px;

@@ -10,19 +10,18 @@
         background-color: transparent;
         border: none;
         position: fixed;
-        top: 4rem;
-        right: 1rem;
+        top: 4.5rem;
+        right: .5rem;
+        z-index: 10000;
     }
 
     .FotoHomenaje {
         display: flex;
-        margin-top: .5rem;
-        margin-left: 1.5rem;
     }
 
     img {
-		width: 3rem;
-		height: 3rem;
+		width: 2.75rem;
+		height: 2.75rem;
         object-fit: cover;
         border-radius: 50%;
     }

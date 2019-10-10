@@ -5,13 +5,10 @@
 
 <style>
 
-        /* * {
-            outline: 1px solid blue;
-        } */
 
         .Homenaje {
             position: absolute;
-            right: 26%;
+            right: 5%;
             
             width: 16rem;
             height: 18rem;
@@ -21,6 +18,8 @@
             background-color: #fff;
             color: #333;
             box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
+            z-index: 10000;
+
         }
 
         .Encabezado {

@@ -8,7 +8,7 @@
 
 
         article {
-            width: 12rem;
+            width: 13rem;
             height: 11rem;
             background-color: rgb(255, 255, 255);
         }
