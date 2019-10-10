@@ -5,14 +5,11 @@
 
 <style>
 
-        /* * {
-            outline: 1px solid blue;
-        } */
-
         .Informacion {
             position: absolute;
-            right: 0;
-            width: 240px;
+            right: 5%;
+
+            width: 16rem;
             height: 18rem;
             display: flex;
             align-items: center;
@@ -24,80 +21,56 @@
 
         .Encabezado {
             width: 100%;
-            height: 3rem;
+            height: 3.25rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
             background: #516980;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
             border-radius: 0px 0px 0px 22px;
         }
 
-        .Acerca {
-            padding: 0 1.3rem;
-            margin-top: 1rem;
-
+         .Acerca {
+            padding: .5rem 1.5rem;
         }
 
         .Texto {
             width: 100%;
-            max-height: 11rem;
+            max-height: 13rem;
             overflow: auto;
             color: #5E5E5E;
             font-style: normal;
             font-weight: normal;
-            font-size: .5rem;
-            line-height: 1rem;
-            margin-top: .5rem;
-        }
-
-        .Texto * {
-            padding-right: .5rem;
-            padding-top: .5rem;
-        }
-
-        .Subtitulo {
-            font-style: normal;
-            font-weight: normal;
-            font-size: .8rem;
-            color: #878787;
-        }
-
-        .TituloEncabezado {
-            display: flex;
-            margin-top: -2rem;
-            align-items: center;
+            font-size: .75rem;
+            line-height: 1.5;
         }
 
         .TituloMapa {
             display: flex;
-            -webkit-transform: scale(1.8);
-            transform: scale(1.8);
-            padding-left: 0.4rem;
+            justify-content: center;
         }
 
         .IconoInformacion {
             display: flex;
-            -webkit-transform: scale(1.2);
-            transform: scale(1.2);
         }
-        
     
 </style>
     
 <section class="Informacion">
     <header class="Encabezado">
-    <div class="TituloEncabezado">
-        <figure class="TituloMapa">
+        <div class="TituloMapa">
             <TituloMapa/>
-        </figure>
-        <figure class="IconoInformacion">
+        </div>
+        <div class="IconoInformacion">
             <IconoInformacion/>
-        </figure>
-    </div>
+        </div>
     </header>
     <div class="Acerca">
-        <span class="Subtitulo">
-            ACERCA DE 
-        </span>
         <div class="Texto">
+            <h3 class="Subtitulo">
+                ACERCA DE 
+            </h3>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quod quidem delectus hic aspernatur sit eum rem laborum sequi, recusandae similique ut totam, dolores dignissimos veniam. Voluptatem error ipsam ipsa!
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda veritatis hic illo dolore a voluptate perspiciatis, beatae nisi odit distinctio maiores reiciendis corporis obcaecati veniam, illum possimus at? Delectus, vitae.

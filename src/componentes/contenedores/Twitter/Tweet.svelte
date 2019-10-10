@@ -6,10 +6,9 @@
 
 <style>
 
-       
 
         article {
-            width: 195px;
+            width: 12rem;
             height: 11rem;
             background-color: rgb(255, 255, 255);
         }
@@ -17,39 +16,37 @@
         .Contenedor-1 {
             display: flex;
             flex-flow: row nowrap;
-            /* padding: 0 0.5rem; */
         }
 
         .ContenedorTweet {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            padding: 0.5rem;
-    
+            padding: .5rem;
         }
 
         .NombreActivista {
             font-weight: 700;
-            font-size: .5rem;
+            font-size: .75rem;
         }
 
         .TwitterCuenta {
             font-weight: 200;
-            font-size: .5rem;
+            font-size: .75rem;
         }
 
         .ContenidoTweet {
-            font-size: .5rem;
+            font-size: .75rem;
         }
 
         .FotoPerfil {
             display: flex;
-            margin-top: 1rem;
+            padding-top: .5rem;
         }
 
         img {
-		    width: 38px;
-		    height: 38px;
+		    width: 2.75rem;
+		    height: 2.75rem;
             object-fit: cover;
             border-radius: 50%;
         }
@@ -67,14 +64,14 @@
                 <p class="NombreActivista">
                     Nombre del activista
                 </p>
-                <span class="TwitterCuenta">
+                <p class="TwitterCuenta">
                     @cuenta
-                </span>
+                </p>
             </header>
     
             <div class="ContenidoTweet">
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium laborum eaque optio repellendus sint quos ab voluptate iste labore? 
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium laborum eaque optio repellendus sint quos ab voluptate 
                 </p>
             </div>
 

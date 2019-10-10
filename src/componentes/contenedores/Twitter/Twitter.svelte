@@ -5,15 +5,12 @@
 
 <style>
 
-        /* * {
-            outline: 1px solid blue;
-        } */
-
 
         .Twitter {
             position: absolute;
-            right: 250px;
-            width: 220px;
+            right: 20%;
+
+            width: 15rem;
             height: 18rem;
             display: flex;
             align-items: center;
@@ -28,89 +25,59 @@
 
         .Encabezado {
             width: 100%;
-            height: 3rem;
-            background: #878787;;
+            height: 3.25rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: center;
+            background: #878787;
+            color: #fff;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1rem;
             border-top-left-radius: .5rem;
             border-top-right-radius: .5rem;
         }
 
+
+        .IconoCerrar {
+            align-self: flex-start;
+            padding: .5rem;
+            background-color: transparent;
+            border: none;
+            color: #fff;
+        }
+
+
         .ContenedorTweets {
-            padding: 0 1rem;
+            padding-top: .5rem;
         }
 
         .Tweets {
             width: 100%;
-            max-height: 13rem;
+            max-height: 13.5rem;
             overflow: auto;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
-            line-height: 1.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .ContenedorEncabezado {
-            display: flex;
-            padding: 0 2rem;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: space-between;
-            margin-top: -1.3rem;
-        }
 
         
-        .IconoTwitter {
-            justify-content: flex-start !important;
-            /* flex-basis: 60%; */
-            color: #fff;
-            margin-left: -2rem;
-        }
-
-        .Activismo {
-            display: flex;
-            align-items: center;
-            font-weight: 400;
-            font-size: .9rem;
-            color: #fff;
-            margin: 0 0.5rem;
-
-        }
-
-        .IconoCerrar {
-            display: flex;
-            flex-direction: column;
-            color: #fff;
-            justify-content: center;
-            margin-right: -0.5rem;
-        }
-
-        .TituloActivismo {
-            margin-left: -1.5rem;
-        }
-
-
-
 </style>
     
 <section class="Twitter">
     <header class="Encabezado">
-    <div class="ContenedorEncabezado">
         <div class="IconoTwitter">
             <IconoTwitterVentana/>
         </div>
-        <div class="Activismo">
-            <span class="TituloActivismo">
+            <h4 class="Activismo">
                 Activismo lingüístico
-            </span>
-        </div>
-        <div class="IconoCerrar">
-           <i class="fa fa-close"></i>
-        </div>
-    </div>
+            </h4>
+        <button class="IconoCerrar">
+           <i class="fa fa-close fa-lg"></i>
+        </button>
     </header>
     <div class="ContenedorTweets">
         <div class="Tweets">

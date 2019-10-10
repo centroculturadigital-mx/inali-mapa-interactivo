@@ -1,6 +1,10 @@
 
 <style>
-  
+  button {
+    background-color: transparent;
+    border: 0;
+  }
+
   svg {
     -webkit-transform: scale(0.5);
     transform: scale(0.5);

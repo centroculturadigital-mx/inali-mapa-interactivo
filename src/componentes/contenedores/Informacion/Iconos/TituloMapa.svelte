@@ -1,6 +1,6 @@
 <style>
    svg {
-    width: 100%;
+    width: 65%;
   }
 </style>
 

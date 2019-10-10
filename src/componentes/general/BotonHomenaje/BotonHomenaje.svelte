@@ -21,8 +21,8 @@
     }
 
     img {
-		width: 3.75rem;
-		height: 3.75rem;
+		width: 3rem;
+		height: 3rem;
         object-fit: cover;
         border-radius: 50%;
     }
