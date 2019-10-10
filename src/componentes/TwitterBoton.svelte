@@ -3,6 +3,9 @@
   button {
     background-color: transparent;
     border: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   svg {
@@ -30,7 +33,12 @@
 
 <button class="TwitterBoton" on:click>
 
-  <svg>
+  <svg
+  width="72"
+  height="55"
+  viewBox="0 0 72 55"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg">
 
     <path
       d="M68.75 6.47059C67.6716 7.0098 66.5931 7.54902 65.2451 7.81863C66.5931
@@ -49,7 +57,6 @@
       8.35784 53.652 9.16667 53.652 9.97549C53.9216 11.0539 53.1127 11.5931
       52.0343 11.5931Z"
     />
-      
   </svg>
   
 </button>

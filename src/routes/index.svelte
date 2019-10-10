@@ -94,6 +94,11 @@
     right: 5%;
   }
 
+  .TwitterVentana {
+    position: absolute;
+    right: 20%;
+  }
+
   
 
 </style>
@@ -132,7 +137,9 @@
     </div>
   {/if}
   {#if mostrarTwitter }
-    <TwitterVentana/>
+    <div class="TwitterVentana">
+        <TwitterVentana/>
+    </div>
   {/if}
   {#if mostrarHomenaje }
     <div class="Homenaje">

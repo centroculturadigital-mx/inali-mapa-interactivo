@@ -2,7 +2,6 @@
   svg {
     width: 10%;
     fill: white;
-
   }
 </style>
 

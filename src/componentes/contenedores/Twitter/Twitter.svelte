@@ -5,11 +5,7 @@
 
 <style>
 
-
         .Twitter {
-            position: absolute;
-            right: 20%;
-
             width: 15rem;
             height: 18rem;
             display: flex;
@@ -21,7 +17,6 @@
             border-top-left-radius: 1rem;
             border-top-right-radius: 1rem;
             z-index: 10000;
-
         }
 
 
