@@ -17,7 +17,7 @@
   import Homenaje from "../componentes/contenedores/Homenaje/Homenaje.svelte";
 
 
-  import Voluta from "../componentes/Voluta.svelte";
+  import VolutaBoton from "../componentes/VolutaBoton.svelte";
   import TwitterBoton from "../componentes/TwitterBoton.svelte";
 
 
@@ -80,23 +80,29 @@
 
   .TwitterBoton {
     position: absolute;
-    top: 8rem;
-    left: 8rem;
+    top: 12rem;
+    left: 12rem;
   }
 
   .Homenaje {
     position: absolute;
-    right: 5%;
+    right: 5rem;
   }
 
   .Informacion {
     position: absolute;
-    right: 5%;
+    right: 5rem;
   }
 
   .TwitterVentana {
     position: absolute;
-    right: 20%;
+    right: 17rem;
+  }
+
+  .VolutaBoton {
+    position: absolute;
+    left: 16rem;
+    bottom: 8rem;
   }
 
   
@@ -150,8 +156,9 @@
 
 </main>
 
-
-<Voluta />
+<div class="VolutaBoton">
+  <VolutaBoton />
+</div>
 
 <div class="TwitterBoton">
   <TwitterBoton on:click={()=>alternarTwitter()}/>

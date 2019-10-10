@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import { onMount } from "svelte";
   // import VolutaTexto from "./VolutaTexto.svelte";
   // import calculaPosicionMapa from "./calculaPosicionMapa"
@@ -47,10 +47,10 @@
   });
 
   //
-</script>
+</script> -->
 
 <style>
-  .voluta {
+  /* .voluta {
     transform-origin: center;
     transition: 1s;
   }
@@ -61,7 +61,24 @@
   }
   .GrupoVoluta:hover {
     animation: flota 1s 1 forwards;
+  } */
+button {
+    background-color: transparent;
+    border: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
+
+  svg {
+    -webkit-transform: scale(0.4);
+    transform: scale(0.4);
+    cursor: pointer;
+  }
+  svg:hover {
+    animation: flota 1s 1 forwards;
+  }
+
   path {
     fill: #ffffff;
   }
@@ -79,20 +96,12 @@
   }
 </style>
 
-<!-- la cantidad de volutas depende del tamano del array de posiciones -->
-{#each posVolutas as voluta, i}
-  <g class="GrupoVoluta">
-    <!-- "<foreignobject>" necesita que los valores de altura y ancho sean > 0 -->
-    <foreignObject
-      class={voluta_info}
-      x=0
-      y=0
-      requiredExtensions="http://www.w3.org/1999/xhtml">
-      <!-- <VolutaTexto /> -->
-    </foreignObject>
+<button class="VolutaBoton" on:click>
+
+<svg>
+
     <path
-      id={voluta_id + i}
-      class={voluta_class}
+      
       d="M5.87921 26.5925C6.00169 26.5925 28.0486 32.7166 38.7046
       38.4733C45.4412 42.0253 50.8305 46.0673 55.9747 49.9867C56.8321 50.5991
       57.567 51.2115 58.4244 51.824L58.6694 51.9464C69.3254 60.1528 78.6341
@@ -111,7 +120,7 @@
       22.673C64.5486 21.5707 64.7935 20.3458 64.916 19.2435C60.9965 17.5287
       52.5452 14.7116 37.3573 15.2015C25.2315 15.569 5.87919 22.7955 5.63423
       22.7955L0 24.8777L5.87921 26.5925Z"
-      fill="#72A6AA"
-      on:click={toggleVoluta} />
-  </g>
-{/each}
+       />
+  </svg>
+
+</button>
