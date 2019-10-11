@@ -34,7 +34,7 @@
       let dragall = document.querySelectorAll(".dragall");
       let dropall = document.querySelectorAll(".dropall");
 
-      let posDragShuffled = shuffle(posDrag);
+      // let posDrag = shuffle(posDrag);
       
       dropall.forEach((item, index) => {
         item.style.webkitTransform = item.style.transform = `translate(${posArea[index][0]}px, ${posArea[index][1]}px)`;
@@ -43,9 +43,9 @@
       });
       
       dragall.forEach((item, index) => {
-        item.style.webkitTransform = item.style.transform = `translate(${posDragShuffled[index][0]}px, ${posDragShuffled[index][1]}px)`;
-        item.setAttribute("data-x", posDragShuffled[index][0]);
-        item.setAttribute("data-y", posDragShuffled[index][1]);
+        item.style.webkitTransform = item.style.transform = `translate(${posDrag[index][0]}px, ${posDrag[index][1]}px)`;
+        item.setAttribute("data-x", posDrag[index][0]);
+        item.setAttribute("data-y", posDrag[index][1]);
       });
       
     }
