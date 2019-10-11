@@ -35,6 +35,36 @@
     max-width: 360px;
     max-height: 420px;
   }
+
+  .VentanaFamiliaWrapper {
+    width: auto;
+    max-height: 420px;
+  }
+
+  .Familia {
+    position: relative;
+    overflow-y: auto;
+    background: #f7f7f7;
+    border-radius: 10px;
+  }
+
+  .VentanaFamilia {
+    width: 100%;
+    height: 100%;
+  }
+
+  .BotonCierraWrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 2rem;
+  }
+
+  .Encabezado {
+    width: 100%;
+    height: auto;
+  }
+
   .Titulo {
     text-align: center;
     font-weight: 200;
@@ -44,6 +74,7 @@
     color: #454344;
     margin: 0;
   }
+
   .Principal {
     text-align: center;
     font-weight: 600;
@@ -53,52 +84,7 @@
     color: #e6aa30;
     margin: 0;
   }
-  .TitulosLista {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    width: 100%;
-    height: auto;
-  }
-  .FamiliaDetalle {
-    position: absolute;
-    left: 0;
-    top: 0;
-    overflow-y: hidden;
-    height: 420px;
-    width: 280px;
-    /* con slider */
-    transform: translateX(359px);
-    /* sin slider */
-    /* transform: translateX(297px);  */
-  }
-  .Familia {
-    position: relative;
-    overflow-y: auto;
-    z-index: 10000;
-    background: #f7f7f7;
-    border-radius: 10px;
-  }
-  .VentanaFamilia {
-    width: 100%;
-    height: 100%;
-  }
-  .VentanaFamiliaWrapper {
-    
-    left: 4rem;
-    width: auto;
-    max-height: 420px;
-  }
-  .BotonCierraWrapper {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    height: 2rem;
-  }
-  .Encabezado {
-    width: 100%;
-    height: auto;
-  }
+
   .BotonMasWrapper {
     display: flex;
     justify-content: center;
@@ -106,6 +92,7 @@
     width: 100%;
     height: 2rem;
   }
+
   .Saber {
     border: 1px solid #e6aa30;
     box-sizing: border-box;
@@ -115,12 +102,13 @@
     height: auto;
     cursor: pointer;
     background-color: #f7f7f7;
-
   }
+
   .ContenedorCarrusel {
     width: 100%;
     height: 300px;
   }
+
   .ContenedorCarrusel ul {
     margin: .5rem;
     border-radius: 100%;
@@ -133,13 +121,11 @@
     padding: 8px 0;
     font-size: 0.5rem;
   } */
-  .ListaAgrupaciones {
-    width: 100%;
-    height: auto;
-  }
+
   .ContenedorAgrupaciones {
     padding: 0.5rem;
   }
+
   .Flecha {
     font-size: 24px;
     font-weight: lighter;
@@ -150,9 +136,38 @@
     width: 100%;
     height: auto;
   }
-  .TituloLista {
+
+  .TitulosLista {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    width: 100%;
+    height: auto;
+  }
+
+   .TituloLista {
     font-weight: bold;
   }
+
+  .ListaAgrupaciones {
+    width: 100%;
+    height: auto;
+  }
+
+  .FamiliaDetalle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow-y: hidden;
+    height: 420px;
+    width: 280px;
+    /* con slider */
+    transform: translateX(359px);
+    /* sin slider */
+    /* transform: translateX(297px);  */
+    z-index: 1000;
+  }
+  
 </style>
 
 <section class="VentanaFamiliaWrapper">

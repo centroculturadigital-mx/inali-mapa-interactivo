@@ -12,7 +12,7 @@
     border: 0;
     margin: 0;
     padding: 0;
-    z-index: 1000;
+    z-index: 800;
 
   }
 
