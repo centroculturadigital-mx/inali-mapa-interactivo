@@ -16,6 +16,7 @@ export default (x, y) => {
       anchoReal = altoReal * proporcionViewBoxX 
       
       if(anchoReal < window.innerWidth ) {
+        
         altoReal = window.innerHeight
         anchoReal = window.innerHeight * proporcionViewBoxX 
         
@@ -23,6 +24,7 @@ export default (x, y) => {
         offsetX = (window.innerWidth - anchoReal)/2
         offsetY = 0
       } else {
+        
         anchoReal = window.innerWidth
         altoReal = window.innerWidth * proporcionViewBoxY
         
@@ -41,7 +43,7 @@ export default (x, y) => {
     
 
     return {
-        x: (x - offsetX ) / (anchoReal/35.5 ),
-        y: (y - offsetY ) / (altoReal/19.959004392386532)
+        x: ((x - offsetX) / (anchoReal/35.5 )),
+        y: ((y - offsetY) / (altoReal/19.959004392386532)) 
     }
 }
