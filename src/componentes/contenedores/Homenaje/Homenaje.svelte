@@ -17,6 +17,8 @@
             color: #333;
             box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
             z-index: 10000;
+            cursor: pointer;
+
 
         }
 
@@ -64,6 +66,10 @@
             border-radius: 50%;
         }
 
+        .Fecha{
+            font-weight: 400;
+        }
+
     
 </style>
     
@@ -80,7 +86,7 @@
     </header>
     <div class="Semblanza">
         <div class="Texto">
-            <p>
+            <p class="Fecha">
                 Ciudad de México, 22 de febrero de 1926-Ibidem, 1 de octubre de 2019.
             </p>
             <p>

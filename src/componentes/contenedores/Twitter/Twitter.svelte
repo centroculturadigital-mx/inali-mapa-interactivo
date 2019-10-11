@@ -59,6 +59,10 @@
             align-items: center;
         }
 
+        button {
+            cursor: pointer;
+        }
+
 
         
 </style>
@@ -69,9 +73,9 @@
             <h4 class="Activismo">
                 Activismo lingüístico
             </h4>
-        <button class="IconoCerrar">
-           <i class="fa fa-close fa-lg"></i>
-        </button>
+            <button class="IconoCerrar" on:click>
+                <i class="fa fa-close fa-lg"></i>
+            </button>
     </header>
     <div class="ContenedorTweets">
         <div class="Tweets">

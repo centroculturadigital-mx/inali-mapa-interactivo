@@ -7,6 +7,7 @@
   import Drag from "../componentes/general/DragDrop/Drag.svelte";
   import Mapa from "../componentes/Mapa/Mapa.svelte";
   import FamiliaVentana from "../componentes/contenedores/Lenguas/FamiliaVentana.svelte";
+  import VolutaTexto from "../componentes/VolutaTexto.svelte";
 
   import { fade } from "svelte/transition";
 
@@ -41,6 +42,7 @@
   let mostrarInformacion = false;
   let mostrarTwitter = false;
   let mostrarHomenaje = false;
+  let mostrarVolutaTexto = false;
 
   const alternarInformacion = () => {
     mostrarInformacion = !mostrarInformacion;
@@ -59,6 +61,11 @@
       mostrarInformacion = false;
     } 
     console.log("alternarHomenaje",mostrarHomenaje);
+  }
+
+  const alternarVolutaTexto = () => {
+    mostrarVolutaTexto = !mostrarVolutaTexto;
+    console.log("alternarVolutaTexto",mostrarVolutaTexto);
   }
 
 
@@ -80,29 +87,44 @@
 
   .TwitterBoton {
     position: absolute;
-    top: 12rem;
-    left: 12rem;
+    top: 10rem;
+    left: 50rem;
   }
 
   .Homenaje {
     position: absolute;
+    top: .75rem;
     right: 5rem;
   }
 
   .Informacion {
     position: absolute;
+    top: .75rem;
     right: 5rem;
   }
 
   .TwitterVentana {
     position: absolute;
-    right: 17rem;
+    left: 5rem;
+    bottom: 6rem;
   }
 
-  .VolutaBoton {
+  /* .VolutaBoton {
     position: absolute;
-    left: 16rem;
-    bottom: 8rem;
+    left: 53rem;
+    bottom: 16rem;
+  } */
+
+   .VolutaTexto {
+    position: absolute;
+    left: 23rem;
+    bottom: 2rem;
+  }
+
+  .FamiliaVentana {
+    position: absolute;
+    left: 3rem;
+    bottom: 4rem;
   }
 
   
@@ -131,20 +153,20 @@
   <!-- <Mapa on:seleccionar={console.log("aosijvieurn")}/> -->
 
   {#if !!familiaMostrar}
-    <div transition:fade>
+    <div class="FamiliaVentana" transition:fade>
       <FamiliaVentana familia={familiaMostrar} cerrar={cerrar} />
     </div>
   {/if}
 
 
-  {#if mostrarInformacion }
+  {#if mostrarInformacion  }
     <div class="Informacion">
       <Informacion/>
     </div>
   {/if}
   {#if mostrarTwitter }
     <div class="TwitterVentana">
-        <TwitterVentana/>
+        <TwitterVentana on:click={()=>alternarTwitter()}/>
     </div>
   {/if}
   {#if mostrarHomenaje }
@@ -152,13 +174,19 @@
       <Homenaje/>
     </div>
   {/if}
+  {#if mostrarVolutaTexto }
+  <div class="VolutaTexto" transition:fade>
+    <VolutaTexto/>
+  </div>
+  {/if}
 
 
 </main>
 
-<div class="VolutaBoton">
-  <VolutaBoton />
-</div>
+    <VolutaBoton posIniX={10} posIniY={10} on:click={()=>alternarVolutaTexto()}/>
+    <VolutaBoton posIniX={20} posIniY={20} on:click={()=>alternarVolutaTexto()}/>
+    <VolutaBoton posIniX={30} posIniY={30} on:click={()=>alternarVolutaTexto()}/>
+
 
 <div class="TwitterBoton">
   <TwitterBoton on:click={()=>alternarTwitter()}/>

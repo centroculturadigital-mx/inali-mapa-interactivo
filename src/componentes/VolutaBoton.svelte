@@ -1,67 +1,13 @@
-<!-- <script>
-  import { onMount } from "svelte";
-  // import VolutaTexto from "./VolutaTexto.svelte";
-  // import calculaPosicionMapa from "./calculaPosicionMapa"
-
-  const posVolutas = [
-    ["100", "375"],
-    ["400", "790"],
-    ["1085", "275"],
-    ["1460", "655"]
-  ]; //4 volutas
-  let voluta_id = "voluta_";
-  let voluta_class = "voluta";
-  let voluta_info = "voluta-info";
-  let toggleVoluta
-
-  onMount(() => {
-
-    function distribucionVolutas() {
-      let volutas = document.querySelectorAll(".voluta");
-      let volutasTexto = document.querySelectorAll(".voluta-info");
-      let volutaTextoX = volutas[0].getBoundingClientRect().width * 2;
-      let volutaTextoIzquierda;
-
-      volutas.forEach((item, index) => {
-
-        // al ultimo objeto posiciona a la derecha
-        if (index != volutas.length-1) {
-          volutaTextoIzquierda = posVolutas[index][0] * 2 + volutaTextoX;
-        } else {
-          volutaTextoIzquierda = posVolutas[index][0] * 1.79 - volutaTextoX;          
-        }
-
-        // translate multiplicado por 2 por que el svg tiene scale(0.5)
-        item.style.webkitTransform = item.style.transform = `translate(${posVolutas[index][0] * 2}px, ${posVolutas[index][1] * 2}px)`; 
-        volutasTexto[index].style.webkitTransform = volutasTexto[index].style.transform = `translate(${volutaTextoIzquierda}px, ${posVolutas[index][1] * 2}px)`;
-      });
-    }
-    toggleVoluta = () => {
-        console.log("toogleVoluta");
-        
-    }
-    // checa si existe window
-    if (typeof window != "undefined") {
-      distribucionVolutas();
-    }
-  });
-
-  //
-</script> -->
+<script>
+  export let posIniX
+  export let posIniY
+  console.log(posIniX, posIniY);
+  
+  
+</script>
 
 <style>
-  /* .voluta {
-    transform-origin: center;
-    transition: 1s;
-  }
-  .GrupoVoluta {
-    -webkit-transform: scale(0.4);
-    transform: scale(0.4);
-    cursor: pointer;
-  }
-  .GrupoVoluta:hover {
-    animation: flota 1s 1 forwards;
-  } */
+  
 button {
     background-color: transparent;
     border: 0;
@@ -75,9 +21,9 @@ button {
     transform: scale(0.4);
     cursor: pointer;
   }
-  svg:hover {
+  /* svg:hover {
     animation: flota 1s 1 forwards;
-  }
+  } */
 
   path {
     fill: #ffffff;
@@ -86,17 +32,22 @@ button {
     fill: #72A6AA;
   }
 
-  @keyframes flota {
+  /* @keyframes flota {
     0% {
       transform: scale(0.4);
     }
     100% {
       transform: scale(0.404);
     }
+  } */
+
+  .VolutaBoton {
+    position: absolute;
   }
+
 </style>
 
-<button class="VolutaBoton" on:click>
+<button class="VolutaBoton" on:click style={`left: ${posIniX}%; top: ${posIniY}%;`}>
 
 <svg>
 

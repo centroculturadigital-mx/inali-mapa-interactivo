@@ -84,8 +84,7 @@
     height: 100%;
   }
   .VentanaFamiliaWrapper {
-    position: absolute;
-    bottom: 4rem;
+    
     left: 4rem;
     width: auto;
     max-height: 420px;
