@@ -1,11 +1,20 @@
+<script>
+  export let posIniX
+  export let posIniY
+
+</script>
 
 <style>
   button {
     background-color: transparent;
     border: 0;
-    width: 100%;
     margin: 0;
     padding: 0;
+    z-index: 1000;
+  }
+
+  .TwitterBoton {
+    position: absolute;
   }
 
   svg {
@@ -13,25 +22,25 @@
     transform: scale(0.5);
     cursor: pointer;
   }
-  svg:hover {
+  /* svg:hover {
     animation: flota 1s 1 forwards;
-  }
+  } */
 
   path {
     fill: #1DA1F2;
   }
 
-  @keyframes flota {
+  /* @keyframes flota {
     0% {
       transform: scale(0.5);
     }
     100% {
       transform: scale(0.505);
     }
-  }
+  } */
 </style>
 
-<button class="TwitterBoton" on:click>
+<button class="TwitterBoton" on:click style={`left: ${posIniX}%; top: ${posIniY}%;`}>
 
   <svg
   width="72"

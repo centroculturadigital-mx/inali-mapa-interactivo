@@ -1,19 +1,23 @@
 <script>
   export let posIniX
   export let posIniY
-  console.log(posIniX, posIniY);
-  
+  // console.log(posIniX, posIniY);
   
 </script>
 
 <style>
   
-button {
+  button {
     background-color: transparent;
     border: 0;
-    width: 100%;
     margin: 0;
     padding: 0;
+    z-index: 1000;
+
+  }
+
+  .VolutaBoton {
+    position: absolute;
   }
 
   svg {
@@ -41,15 +45,18 @@ button {
     }
   } */
 
-  .VolutaBoton {
-    position: absolute;
-  }
 
 </style>
 
 <button class="VolutaBoton" on:click style={`left: ${posIniX}%; top: ${posIniY}%;`}>
 
-<svg>
+<svg
+  width="129"
+  height="69"
+  viewBox="0 0 129 69"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg">
+
 
     <path
       
