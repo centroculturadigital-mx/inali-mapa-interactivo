@@ -22,7 +22,25 @@
   import TwitterBoton from "../componentes/TwitterBoton.svelte";
 
 
+	import GSAP1 from "../componentes/animacion/GSAP1.svelte";
+	import FormaAudio from "../componentes/animacion/FormaAudio.svelte";
+	import FraseViva from "../componentes/animacion/FraseViva.svelte";
+
+	import { onMount } from "svelte"
+
+	let canvas;
+
+	onMount(()=>{
+
+		let ctx = canvas.getContext('2d')        
+        ctx.globalCompositeOperation = 'difference';
+
+
+	})
+
+
   let familiaMostrar;
+
 
   const seleccionar = e => {
     const id = e.detail.id;
@@ -116,7 +134,28 @@
 
   
 
+	canvas {
+		background-color: #465D72;
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: -1;
+	}
+
 </style>
+
+
+<canvas bind:this={canvas}></canvas>
+
+{#if !! canvas }
+	<GSAP1 canvas={canvas}/>
+	<FormaAudio canvas={canvas}/>
+<!-- 
+<FraseViva canvas={canvas}/> -->
+{/if}
+
 
 <svelte:head>
   <title>INALI | Mapa interactivo</title>
@@ -131,6 +170,7 @@
     }
   }
 />
+
 
 <main>
   <!-- Interactividad -->

@@ -89,7 +89,7 @@
 <div class="Contenedor">
 
 
-	<Animacion1 />
+	<!-- <Animacion1 /> -->
 
 
 	{#if ingreso }
