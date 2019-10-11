@@ -88,6 +88,9 @@
         class={zona.class}
         d={zona.d}
         fill={zona.fill}
+        stroke={zona.fill}
+        stroke-width={0.05}
+        stroke-linejoin="round"
         opacity={zona.opacity} />
     </g>
   {:else}
@@ -97,6 +100,9 @@
       class={zona.class}
       d={zona.d}
       fill={zona.fill}
+      stroke={zona.fill}
+      stroke-width={0.05}
+      stroke-linejoin="round"
       opacity={zona.opacity} />
   {/if}
 {/each}
