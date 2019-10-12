@@ -1,10 +1,15 @@
 <script>
   import FamiliaDetalle from "./FamiliaDetalle.svelte";
-  import Agrupacion from "./Agrupacion.svelte";
+  import AgrupacionesLista from "./AgrupacionesLista.svelte";
   import Slider from "../Slider/Slider.svelte";
   import Fa from "../../../../node_modules/svelte-fa/dist/svelte-fa.mjs";
-  import { faTimesCircle, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+  import {
+    faTimesCircle,
+    faChevronDown
+  } from "@fortawesome/free-solid-svg-icons";
   import { fade } from "svelte/transition";
+  // datos falsos
+  import lenguas from "../../../../datosFalsos/lenguasFake";
 
   export let familia;
   export let cerrar;
@@ -15,7 +20,6 @@
   let detalleMostrar = false;
 
   const mostrarDetalle = () => {
-    //toggle
     detalleMostrar = !detalleMostrar;
   };
   const cerrarDetalle = () => {
@@ -120,18 +124,6 @@
     height: 300px;
     width: 100%;
   }
-  .ContenedorCarrusel ul {
-    margin: 6px;
-    border-radius: 100%;
-    bottom: -20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    height: 8px;
-    width: 8px;
-  }
-  /* .Carrousel {
-    padding: 8px 0;
-    font-size: 0.5rem;
-  } */
   .ListaAgrupaciones {
     height: auto;
     width: 100%;
@@ -151,6 +143,7 @@
   }
   .TituloLista {
     font-weight: bold;
+    padding: 0 0.25rem;
   }
 </style>
 
@@ -168,7 +161,8 @@
       <!--  -->
       <header class="Encabezado">
         <p class="Titulo">FAMILIA</p>
-        <h1 class="Principal">Yuto-nahua</h1>
+        <!-- <h1 class="Principal">Yuto-nahua</h1> -->
+        <h1 class="Principal">{lenguas.familias[0].nombreOriginario}</h1>
       </header>
       <!--  -->
       <div class="BotonMasWrapper">
@@ -188,7 +182,7 @@
           <h6 class="TituloLista">Riesgo de desaparición</h6>
         </div>
         <section class="ListaAgrupaciones">
-          <Agrupacion />
+          <AgrupacionesLista />
         </section>
       </div>
     </div>
