@@ -1,7 +1,12 @@
 <script>
 import  Logo  from '../Logo/Logo.svelte'
 import  Ayuda  from '../Ayuda/Ayuda.svelte'
+import  BotonHomenaje  from '../BotonHomenaje/BotonHomenaje.svelte'
 // import Vivus from "vivus";
+
+export let alternarInformacion
+export let alternarHomenaje
+
 </script>
 
 <style>
@@ -19,6 +24,7 @@ header {
 <header>
 
 	<Logo />
-	<Ayuda />
+	<Ayuda on:click={()=>alternarInformacion()}/>
+	<BotonHomenaje on:click={()=>alternarHomenaje()}/>
 
 </header>

@@ -35,11 +35,25 @@ export default (interactObj, acceptObj, colorDefault, callback ) => {
         e.relatedTarget.style.transition = null
       },600)
       //
+
+
+      const dX = x - (e.target.getBBox().x - 37.47777777777779);
+      const dY = y - (e.target.getBBox().y - 37.591661213362585);
+      
       dragzone.style.webkitTransform =
       dragzone.style.transform =
-      'translate(' + x + 'px, ' + y + 'px)'
-      dragzone.setAttribute('data-x', x )
-      dragzone.setAttribute('data-y', y )
+      'translate(' + dX + 'px, ' + dY + 'px)'
+
+      
+
+      dragzone.setAttribute('data-x', dX)
+      dragzone.setAttribute('data-y', dY)
+      
+      // dragzone.style.webkitTransform =
+      // dragzone.style.transform =
+      // 'translate(' + x + 'px, ' + y + 'px)'
+      // dragzone.setAttribute('data-x', x )
+      // dragzone.setAttribute('data-y', y )
 
       // apare ceventana datos
       // ventanaFamilia.style.display = "block"

@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 /* Estilos generales customizados */
+
+
+
 :root {
 	/* colores */
 	--color-texto-oscuro: #000;
@@ -36,5 +40,14 @@ main {
 	height: 100%;
 	width: 100%;
 }
+
+button:focus {
+	outline: none;
+}
+
+button:active {
+	outline: none;
+	border: none;
+	}
 
 /*  Fin estilos customizados*/

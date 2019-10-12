@@ -1,5 +1,5 @@
 <script>
-const logos = ['logo.cultura.svg','logo.inah.svg','logo.fonoteca.svg','logo.ccd.svg','logo.inali.svg']
+const logos = ['logos-gobmx-cultura-inah.svg','logo.ccd.svg','logo-inali-blanco.svg']
 </script>
 
 <style>
@@ -12,7 +12,9 @@ const logos = ['logo.cultura.svg','logo.inah.svg','logo.fonoteca.svg','logo.ccd.
     height: 35px;
     left: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.2);
+    /* background: rgba(255, 255, 255, 0.2); */
+    background: #465D72;
+    
   }
   .PieLogo {
     margin: 0 1rem;

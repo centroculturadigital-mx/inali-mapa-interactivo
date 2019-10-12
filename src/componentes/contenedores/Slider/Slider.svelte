@@ -23,14 +23,14 @@
   }
   .SlideContent img {
     object-fit: cover;
-    height: 300px;
     width: 300px;
+    height: 300px;
   }
   .Control {
     cursor: pointer;
     width: 100%;
     height: 100%;
-    color: gray;
+    color: #fff;
   }
   .TextoFotos {
     position: absolute;

@@ -39,24 +39,108 @@
     max-width: 360px;
     max-height: 420px;
   }
+
+  .VentanaFamiliaWrapper {
+    width: auto;
+    max-height: 420px;
+  }
+
+  .Familia {
+    position: relative;
+    overflow-y: auto;
+    background: #f7f7f7;
+    border-radius: 10px;
+  }
+
+  .VentanaFamilia {
+    width: 100%;
+    height: 100%;
+  }
+
+  .BotonCierraWrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 2rem;
+  }
+
+  .Encabezado {
+    width: 100%;
+    height: auto;
+  }
+
   .Titulo {
     text-align: center;
     font-weight: 200;
-    font-size: 0.7rem;
-    line-height: 1rem;
+    font-size: 0.75rem;
+    line-height: 1;
     letter-spacing: 0.5rem;
     color: #454344;
     margin: 0;
   }
+
   .Principal {
     text-align: center;
     font-weight: 600;
-    font-size: 1.7rem;
+    font-size: 1.75rem;
     line-height: 3rem;
     text-align: center;
     color: #e6aa30;
     margin: 0;
   }
+
+  .BotonMasWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 2rem;
+  }
+
+  .Saber {
+    border: 1px solid #e6aa30;
+    box-sizing: border-box;
+    border-radius: 15px;
+    color: #e6aa30;
+    width: 35%;
+    height: auto;
+    cursor: pointer;
+    background-color: #f7f7f7;
+  }
+
+  .ContenedorCarrusel {
+    width: 100%;
+    height: 300px;
+  }
+
+  .ContenedorCarrusel ul {
+    margin: .5rem;
+    border-radius: 100%;
+    bottom: -20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 8px;
+    height: 8px;
+  }
+  /* .Carrousel {
+    padding: 8px 0;
+    font-size: 0.5rem;
+  } */
+
+  .ContenedorAgrupaciones {
+    padding: 0.5rem;
+  }
+
+  .Flecha {
+    font-size: 24px;
+    font-weight: lighter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #c9c9c9;
+    width: 100%;
+    height: auto;
+  }
+
   .TitulosLista {
     display: flex;
     justify-content: space-between;
@@ -64,6 +148,17 @@
     width: 100%;
     height: auto;
   }
+
+   .TituloLista {
+    font-weight: bold;
+    padding: 0 0.25rem;
+  }
+
+  .ListaAgrupaciones {
+    width: 100%;
+    height: auto;
+  }
+
   .FamiliaDetalle {
     position: absolute;
     left: 0;
@@ -75,76 +170,9 @@
     transform: translateX(359px);
     /* sin slider */
     /* transform: translateX(297px);  */
+    z-index: 1000;
   }
-  .Familia {
-    position: relative;
-    overflow-y: auto;
-    z-index: 10000;
-    background: #f7f7f7;
-    border-radius: 10px;
-  }
-  .VentanaFamilia {
-    height: 100%;
-    width: 100%;
-  }
-  .VentanaFamiliaWrapper {
-    position: absolute;
-    bottom: 4rem;
-    left: 4rem;
-    max-height: 420px;
-    width: auto;
-  }
-  .BotonCierraWrapper {
-    display: flex;
-    justify-content: flex-end;
-    height: 30px;
-    width: 100%;
-  }
-  .Encabezado {
-    height: auto;
-    width: 100%;
-  }
-  .BotonMasWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30px;
-    width: 100%;
-  }
-  .Saber {
-    border: 1px solid #e6aa30;
-    box-sizing: border-box;
-    border-radius: 15px;
-    color: #e6aa30;
-    height: auto;
-    width: 35%;
-    cursor: pointer;
-  }
-  .ContenedorCarrusel {
-    height: 300px;
-    width: 100%;
-  }
-  .ListaAgrupaciones {
-    height: auto;
-    width: 100%;
-  }
-  .ContenedorAgrupaciones {
-    padding: 0.5rem;
-  }
-  .Flecha {
-    font-size: 24px;
-    font-weight: lighter;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #c9c9c9;
-    height: auto;
-    width: 100%;
-  }
-  .TituloLista {
-    font-weight: bold;
-    padding: 0 0.25rem;
-  }
+
 </style>
 
 <section class="VentanaFamiliaWrapper">

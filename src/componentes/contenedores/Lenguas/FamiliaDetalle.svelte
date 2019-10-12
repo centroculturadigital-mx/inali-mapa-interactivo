@@ -40,6 +40,10 @@
     border: 0;
     background-color: #fff;
   }
+
+  .Texto {
+    padding: 0 .75rem;
+  }
 </style>
 
 <section class="Detalle">

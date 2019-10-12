@@ -25,12 +25,17 @@ const dragMoveListener = (e) => {
 
   const {x, y} = calculaPosicionMapa(e.clientX, e.clientY)
 
+  const dX = x - (e.target.getBBox().x - 37.47777777777779) - e.target.getBBox().width/2;
+  const dY = y - (e.target.getBBox().y - 37.591661213362585) - e.target.getBBox().height/2;
+  
   e.target.style.webkitTransform =
   e.target.style.transform =
-  'translate(' + x + 'px, ' + y + 'px)'
+  'translate(' + dX + 'px, ' + dY + 'px)'
 
-  e.target.setAttribute('data-x', x)
-  e.target.setAttribute('data-y', y)
+  
+
+  e.target.setAttribute('data-x', dX)
+  e.target.setAttribute('data-y', dY)
 
 }
 //
