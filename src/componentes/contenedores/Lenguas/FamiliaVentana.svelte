@@ -36,6 +36,11 @@
   onMount(()=>{
 
     familiasVentanaCerrar.addEventListener("touchmove",cerrarVentana)
+
+    interact(familiasVentanaCerrar)
+    .draggable({
+      autoScroll:true
+    })
   
   })
 
