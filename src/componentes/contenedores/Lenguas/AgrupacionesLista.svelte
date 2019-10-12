@@ -36,6 +36,15 @@
     flex-wrap: nowrap;
     justify-content: space-between;
   }
+  .AgrupacionNombre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .AgrupacionNombre p {
+    margin: 0;
+  }
   .AgrupacionRiesgo {
     width: 50%;
     display: flex;

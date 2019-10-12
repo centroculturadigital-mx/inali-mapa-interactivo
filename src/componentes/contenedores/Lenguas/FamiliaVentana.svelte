@@ -1,10 +1,15 @@
 <script>
   import FamiliaDetalle from "./FamiliaDetalle.svelte";
-  import Agrupacion from "./Agrupacion.svelte";
+  import AgrupacionesLista from "./AgrupacionesLista.svelte";
   import Slider from "../Slider/Slider.svelte";
   import Fa from "../../../../node_modules/svelte-fa/dist/svelte-fa.mjs";
-  import { faTimesCircle, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+  import {
+    faTimesCircle,
+    faChevronDown
+  } from "@fortawesome/free-solid-svg-icons";
   import { fade } from "svelte/transition";
+  // datos falsos
+  import lenguas from "../../../../datosFalsos/lenguasFake";
 
   export let familia;
   export let cerrar;
@@ -15,7 +20,6 @@
   let detalleMostrar = false;
 
   const mostrarDetalle = () => {
-    //toggle
     detalleMostrar = !detalleMostrar;
   };
   const cerrarDetalle = () => {
@@ -125,7 +129,6 @@
   .ContenedorAgrupaciones {
     padding: 0.5rem;
   }
-
   .Flecha {
     font-size: 24px;
     font-weight: lighter;
@@ -136,7 +139,6 @@
     width: 100%;
     height: auto;
   }
-
   .TitulosLista {
     display: flex;
     justify-content: space-between;
@@ -144,16 +146,14 @@
     width: 100%;
     height: auto;
   }
-
    .TituloLista {
     font-weight: bold;
+    padding: 0 0.25rem;
   }
-
   .ListaAgrupaciones {
     width: 100%;
     height: auto;
   }
-
   .FamiliaDetalle {
     position: absolute;
     left: 0;
@@ -165,9 +165,9 @@
     transform: translateX(359px);
     /* sin slider */
     /* transform: translateX(297px);  */
-    z-index: 1000;
+    z-index: 1001;
   }
-  
+
 </style>
 
 <section class="VentanaFamiliaWrapper">
@@ -184,7 +184,8 @@
       <!--  -->
       <header class="Encabezado">
         <p class="Titulo">FAMILIA</p>
-        <h1 class="Principal">Yuto-nahua</h1>
+        <!-- <h1 class="Principal">Yuto-nahua</h1> -->
+        <h1 class="Principal">{lenguas.familias[0].nombreOriginario}</h1>
       </header>
       <!--  -->
       <div class="BotonMasWrapper">
@@ -204,7 +205,7 @@
           <h6 class="TituloLista">Riesgo de desaparición</h6>
         </div>
         <section class="ListaAgrupaciones">
-          <Agrupacion />
+          <AgrupacionesLista />
         </section>
       </div>
     </div>
