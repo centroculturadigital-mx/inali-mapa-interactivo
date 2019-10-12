@@ -8,6 +8,7 @@
     faChevronDown
   } from "@fortawesome/free-solid-svg-icons";
   import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
   // datos falsos
   import lenguas from "../../../../datosFalsos/lenguasFake";
 
@@ -28,10 +29,19 @@
 
   function cerrarVentana() {
     if (typeof cerrar === "function") {
-      console.log("cierra desde ventana");
       cerrar();
     }
   }
+
+  onMount(()=>{
+
+    familiasVentanaCerrar.addEventListener("touchmove",cerrarVentana)
+  
+  })
+
+  // probando correccion para multitouch:
+
+
 </script>
 
 <style>
@@ -177,7 +187,7 @@
     <div class="VentanaFamilia">
 
       <div class="BotonCierraWrapper">
-        <button class="BotonConIcono" on:click={cerrarVentana}>
+        <button class="BotonConIcono" on:click={cerrarVentana} bind:this={familiasVentanaCerrar}>
           <Fa icon={cierraIcono} class="BotonIcono" />
         </button>
       </div>
