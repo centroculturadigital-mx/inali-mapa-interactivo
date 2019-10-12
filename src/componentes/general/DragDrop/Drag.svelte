@@ -10,6 +10,9 @@ const Drag = () => {
       interact.modifiers.restrictRect({
         restriction: 'svg',
         endOnly: true
+      }),
+      interact.modifiers.restrict({
+        restriction: 'self'            // keep the drag coords within the element
       })
     ],
     // autoScroll: true,
