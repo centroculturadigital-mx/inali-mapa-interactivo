@@ -40,6 +40,8 @@ const dragMoveListener = (e) => {
   e.target.setAttribute('data-x', dX)
   e.target.setAttribute('data-y', dY)
 
+  e.preventDefault()
+
 }
 //
 Drag()
