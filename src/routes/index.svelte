@@ -112,6 +112,7 @@
     position: absolute;
     left: 3rem;
     bottom: 4rem;
+    z-index: 1001;
   }
 
   

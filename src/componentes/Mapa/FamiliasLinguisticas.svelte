@@ -63,7 +63,7 @@
     transform-origin: center;
   }
 
-  .zonaDragAnim:hover {
+  /* .zonaDragAnim:hover {
     animation: flota 1s infinite;
     transform-origin: 50% 50%;
   }
@@ -77,7 +77,7 @@
     100% {
       transform: scale(1);
     }
-  }
+  } */
 </style>
 
 {#each zonasFamilias as zona}

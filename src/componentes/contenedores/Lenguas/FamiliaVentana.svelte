@@ -170,7 +170,7 @@
     transform: translateX(359px);
     /* sin slider */
     /* transform: translateX(297px);  */
-    z-index: 1000;
+    z-index: 1001;
   }
 
 </style>
