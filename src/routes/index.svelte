@@ -151,8 +151,8 @@
 <canvas bind:this={canvas}></canvas>
 
 {#if !! canvas }
-	<GSAP1 canvas={canvas}/>
-	<FormaAudio canvas={canvas}/>
+	<!-- <GSAP1 canvas={canvas}/>
+	<FormaAudio canvas={canvas}/> -->
 <!-- 
 <FraseViva canvas={canvas}/> -->
 {/if}
