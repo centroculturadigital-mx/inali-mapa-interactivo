@@ -4,10 +4,6 @@ import FamiliasLinguisticas from "./FamiliasLinguisticas.svelte";
 // import MexicoPaths from "./MexicoPaths.svelte";
 import MexicoPaths1366x768 from "./MexicoPaths1366x768.svelte";
 
-//
-// let width = 1000
-// let height = 680
-
 const win = window;
 
 $: height = win.innerHeight; //altura default
