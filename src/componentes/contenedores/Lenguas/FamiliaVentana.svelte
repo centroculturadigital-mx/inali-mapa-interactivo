@@ -129,7 +129,6 @@
   .ContenedorAgrupaciones {
     padding: 0.5rem;
   }
-
   .Flecha {
     font-size: 24px;
     font-weight: lighter;
@@ -140,7 +139,6 @@
     width: 100%;
     height: auto;
   }
-
   .TitulosLista {
     display: flex;
     justify-content: space-between;
@@ -148,17 +146,14 @@
     width: 100%;
     height: auto;
   }
-
    .TituloLista {
     font-weight: bold;
     padding: 0 0.25rem;
   }
-
   .ListaAgrupaciones {
     width: 100%;
     height: auto;
   }
-
   .FamiliaDetalle {
     position: absolute;
     left: 0;
