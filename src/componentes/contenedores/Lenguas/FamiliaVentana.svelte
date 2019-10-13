@@ -277,7 +277,7 @@
       </header>
       <!--  -->
       <div class="BotonMasWrapper">
-        <button class="Saber" on:click={mostrarDetalle}>Saber más</button>
+        <button class="Saber" use:tap on:tap={mostrarDetalle}>Saber más</button>
       </div>
       <!--  -->
       <div class="ContenedorCarrusel">

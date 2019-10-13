@@ -1,4 +1,7 @@
 <script>
+
+  import { tap } from '@sveltejs/gestures';
+
   import Fa from '../../../../node_modules/svelte-fa/dist/svelte-fa.mjs';
   import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -48,7 +51,7 @@
 
 <section class="Detalle">
   <div class="OcultarWrapper">
-    <button class="BotonConIcono Ocultar" on:click={cerrarDetalle}>
+    <button class="BotonConIcono Ocultar" use:tap on:tap={cerrarDetalle}>
       <Fa icon={cierraIcono} />
     </button>
   </div>
