@@ -12,13 +12,13 @@
     border: 0;
     margin: 0;
     padding: 0;
-    z-index: 800;
+    z-index: 50;
 
   }
 
   .VolutaBoton {
     position: absolute;
-    z-index: 0;
+    z-index: 100;
   }
 
   svg {

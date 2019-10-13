@@ -9,7 +9,7 @@
 </script>
 
 <style>
-  section {
+  section .Detlle {
     width: 100%;
   }
   .Detalle {

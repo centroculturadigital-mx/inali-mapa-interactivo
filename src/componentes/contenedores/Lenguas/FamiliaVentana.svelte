@@ -1,4 +1,8 @@
 <script>
+
+  import interact from 'interactjs'
+
+
   import FamiliaDetalle from "./FamiliaDetalle.svelte";
   import AgrupacionesLista from "./AgrupacionesLista.svelte";
   import Slider from "../Slider/Slider.svelte";
@@ -20,12 +24,15 @@
 
   let detalleMostrar = false;
 
+
+
   const mostrarDetalle = () => {
     detalleMostrar = !detalleMostrar;
   };
   const cerrarDetalle = () => {
     detalleMostrar = false;
   };
+  
 
   function cerrarVentana() {
     if (typeof cerrar === "function") {
@@ -33,15 +40,79 @@
     }
   }
 
-  let familiasVentanaCerrar
+  let botonFamiliaVentanaCerrar
+  let contenedor
+
+  let ultimoTouchMoveY
+  let ultimoTouchMoveX
+
+  let ultimoScrollVentanaY = 0
+  let ultimoScrollVentanaX = 0
 
   onMount(()=>{
 
-    // probando correccion para multitouch:
-    if(!!familiasVentanaCerrar) {
-      familiasVentanaCerrar.addEventListener("touchmove",cerrarVentana)
-    }
+    botonFamiliaVentanaCerrar.addEventListener("touchmove",cerrarVentana)
+
+    if(!!contenedor) {
+
+      interact(contenedor)
+      .draggable({
+        autoScroll:true,
+        onstart: (e) => {
+          
+          ultimoTouchMoveY = e.clientY
+          ultimoTouchMoveX = e.clientX
+            
+        },
+        onmove: (e) => {
+          
+          let top=contenedor.getBoundingClientRect().top
+          let right=contenedor.getBoundingClientRect().right
+          let bottom=contenedor.getBoundingClientRect().bottom
+          let left=contenedor.getBoundingClientRect().left
+          if(
+            // adentro verticalmente
+            e.clientY > top && e.clientY < bottom
+            &&
+            // adentro horizontalmente
+            e.clientX > left && e.clientX < right
+            // &&
+            // extremo derecho
+            // e.clientX > right - 50
+          )  {
+
+            
+            let diferenciaY = (ultimoTouchMoveY-e.clientY)
+            let diferenciaX = (ultimoTouchMoveX-e.clientX)
+            
+            
+            if( Math.abs(diferenciaX) < Math.abs(diferenciaY) ) {
+              
+              ultimoScrollVentanaY += diferenciaY
+
+              contenedor.scrollTo({
+                top: diferenciaY*30,
+                behavior: 'smooth'
+              })
+            
+            }
+            
+            ultimoTouchMoveY = e.clientY
+            ultimoTouchMoveX = e.clientX
+            // const proporcionY = (e.clientY-top)/(bottom-top)
+            // const alturaDestino = document.querySelector(".FamiliaVentana").offsetHeight * proporcionY;
+            
+            
+            // contenedor.scrollTo({
+            //   top: alturaDestino,
+            //   behavior: 'smooth'
   
+            // } )
+          }
+        }
+      })
+    
+    }
   })
 
 
@@ -61,7 +132,7 @@
 
   .Familia {
     position: relative;
-    overflow-y: auto;
+    overflow-y: hidden;
     background: #f7f7f7;
     border-radius: 10px;
   }
@@ -179,19 +250,19 @@
     transform: translateX(359px);
     /* sin slider */
     /* transform: translateX(297px);  */
-    z-index: 1001;
+    z-index: 100;
   }
 
 </style>
 
 <section class="VentanaFamiliaWrapper">
 
-  <article class="Familia">
+  <article class="Familia" bind:this={contenedor}>
 
     <div class="VentanaFamilia">
 
       <div class="BotonCierraWrapper">
-        <button class="BotonConIcono" on:click={cerrarVentana} bind:this={familiasVentanaCerrar}>
+        <button class="BotonConIcono" on:click={cerrarVentana} bind:this={botonFamiliaVentanaCerrar}>
           <Fa icon={cierraIcono} class="BotonIcono" />
         </button>
       </div>

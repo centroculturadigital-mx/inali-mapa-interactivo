@@ -14,7 +14,7 @@
 
   .TwitterBoton {
     position: absolute;
-    z-index: 0;
+    z-index: 50;
   }
 
   svg {

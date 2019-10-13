@@ -20,7 +20,7 @@ header {
 }
 </style>
 
-<header>
+<header on:click={console.log("DEBUGGGGGG")}>
 
 	<Logo />
 	<Ayuda on:click={()=>alternarInformacion()}/>

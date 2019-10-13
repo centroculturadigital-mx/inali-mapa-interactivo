@@ -95,6 +95,7 @@
 		background-color: transparent;
 		box-sizing: border-box;
 		position: fixed;
+    z-index: 0;
 		padding: 1rem;
 		margin: 0 auto;
 		height: 100%;
@@ -185,7 +186,6 @@
     </div>
   {/if}
 
-
   {#if mostrarInformacion  }
     <div class="Informacion">
       <Informacion/>
@@ -208,8 +208,6 @@
   {/if}
 
 
-</main>
-
 <VolutaBoton posIniX={1} posIniY={45} on:click={()=>alternarVolutaTexto()}/>
 <VolutaBoton posIniX={20} posIniY={75} on:click={()=>alternarVolutaTexto()}/>
 <VolutaBoton posIniX={68} posIniY={40} on:click={()=>alternarVolutaTexto()}/>
@@ -217,6 +215,10 @@
 
 <TwitterBoton posIniX={58} posIniY={20} on:click={()=>alternarTwitter()}/>
 <TwitterBoton posIniX={18} posIniY={20} on:click={()=>alternarTwitter()}/>
+
+
+</main>
+
 
 
 <Pie />

@@ -5,6 +5,8 @@ import FamiliasLinguisticas from "./FamiliasLinguisticas.svelte";
 import MexicoPaths1366x768 from "./MexicoPaths1366x768.svelte";
 
 //
+  import VolutaBoton from "../VolutaBoton.svelte";
+
 // let width = 1000
 // let height = 680
 
@@ -21,7 +23,7 @@ $: width = win.innerWidth; // ancho default
   transform-origin: 50% 50%;
   height: 100%;
   width: 100%;
-  z-index: 0;
+  z-index: 50;
 }
 </style>
 
@@ -50,6 +52,7 @@ id="SVGMapa">
 <FamiliasLinguisticas on:seleccionar/>
 <!-- <Voluta />
 <Twitter /> -->
+
 
 </svg>
 <!--  -->
