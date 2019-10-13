@@ -16,9 +16,7 @@
             background-color: #fff;
             color: #333;
             box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
-            z-index: 10000;
-            cursor: pointer;
-
+            z-index: 1000;
 
         }
 
@@ -33,6 +31,25 @@
             align-items: center;
             justify-content: space-evenly;
             color: #fff;
+        }
+
+        .FotoHomenaje {
+            display: flex;
+        }
+
+        img {
+            width: 2rem;
+            height: 2rem;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .IconCerrarHomenaje {
+            padding: 0;
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            cursor: pointer;
         }
 
         .Semblanza {
@@ -54,18 +71,6 @@
             padding-right: .5rem;
         }
 
-
-        .FotoHomenaje {
-            display: flex;
-        }
-
-        img {
-		    width: 2rem;
-		    height: 2rem;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
         .Fecha{
             font-weight: 400;
         }
@@ -83,6 +88,9 @@
                 Miguel León Portilla
             </h4>
         </div>
+        <button class="IconCerrarHomenaje" on:click>
+            <i class="fa fa-close fa-lg"></i>
+        </button>
     </header>
     <div class="Semblanza">
         <div class="Texto">
