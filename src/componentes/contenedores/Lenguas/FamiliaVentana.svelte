@@ -1,7 +1,9 @@
 <script>
 
   import interact from 'interactjs'
+  import { tap } from '@sveltejs/gestures';
 
+  
 
   import FamiliaDetalle from "./FamiliaDetalle.svelte";
   import AgrupacionesLista from "./AgrupacionesLista.svelte";
@@ -40,7 +42,7 @@
     }
   }
 
-  let botonFamiliaVentanaCerrar
+  // let botonFamiliaVentanaCerrar
   let contenedor
 
   let ultimoTouchMoveY
@@ -51,7 +53,7 @@
 
   onMount(()=>{
 
-    botonFamiliaVentanaCerrar.addEventListener("touchmove",cerrarVentana)
+    // botonFamiliaVentanaCerrar.addEventListener("touchstart",cerrarVentana)
 
     if(!!contenedor) {
 
@@ -263,7 +265,7 @@
     <div class="VentanaFamilia">
 
       <div class="BotonCierraWrapper">
-        <button class="BotonConIcono" on:click={cerrarVentana} bind:this={botonFamiliaVentanaCerrar}>
+        <button class="BotonConIcono" use:tap on:tap={cerrarVentana}>
           <Fa icon={cierraIcono} class="BotonIcono" />
         </button>
       </div>

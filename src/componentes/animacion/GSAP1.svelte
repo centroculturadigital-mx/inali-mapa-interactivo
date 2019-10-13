@@ -11,9 +11,9 @@
     //Paper.install(window);
     let colW = window.innerWidth / 30
     
-    const numLineas = 120
-    const numBarras = 24
-    const numPuntos = 12
+    const numLineas = 80
+    const numBarras = 12
+    const numPuntos = 6
     const barras = []
     const lineas = []
 
@@ -57,10 +57,8 @@
         {
 
                 
-                let x = (i*colW)
+            let x = (i*colW)
                 
-            
-            
             let linea = new Paper.Path.Line(new Paper.Point(x,0),new Paper.Point(x,window.innerHeight));
 
             let r = 0.02+(i%4==0?0.3:0) + Math.random()/4
@@ -112,12 +110,15 @@
         // fondo.fillColor = new Paper.Color(0.01,0.3,0.7+(count%130/1300));
 
         //Define array of paths (I've choose 12 because my multitouch table accept 12 touch max)
-        for (var i = 0-15; i < numBarras+15; i++)
+        for (var i = 0-5; i < numBarras+5; i++)
         {
+            
             let barra = new Paper.Path();
+            
             let r = 0.2+(i%4==0?0.3:0) + Math.random()/4
             let g = ((i%10)/10)+(i%4==0?0.5:0)
             let b = 0.5+(i%14)/14
+            
             let opacity = ((i%8)/128)
 
             barra.strokeColor = new Paper.Color(r,g,b,opacity);
@@ -140,7 +141,6 @@
                 
                 barra.add(punto)
             
-            
                 let tl = new TimelineMax({
                     yoyo: true,
                     repeat: -1,
@@ -149,22 +149,22 @@
                 tl.to(barra.segments[j].point,20,{
                     x: x+100+Math.sin((i*4+j+1))*3,
                     y: j*separacion+((i%12)-6)*3,
-                    // z: 1
+                    z: 1
                 })
                 tl.to(barra.segments[j].point,20,{
                     x: x-+Math.sin((i*4+j+1))*8,
                     y: j*separacion+((i%24)-12)*13,
-                    // z: 1
+                    z: 1
                 })
                 tl.to(barra.segments[j].point,20,{
                     x: x-100+Math.sin((i*4+j+1))*1.23,
                     y: j*separacion+((i%12)-6)*2,
-                    // z: 1
+                    z: 1
                 })
                 tl.to(barra.segments[j].point,20,{
                     x: x-+Math.sin((i*4+j+1))*23,
                     y: j*separacion+((i%12)-6)*33,
-                    // z: 1
+                    z: 1
                 })
             
                 let tlSW = new TimelineMax({
@@ -197,12 +197,11 @@
 
         document.body.addEventListener("click", (e)=>{
             for(const barra of barras) {
-                var tl = new TimelineMax({
+                let tl = new TimelineMax({
                     delay:Math.random()/4
                 });
 
                 if( Math.abs(barra.position.x - e.clientX) > 100 ) {
-
                     tl.to(barra, Math.random()*10, {
                         strokeWidth: Math.random()*400,
                     });
