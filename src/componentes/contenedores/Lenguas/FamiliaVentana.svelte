@@ -94,7 +94,7 @@
 
               contenedor.scrollTo({
                 top: diferenciaY*30,
-                // behavior: 'smooth'
+                behavior: 'smooth'
               })
             
             }
