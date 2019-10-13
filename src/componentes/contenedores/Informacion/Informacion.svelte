@@ -15,7 +15,7 @@
             background-color: #fff;
             color: #333;
             box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
-            z-index: 10000;
+            z-index: -1;
 
         }
 
