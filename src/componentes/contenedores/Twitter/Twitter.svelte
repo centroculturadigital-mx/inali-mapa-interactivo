@@ -18,7 +18,7 @@
             box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
             border-top-left-radius: 1rem;
             border-top-right-radius: 1rem;
-            z-index: 10000;
+            z-index: 1000;
         }
 
 
