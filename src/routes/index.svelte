@@ -176,6 +176,18 @@
 <main>
   <!-- Interactividad -->
   <Drag />
+
+
+  <VolutaBoton posIniX={1} posIniY={45} on:click={()=>alternarVolutaTexto()}/>
+  <VolutaBoton posIniX={20} posIniY={75} on:click={()=>alternarVolutaTexto()}/>
+  <VolutaBoton posIniX={68} posIniY={40} on:click={()=>alternarVolutaTexto()}/>
+  <VolutaBoton posIniX={85} posIniY={75} on:click={()=>alternarVolutaTexto()}/>
+
+  <TwitterBoton posIniX={58} posIniY={20} on:click={()=>alternarTwitter()}/>
+  <TwitterBoton posIniX={18} posIniY={20} on:click={()=>alternarTwitter()}/>
+
+
+
   <!-- Elementos -->
   <Mapa on:seleccionar={seleccionar} />
   <!-- <Mapa on:seleccionar={console.log("aosijvieurn")}/> -->
@@ -210,14 +222,6 @@
 
 
 </main>
-
-<VolutaBoton posIniX={1} posIniY={45} on:click={()=>alternarVolutaTexto()}/>
-<VolutaBoton posIniX={20} posIniY={75} on:click={()=>alternarVolutaTexto()}/>
-<VolutaBoton posIniX={68} posIniY={40} on:click={()=>alternarVolutaTexto()}/>
-<VolutaBoton posIniX={85} posIniY={75} on:click={()=>alternarVolutaTexto()}/>
-
-<TwitterBoton posIniX={58} posIniY={20} on:click={()=>alternarTwitter()}/>
-<TwitterBoton posIniX={18} posIniY={20} on:click={()=>alternarTwitter()}/>
 
 
 <Pie />

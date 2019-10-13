@@ -94,7 +94,7 @@
 
               contenedor.scrollTo({
                 top: diferenciaY*30,
-                behavior: 'smooth'
+                // behavior: 'smooth'
               })
             
             }
@@ -135,7 +135,7 @@
 
   .Familia {
     position: relative;
-    overflow-y: hidden;
+    overflow-y: auto;
     background: #f7f7f7;
     border-radius: 10px;
   }
