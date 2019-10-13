@@ -31,6 +31,25 @@
             border-radius: 0px 0px 0px 22px;
         }
 
+        .TituloMapa {
+            display: flex;
+            justify-content: center;
+        }
+
+        .IconoInformacion {
+            display: flex;
+            flex-basis: 45%;
+        }
+
+        .IconoCerrarInfo {
+            padding: 1rem;
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+        }
+
          .Acerca {
             padding: .5rem 1.5rem;
         }
@@ -45,15 +64,7 @@
             font-size: .75rem;
             line-height: 1.5;
         }
-
-        .TituloMapa {
-            display: flex;
-            justify-content: center;
-        }
-
-        .IconoInformacion {
-            display: flex;
-        }
+        
     
 </style>
     
@@ -65,6 +76,9 @@
         <div class="IconoInformacion">
             <IconoInformacion/>
         </div>
+        <button class="IconoCerrarInfo" on:click>
+            <i class="fa fa-close fa-lg"></i>
+        </button>
     </header>
     <div class="Acerca">
         <div class="Texto">

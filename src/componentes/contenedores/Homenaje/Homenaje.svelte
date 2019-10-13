@@ -44,7 +44,7 @@
             border-radius: 50%;
         }
 
-        .IconCerrarHomenaje {
+        .IconoCerrarHomenaje {
             padding: 0;
             background-color: transparent;
             border: none;
@@ -88,7 +88,7 @@
                 Miguel León Portilla
             </h4>
         </div>
-        <button class="IconCerrarHomenaje" on:click>
+        <button class="IconoCerrarHomenaje" on:click>
             <i class="fa fa-close fa-lg"></i>
         </button>
     </header>
