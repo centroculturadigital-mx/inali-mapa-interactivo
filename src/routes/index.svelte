@@ -210,8 +210,8 @@
     </div>
   {/if}
   {#if mostrarHomenaje }
-    <div class="Homenaje">
-      <Homenaje/>
+    <div class="Homenaje" transition:fade>
+      <Homenaje on:click={()=>alternarHomenaje()}/>
     </div>
   {/if}
   {#if mostrarVolutaTexto }
