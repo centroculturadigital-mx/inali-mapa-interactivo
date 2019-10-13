@@ -118,12 +118,14 @@
     position: absolute;
     left: 49rem;
     bottom: 12rem;
+    z-index: 1001;
   }
 
    .VolutaTexto {
     position: absolute;
     left: 23rem;
     bottom: 2rem;
+    z-index: 1001;
   }
 
   .FamiliaVentana {
@@ -132,9 +134,6 @@
     bottom: 4rem;
     z-index: 1001;
   }
-
-  
-
 	canvas {
 		background-color: #465D72;
 		width: 100vw;

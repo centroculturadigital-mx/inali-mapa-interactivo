@@ -33,13 +33,17 @@
     }
   }
 
+  let familiasVentanaCerrar
+
   onMount(()=>{
 
-    familiasVentanaCerrar.addEventListener("touchmove",cerrarVentana)
+    // probando correccion para multitouch:
+    if(!!familiasVentanaCerrar) {
+      familiasVentanaCerrar.addEventListener("touchmove",cerrarVentana)
+    }
   
   })
 
-  // probando correccion para multitouch:
 
 
 </script>

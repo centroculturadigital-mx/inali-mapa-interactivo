@@ -10,11 +10,11 @@
     border: 0;
     margin: 0;
     padding: 0;
-    z-index: 1000;
   }
 
   .TwitterBoton {
     position: absolute;
+    z-index: 0;
   }
 
   svg {

@@ -6,8 +6,7 @@
   #VolutaContenedorTexto {
     font-family: "IBM Plex Sans", sans-serif;
     padding: 1rem 1rem 1rem 3rem;
-    z-index: 10000;
-
+    z-index: 1001;
   }
   p {
       font-size: var(--fuente-2)

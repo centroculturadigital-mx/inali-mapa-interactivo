@@ -18,6 +18,7 @@
 
   .VolutaBoton {
     position: absolute;
+    z-index: 0;
   }
 
   svg {

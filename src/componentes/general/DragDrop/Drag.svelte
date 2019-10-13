@@ -34,9 +34,7 @@ const dragMoveListener = (e) => {
   
   e.target.style.webkitTransform =
   e.target.style.transform =
-  'translate(' + dX + 'px, ' + dY + 'px)'
-
-  
+  'translate(' + dX + 'px, ' + dY + 'px)'  
 
   e.target.setAttribute('data-x', dX)
   e.target.setAttribute('data-y', dY)
