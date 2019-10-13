@@ -2,67 +2,78 @@
 
     import Ventana from "../componentes/contenedores/Ventana/Ventana.svelte";
 
-    let ventanas = [
-        {
-            test: "Contenido",
-            origen: {
-                x: Math.random()*(window.innerWidth-400),
-                y: Math.random()*(window.innerHeight-300)
+    let ventanas = []
+
+    if( typeof window != "undefined" ) {
+
+        ventanas = [
+            {
+                test: "Contenido",
+                origen: {
+                    x: Math.random()*(window.innerWidth),
+                    y: Math.random()*(window.innerHeight)
+                },
+                left: 0,
+                top: 0
             },
-            left: 0,
-            top: 0
-        },
-        {
-            test: "Contenido",
-            origen: {
-                x: Math.random()*(window.innerWidth-400),
-                y: Math.random()*(window.innerHeight-300)
+            {
+                test: "Contenido",
+                origen: {
+                    x: Math.random()*(window.innerWidth),
+                    y: Math.random()*(window.innerHeight)
+                },
+                left: 0,
+                top: 0
             },
-            left: 0,
-            top: 0
-        },
-        {
-            test: "Contenido",
-            origen: {
-                x: Math.random()*(window.innerWidth-400),
-                y: Math.random()*(window.innerHeight-300)
-            },
-            left: 0,
-            top: 0
-        }
-    ]
+            {
+                test: "Contenido",
+                origen: {
+                    x: Math.random()*(window.innerWidth),
+                    y: Math.random()*(window.innerHeight)
+                },
+                left: 0,
+                top: 0
+            }
+        ]
 
 
-    ventanas = ventanas.map(v=>{
+        ventanas = ventanas.map(v=>{
         
+            let wW = window.innerWidth;
+            let wH = window.innerHeight;
 
-        let wW = window.innerWidth;
-        let wH = window.innerHeight;
+            // let offX=1;
+            // let offY=1;
+            let vL;
+            let vT;
 
-        // let offX=1;
-        // let offY=1;
+            let diffX = Math.abs((wW/2)-v.origen.x)
+            let diffY = Math.abs((wH/2)-v.origen.y)
 
-        // if( v.origen.x < wW/2 && v.origen.y < wH/2 ) {
-        //     offX*=-1;
-        //     offY*=-1;
-        // }
-        // if( v.origen.x < wW/2 && v.origen.y > wH/2 ) {
-        //     offX*=-1;
-        // }
-        // if( v.origen.x > wW/2 && v.origen.y < wH/2 ) {
-        //     offY*=-1;
-        // }
+            if( v.origen.x < wW/2  ) {
+                vL = Math.max(Math.min((wW/2)-diffX,(wW-2)-240), 0)
+            } else {
+                vL = Math.max(Math.min((wW/2)+diffX,wW-240), wW/2)
+            }
 
-        let diffX = Math.abs((wW/2)-v.origen.x)
-        let diffY = Math.abs((wW/2)-v.origen.x)
+            if( v.origen.y < wH/2 ) {
+                vT = Math.max(Math.min((wH/2)-diffY,(wW-2)-240), 0)            
+            } else {
+                vT = Math.max(Math.min((wH/2)+diffY,wH-240), wH/2)            
+            }
 
-        let vL = (wW/2)+diffX
-        let vT = (wH/2)+diffY
-        // let vT =
-    })
+
+            return {
+                ...v,
+                left: vL,
+                top: vT,
+            }
+
+        })
 
 
     
+    }
 
 
 
@@ -96,10 +107,12 @@
     {#each ventanas as ventana,i (i)}
 
         <Ventana {...ventana}>
-            {ventana.test}
+            {ventana.test + parseInt(i+1)}
         </Ventana>
 
-        <div class="Origen" style="left: {ventana.origen.x}px; top: {ventana.origen.y}px"/>
+        <div class="Origen" style="left: {ventana.origen.x}px; top: {ventana.origen.y}px">
+            {i+1}
+        </div>
 
     {/each}
 

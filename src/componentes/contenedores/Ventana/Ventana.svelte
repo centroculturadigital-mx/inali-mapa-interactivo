@@ -17,8 +17,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-
-        border: 1px solid #000;
+        font-size: 2rem;
+        border:1rem solid #000;
     }
 </style>
 
