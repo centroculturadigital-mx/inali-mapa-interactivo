@@ -213,16 +213,16 @@
 
   <Ventanas/>
 
-  {#if mostrarInformacion  }
-    <div class="Informacion">
-      <Informacion/>
+  <!-- {#if mostrarInformacion }
+    <div class="Informacion" transition:fade>
+      <Informacion on:click={()=>alternarInformacion()}/>
     </div>
   {/if}
   {#if mostrarHomenaje }
-    <div class="Homenaje">
-      <Homenaje/>
+    <div class="Homenaje" transition:fade>
+      <Homenaje on:tap={()=>alternarHomenaje()}/>
     </div>
-  {/if}
+  {/if} -->
 
 
   {#if mostrarVolutaTexto }

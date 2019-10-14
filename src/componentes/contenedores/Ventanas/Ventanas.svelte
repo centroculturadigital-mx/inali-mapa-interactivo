@@ -6,7 +6,10 @@
 
     import FamiliaVentana from "../Lenguas/FamiliaVentana.svelte";
     import TwitterVentana from "../Twitter/Twitter.svelte";
-
+    
+    import Informacion from "../Informacion/Informacion.svelte";
+    import Homenaje from "../Homenaje/Homenaje.svelte";
+ 
     import familiasFake from "../../../../datosFalsos/familiasFake";
 
     let familiaMostrar = familiasFake[0]
@@ -55,7 +58,16 @@
                     x: Math.random()*(window.innerWidth/8),
                     y: Math.random()*(window.innerHeight/8)
                 },
-                tipo: "familia"
+                tipo: "homenaje"
+            },
+            {
+                indice:3,
+                test: "Contenido",
+                origen: {
+                    x: Math.random()*(window.innerWidth/8),
+                    y: Math.random()*(window.innerHeight/8)
+                },
+                tipo: "informacion"
             }
         ]
 
@@ -218,7 +230,7 @@
         // vL += 240
         // vT += 240
         v.left = vL + 300
-        v.top = vT + 300
+        v.top = vT //+ 300
 
     }
 
@@ -257,6 +269,12 @@
             {/if}
             {#if ventana.tipo=="familia"}
                 <FamiliaVentana familia={familiaMostrar}/>
+            {/if}
+            {#if ventana.tipo=="homenaje"}
+                <Homenaje/>
+            {/if}
+            {#if ventana.tipo=="informacion"}
+                <Informacion/>
             {/if}
         </Ventana>
 
