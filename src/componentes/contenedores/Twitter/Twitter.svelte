@@ -2,6 +2,84 @@
     import IconoTwitterVentana from "./Iconos/IconoTwitterVentana.svelte";
     import Tweet from "./Tweet.svelte";
 
+  import interact from 'interactjs'
+  import { tap } from '@sveltejs/gestures';
+  import { onMount } from 'svelte';
+
+  let contenedor
+
+  let ultimoTouchMoveY
+  let ultimoTouchMoveX
+
+  let ultimoScrollVentanaY = 0
+  let ultimoScrollVentanaX = 0
+
+  onMount(()=>{
+
+    // botonFamiliaVentanaCerrar.addEventListener("touchstart",cerrarVentana)
+
+    if(!!contenedor) {
+
+      interact(contenedor)
+      .draggable({
+        autoScroll:true,
+        onstart: (e) => {
+          
+          ultimoTouchMoveY = e.clientY
+          ultimoTouchMoveX = e.clientX
+            
+        },
+        onmove: (e) => {
+          
+          let top=contenedor.getBoundingClientRect().top
+          let right=contenedor.getBoundingClientRect().right
+          let bottom=contenedor.getBoundingClientRect().bottom
+          let left=contenedor.getBoundingClientRect().left
+          if(
+            // adentro verticalmente
+            e.clientY > top && e.clientY < bottom
+            &&
+            // adentro horizontalmente
+            e.clientX > left && e.clientX < right
+            // &&
+            // extremo derecho
+            // e.clientX > right - 50
+          )  {
+
+            
+            let diferenciaY = (ultimoTouchMoveY-e.clientY)
+            let diferenciaX = (ultimoTouchMoveX-e.clientX)
+            
+            
+            if( Math.abs(diferenciaX) < Math.abs(diferenciaY) ) {
+              
+              ultimoScrollVentanaY += diferenciaY
+
+              contenedor.scrollTo({
+                top: diferenciaY*30,
+                behavior: 'smooth'
+              })
+            
+            }
+            
+            ultimoTouchMoveY = e.clientY
+            ultimoTouchMoveX = e.clientX
+            // const proporcionY = (e.clientY-top)/(bottom-top)
+            // const alturaDestino = document.querySelector(".FamiliaVentana").offsetHeight * proporcionY;
+            
+            
+            // contenedor.scrollTo({
+            //   top: alturaDestino,
+            //   behavior: 'smooth'
+  
+            // } )
+          }
+        }
+      })
+    
+    }
+  })
+
 
 </script>
 
@@ -52,7 +130,7 @@
         .Tweets {
             width: 100%;
             max-height: 13.5rem;
-            overflow: auto;
+            overflow: hidden;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
@@ -80,7 +158,7 @@
             </button>
     </header>
     <div class="ContenedorTweets">
-        <div class="Tweets">
+        <div class="Tweets" bind:this={contenedor}>
             <Tweet/>
             <Tweet/>
             <Tweet/>
