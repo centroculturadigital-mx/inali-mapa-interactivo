@@ -19,8 +19,8 @@
 <style>
   path {
     position: relative;
+    cursor: pointer;
     fill: #ffffff;
-    z-index: -1;
   }
 
 
