@@ -17,40 +17,11 @@
 </script>
 
 <style>
-  /* button {
-    background-color: transparent;
-    border: 0;
-    margin: 0;
-    padding: 0;
-  }
-
-  .TwitterBoton {
-    position: absolute;
-    z-index: 50;
-  }
-
-  svg {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-    cursor: pointer;
-  } */
-  /* svg:hover {
-    animation: flota 1s 1 forwards;
-  } */
-
   path {
+    position: relative;
     fill: #1DA1F2;
-    box-shadow: 3px 3px 3px #000;
+    cursor: pointer;
   }
-
-  /* @keyframes flota {
-    0% {
-      transform: scale(0.5);
-    }
-    100% {
-      transform: scale(0.505);
-    }
-  } */
 </style>
 <!-- 
 <button class="TwitterBoton" on:click style={`left: ${posIniX}%; top: ${posIniY}%;`}>
