@@ -56,8 +56,8 @@ id="SVGMapa">
 <FamiliasLinguisticas on:seleccionar/>
 <!-- <Voluta />
 <Twitter /> -->
-  <TwitterBoton posIniX={0.25} posIniY={0.25}/>
-  <TwitterBoton posIniX={0.75} posIniY={0.75}/>
+  <TwitterBoton posIniX={0.75} posIniY={0.75} on:tap/>
+  <TwitterBoton posIniX={0.25} posIniY={0.25} on:tap/>
 
 
 </svg>

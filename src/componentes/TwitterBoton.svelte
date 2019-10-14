@@ -1,5 +1,7 @@
 <script>
 
+  import { tap } from '@sveltejs/gestures';
+
   const escala = 0.02
   const origenX = 38
   const origenY = 37
@@ -59,7 +61,7 @@
   fill="none"
   xmlns="http://www.w3.org/2000/svg"> -->
 
-    <path transform="translate({posRealX} {posRealY}) scale({escala}) "
+    <path class="TwitterBoton" use:tap on:tap transform="translate({posRealX} {posRealY}) scale({escala}) "
       d="M68.75 6.47059C67.6716 7.0098 66.5931 7.54902 65.2451 7.81863C66.5931
       6.20098 67.6716 4.58333 68.2108 2.69608L69.0196 0L66.8627 1.34804C64.4363
       2.69608 62.0098 3.77451 59.3137 4.31372C56.6176 1.61765 53.1127 0.269608

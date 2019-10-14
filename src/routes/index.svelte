@@ -86,6 +86,18 @@
     console.log("alternarVolutaTexto",mostrarVolutaTexto);
   }
 
+  const tapBotones = (e) => {
+    
+    if(e.target.getAttribute("class").includes("TwitterBoton") ) {
+      alternarTwitter()
+    }
+
+    if(e.target.getAttribute("class").includes("VolutaBoton") ) {
+      alternarVolutaTexto()
+    }
+    
+  }
+
 
 </script>
 
@@ -183,13 +195,13 @@
   <VolutaBoton posIniX={68} posIniY={40} on:click={()=>alternarVolutaTexto()}/>
   <VolutaBoton posIniX={85} posIniY={75} on:click={()=>alternarVolutaTexto()}/>
 
-  <!-- <TwitterBoton posIniX={58} posIniY={20} on:click={()=>alternarTwitter()}/>
-  <TwitterBoton posIniX={18} posIniY={20} on:click={()=>alternarTwitter()}/> -->
+    <!-- <TwitterBoton posIniX={58} posIniY={20} on:click={()=>alternarTwitter()}/>
+    <TwitterBoton posIniX={18} posIniY={20} on:click={()=>alternarTwitter()}/> -->
 
 
 
   <!-- Elementos -->
-  <Mapa on:seleccionar={seleccionar} />
+  <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} />
   <!-- <Mapa on:seleccionar={console.log("aosijvieurn")}/> -->
 
   {#if !!familiaMostrar}
