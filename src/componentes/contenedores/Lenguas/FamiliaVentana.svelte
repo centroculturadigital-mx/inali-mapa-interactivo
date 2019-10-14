@@ -123,7 +123,7 @@
 
 <style>
   article {
-    max-width: 360px;
+    max-width: 300px;
     max-height: 420px;
   }
 
@@ -197,17 +197,12 @@
 
   .ContenedorCarrusel {
     width: 100%;
-    height: 300px;
+    height: 13rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
   }
 
-  .ContenedorCarrusel ul {
-    margin: .5rem;
-    border-radius: 100%;
-    bottom: -20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 8px;
-    height: 8px;
-  }
+
   /* .Carrousel {
     padding: 8px 0;
     font-size: 0.5rem;
@@ -247,9 +242,9 @@
     top: 0;
     overflow-y: hidden;
     height: 420px;
-    width: 280px;
+    width: calc( 100% - 2.5rem );
     /* con slider */
-    transform: translateX(359px);
+    transform: translateX( calc( 300px - 1px ) );
     /* sin slider */
     /* transform: translateX(297px);  */
     z-index: 100;

@@ -51,3 +51,32 @@ button:active {
 	}
 
 /*  Fin estilos customizados*/
+
+
+
+.carousel {
+	height: 12rem;
+}
+
+.carousel button.left svg,
+.carousel button.left svg *,
+.carousel button.right svg,
+.carousel button.right svg * {
+	stroke: #2B6EAA;
+}
+.carousel button.left {
+	left: 0;
+}
+.carousel button.right {
+	right: 0;
+}
+
+
+.carousel ul {
+	margin-top: 1rem !important;
+}
+
+.carousel ul li {
+	background-color: var(--color-texto) !important;
+
+}

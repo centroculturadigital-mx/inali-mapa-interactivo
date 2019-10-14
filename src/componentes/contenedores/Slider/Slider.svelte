@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import Carousel from "@beyonk/svelte-carousel";
+  import Carousel from "@centroculturadigital-mx/svelte-carousel";
   import { ChevronLeftIcon, ChevronRightIcon } from "../../../../node_modules/svelte-feather-icons/src/index.js";
   import slides from "../../../../datosFalsos/slidesFake";
   
@@ -23,8 +23,8 @@
   }
   .SlideContent img {
     object-fit: cover;
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 12rem;
   }
   .Control {
     cursor: pointer;
@@ -34,12 +34,14 @@
   }
   .TextoFotos {
     position: absolute;
-    bottom: 2rem;
+    bottom: 0;
     color: #fff;
-    left: 2rem;
+    left: 1.5rem;
     height: auto;
     width: 90%;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
   }
+  
   .TextoFotosSubTitulo {
     font-size: 12px;
   }
