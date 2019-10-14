@@ -19,7 +19,7 @@ header {
 }
 </style>
 
-<header on:click={console.log("DEBUGGGGGG")}>
+<header>
 
 	<Logo />
 	<Ayuda on:tap/>

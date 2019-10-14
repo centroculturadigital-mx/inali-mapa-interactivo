@@ -45,10 +45,16 @@
 
   const seleccionar = e => {
     const id = e.detail.id;
+    const x = e.detail.x;
+    const y = e.detail.y;
 
     if (!!id) {
       familiaMostrar =
         familiasFake[Math.floor(Math.random() * familiasFake.length)];
+
+        let v = crearVentana("familia",x,Math.random() *600)
+        v.props.familia = familiaMostrar
+        
     } else {
       familiaMostrar = null;
     }
@@ -64,26 +70,30 @@
   let mostrarVolutaTexto = false;
 
   const crearVentana = (tipo, x, y) => {
-    ventanas.push(
-      {
-        indice:ventanas.length,
-        origen: {
-            x,
-            y
-        },
-        left: x,
-        top: y,
-        tipo: tipo
-      }
-    )
-
-    if( ventanas.length == 1 ) {
-      ventanas[0].acomodada = true
+    
+    let nuevaVentana = {
+      indice:ventanas.length,
+      origen: {
+          x,
+          y
+      },
+      left: x,
+      top: y,
+      tipo: tipo,
+      props: {}
     }
 
-    ventanas = ventanas
-    console.log("ventanas",ventanas);
+
+    if( ventanas.length == 0 ) {
+      nuevaVentana.acomodada = true
+    }
+
+    ventanas.push( nuevaVentana )
     
+    ventanas = ventanas
+    
+    return nuevaVentana
+
   }
 
   const destruirVentana = (ventana) => {
@@ -148,6 +158,8 @@
     }
 
     if(e.target.getAttribute("class").includes("InformacionBoton") ) {
+      console.log("InformacionBoton");
+      
       alternarInformacion(e.detail.x,e.detail.y)
     }
     
@@ -157,50 +169,12 @@
 
   let ventanas = []
   
-  // if(typeof window != "undefined" ) {
-      
-  //   ventanas = [
-  //       {
-  //           indice:0,
-  //           test: "Contenido",
-  //           acomodada: true,
-  //           origen: {
-  //               x: Math.random()*(window.innerWidth/8),
-  //               y: Math.random()*(window.innerHeight/8)
-  //           },
-  //           tipo: "twitter"
-  //       },
-  //       {
-  //           indice:1,
-  //           test: "Contenido",
-  //           origen: {
-  //               x: Math.random()*(window.innerWidth/8),
-  //               y: Math.random()*(window.innerHeight/8)
-  //           },
-  //           tipo: "familia"
-  //       },
-  //       {
-  //           indice:2,
-  //           test: "Contenido",
-  //           origen: {
-  //               x: Math.random()*(window.innerWidth/8),
-  //               y: Math.random()*(window.innerHeight/8)
-  //           },
-  //           tipo: "homenaje"
-  //       },
-  //       {
-  //           indice:3,
-  //           test: "Contenido",
-  //           origen: {
-  //               x: Math.random()*(window.innerWidth/8),
-  //               y: Math.random()*(window.innerHeight/8)
-  //           },
-  //           tipo: "informacion"
-  //       }
-  //   ]
 
-  // }
+  const cerrarVentana = (e) => {
 
+    destruirVentana(e.detail.ventana)
+
+  }
 
 </script>
 
@@ -314,7 +288,7 @@
     </div>
   {/if} -->
 
-  <Ventanas ventanas={ventanas}/>
+  <Ventanas ventanas={ventanas} on:cerrar={cerrarVentana}/>
 
   <!-- {#if mostrarInformacion }
     <div class="Informacion" transition:fade>

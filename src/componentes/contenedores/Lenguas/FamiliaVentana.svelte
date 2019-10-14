@@ -3,6 +3,16 @@
   import interact from 'interactjs'
   import { tap } from '@sveltejs/gestures';
 
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
+
+  const cerrar = () => {
+    
+    dispatch("cerrar")
+    
+  }
   
 
   import FamiliaDetalle from "./FamiliaDetalle.svelte";
@@ -19,7 +29,6 @@
   import lenguas from "../../../../datosFalsos/lenguasFake";
 
   export let familia;
-  export let cerrar;
 
   let cierraIcono = faTimesCircle;
   let abajoIcono = faChevronDown;
@@ -36,11 +45,6 @@
   };
   
 
-  function cerrarVentana() {
-    if (typeof cerrar === "function") {
-      cerrar();
-    }
-  }
 
   // let botonFamiliaVentanaCerrar
   let contenedor
@@ -259,7 +263,7 @@
     <div class="VentanaFamilia">
 
       <div class="BotonCierraWrapper">
-        <button class="BotonConIcono" use:tap on:tap={cerrarVentana}>
+        <button class="BotonConIcono" use:tap on:tap={cerrar}>
           <!-- <Fa icon={cierraIcono} class="BotonIcono" /> -->
           <i class="fa fa-times-circle"/>
         </button>

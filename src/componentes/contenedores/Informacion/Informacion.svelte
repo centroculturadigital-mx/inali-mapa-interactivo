@@ -2,10 +2,14 @@
     import IconoInformacion from "./Iconos/IconoInformacion.svelte";
     import TituloMapa from "./Iconos/TituloMapa.svelte";
 
+  import { createEventDispatcher } from 'svelte';
+
 
   import interact from 'interactjs'
   import { tap } from '@sveltejs/gestures';
   import { onMount } from 'svelte';
+
+  const dispatch = createEventDispatcher();
 
   let contenedor
 
@@ -14,6 +18,13 @@
 
   let ultimoScrollVentanaY = 0
   let ultimoScrollVentanaX = 0
+
+
+  const cerrar = () => {
+    
+    dispatch("cerrar")
+    
+  }
 
   onMount(()=>{
 
@@ -142,9 +153,9 @@
         <div class="TituloMapa">
             <TituloMapa/>
         </div>
-        <div class="IconoInformacion">
-            <IconoInformacion/>
-        </div>
+        <button class="IconoInformacion" use:tap on:tap={cerrar}>
+            <i class="fa fa-times-circle"/>
+        </button>
     </header>
     <div class="Acerca">
         <div class="Texto" bind:this={contenedor}>

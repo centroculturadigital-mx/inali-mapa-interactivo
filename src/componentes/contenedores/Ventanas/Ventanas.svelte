@@ -4,17 +4,23 @@
 
     import {onMount} from "svelte";
 
+    import { createEventDispatcher } from 'svelte';
+
     import FamiliaVentana from "../Lenguas/FamiliaVentana.svelte";
     import TwitterVentana from "../Twitter/Twitter.svelte";
     
     import Informacion from "../Informacion/Informacion.svelte";
     import Homenaje from "../Homenaje/Homenaje.svelte";
  
+
+    const dispatch = createEventDispatcher();
+    
     import familiasFake from "../../../../datosFalsos/familiasFake";
 
     let familiaMostrar = familiasFake[0]
 
     export let ventanas = []
+
 
     $: ventanas ? posicionarVentanas() : ()=>{}
 
@@ -197,9 +203,17 @@
         } else {
             v.left = vL + 300
         }
-        
+
         v.top = vT //+ 300
 
+    }
+
+
+
+
+    const cerrar = (ventana) => {
+        
+        dispatch("cerrar", {ventana})
     }
 
 
@@ -233,16 +247,16 @@
 
         <Ventana {...ventana}>
             {#if ventana.tipo=="twitter"}
-                <TwitterVentana/>
+                <TwitterVentana on:cerrar={()=>cerrar(ventana)}/>
             {/if}
             {#if ventana.tipo=="familia"}
-                <FamiliaVentana familia={familiaMostrar}/>
+                <FamiliaVentana familia={familiaMostrar} {...ventana.props} on:cerrar={()=>cerrar(ventana)}/>
             {/if}
             {#if ventana.tipo=="homenaje"}
-                <Homenaje/>
+                <Homenaje on:cerrar={()=>cerrar(ventana)}/>
             {/if}
             {#if ventana.tipo=="informacion"}
-                <Informacion/>
+                <Informacion on:cerrar={()=>cerrar(ventana)}/>
             {/if}
         </Ventana>
 

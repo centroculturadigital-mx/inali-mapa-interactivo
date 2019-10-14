@@ -6,6 +6,17 @@
   import { tap } from '@sveltejs/gestures';
   import { onMount } from 'svelte';
 
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
+
+  const cerrar = () => {
+    
+    dispatch("cerrar")
+    
+  }
+
   let contenedor
 
   let ultimoTouchMoveY
@@ -159,6 +170,9 @@
                 Miguel León Portilla
             </h4>
         </div>
+        <button class="Cerrar" use:tap on:tap={cerrar}>
+            <i class="fa fa-times-circle"/>
+        </button>
     </header>
     <div class="Semblanza">
         <div class="Texto" bind:this={contenedor}>

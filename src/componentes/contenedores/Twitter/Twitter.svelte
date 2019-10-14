@@ -6,6 +6,20 @@
   import { tap } from '@sveltejs/gestures';
   import { onMount } from 'svelte';
 
+
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
+
+
+  const cerrar = () => {
+    
+    dispatch("cerrar")
+    
+  }
+  
+
   let contenedor
 
   let ultimoTouchMoveY
@@ -153,7 +167,7 @@
             <h4 class="Activismo">
                 Activismo lingüístico
             </h4>
-            <button class="IconoCerrar" on:click>
+            <button class="IconoCerrar" use:tap on:tap={cerrar}>
                 <i class="fa fa-close fa-lg"></i>
             </button>
     </header>
