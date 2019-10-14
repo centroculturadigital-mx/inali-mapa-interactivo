@@ -91,7 +91,21 @@
   }
 
 
-const alternarInformacion = (x,y) => {
+  const alternarTwitter = (x,y) => {
+    // mostrarTwitter = !mostrarTwitter;
+    let ventana = ventanas.find(v=>v.tipo=="twitter")
+
+    if( ! ventana ) {
+      crearVentana("twitter",x,y)
+    } else {
+      destruirVentana(ventana)
+    }
+
+  }
+
+
+
+  const alternarInformacion = (x,y) => {
     
     let ventana = ventanas.find(v=>v.tipo=="informacion")
 
@@ -101,10 +115,6 @@ const alternarInformacion = (x,y) => {
       destruirVentana(ventana)
     }
 
-  }
-  const alternarTwitter = (x,y) => {
-    // mostrarTwitter = !mostrarTwitter;
-    console.log("alternarTwitter");
   }
   const alternarHomenaje = (x,y) => {
     
