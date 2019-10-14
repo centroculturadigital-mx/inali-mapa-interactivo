@@ -5,9 +5,6 @@ import  Logo  from '../Logo/Logo.svelte'
 import  Ayuda  from '../Ayuda/Ayuda.svelte'
 import  BotonHomenaje  from '../BotonHomenaje/BotonHomenaje.svelte'
 
-export let alternarInformacion
-export let alternarHomenaje
-
 </script>
 
 <style>
@@ -25,7 +22,7 @@ header {
 <header on:click={console.log("DEBUGGGGGG")}>
 
 	<Logo />
-	<Ayuda on:click={()=>alternarInformacion()}/>
-	<BotonHomenaje on:tap={()=>alternarHomenaje()}/>
+	<Ayuda on:tap/>
+	<BotonHomenaje on:tap/>
 
 </header>

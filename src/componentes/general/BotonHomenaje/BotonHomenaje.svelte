@@ -18,7 +18,7 @@
         z-index: 10000;
     }
 
-    .FotoHomenaje {
+    .HomenajeBoton {
         display: flex;
     }
 
@@ -31,6 +31,6 @@
 
 </style>
 
- <button class="FotoHomenaje" use:tap on:tap>
+ <button class="HomenajeBoton" use:tap on:tap>
     <img src="{portilla}"  alt="homenaje">
  </button>

@@ -64,26 +64,26 @@
   let mostrarVolutaTexto = false;
 
   const alternarInformacion = () => {
-    mostrarInformacion = !mostrarInformacion;
-    if (mostrarInformacion) {
-      mostrarHomenaje = false;
-    } 
-    console.log("alternarInformacion",mostrarInformacion);
+    // mostrarInformacion = !mostrarInformacion;
+    // if (mostrarInformacion) {
+    //   mostrarHomenaje = false;
+    // } 
+    console.log("alternarInformacion");
   }
   const alternarTwitter = () => {
-    mostrarTwitter = !mostrarTwitter;
-    console.log("alternarTwitter",mostrarTwitter);
+    // mostrarTwitter = !mostrarTwitter;
+    console.log("alternarTwitter");
   }
   const alternarHomenaje = () => {
-    mostrarHomenaje = !mostrarHomenaje;
-    if (mostrarHomenaje){
-      mostrarInformacion = false;
-    } 
-    console.log("alternarHomenaje",mostrarHomenaje);
+    // mostrarHomenaje = !mostrarHomenaje;
+    // if (mostrarHomenaje){
+    //   mostrarInformacion = false;
+    // } 
+    console.log("alternarHomenaje");
   }
 
   const alternarVolutaTexto = () => {
-    mostrarVolutaTexto = !mostrarVolutaTexto;
+    // mostrarVolutaTexto = !mostrarVolutaTexto;
     console.log("alternarVolutaTexto",mostrarVolutaTexto);
   }
 
@@ -95,6 +95,14 @@
 
     if(e.target.getAttribute("class").includes("VolutaBoton") ) {
       alternarVolutaTexto()
+    }
+
+    if(e.target.getAttribute("class").includes("HomenajeBoton") ) {
+      alternarHomenaje()
+    }
+
+    if(e.target.getAttribute("class").includes("InformacionBoton") ) {
+      alternarInformacion()
     }
     
   }
@@ -183,6 +191,7 @@
       alternarHomenaje,
     }
   }
+  on:tap={(e)=>tapBotones(e)} 
 />
 
 
