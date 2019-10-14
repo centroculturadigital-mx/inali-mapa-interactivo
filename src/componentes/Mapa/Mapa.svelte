@@ -4,8 +4,12 @@ import FamiliasLinguisticas from "./FamiliasLinguisticas.svelte";
 // import MexicoPaths from "./MexicoPaths.svelte";
 import MexicoPaths1366x768 from "./MexicoPaths1366x768.svelte";
 
+
+import TwitterBoton from "../TwitterBoton.svelte";
+
+
 //
-  import VolutaBoton from "../VolutaBoton.svelte";
+// import VolutaBoton from "../VolutaBoton.svelte";
 
 // let width = 1000
 // let height = 680
@@ -52,6 +56,8 @@ id="SVGMapa">
 <FamiliasLinguisticas on:seleccionar/>
 <!-- <Voluta />
 <Twitter /> -->
+  <TwitterBoton posIniX={0.25} posIniY={0.25}/>
+  <TwitterBoton posIniX={0.75} posIniY={0.75}/>
 
 
 </svg>

@@ -19,7 +19,7 @@
 
 
   import VolutaBoton from "../componentes/VolutaBoton.svelte";
-  import TwitterBoton from "../componentes/TwitterBoton.svelte";
+  // import TwitterBoton from "../componentes/TwitterBoton.svelte";
 
 
 	import GSAP1 from "../componentes/animacion/GSAP1.svelte";
@@ -183,8 +183,8 @@
   <VolutaBoton posIniX={68} posIniY={40} on:click={()=>alternarVolutaTexto()}/>
   <VolutaBoton posIniX={85} posIniY={75} on:click={()=>alternarVolutaTexto()}/>
 
-  <TwitterBoton posIniX={58} posIniY={20} on:click={()=>alternarTwitter()}/>
-  <TwitterBoton posIniX={18} posIniY={20} on:click={()=>alternarTwitter()}/>
+  <!-- <TwitterBoton posIniX={58} posIniY={20} on:click={()=>alternarTwitter()}/>
+  <TwitterBoton posIniX={18} posIniY={20} on:click={()=>alternarTwitter()}/> -->
 
 
 
