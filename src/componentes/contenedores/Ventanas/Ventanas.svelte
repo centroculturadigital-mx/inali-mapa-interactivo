@@ -14,13 +14,13 @@
 
     let familiaMostrar = familiasFake[0]
 
-    let ventanas = []
+    export let ventanas = []
 
 
     onMount(()=>{
         
         
-        if( typeof window != "undefined" ) {
+        if( typeof window != "undefined" && !! ventanas ) {
     
             posicionarVentanas()
         
@@ -30,46 +30,6 @@
 
 
     const posicionarVentanas = () => {
-
-        ventanas = [
-            {
-                indice:0,
-                test: "Contenido",
-                acomodada: true,
-                origen: {
-                    x: Math.random()*(window.innerWidth/8),
-                    y: Math.random()*(window.innerHeight/8)
-                },
-                tipo: "twitter"
-            },
-            {
-                indice:1,
-                test: "Contenido",
-                origen: {
-                    x: Math.random()*(window.innerWidth/8),
-                    y: Math.random()*(window.innerHeight/8)
-                },
-                tipo: "familia"
-            },
-            {
-                indice:2,
-                test: "Contenido",
-                origen: {
-                    x: Math.random()*(window.innerWidth/8),
-                    y: Math.random()*(window.innerHeight/8)
-                },
-                tipo: "homenaje"
-            },
-            {
-                indice:3,
-                test: "Contenido",
-                origen: {
-                    x: Math.random()*(window.innerWidth/8),
-                    y: Math.random()*(window.innerHeight/8)
-                },
-                tipo: "informacion"
-            }
-        ]
 
 
         ventanas = ventanas.map((v,i)=>{

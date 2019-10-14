@@ -8,7 +8,7 @@
   import FamiliaDetalle from "./FamiliaDetalle.svelte";
   import AgrupacionesLista from "./AgrupacionesLista.svelte";
   import Slider from "../Slider/Slider.svelte";
-  import Fa from "../../../../node_modules/svelte-fa/dist/svelte-fa.mjs";
+  // import Fa from "../../../../node_modules/svelte-fa/dist/svelte-fa.mjs";
   import {
     faTimesCircle,
     faChevronDown
@@ -260,7 +260,8 @@
 
       <div class="BotonCierraWrapper">
         <button class="BotonConIcono" use:tap on:tap={cerrarVentana}>
-          <Fa icon={cierraIcono} class="BotonIcono" />
+          <!-- <Fa icon={cierraIcono} class="BotonIcono" /> -->
+          <i class="fa fa-times-circle"/>
         </button>
       </div>
       <!--  -->
@@ -280,7 +281,9 @@
 
       <div class="ContenedorAgrupaciones">
         <span class="Flecha">
-          <Fa class="FlechaIcono" icon={abajoIcono} />
+          <!-- <Fa class="FlechaIcono" icon={abajoIcono} /> -->
+          <i class="fa fa-chevron-down"/>
+
         </span>
         <div class="TitulosLista">
           <h6 class="TituloLista">Agrupaciones Lingüísticas</h6>

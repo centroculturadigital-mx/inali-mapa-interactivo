@@ -108,6 +108,54 @@
   }
 
 
+
+  let ventanas = []
+  
+  if(typeof window != "undefined" ) {
+      
+    ventanas = [
+        {
+            indice:0,
+            test: "Contenido",
+            acomodada: true,
+            origen: {
+                x: Math.random()*(window.innerWidth/8),
+                y: Math.random()*(window.innerHeight/8)
+            },
+            tipo: "twitter"
+        },
+        {
+            indice:1,
+            test: "Contenido",
+            origen: {
+                x: Math.random()*(window.innerWidth/8),
+                y: Math.random()*(window.innerHeight/8)
+            },
+            tipo: "familia"
+        },
+        {
+            indice:2,
+            test: "Contenido",
+            origen: {
+                x: Math.random()*(window.innerWidth/8),
+                y: Math.random()*(window.innerHeight/8)
+            },
+            tipo: "homenaje"
+        },
+        {
+            indice:3,
+            test: "Contenido",
+            origen: {
+                x: Math.random()*(window.innerWidth/8),
+                y: Math.random()*(window.innerHeight/8)
+            },
+            tipo: "informacion"
+        }
+    ]
+
+  }
+
+
 </script>
 
 <style>
@@ -220,7 +268,7 @@
     </div>
   {/if} -->
 
-  <Ventanas/>
+  <Ventanas ventanas={ventanas}/>
 
   <!-- {#if mostrarInformacion }
     <div class="Informacion" transition:fade>
