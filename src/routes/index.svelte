@@ -1,8 +1,9 @@
 <script>
 
+  import { tap } from '@sveltejs/gestures';
+
 	import Cabecera from '../componentes/general/Cabecera/Cabecera.svelte';
 	import Pie from '../componentes/general/Pie/Pie.svelte'
-
 
   import Drag from "../componentes/general/DragDrop/Drag.svelte";
   import Mapa from "../componentes/Mapa/Mapa.svelte";
@@ -85,6 +86,12 @@
     mostrarVolutaTexto = !mostrarVolutaTexto;
     console.log("alternarVolutaTexto",mostrarVolutaTexto);
   }
+
+  
+  const CerrarTwitter = () => {
+    mostrarTwitter = false;
+    
+  };
 
 
 </script>
@@ -178,7 +185,7 @@
   <Drag />
 
 
-  <VolutaBoton posIniX={1} posIniY={45} on:click={()=>alternarVolutaTexto()}/>
+  <VolutaBoton posIniX={1} posIniY={45}  on:click={()=>alternarVolutaTexto()}/>
   <VolutaBoton posIniX={20} posIniY={75} on:click={()=>alternarVolutaTexto()}/>
   <VolutaBoton posIniX={68} posIniY={40} on:click={()=>alternarVolutaTexto()}/>
   <VolutaBoton posIniX={85} posIniY={75} on:click={()=>alternarVolutaTexto()}/>
@@ -206,7 +213,7 @@
   {/if}
   {#if mostrarTwitter }
     <div class="TwitterVentana" transition:fade>
-        <TwitterVentana on:click={()=>alternarTwitter()}/>
+        <TwitterVentana  on:tap={CerrarTwitter()}/>
     </div>
   {/if}
   {#if mostrarHomenaje }

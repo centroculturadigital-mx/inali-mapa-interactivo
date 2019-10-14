@@ -10,7 +10,7 @@
   import Slider from "../Slider/Slider.svelte";
   import Fa from "../../../../node_modules/svelte-fa/dist/svelte-fa.mjs";
   import {
-    faTimesCircle,
+    
     faChevronDown
   } from "@fortawesome/free-solid-svg-icons";
   import { fade } from "svelte/transition";
@@ -21,7 +21,7 @@
   export let familia;
   export let cerrar;
 
-  let cierraIcono = faTimesCircle;
+  // let cierraIcono = faTimesCircle;
   let abajoIcono = faChevronDown;
 
   let detalleMostrar = false;
@@ -134,8 +134,8 @@
   }
 
   .Familia {
-    position: relative;
-    overflow-y: hidden;
+    /* position: relative; */
+    overflow-y: auto;
     background: #f7f7f7;
     border-radius: 10px;
   }
@@ -150,11 +150,14 @@
     justify-content: flex-end;
     width: 100%;
     height: 2rem;
+    position: absolute;
+    z-index: 1;
   }
 
   .Encabezado {
     width: 100%;
     height: auto;
+    padding-top: 1rem;
   }
 
   .Titulo {
@@ -256,6 +259,8 @@
     z-index: 1001;
   }
 
+  
+
 </style>
 
 <section class="VentanaFamiliaWrapper">
@@ -263,10 +268,11 @@
   <article class="Familia" bind:this={contenedor}>
 
     <div class="VentanaFamilia">
-
+      <!-- <div class="ContenedorHeader"> -->
       <div class="BotonCierraWrapper">
         <button class="BotonConIcono" use:tap on:tap={cerrarVentana}>
-          <Fa icon={cierraIcono} class="BotonIcono" />
+          <i class="fa fa-close"></i>
+          <!-- <Fa icon={cierraIcono} class="BotonIcono" /> -->
         </button>
       </div>
       <!--  -->
@@ -279,7 +285,11 @@
       <div class="BotonMasWrapper">
         <button class="Saber" use:tap on:tap={mostrarDetalle}>Saber más</button>
       </div>
+      
+      <!-- </div> -->
       <!--  -->
+      <!-- <div class="ContenedorScroll"> -->
+
       <div class="ContenedorCarrusel">
         <Slider />
       </div>
@@ -297,6 +307,8 @@
         </section>
       </div>
     </div>
+      
+      <!-- </div> -->
   </article>
   <!-- muestra detalle -->
   {#if detalleMostrar}

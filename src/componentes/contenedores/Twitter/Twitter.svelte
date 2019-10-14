@@ -1,7 +1,22 @@
 <script>
+
+    import { tap } from '@sveltejs/gestures';
+
+
     import IconoTwitterVentana from "./Iconos/IconoTwitterVentana.svelte";
     import Tweet from "./Tweet.svelte";
 
+    import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
+
+	function CerrarTwitter() {
+        dispatch(typeof CerrarTwitter === "function");
+        CerrarTwitter();
+    }
+
+
+   
 
 </script>
 
@@ -52,7 +67,7 @@
         .Tweets {
             width: 100%;
             max-height: 13.5rem;
-            overflow: auto;
+            overflow-y: auto;
             font-style: normal;
             font-weight: normal;
             font-size: 1rem;
@@ -75,7 +90,7 @@
             <h4 class="Activismo">
                 Activismo lingüístico
             </h4>
-            <button class="IconoCerrar" on:click>
+            <button class="IconoCerrar" on:use on:tap={CerrarTwitter}>
                 <i class="fa fa-close fa-lg"></i>
             </button>
     </header>
