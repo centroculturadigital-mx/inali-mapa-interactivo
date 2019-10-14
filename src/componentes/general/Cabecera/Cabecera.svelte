@@ -2,7 +2,6 @@
 import  Logo  from '../Logo/Logo.svelte'
 import  Ayuda  from '../Ayuda/Ayuda.svelte'
 import  BotonHomenaje  from '../BotonHomenaje/BotonHomenaje.svelte'
-// import Vivus from "vivus";
 
 export let alternarInformacion
 export let alternarHomenaje
@@ -17,11 +16,11 @@ header {
 	width: auto;
 	left: 0;
 	top: 0;
-	z-index: 100000;
+	z-index: -1;
 }
 </style>
 
-<header>
+<header on:click={console.log("DEBUGGGGGG")}>
 
 	<Logo />
 	<Ayuda on:click={()=>alternarInformacion()}/>

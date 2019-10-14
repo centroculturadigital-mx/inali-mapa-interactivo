@@ -7,6 +7,10 @@
 
 
 <style>
+    .Ventana, .Ventana * {
+        pointer-events:auto;
+    }
+    
     .Ventana {
 
         position: absolute;
@@ -17,8 +21,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2rem;
-        border:1rem solid #000;
+        /* font-size: 2rem;
+        border:1rem solid #000; */
     }
 </style>
 

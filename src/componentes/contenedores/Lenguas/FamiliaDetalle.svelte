@@ -2,19 +2,102 @@
 
   import { tap } from '@sveltejs/gestures';
 
-  // import Fa from '../../../../node_modules/svelte-fa/dist/svelte-fa.mjs';
-  // import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
-  // let cierraIcono = faArrowCircleLeft;
+  import interact from 'interactjs'
+  import { onMount } from 'svelte'
+
+  import Fa from '../../../../node_modules/svelte-fa/dist/svelte-fa.mjs';
+  import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
+
+
+  let contenedor
+
+  let ultimoTouchMoveY
+  let ultimoTouchMoveX
+
+  let ultimoScrollVentanaY = 0
+  let ultimoScrollVentanaX = 0
+
+
+  let cierraIcono = faArrowCircleLeft;
 
   export let cerrarDetalle;
+
+
+  onMount(()=>{
+
+    // botonFamiliaVentanaCerrar.addEventListener("touchstart",cerrarVentana)
+
+    if(!!contenedor) {
+
+      interact(contenedor)
+      .draggable({
+        autoScroll:true,
+        onstart: (e) => {
+          
+          ultimoTouchMoveY = e.clientY
+          ultimoTouchMoveX = e.clientX
+            
+        },
+        onmove: (e) => {
+          
+          let top=contenedor.getBoundingClientRect().top
+          let right=contenedor.getBoundingClientRect().right
+          let bottom=contenedor.getBoundingClientRect().bottom
+          let left=contenedor.getBoundingClientRect().left
+          if(
+            // adentro verticalmente
+            e.clientY > top && e.clientY < bottom
+            &&
+            // adentro horizontalmente
+            e.clientX > left && e.clientX < right
+            // &&
+            // extremo derecho
+            // e.clientX > right - 50
+          )  {
+
+            
+            let diferenciaY = (ultimoTouchMoveY-e.clientY)
+            let diferenciaX = (ultimoTouchMoveX-e.clientX)
+            
+            
+            if( Math.abs(diferenciaX) < Math.abs(diferenciaY) ) {
+              
+              ultimoScrollVentanaY += diferenciaY
+
+              contenedor.scrollTo({
+                top: diferenciaY*30,
+                behavior: 'smooth'
+              })
+            
+            }
+            
+            ultimoTouchMoveY = e.clientY
+            ultimoTouchMoveX = e.clientX
+            // const proporcionY = (e.clientY-top)/(bottom-top)
+            // const alturaDestino = document.querySelector(".FamiliaVentana").offsetHeight * proporcionY;
+            
+            
+            // contenedor.scrollTo({
+            //   top: alturaDestino,
+            //   behavior: 'smooth'
+  
+            // } )
+          }
+        }
+      })
+    
+    }
+  })
+
+
 
 </script>
 
 <style>
-  section {
+  /* section .Detalle {
     width: 100%;
-  }
+  } */
   .Detalle {
     padding: 0;
     background-color: #fff;
@@ -25,7 +108,7 @@
     background: #fff;
     font-size: 0.85rem;
     line-height: 1rem;
-    overflow-y: auto;
+    overflow-y: hidden;
     text-align: justify;
     color: #454344;
     height: 390px;
@@ -56,7 +139,7 @@
       <!-- <Fa icon={cierraIcono} /> -->
     </button>
   </div>
-  <section class="TextoWrapper">
+  <section class="TextoWrapper" bind:this={contenedor}>
     <div class="Texto">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quod

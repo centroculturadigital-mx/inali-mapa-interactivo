@@ -1,45 +1,29 @@
 <script>
+
+  import { tap } from '@sveltejs/gestures';
+
+  const escala = 0.02
+  const origenX = 38
+  const origenY = 37
+  const w = 71-38
+  const h = 57-37
+
   export let posIniX
   export let posIniY
+
+  $: posRealX = origenX + (posIniX*w)
+  $: posRealY = origenY + (posIniY*h)
 
 </script>
 
 <style>
-  button {
-    background-color: transparent;
-    border: 0;
-    margin: 0;
-    padding: 0;
-    z-index: 1000;
-  }
-
-  .TwitterBoton {
-    position: absolute;
-  }
-
-  svg {
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
+  path {
+    position: relative;
+    fill: #1DA1F2;
     cursor: pointer;
   }
-  /* svg:hover {
-    animation: flota 1s 1 forwards;
-  } */
-
-  path {
-    fill: #1DA1F2;
-  }
-
-  /* @keyframes flota {
-    0% {
-      transform: scale(0.5);
-    }
-    100% {
-      transform: scale(0.505);
-    }
-  } */
 </style>
-
+<!-- 
 <button class="TwitterBoton" on:click style={`left: ${posIniX}%; top: ${posIniY}%;`}>
 
   <svg
@@ -47,9 +31,9 @@
   height="55"
   viewBox="0 0 72 55"
   fill="none"
-  xmlns="http://www.w3.org/2000/svg">
+  xmlns="http://www.w3.org/2000/svg"> -->
 
-    <path
+    <path class="TwitterBoton" use:tap on:tap transform="translate({posRealX} {posRealY}) scale({escala}) "
       d="M68.75 6.47059C67.6716 7.0098 66.5931 7.54902 65.2451 7.81863C66.5931
       6.20098 67.6716 4.58333 68.2108 2.69608L69.0196 0L66.8627 1.34804C64.4363
       2.69608 62.0098 3.77451 59.3137 4.31372C56.6176 1.61765 53.1127 0.269608
@@ -66,6 +50,12 @@
       8.35784 53.652 9.16667 53.652 9.97549C53.9216 11.0539 53.1127 11.5931
       52.0343 11.5931Z"
     />
-  </svg>
+  <!-- </svg>
   
-</button>
+</button> -->
+
+
+
+ 38 - 71
+
+ 37 - 57

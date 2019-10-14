@@ -5,22 +5,24 @@
 	import Cabecera from '../componentes/general/Cabecera/Cabecera.svelte';
 	import Pie from '../componentes/general/Pie/Pie.svelte'
 
+  import FamiliaVentana from "../componentes/contenedores/Lenguas/FamiliaVentana.svelte";
+  import TwitterVentana from "../componentes/contenedores/Twitter/Twitter.svelte";
+  import Informacion from "../componentes/contenedores/Informacion/Informacion.svelte";
+  import Homenaje from "../componentes/contenedores/Homenaje/Homenaje.svelte";
+  
+  import VolutaTexto from "../componentes/VolutaTexto.svelte";
+
+  import Ventanas from "../componentes/contenedores/Ventanas/Ventanas.svelte";
+
   import Drag from "../componentes/general/DragDrop/Drag.svelte";
   import Mapa from "../componentes/Mapa/Mapa.svelte";
-  import FamiliaVentana from "../componentes/contenedores/Lenguas/FamiliaVentana.svelte";
-  import VolutaTexto from "../componentes/VolutaTexto.svelte";
 
   import { fade } from "svelte/transition";
 
   import familiasFake from "../../datosFalsos/familiasFake";
 
-  import Informacion from "../componentes/contenedores/Informacion/Informacion.svelte";
-  import TwitterVentana from "../componentes/contenedores/Twitter/Twitter.svelte";
-  import Homenaje from "../componentes/contenedores/Homenaje/Homenaje.svelte";
 
 
-  import VolutaBoton from "../componentes/VolutaBoton.svelte";
-  import TwitterBoton from "../componentes/TwitterBoton.svelte";
 
 
 	import GSAP1 from "../componentes/animacion/GSAP1.svelte";
@@ -87,11 +89,20 @@
     console.log("alternarVolutaTexto",mostrarVolutaTexto);
   }
 
-  
   const CerrarTwitter = () => {
     mostrarTwitter = false;
     
   };
+  const tapBotones = (e) => {
+    if(e.target.getAttribute("class").includes("TwitterBoton") ) {
+      alternarTwitter()
+    }
+
+    if(e.target.getAttribute("class").includes("VolutaBoton") ) {
+      alternarVolutaTexto()
+    }
+    
+  }
 
 
 </script>
@@ -102,6 +113,7 @@
 		background-color: transparent;
 		box-sizing: border-box;
 		position: fixed;
+    z-index: 0;
 		padding: 1rem;
 		margin: 0 auto;
 		height: 100%;
@@ -125,12 +137,14 @@
     position: absolute;
     left: 49rem;
     bottom: 12rem;
+    z-index: 1001;
   }
 
    .VolutaTexto {
     position: absolute;
     left: 23rem;
     bottom: 2rem;
+    z-index: 1001;
   }
 
   .FamiliaVentana {
@@ -139,9 +153,6 @@
     bottom: 4rem;
     z-index: 1001;
   }
-
-  
-
 	canvas {
 		background-color: #465D72;
 		width: 100vw;
@@ -185,35 +196,29 @@
   <Drag />
 
 
-  <VolutaBoton posIniX={1} posIniY={45}  on:click={()=>alternarVolutaTexto()}/>
-  <VolutaBoton posIniX={20} posIniY={75} on:click={()=>alternarVolutaTexto()}/>
-  <VolutaBoton posIniX={68} posIniY={40} on:click={()=>alternarVolutaTexto()}/>
-  <VolutaBoton posIniX={85} posIniY={75} on:click={()=>alternarVolutaTexto()}/>
-
-  <TwitterBoton posIniX={58} posIniY={20} on:click={()=>alternarTwitter()}/>
-  <TwitterBoton posIniX={18} posIniY={20} on:click={()=>alternarTwitter()}/>
-
 
 
   <!-- Elementos -->
-  <Mapa on:seleccionar={seleccionar} />
+  <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} />
   <!-- <Mapa on:seleccionar={console.log("aosijvieurn")}/> -->
 
+  <!-- 
   {#if !!familiaMostrar}
     <div class="FamiliaVentana" transition:fade>
       <FamiliaVentana familia={familiaMostrar} cerrar={cerrar} />
     </div>
   {/if}
+  {#if mostrarTwitter }
+    <div class="TwitterVentana" transition:fade>
+        <TwitterVentana on:click={()=>alternarTwitter()}/>
+    </div>
+  {/if} -->
 
+  <Ventanas/>
 
   {#if mostrarInformacion }
     <div class="Informacion" transition:fade>
       <Informacion on:click={()=>alternarInformacion()}/>
-    </div>
-  {/if}
-  {#if mostrarTwitter }
-    <div class="TwitterVentana" transition:fade>
-        <TwitterVentana  on:tap={CerrarTwitter()}/>
     </div>
   {/if}
   {#if mostrarHomenaje }
@@ -221,6 +226,8 @@
       <Homenaje on:click={()=>alternarHomenaje()}/>
     </div>
   {/if}
+
+
   {#if mostrarVolutaTexto }
   <div class="VolutaTexto" transition:fade>
     <VolutaTexto/>
@@ -229,6 +236,9 @@
 
 
 </main>
+
+
+
 
 
 <Pie />

@@ -12,7 +12,7 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
-    "@beyonk/svelte-carousel": "^2.1.0",
+    "@centroculturadigital-mx/svelte-carousel": "0.0.3",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@sveltejs/gestures": "0.0.1",
     "compression": "^1.7.1",
