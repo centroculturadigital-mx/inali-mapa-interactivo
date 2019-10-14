@@ -136,7 +136,6 @@
                 )
 
             } else {
-                console.log("misma");
                 
                 return false
             }
@@ -146,7 +145,6 @@
             ventanasEncimadas.push(v)
         }
 
-        console.log(ventanasEncimadas);
         
 
         return ventanasEncimadas
@@ -159,7 +157,6 @@
         let colisiones;
 
         colisiones = detectarColisiones(v)
-        console.log("colisiones?",colisiones);
 
         let otraAcomodada = colisiones.find(v_=>v_.acomodada)
         
@@ -193,7 +190,6 @@
     }
 
     const posicionarNuevoOrigen = (v,vL,vT) => {
-        console.log("pnO!",vL,vT,"?");
         
         // vL += 240
         // vT += 240
@@ -260,9 +256,9 @@
             {/if}
         </Ventana>
 
-        <div class="Origen" style="left: {ventana.origen.x}px; top: {ventana.origen.y}px">
+        <!-- <div class="Origen" style="left: {ventana.origen.x}px; top: {ventana.origen.y}px">
             {i+1}
-        </div>
+        </div> -->
 
     {/each}
 

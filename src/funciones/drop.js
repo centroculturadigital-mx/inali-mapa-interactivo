@@ -62,7 +62,9 @@ export default (interactObj, acceptObj, colorDefault, callback ) => {
       let actionY = e.target.getBoundingClientRect().top + e.target.getBoundingClientRect().height / 2
       
       callback(
-        e.target.id
+        e.target.id,
+        actionX,
+        actionY
       )
 
        

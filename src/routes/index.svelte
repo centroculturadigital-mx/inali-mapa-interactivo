@@ -45,6 +45,7 @@
 
   const seleccionar = e => {
     const id = e.detail.id;
+console.log("seleccinar",e);
     const x = e.detail.x;
     const y = e.detail.y;
 

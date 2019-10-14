@@ -13,6 +13,7 @@
 
     
   const funcionDrag = ( id, x, y ) => {
+      console.log("enviar evento seleccionar", id, x, y);
       
     dispatch('seleccionar', {id, x, y});
     
