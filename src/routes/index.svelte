@@ -63,26 +63,62 @@
   let mostrarHomenaje = false;
   let mostrarVolutaTexto = false;
 
-  const alternarInformacion = () => {
-    // mostrarInformacion = !mostrarInformacion;
-    // if (mostrarInformacion) {
-    //   mostrarHomenaje = false;
-    // } 
-    console.log("alternarInformacion");
+  const crearVentana = (tipo, x, y) => {
+    ventanas.push(
+      {
+        indice:ventanas.length,
+        origen: {
+            x,
+            y
+        },
+        left: x,
+        top: y,
+        tipo: tipo
+      }
+    )
+
+    if( ventanas.length == 1 ) {
+      ventanas[0].acomodada = true
+    }
+
+    ventanas = ventanas
+    console.log("ventanas",ventanas);
+    
   }
-  const alternarTwitter = () => {
+
+  const destruirVentana = (ventana) => {
+    ventanas = ventanas.filter(v=>v.indice!=ventana.indice)
+  }
+
+
+const alternarInformacion = (x,y) => {
+    
+    let ventana = ventanas.find(v=>v.tipo=="informacion")
+
+    if( ! ventana ) {
+      crearVentana("informacion",x,y)
+    } else {
+      destruirVentana(ventana)
+    }
+
+  }
+  const alternarTwitter = (x,y) => {
     // mostrarTwitter = !mostrarTwitter;
     console.log("alternarTwitter");
   }
-  const alternarHomenaje = () => {
-    // mostrarHomenaje = !mostrarHomenaje;
-    // if (mostrarHomenaje){
-    //   mostrarInformacion = false;
-    // } 
-    console.log("alternarHomenaje");
+  const alternarHomenaje = (x,y) => {
+    
+    let ventana = ventanas.find(v=>v.tipo=="homenaje")
+
+    if( ! ventana ) {
+      crearVentana("homenaje",x,y)
+    } else {
+      destruirVentana(ventana)
+    }
+
   }
 
-  const alternarVolutaTexto = () => {
+  const alternarVolutaTexto = (x,y) => {
     // mostrarVolutaTexto = !mostrarVolutaTexto;
     console.log("alternarVolutaTexto",mostrarVolutaTexto);
   }
@@ -90,19 +126,19 @@
   const tapBotones = (e) => {
     
     if(e.target.getAttribute("class").includes("TwitterBoton") ) {
-      alternarTwitter()
+      alternarTwitter(e.detail.x,e.detail.y)
     }
 
     if(e.target.getAttribute("class").includes("VolutaBoton") ) {
-      alternarVolutaTexto()
+      alternarVolutaTexto(e.detail.x,e.detail.y)
     }
 
     if(e.target.getAttribute("class").includes("HomenajeBoton") ) {
-      alternarHomenaje()
+      alternarHomenaje(e.detail.x,e.detail.y)
     }
 
     if(e.target.getAttribute("class").includes("InformacionBoton") ) {
-      alternarInformacion()
+      alternarInformacion(e.detail.x,e.detail.y)
     }
     
   }
@@ -111,49 +147,49 @@
 
   let ventanas = []
   
-  if(typeof window != "undefined" ) {
+  // if(typeof window != "undefined" ) {
       
-    ventanas = [
-        {
-            indice:0,
-            test: "Contenido",
-            acomodada: true,
-            origen: {
-                x: Math.random()*(window.innerWidth/8),
-                y: Math.random()*(window.innerHeight/8)
-            },
-            tipo: "twitter"
-        },
-        {
-            indice:1,
-            test: "Contenido",
-            origen: {
-                x: Math.random()*(window.innerWidth/8),
-                y: Math.random()*(window.innerHeight/8)
-            },
-            tipo: "familia"
-        },
-        {
-            indice:2,
-            test: "Contenido",
-            origen: {
-                x: Math.random()*(window.innerWidth/8),
-                y: Math.random()*(window.innerHeight/8)
-            },
-            tipo: "homenaje"
-        },
-        {
-            indice:3,
-            test: "Contenido",
-            origen: {
-                x: Math.random()*(window.innerWidth/8),
-                y: Math.random()*(window.innerHeight/8)
-            },
-            tipo: "informacion"
-        }
-    ]
+  //   ventanas = [
+  //       {
+  //           indice:0,
+  //           test: "Contenido",
+  //           acomodada: true,
+  //           origen: {
+  //               x: Math.random()*(window.innerWidth/8),
+  //               y: Math.random()*(window.innerHeight/8)
+  //           },
+  //           tipo: "twitter"
+  //       },
+  //       {
+  //           indice:1,
+  //           test: "Contenido",
+  //           origen: {
+  //               x: Math.random()*(window.innerWidth/8),
+  //               y: Math.random()*(window.innerHeight/8)
+  //           },
+  //           tipo: "familia"
+  //       },
+  //       {
+  //           indice:2,
+  //           test: "Contenido",
+  //           origen: {
+  //               x: Math.random()*(window.innerWidth/8),
+  //               y: Math.random()*(window.innerHeight/8)
+  //           },
+  //           tipo: "homenaje"
+  //       },
+  //       {
+  //           indice:3,
+  //           test: "Contenido",
+  //           origen: {
+  //               x: Math.random()*(window.innerWidth/8),
+  //               y: Math.random()*(window.innerHeight/8)
+  //           },
+  //           tipo: "informacion"
+  //       }
+  //   ]
 
-  }
+  // }
 
 
 </script>

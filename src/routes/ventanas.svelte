@@ -28,37 +28,6 @@
 
     const posicionarVentanas = () => {
 
-        ventanas = [
-            {
-                indice:0,
-                test: "Contenido",
-                acomodada: true,
-                origen: {
-                    x: Math.random()*(window.innerWidth/8),
-                    y: Math.random()*(window.innerHeight/8)
-                },
-                tipo: "twitter"
-            },
-            {
-                indice:1,
-                test: "Contenido",
-                origen: {
-                    x: Math.random()*(window.innerWidth/8),
-                    y: Math.random()*(window.innerHeight/8)
-                },
-                tipo: "familia"
-            },
-            {
-                indice:2,
-                test: "Contenido",
-                origen: {
-                    x: Math.random()*(window.innerWidth/8),
-                    y: Math.random()*(window.innerHeight/8)
-                },
-                tipo: "familia"
-            }
-        ]
-
 
         ventanas = ventanas.map((v,i)=>{
             
@@ -74,9 +43,9 @@
             let diffY = Math.abs((wH/2)-v.origen.y)
 
             if( v.origen.x < wW/2  ) {
-                vL = Math.max(Math.min((wW/2)-diffX,(wW-2)-240), 0)
+                vL = Math.max(Math.min((wW/2)-diffX,(wW-2)-240), 60)
             } else {
-                vL = Math.max(Math.min((wW/2)+diffX,wW-240), wW/2)
+                vL = Math.max(Math.min((wW/2)+diffX,wW-(240+60)), wW/2)
             }
 
             if( v.origen.y < wH/2 ) {

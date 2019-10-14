@@ -16,6 +16,8 @@
 
     export let ventanas = []
 
+    $: ventanas ? posicionarVentanas() : ()=>{}
+
 
     onMount(()=>{
         
@@ -189,7 +191,13 @@
         
         // vL += 240
         // vT += 240
-        v.left = vL + 300
+
+        if( vL > window.innerWidth / 2 ) {
+            v.left = vL - 300
+        } else {
+            v.left = vL + 300
+        }
+        
         v.top = vT //+ 300
 
     }
