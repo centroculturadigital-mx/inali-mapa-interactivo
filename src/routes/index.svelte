@@ -3,19 +3,22 @@
 	import Cabecera from '../componentes/general/Cabecera/Cabecera.svelte';
 	import Pie from '../componentes/general/Pie/Pie.svelte'
 
+  import FamiliaVentana from "../componentes/contenedores/Lenguas/FamiliaVentana.svelte";
+  import TwitterVentana from "../componentes/contenedores/Twitter/Twitter.svelte";
+  import Informacion from "../componentes/contenedores/Informacion/Informacion.svelte";
+  import Homenaje from "../componentes/contenedores/Homenaje/Homenaje.svelte";
+  
+  import VolutaTexto from "../componentes/VolutaTexto.svelte";
+
+  import Ventanas from "../componentes/contenedores/Ventanas/Ventanas.svelte";
 
   import Drag from "../componentes/general/DragDrop/Drag.svelte";
   import Mapa from "../componentes/Mapa/Mapa.svelte";
-  import FamiliaVentana from "../componentes/contenedores/Lenguas/FamiliaVentana.svelte";
-  import VolutaTexto from "../componentes/VolutaTexto.svelte";
 
   import { fade } from "svelte/transition";
 
   import familiasFake from "../../datosFalsos/familiasFake";
 
-  import Informacion from "../componentes/contenedores/Informacion/Informacion.svelte";
-  import TwitterVentana from "../componentes/contenedores/Twitter/Twitter.svelte";
-  import Homenaje from "../componentes/contenedores/Homenaje/Homenaje.svelte";
 
 
 
@@ -197,20 +200,22 @@
   <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} />
   <!-- <Mapa on:seleccionar={console.log("aosijvieurn")}/> -->
 
-  {#if !!familiaMostrar}
+  <!-- {#if !!familiaMostrar}
     <div class="FamiliaVentana" transition:fade>
       <FamiliaVentana familia={familiaMostrar} cerrar={cerrar} />
-    </div>
-  {/if}
-
-  {#if mostrarInformacion  }
-    <div class="Informacion">
-      <Informacion/>
     </div>
   {/if}
   {#if mostrarTwitter }
     <div class="TwitterVentana" transition:fade>
         <TwitterVentana on:click={()=>alternarTwitter()}/>
+    </div>
+  {/if} -->
+
+  <Ventanas/>
+
+  {#if mostrarInformacion  }
+    <div class="Informacion">
+      <Informacion/>
     </div>
   {/if}
   {#if mostrarHomenaje }
@@ -218,6 +223,8 @@
       <Homenaje/>
     </div>
   {/if}
+
+
   {#if mostrarVolutaTexto }
   <div class="VolutaTexto" transition:fade>
     <VolutaTexto/>

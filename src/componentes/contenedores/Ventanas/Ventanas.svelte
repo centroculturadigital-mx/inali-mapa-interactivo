@@ -1,13 +1,13 @@
 <script>
 
-    import Ventana from "../componentes/contenedores/Ventanas/Ventana.svelte";
+    import Ventana from "./Ventana.svelte";
 
     import {onMount} from "svelte";
 
-    import FamiliaVentana from "../componentes/contenedores/Lenguas/FamiliaVentana.svelte";
-    import TwitterVentana from "../componentes/contenedores/Twitter/Twitter.svelte";
+    import FamiliaVentana from "../Lenguas/FamiliaVentana.svelte";
+    import TwitterVentana from "../Twitter/Twitter.svelte";
 
-    import familiasFake from "../../datosFalsos/familiasFake";
+    import familiasFake from "../../../../datosFalsos/familiasFake";
 
     let familiaMostrar = familiasFake[0]
 
@@ -232,7 +232,8 @@
         height: 100vh;
         display: block;
         position: absolute;
-        z-index: 1001;
+        z-index: 60;
+        pointer-events: none;
     }
 
     .Origen {

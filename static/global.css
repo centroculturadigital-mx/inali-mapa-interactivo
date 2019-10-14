@@ -73,10 +73,18 @@ button:active {
 
 
 .carousel ul {
-	margin-top: 1rem !important;
+	margin-top: 1rem	 !important;
 }
 
 .carousel ul li {
 	background-color: var(--color-texto) !important;
 
+}
+
+
+svg {
+	pointer-events:none;
+}
+svg *{
+	pointer-events:auto;
 }
