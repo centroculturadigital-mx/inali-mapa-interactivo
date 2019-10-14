@@ -6,6 +6,7 @@ import MexicoPaths1366x768 from "./MexicoPaths1366x768.svelte";
 
 
 import TwitterBoton from "../TwitterBoton.svelte";
+import VolutaBoton from "../VolutaBoton.svelte";
 
 
 //
@@ -58,6 +59,11 @@ id="SVGMapa">
 <Twitter /> -->
   <TwitterBoton posIniX={0.75} posIniY={0.75} on:tap/>
   <TwitterBoton posIniX={0.25} posIniY={0.25} on:tap/>
+
+  <VolutaBoton posIniX={0.1} posIniY={0.45} on:tap/>
+  <VolutaBoton posIniX={0.20} posIniY={0.75} on:tap/>
+  <VolutaBoton posIniX={0.68} posIniY={0.40} on:tap/>
+  <VolutaBoton posIniX={0.85} posIniY={0.75} on:tap/>
 
 
 </svg>

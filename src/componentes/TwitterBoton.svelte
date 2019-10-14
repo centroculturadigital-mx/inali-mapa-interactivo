@@ -40,6 +40,7 @@
 
   path {
     fill: #1DA1F2;
+    box-shadow: 3px 3px 3px #000;
   }
 
   /* @keyframes flota {

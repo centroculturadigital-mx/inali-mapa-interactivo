@@ -18,8 +18,6 @@
   import Homenaje from "../componentes/contenedores/Homenaje/Homenaje.svelte";
 
 
-  import VolutaBoton from "../componentes/VolutaBoton.svelte";
-  // import TwitterBoton from "../componentes/TwitterBoton.svelte";
 
 
 	import GSAP1 from "../componentes/animacion/GSAP1.svelte";
@@ -189,11 +187,6 @@
   <!-- Interactividad -->
   <Drag />
 
-
-  <VolutaBoton posIniX={1} posIniY={45} on:click={()=>alternarVolutaTexto()}/>
-  <VolutaBoton posIniX={20} posIniY={75} on:click={()=>alternarVolutaTexto()}/>
-  <VolutaBoton posIniX={68} posIniY={40} on:click={()=>alternarVolutaTexto()}/>
-  <VolutaBoton posIniX={85} posIniY={75} on:click={()=>alternarVolutaTexto()}/>
 
     <!-- <TwitterBoton posIniX={58} posIniY={20} on:click={()=>alternarTwitter()}/>
     <TwitterBoton posIniX={18} posIniY={20} on:click={()=>alternarTwitter()}/> -->
