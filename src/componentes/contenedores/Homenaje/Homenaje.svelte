@@ -1,6 +1,95 @@
 <script>
     let portilla = 'leon-portilla.png';
 
+
+  import interact from 'interactjs'
+  import { tap } from '@sveltejs/gestures';
+  import { onMount } from 'svelte';
+
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
+
+  const cerrar = () => {
+    
+    dispatch("cerrar")
+    
+  }
+
+  let contenedor
+
+  let ultimoTouchMoveY
+  let ultimoTouchMoveX
+
+  let ultimoScrollVentanaY = 0
+  let ultimoScrollVentanaX = 0
+
+  onMount(()=>{
+
+    // botonFamiliaVentanaCerrar.addEventListener("touchstart",cerrarVentana)
+
+    if(!!contenedor) {
+
+      interact(contenedor)
+      .draggable({
+        autoScroll:true,
+        onstart: (e) => {
+          
+          ultimoTouchMoveY = e.clientY
+          ultimoTouchMoveX = e.clientX
+            
+        },
+        onmove: (e) => {
+          
+          let top=contenedor.getBoundingClientRect().top
+          let right=contenedor.getBoundingClientRect().right
+          let bottom=contenedor.getBoundingClientRect().bottom
+          let left=contenedor.getBoundingClientRect().left
+          if(
+            // adentro verticalmente
+            e.clientY > top && e.clientY < bottom
+            &&
+            // adentro horizontalmente
+            e.clientX > left && e.clientX < right
+            // &&
+            // extremo derecho
+            // e.clientX > right - 50
+          )  {
+
+            
+            let diferenciaY = (ultimoTouchMoveY-e.clientY)
+            let diferenciaX = (ultimoTouchMoveX-e.clientX)
+            
+            
+            if( Math.abs(diferenciaX) < Math.abs(diferenciaY) ) {
+              
+              ultimoScrollVentanaY += diferenciaY
+
+              contenedor.scrollTo({
+                top: diferenciaY*30,
+                behavior: 'smooth'
+              })
+            
+            }
+            
+            ultimoTouchMoveY = e.clientY
+            ultimoTouchMoveX = e.clientX
+            // const proporcionY = (e.clientY-top)/(bottom-top)
+            // const alturaDestino = document.querySelector(".FamiliaVentana").offsetHeight * proporcionY;
+            
+            
+            // contenedor.scrollTo({
+            //   top: alturaDestino,
+            //   behavior: 'smooth'
+  
+            // } )
+          }
+        }
+      })
+    
+    }
+  })
 </script>
 
 <style>
@@ -16,7 +105,7 @@
             background-color: #fff;
             color: #333;
             box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
-            z-index: -1;
+            z-index: 100;
 
         }
 
@@ -59,7 +148,7 @@
         .Texto {
             width: 100%;
             max-height: 13rem;
-            overflow: auto;
+            overflow: hidden;
             color: #5E5E5E;
             font-style: normal;
             font-weight: normal;
@@ -88,12 +177,12 @@
                 Miguel León Portilla
             </h4>
         </div>
-        <button class="IconoCerrarHomenaje" on:click>
-            <i class="fa fa-close fa-lg"></i>
+        <button class="Cerrar" use:tap on:tap={cerrar}>
+            <i class="fa fa-times-circle"/>
         </button>
     </header>
     <div class="Semblanza">
-        <div class="Texto">
+        <div class="Texto" bind:this={contenedor}>
             <p class="Fecha">
                 Ciudad de México, 22 de febrero de 1926-Ibidem, 1 de octubre de 2019.
             </p>

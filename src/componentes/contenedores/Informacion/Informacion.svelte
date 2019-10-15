@@ -1,6 +1,97 @@
 <script>
     import IconoInformacion from "./Iconos/IconoInformacion.svelte";
     import TituloMapa from "./Iconos/TituloMapa.svelte";
+
+  import { createEventDispatcher } from 'svelte';
+
+
+  import interact from 'interactjs'
+  import { tap } from '@sveltejs/gestures';
+  import { onMount } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
+  let contenedor
+
+  let ultimoTouchMoveY
+  let ultimoTouchMoveX
+
+  let ultimoScrollVentanaY = 0
+  let ultimoScrollVentanaX = 0
+
+
+  const cerrar = () => {
+    
+    dispatch("cerrar")
+    
+  }
+
+  onMount(()=>{
+
+    // botonFamiliaVentanaCerrar.addEventListener("touchstart",cerrarVentana)
+
+    if(!!contenedor) {
+
+      interact(contenedor)
+      .draggable({
+        autoScroll:true,
+        onstart: (e) => {
+          
+          ultimoTouchMoveY = e.clientY
+          ultimoTouchMoveX = e.clientX
+            
+        },
+        onmove: (e) => {
+          
+          let top=contenedor.getBoundingClientRect().top
+          let right=contenedor.getBoundingClientRect().right
+          let bottom=contenedor.getBoundingClientRect().bottom
+          let left=contenedor.getBoundingClientRect().left
+          if(
+            // adentro verticalmente
+            e.clientY > top && e.clientY < bottom
+            &&
+            // adentro horizontalmente
+            e.clientX > left && e.clientX < right
+            // &&
+            // extremo derecho
+            // e.clientX > right - 50
+          )  {
+
+            
+            let diferenciaY = (ultimoTouchMoveY-e.clientY)
+            let diferenciaX = (ultimoTouchMoveX-e.clientX)
+            
+            
+            if( Math.abs(diferenciaX) < Math.abs(diferenciaY) ) {
+              
+              ultimoScrollVentanaY += diferenciaY
+
+              contenedor.scrollTo({
+                top: diferenciaY*30,
+                behavior: 'smooth'
+              })
+            
+            }
+            
+            ultimoTouchMoveY = e.clientY
+            ultimoTouchMoveX = e.clientX
+            // const proporcionY = (e.clientY-top)/(bottom-top)
+            // const alturaDestino = document.querySelector(".FamiliaVentana").offsetHeight * proporcionY;
+            
+            
+            // contenedor.scrollTo({
+            //   top: alturaDestino,
+            //   behavior: 'smooth'
+  
+            // } )
+          }
+        }
+      })
+    
+    }
+  })
+
 </script>
 
 <style>
@@ -57,7 +148,7 @@
         .Texto {
             width: 100%;
             max-height: 13rem;
-            overflow: auto;
+            overflow: hidden;
             color: #5E5E5E;
             font-style: normal;
             font-weight: normal;
@@ -73,15 +164,12 @@
         <div class="TituloMapa">
             <TituloMapa/>
         </div>
-        <div class="IconoInformacion">
-            <IconoInformacion/>
-        </div>
-        <button class="IconoCerrarInfo" on:click>
-            <i class="fa fa-close fa-lg"></i>
+        <button class="IconoInformacion" use:tap on:tap={cerrar}>
+            <i class="fa fa-times-circle"/>
         </button>
     </header>
     <div class="Acerca">
-        <div class="Texto">
+        <div class="Texto" bind:this={contenedor}>
             <h3 class="Subtitulo">
                 ACERCA DE 
             </h3>

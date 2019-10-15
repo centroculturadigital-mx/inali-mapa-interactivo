@@ -47,10 +47,17 @@
 
   const seleccionar = e => {
     const id = e.detail.id;
+console.log("seleccinar",e);
+    const x = e.detail.x;
+    const y = e.detail.y;
 
     if (!!id) {
       familiaMostrar =
         familiasFake[Math.floor(Math.random() * familiasFake.length)];
+
+        let v = crearVentana("familia",x,Math.random() *600)
+        v.props.familia = familiaMostrar
+        
     } else {
       familiaMostrar = null;
     }
@@ -65,27 +72,77 @@
   let mostrarHomenaje = false;
   let mostrarVolutaTexto = false;
 
-  const alternarInformacion = () => {
-    mostrarInformacion = !mostrarInformacion;
-    if (mostrarInformacion) {
-      mostrarHomenaje = false;
-    } 
-    console.log("alternarInformacion",mostrarInformacion);
-  }
-  const alternarTwitter = () => {
-    mostrarTwitter = !mostrarTwitter;
-    console.log("alternarTwitter",mostrarTwitter);
-  }
-  const alternarHomenaje = () => {
-    mostrarHomenaje = !mostrarHomenaje;
-    if (mostrarHomenaje){
-      mostrarInformacion = false;
-    } 
-    console.log("alternarHomenaje",mostrarHomenaje);
+  const crearVentana = (tipo, x, y) => {
+    
+    let nuevaVentana = {
+      indice:ventanas.length,
+      origen: {
+          x,
+          y
+      },
+      left: x,
+      top: y,
+      tipo: tipo,
+      props: {}
+    }
+
+
+    if( ventanas.length == 0 ) {
+      nuevaVentana.acomodada = true
+    }
+
+    ventanas.push( nuevaVentana )
+    
+    ventanas = ventanas
+    
+    return nuevaVentana
+
   }
 
-  const alternarVolutaTexto = () => {
-    mostrarVolutaTexto = !mostrarVolutaTexto;
+  const destruirVentana = (ventana) => {
+    ventanas = ventanas.filter(v=>v.indice!=ventana.indice)
+  }
+
+
+  const alternarTwitter = (x,y) => {
+    // mostrarTwitter = !mostrarTwitter;
+    let ventana = ventanas.find(v=>v.tipo=="twitter")
+
+    if( ! ventana ) {
+      crearVentana("twitter",x,y)
+    } else {
+      destruirVentana(ventana)
+    }
+
+  }
+
+
+
+  const alternarInformacion = (x,y) => {
+    
+    let ventana = ventanas.find(v=>v.tipo=="informacion")
+
+    if( ! ventana ) {
+      crearVentana("informacion",x,y)
+    } else {
+      destruirVentana(ventana)
+    }
+
+  }
+  const alternarHomenaje = (x,y) => {
+    
+    let ventana = ventanas.find(v=>v.tipo=="homenaje")
+
+    if( ! ventana ) {
+      crearVentana("homenaje",x,y)
+    } else {
+      destruirVentana(ventana)
+    }
+
+  }
+
+  const alternarVolutaTexto = (x,y) => {
+    // mostrarVolutaTexto = !mostrarVolutaTexto;
     console.log("alternarVolutaTexto",mostrarVolutaTexto);
   }
 
@@ -95,15 +152,35 @@
   };
   const tapBotones = (e) => {
     if(e.target.getAttribute("class").includes("TwitterBoton") ) {
-      alternarTwitter()
+      alternarTwitter(e.detail.x,e.detail.y)
     }
 
     if(e.target.getAttribute("class").includes("VolutaBoton") ) {
-      alternarVolutaTexto()
+      alternarVolutaTexto(e.detail.x,e.detail.y)
+    }
+
+    if(e.target.getAttribute("class").includes("HomenajeBoton") ) {
+      alternarHomenaje(e.detail.x,e.detail.y)
+    }
+
+    if(e.target.getAttribute("class").includes("InformacionBoton") ) {
+      console.log("InformacionBoton");
+      
+      alternarInformacion(e.detail.x,e.detail.y)
     }
     
   }
 
+
+
+  let ventanas = []
+  
+
+  const cerrarVentana = (e) => {
+
+    destruirVentana(e.detail.ventana)
+
+  }
 
 </script>
 
@@ -121,38 +198,6 @@
 		color: var(--color-texto);
   }
   
-  .Homenaje {
-    position: absolute;
-    top: .75rem;
-    right: 5rem;
-  }
-
-  .Informacion {
-    position: absolute;
-    top: .75rem;
-    right: 5rem;
-  }
-
-  .TwitterVentana {
-    position: absolute;
-    left: 49rem;
-    bottom: 12rem;
-    z-index: 1001;
-  }
-
-   .VolutaTexto {
-    position: absolute;
-    left: 23rem;
-    bottom: 2rem;
-    z-index: 1001;
-  }
-
-  .FamiliaVentana {
-    position: absolute;
-    left: 3rem;
-    bottom: 4rem;
-    z-index: 1001;
-  }
 	canvas {
 		background-color: #465D72;
 		width: 100vw;
@@ -169,8 +214,7 @@
 <canvas bind:this={canvas}></canvas>
 
 {#if !! canvas }
-	<!-- <GSAP1 canvas={canvas}/>
-	<FormaAudio canvas={canvas}/> -->
+	<GSAP1 canvas={canvas}/>
 <!-- 
 <FraseViva canvas={canvas}/> -->
 {/if}
@@ -188,6 +232,7 @@
       alternarHomenaje,
     }
   }
+  on:tap={(e)=>tapBotones(e)} 
 />
 
 
@@ -214,24 +259,30 @@
     </div>
   {/if} -->
 
-  <Ventanas/>
+  <Ventanas ventanas={ventanas} on:cerrar={cerrarVentana}/>
 
-  {#if mostrarInformacion }
+  <!-- {#if mostrarInformacion }
     <div class="Informacion" transition:fade>
       <Informacion on:click={()=>alternarInformacion()}/>
     </div>
   {/if}
   {#if mostrarHomenaje }
     <div class="Homenaje" transition:fade>
-      <Homenaje on:click={()=>alternarHomenaje()}/>
+      <Homenaje on:tap={()=>alternarHomenaje()}/>
     </div>
-  {/if}
+  {/if} -->
 
 
   {#if mostrarVolutaTexto }
   <div class="VolutaTexto" transition:fade>
     <VolutaTexto/>
   </div>
+  {/if}
+
+
+
+  {#if !! canvas }
+    <FormaAudio canvas={canvas}/>
   {/if}
 
 

@@ -4,20 +4,31 @@
 
     import {onMount} from "svelte";
 
+    import { createEventDispatcher } from 'svelte';
+
     import FamiliaVentana from "../Lenguas/FamiliaVentana.svelte";
     import TwitterVentana from "../Twitter/Twitter.svelte";
+    
+    import Informacion from "../Informacion/Informacion.svelte";
+    import Homenaje from "../Homenaje/Homenaje.svelte";
+ 
 
+    const dispatch = createEventDispatcher();
+    
     import familiasFake from "../../../../datosFalsos/familiasFake";
 
     let familiaMostrar = familiasFake[0]
 
-    let ventanas = []
+    export let ventanas = []
+
+
+    $: ventanas ? posicionarVentanas() : ()=>{}
 
 
     onMount(()=>{
         
         
-        if( typeof window != "undefined" ) {
+        if( typeof window != "undefined" && !! ventanas ) {
     
             posicionarVentanas()
         
@@ -27,37 +38,6 @@
 
 
     const posicionarVentanas = () => {
-
-        ventanas = [
-            {
-                indice:0,
-                test: "Contenido",
-                acomodada: true,
-                origen: {
-                    x: Math.random()*(window.innerWidth/8),
-                    y: Math.random()*(window.innerHeight/8)
-                },
-                tipo: "twitter"
-            },
-            {
-                indice:1,
-                test: "Contenido",
-                origen: {
-                    x: Math.random()*(window.innerWidth/8),
-                    y: Math.random()*(window.innerHeight/8)
-                },
-                tipo: "familia"
-            },
-            {
-                indice:2,
-                test: "Contenido",
-                origen: {
-                    x: Math.random()*(window.innerWidth/8),
-                    y: Math.random()*(window.innerHeight/8)
-                },
-                tipo: "familia"
-            }
-        ]
 
 
         ventanas = ventanas.map((v,i)=>{
@@ -156,7 +136,6 @@
                 )
 
             } else {
-                console.log("misma");
                 
                 return false
             }
@@ -166,7 +145,6 @@
             ventanasEncimadas.push(v)
         }
 
-        console.log(ventanasEncimadas);
         
 
         return ventanasEncimadas
@@ -179,7 +157,6 @@
         let colisiones;
 
         colisiones = detectarColisiones(v)
-        console.log("colisiones?",colisiones);
 
         let otraAcomodada = colisiones.find(v_=>v_.acomodada)
         
@@ -213,13 +190,26 @@
     }
 
     const posicionarNuevoOrigen = (v,vL,vT) => {
-        console.log("pnO!",vL,vT,"?");
         
         // vL += 240
         // vT += 240
-        v.left = vL + 300
-        v.top = vT + 300
 
+        if( vL > window.innerWidth / 2 ) {
+            v.left = vL - 300
+        } else {
+            v.left = vL + 300
+        }
+
+        v.top = vT //+ 300
+
+    }
+
+
+
+
+    const cerrar = (ventana) => {
+        
+        dispatch("cerrar", {ventana})
     }
 
 
@@ -253,16 +243,22 @@
 
         <Ventana {...ventana}>
             {#if ventana.tipo=="twitter"}
-                <TwitterVentana/>
+                <TwitterVentana on:cerrar={()=>cerrar(ventana)}/>
             {/if}
             {#if ventana.tipo=="familia"}
-                <FamiliaVentana familia={familiaMostrar}/>
+                <FamiliaVentana familia={familiaMostrar} {...ventana.props} on:cerrar={()=>cerrar(ventana)}/>
+            {/if}
+            {#if ventana.tipo=="homenaje"}
+                <Homenaje on:cerrar={()=>cerrar(ventana)}/>
+            {/if}
+            {#if ventana.tipo=="informacion"}
+                <Informacion on:cerrar={()=>cerrar(ventana)}/>
             {/if}
         </Ventana>
 
-        <div class="Origen" style="left: {ventana.origen.x}px; top: {ventana.origen.y}px">
+        <!-- <div class="Origen" style="left: {ventana.origen.x}px; top: {ventana.origen.y}px">
             {i+1}
-        </div>
+        </div> -->
 
     {/each}
 

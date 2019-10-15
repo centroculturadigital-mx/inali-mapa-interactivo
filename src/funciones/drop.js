@@ -58,8 +58,14 @@ export default (interactObj, acceptObj, colorDefault, callback ) => {
       // apare ceventana datos
       // ventanaFamilia.style.display = "block"
       // ventanaFamilia.style.opacity = 1  
+      let actionX = e.target.getBoundingClientRect().left + e.target.getBoundingClientRect().width / 2
+      let actionY = e.target.getBoundingClientRect().top + e.target.getBoundingClientRect().height / 2
       
-      callback(e.target.id)
+      callback(
+        e.target.id,
+        actionX,
+        actionY
+      )
 
        
     },

@@ -1,3 +1,7 @@
+<script>
+  import {tap} from "@sveltejs/gestures"
+</script>
+
 <style>
   svg {
     width: 38%;
@@ -9,7 +13,9 @@
   height="80"
   viewBox="0 0 80 80"
   fill="none"
-  xmlns="http://www.w3.org/2000/svg">
+  xmlns="http://www.w3.org/2000/svg"
+  use:tap on:tap
+  >
   <circle cx="40" cy="40" r="40" fill="white" />
   <path
     d="M44.134 35.0571V58.4772H35.4501V35.0571H44.134ZM39.792 22.119C41.1955

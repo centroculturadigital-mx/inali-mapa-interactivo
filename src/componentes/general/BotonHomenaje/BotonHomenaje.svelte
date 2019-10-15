@@ -1,4 +1,7 @@
 <script>
+    
+    import { tap } from "@sveltejs/gestures"
+
     let portilla = 'leon-portilla.png';
     
 </script>
@@ -15,7 +18,7 @@
         z-index: 10000;
     }
 
-    .FotoHomenaje {
+    .HomenajeBoton {
         display: flex;
     }
 
@@ -28,6 +31,6 @@
 
 </style>
 
- <button class="FotoHomenaje" on:click>
+ <button class="HomenajeBoton" use:tap on:tap>
     <img src="{portilla}"  alt="homenaje">
  </button>

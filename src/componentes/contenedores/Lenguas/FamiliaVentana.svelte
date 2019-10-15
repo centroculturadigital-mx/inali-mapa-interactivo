@@ -3,12 +3,22 @@
   import interact from 'interactjs'
   import { tap } from '@sveltejs/gestures';
 
+  import { createEventDispatcher } from 'svelte';
+
+  const dispatch = createEventDispatcher();
+
+
+  const cerrar = () => {
+    
+    dispatch("cerrar")
+    
+  }
   
 
   import FamiliaDetalle from "./FamiliaDetalle.svelte";
   import AgrupacionesLista from "./AgrupacionesLista.svelte";
   import Slider from "../Slider/Slider.svelte";
-  import Fa from "../../../../node_modules/svelte-fa/dist/svelte-fa.mjs";
+  // import Fa from "../../../../node_modules/svelte-fa/dist/svelte-fa.mjs";
   import {
     
     faChevronDown
@@ -19,7 +29,6 @@
   import lenguas from "../../../../datosFalsos/lenguasFake";
 
   export let familia;
-  export let cerrar;
 
   // let cierraIcono = faTimesCircle;
   let abajoIcono = faChevronDown;
@@ -36,11 +45,6 @@
   };
   
 
-  function cerrarVentana() {
-    if (typeof cerrar === "function") {
-      cerrar();
-    }
-  }
 
   // let botonFamiliaVentanaCerrar
   let contenedor
@@ -264,9 +268,9 @@
     <div class="VentanaFamilia">
       <!-- <div class="ContenedorHeader"> -->
       <div class="BotonCierraWrapper">
-        <button class="BotonConIcono" use:tap on:tap={cerrarVentana}>
-          <i class="fa fa-close"></i>
+        <button class="BotonConIcono" use:tap on:tap={cerrar}>
           <!-- <Fa icon={cierraIcono} class="BotonIcono" /> -->
+          <i class="fa fa-times-circle"/>
         </button>
       </div>
       <!--  -->
@@ -290,7 +294,9 @@
 
       <div class="ContenedorAgrupaciones">
         <span class="Flecha">
-          <Fa class="FlechaIcono" icon={abajoIcono} />
+          <!-- <Fa class="FlechaIcono" icon={abajoIcono} /> -->
+          <i class="fa fa-chevron-down"/>
+
         </span>
         <div class="TitulosLista">
           <h6 class="TituloLista">Agrupaciones Lingüísticas</h6>

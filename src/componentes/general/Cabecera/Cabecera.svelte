@@ -1,10 +1,9 @@
 <script>
+
+import { tap } from "@sveltejs/gestures"
 import  Logo  from '../Logo/Logo.svelte'
 import  Ayuda  from '../Ayuda/Ayuda.svelte'
 import  BotonHomenaje  from '../BotonHomenaje/BotonHomenaje.svelte'
-
-export let alternarInformacion
-export let alternarHomenaje
 
 </script>
 
@@ -16,14 +15,14 @@ header {
 	width: auto;
 	left: 0;
 	top: 0;
-	z-index: -1;
+	z-index: 100;
 }
 </style>
 
-<header on:click={console.log("DEBUGGGGGG")}>
+<header>
 
 	<Logo />
-	<Ayuda on:click={()=>alternarInformacion()}/>
-	<BotonHomenaje on:click={()=>alternarHomenaje()}/>
+	<Ayuda on:tap/>
+	<BotonHomenaje on:tap/>
 
 </header>

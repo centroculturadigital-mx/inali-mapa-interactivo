@@ -12,9 +12,10 @@
   const dispatch = createEventDispatcher();
 
     
-  const funcionDrag = ( id  ) => {
+  const funcionDrag = ( id, x, y ) => {
+      console.log("enviar evento seleccionar", id, x, y);
       
-    dispatch('seleccionar', {id});
+    dispatch('seleccionar', {id, x, y});
     
   }
 

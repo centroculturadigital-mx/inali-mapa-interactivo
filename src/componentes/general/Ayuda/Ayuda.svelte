@@ -1,4 +1,6 @@
 <script>
+import {tap} from "@sveltejs/gestures"
+
 let heightAyuda = 80;
 let widthAyuda = 80;
 let color = 'white'
@@ -80,7 +82,7 @@ figure {
 }
 </style>
 <!--  -->
-<button on:click>
+<button class="InformacionBoton" use:tap on:tap>
   <figure>
 
   <svg width={widthAyuda} height={heightAyuda} viewBox="0 0 {heightAyuda*2} {widthAyuda*2}" fill="none" xmlns="http://www.w3.org/2000/svg">
