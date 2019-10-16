@@ -3,7 +3,7 @@
 
   import { tap } from '@sveltejs/gestures';
 
-  import { TweenLite, Elastic } from "gsap";
+  import { TweenLite, Elastic, Circ } from "gsap";
 
 
 	import Cabecera from '../componentes/general/Cabecera/Cabecera.svelte';
@@ -138,22 +138,32 @@
   const alternarInformacion = (x,y) => {
     
     let ventana = ventanas.find(v=>v.tipo=="informacion")
-
+    let otra = ventanas.find(v=>v.tipo=="homenaje")
+    
     if( ! ventana ) {
-      crearVentana("informacion",x,y)
+      crearVentana("informacion",window.innerWidth-(240+80),48)
     } else {
       destruirVentana(ventana)
+    }
+    
+    if( !! otra ) {
+      destruirVentana(otra)
     }
 
   }
   const alternarHomenaje = (x,y) => {
     
     let ventana = ventanas.find(v=>v.tipo=="homenaje")
+    let otra = ventanas.find(v=>v.tipo=="informacion")
 
     if( ! ventana ) {
-      crearVentana("homenaje",x,y)
+      crearVentana("homenaje",window.innerWidth-(240+80),48)
     } else {
       destruirVentana(ventana)
+    }
+    
+    if( !! otra ) {
+      destruirVentana(otra)
     }
 
   }
@@ -212,11 +222,12 @@
 
 
         TweenLite.to(item,1.3,{
-          x:p.posicion[0],y:p.posicion[1],          
+          x:p.posicion[0],y:p.posicion[1],ease: Circ.ease          
         })
-        TweenLite.from(
-          item,2,
-          {rotation:90, ease: Elastic.easeInOut, transformOrigin:"50% 50%"}
+        TweenLite.fromTo(
+          item,3,
+          {rotation:90, ease: Elastic.easeIn, transformOrigin:"50% 50%"},
+          {rotation:0, ease: Elastic.easeOut, transformOrigin:"50% 50%"}
         )
         
         // item.setAttribute("data-x", p.posicion[0]);
