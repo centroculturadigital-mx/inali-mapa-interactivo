@@ -163,10 +163,10 @@
   <TwitterBoton posIniX={0} posIniY={0.75} on:tap />
   <TwitterBoton posIniX={0.98} posIniY={0.27} on:tap />
   <!--  -->
-  <VolutaBoton posIniX={0} posIniY={0.18} on:tap />
+  <!-- <VolutaBoton posIniX={0} posIniY={0.18} on:tap />
   <VolutaBoton posIniX={0.27} posIniY={0.9} on:tap />
   <VolutaBoton posIniX={0.73} posIniY={0.4} on:tap />
-  <VolutaBoton posIniX={0.92} posIniY={0.75} on:tap />
+  <VolutaBoton posIniX={0.92} posIniY={0.75} on:tap /> -->
 
 </svg>
 <!--  -->
