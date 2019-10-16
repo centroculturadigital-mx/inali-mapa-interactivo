@@ -332,9 +332,9 @@
 
 
   {#if mostrarVolutaTexto }
-  <div class="VolutaTexto" transition:fade>
+  <!-- <div class="VolutaTexto" transition:fade>
     <VolutaTexto/>
-  </div>
+  </div> -->
   {/if}
 
 
