@@ -151,8 +151,8 @@
   .BotonCierraWrapper {
     display: flex;
     justify-content: flex-end;
-    width: 100%;
-    height: 2rem;
+    width: 127%;
+    /* height: 2rem; */
     position: absolute;
     z-index: 1;
   }
@@ -196,7 +196,7 @@
     box-sizing: border-box;
     border-radius: 15px;
     color: #e6aa30;
-    width: 35%;
+    width: 25%;
     height: auto;
     cursor: pointer;
     background-color: #f7f7f7;
@@ -216,7 +216,7 @@
   } */
 
   .ContenedorAgrupaciones {
-    padding: 0.5rem;
+    padding: 1rem;
   }
   .Flecha {
     font-size: 24px;
