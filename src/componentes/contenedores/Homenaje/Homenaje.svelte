@@ -133,12 +133,13 @@
             border-radius: 50%;
         }
 
-        .IconoCerrarHomenaje {
+        .Cerrar {
             padding: 0;
             background-color: transparent;
             border: none;
             color: #fff;
             cursor: pointer;
+            font-size: 1.25rem;
         }
 
         .Semblanza {
