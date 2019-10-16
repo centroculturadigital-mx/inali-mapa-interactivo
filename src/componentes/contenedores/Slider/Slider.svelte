@@ -2,7 +2,11 @@
   import { onMount } from "svelte";
   import Carousel from "@centroculturadigital-mx/svelte-carousel";
   import { ChevronLeftIcon, ChevronRightIcon } from "../../../../node_modules/svelte-feather-icons/src/index.js";
-  import slides from "../../../../datosFalsos/slidesFake";
+  // import slides from "../../../../datosFalsos/slidesFake";
+
+  export let imagenes
+
+  $: console.log(imagenes)
   
   onMount(() => {
     // fix para carga erronea de imagen
@@ -48,18 +52,19 @@
 </style>
 
 <!-- <Carousel perPage={{ 320: 1, 760: 1, 1024: 1, 1200: 1 }} loop> -->
-<Carousel perPage={{ 800: 1 }} loop>
+{#if imagenes && imagenes.length} 
+  <Carousel perPage={{ 800: 1 }} loop>
 
   <span class="Control" slot="left-control">
     <ChevronLeftIcon />
   </span>
 
-  {#each slides as slide}
+  {#each imagenes as imagen}
     <div class="SlideContent">
-      <img class="Imagen" src={slide.imgURI} alt="INALI" />
+      <img class="Imagen" src={imagen.url} alt="INALI" />
       <div class="TextoFotos">
-        <h4 class="TextoFotosTitulo">{slide.nombre}</h4>
-        <p class="TextoFotosSubTitulo">{slide.pieDeFoto}</p>
+        <h4 class="TextoFotosTitulo">{imagen.titulo}</h4>
+        <p class="TextoFotosSubTitulo">{imagen.creditos}</p>
       </div>
     </div>
   {/each}
@@ -69,3 +74,4 @@
   </span>
 
 </Carousel>
+{/if}

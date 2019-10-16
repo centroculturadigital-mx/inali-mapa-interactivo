@@ -13,7 +13,6 @@
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
   // datos falsos
-  import lenguas from "../../../../datosFalsos/lenguasFake";
   
   export let familia;
 
@@ -50,11 +49,20 @@
   let ultimoScrollVentanaX = 0
 
   let agrupacionesModule
+  let familiasModule
 
   $: agrupaciones = agrupacionesModule ? agrupacionesModule.default : []
+  $: familias = familiasModule ? familiasModule.default : []
+
   $: agrupacionesFamilia = familia ? agrupaciones.filter(a => familia.agrupaciones.includes(a.id)) : []
+
+  $: imagenesYutonahua = familias.length ? familias.find(f => f.id === 'yutonahua').fotografias : []
+  $: console.log(imagenesYutonahua);
+  $: console.log(familias);
+  
   onMount(async ()=>{
     agrupacionesModule = await import("../../../datos/agrupaciones.json");
+    familiasModule = await import("../../../datos/familias.json");
 
     // botonFamiliaVentanaCerrar.addEventListener("touchstart",cerrarVentana)
 
@@ -322,7 +330,7 @@
       <!-- <div class="ContenedorScroll"> -->
 
       <div class="ContenedorCarrusel">
-        <Slider />
+        <Slider imagenes={imagenesYutonahua}/>
       </div>
 
       <div class="ContenedorAgrupaciones">
