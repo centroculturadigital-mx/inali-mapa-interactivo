@@ -107,7 +107,7 @@
   .TextoWrapper {
     max-height: 42.7rem;
     background: #fff;
-    font-size: 0.85rem;
+    font-size: 0.65rem;
     line-height: 1rem;
     overflow-y: hidden;
     text-align: justify;

@@ -40,7 +40,7 @@
 <style>
   .Agrupacion {
     width: 100%;
-    height: 48px;
+    height: 3rem;
     margin-bottom: 1rem;
     padding: 0 0.5rem;
     border: 1px solid #dbdbdb;
@@ -58,60 +58,67 @@
     align-items: center;
     height: 100%;
   }
-  .AgrupacionNombre p {
+  .AgrupacionNombre .Titulo {
     margin: 0;
+    font-size: .75rem;
   }
   .AgrupacionRiesgo {
     width: 50%;
     display: flex;
   }
   .Riesgo {
-    width: 20px;
-    padding-left: 36px;
+    width: 1.25rem;
+    padding: 0 1rem;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+
   }
   .CantidadContenedor {
     height: 100%;
     width: auto;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    flex-direction:column;
+    justify-content: center;
     align-items: center;
     text-align: center;
     padding: 0;
+  }
+  .CantidadContenedor span {
+    padding: 0.125rem 0;
   }
   .CantidadNumeros {
     font-weight: bold;
     width: 100%;
     margin: 0;
+    font-size: 0.7rem;
+    line-height: 1;
   }
   .CantidadTexto {
     font-weight: lighter;
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     width: 100%;
     margin: 0;
+    line-height: 1;
   }
 </style>
 
 {#each agrupaciones as agrupacion,i}
 
-  <div class="Agrupacion">
+  <li class="Agrupacion">
     <div class="AgrupacionNombre">
-      <p>{agrupacion.nombre}</p>
+      <h6 class="Titulo">{agrupacion.nombre}</h6>
     </div>
     <div class="AgrupacionRiesgo">
-      <div class="Riesgo">
-        <Riesgo fill={obtenerColorRiesgo(agrupacion.riesgo)} />
+      <div class="Riesgo" style={`color:${obtenerColorRiesgo(agrupacion.riesgo)}`}>
+        <i class="fa fa-exclamation-circle"></i>
       </div>
       <div class="CantidadContenedor">
-        <p class="CantidadNumeros">{agrupacion.habitantes}</p>
-        <br />
-        <p class="CantidadTexto">hablantes</p>
+        <span class="CantidadNumeros">{agrupacion.habitantes}</span>
+        <span class="CantidadTexto">hablantes</span>
       </div>
     </div>
-  </div>
+  </li>
 
 {/each}

@@ -3,8 +3,8 @@ export let fill
 </script>
 
 <svg
-  width="25"
-  height="25"
+  width="16"
+  height="16"
   viewBox="0 0 25 25"
   fill={fill}
   xmlns="http://www.w3.org/2000/svg">
