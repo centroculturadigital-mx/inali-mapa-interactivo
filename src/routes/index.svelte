@@ -55,7 +55,7 @@ console.log("seleccinar",e);
       familiaMostrar =
         familiasFake[Math.floor(Math.random() * familiasFake.length)];
 
-        let v = crearVentana("familia",x,Math.random() *600)
+        let v = crearVentana("familia",x,y)
         v.props.familia = familiaMostrar
         
     } else {
@@ -282,7 +282,7 @@ console.log("seleccinar",e);
 
 
   {#if !! canvas }
-    <FormaAudio canvas={canvas}/>
+    <!-- <FormaAudio canvas={canvas}/> -->
   {/if}
 
 

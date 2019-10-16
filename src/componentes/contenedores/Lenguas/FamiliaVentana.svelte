@@ -138,7 +138,7 @@
 
   .Familia {
     /* position: relative; */
-    overflow-y: auto;
+    overflow-y: hidden;
     background: #f7f7f7;
     border-radius: 10px;
   }

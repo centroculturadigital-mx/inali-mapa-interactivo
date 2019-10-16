@@ -1,8 +1,7 @@
 <script>
 
-
-    import IconoTwitterVentana from "./Iconos/IconoTwitterVentana.svelte";
-    import Tweet from "./Tweet.svelte";
+  import IconoTwitterVentana from "./Iconos/IconoTwitterVentana.svelte";
+  import Tweet from "./Tweet.svelte";
 
   import interact from 'interactjs'
   import { tap } from '@sveltejs/gestures';
