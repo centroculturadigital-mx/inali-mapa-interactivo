@@ -127,8 +127,8 @@
 
 <style>
   article {
-    max-width: 300px;
-    max-height: 420px;
+    max-width: 14rem;
+    max-height: 20rem;
   }
 
   .VentanaFamiliaWrapper {
