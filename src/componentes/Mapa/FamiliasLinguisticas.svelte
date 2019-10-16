@@ -22,10 +22,7 @@
   onMount(() => {
     // aplica funcion drop a area zona linguistica
     zonasFamilias.forEach(zona => {
-      // console.log(index)
-      if (zona.class === "dropall") {
-        drop("#" + zona.id, "#" + zona.related, zona.fill, funcionDrag);
-      }
+      drop("#" + zona.id+"-drop", "#" + zona.id+"-drag", zona.fill, funcionDrag);
     });
 
     
@@ -89,28 +86,24 @@
 </style>
 
 {#each zonasFamilias as zona}
-  {#if zona.class == "dragall"} 
     <g class="zonaDragAnim">
       <path
-        id={zona.id}
-        class={zona.class}
+        id={zona.id+"-drag"}
+        class="dragall"
         d={zona.d}
         fill={zona.fill}
         stroke={zona.fill}
         stroke-width={0.05}
         stroke-linejoin="round"
-         />
+      />
     </g>
-  {:else}
-  <!-- evita animacion en las areas fijas -->
     <path
-      id={zona.id}
-      class={zona.class}
+      id={zona.id+"-drop"}
+      class="dropall"
       d={zona.d}
       fill={zona.fill}
       stroke={zona.fill}
       stroke-width={0.05}
       stroke-linejoin="round"
-       />
-  {/if}
+    />
 {/each}
