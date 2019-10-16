@@ -126,13 +126,13 @@
 
 <style>
   article {
-    max-width: 16rem;
+    max-width: 14rem;
     max-height: 18rem;
   }
 
   .VentanaFamiliaWrapper {
     width: auto;
-    max-height: 420px;
+    max-height: 18rem;
   }
 
   .Familia {
@@ -254,13 +254,12 @@
   }
   .FamiliaDetalle {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 14.5rem;
+    top: -1.5rem;
     overflow-y: hidden;
-    height: 420px;
+    height: 18rem;
     width: calc( 100% - 2.5rem );
     /* con slider */
-    transform: translateX( calc( 300px - 1px ) );
     /* sin slider */
     /* transform: translateX(297px);  */
     z-index: 100;
