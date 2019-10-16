@@ -97,7 +97,8 @@ button:active {
 	height: 1rem;
 	display: block;
 	border-radius: 100%;
-	background-color: var(--color-texto) !important;
+	background-color: #ccc;
+	/* background-color: var(--color-texto) !important; */
 }
 
 

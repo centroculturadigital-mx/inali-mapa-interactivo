@@ -24,7 +24,7 @@
   .SlideContent img {
     object-fit: cover;
     width: 100%;
-    height: 12rem;
+    height: 9rem;
   }
   .Control {
     cursor: pointer;
