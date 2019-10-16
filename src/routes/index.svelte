@@ -2,6 +2,8 @@
 
   import { tap } from '@sveltejs/gestures';
 
+
+
 	import Cabecera from '../componentes/general/Cabecera/Cabecera.svelte';
 	import Pie from '../componentes/general/Pie/Pie.svelte'
 
@@ -31,9 +33,15 @@
 
 	import { onMount } from "svelte"
 
-	let canvas;
+  let canvas;
+  
+  let familiasModule
+  
+  $: familias = familiasModule ? familiasModule.default : [];
 
-	onMount(()=>{
+	onMount( async ()=>{
+
+    familiasModule = await import("../datos/familias.json");
 
 		let ctx = canvas.getContext('2d')        
         ctx.globalCompositeOperation = 'difference';
@@ -45,17 +53,28 @@
   let familiaMostrar;
 
 
-  const seleccionar = e => {
-    const id = e.detail.id;
-    const x = e.detail.x;
-    const y = e.detail.y;
+  const seleccionar = (e) => {
 
-    if (!!id) {
-      familiaMostrar =
-        familiasFake[Math.floor(Math.random() * familiasFake.length)];
+    const {
+      idZona,
+      x,
+      y,
+      idFamilia
+    } = {...e.detail}
 
-        let v = crearVentana("familia",x,y)
-        v.props.familia = familiaMostrar
+    console.log(idZona,
+      x,
+      y,
+      idFamilia);
+    
+    console.log(familias,familiasModule);
+    
+
+    if (!!idZona) {
+      familiaMostrar = 
+        familias.find(f=>f.id==idFamilia)
+
+        let v = crearVentana("familia",x,y, { familiaMostrar })
         
     } else {
       familiaMostrar = null;
@@ -71,9 +90,14 @@
   let mostrarHomenaje = false;
   let mostrarVolutaTexto = false;
 
-  const crearVentana = (tipo, x, y) => {
+  const crearVentana = (tipo, x, y, props={}) => {
     
+    if( ! typeof props == "object") {
+      props = {}
+    }
+
     let nuevaVentana = {
+
       indice:ventanas.length,
       origen: {
           x,
@@ -82,7 +106,7 @@
       left: x,
       top: y,
       tipo: tipo,
-      props: {}
+      props
     }
 
 

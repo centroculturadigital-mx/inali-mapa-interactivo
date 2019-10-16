@@ -7,9 +7,14 @@ const colorArea = 'gray'
 const colorArrastre = 'lime'
 const colorEntraArea = 'lightgray'
 
-export default (interactObj, acceptObj, colorDefault, callback ) => {
+export default (zona, callback ) => {
   // // const ventanaFamilia = document.querySelector('.VentanaFamilia');
   
+  const interactObj = "#" + zona.id + "-drop"
+  const acceptObj = "#" + zona.id + "-drag"
+  const id = zona.id
+  const colorDefault = zona.fill
+
   interact(interactObj).dropzone({
     accept: acceptObj,
     overlap: 0.2,//10% encima del area
@@ -74,7 +79,8 @@ export default (interactObj, acceptObj, colorDefault, callback ) => {
       callback(
         e.target.id,
         actionX,
-        actionY
+        actionY,
+        id
       )
 
        
@@ -85,7 +91,7 @@ export default (interactObj, acceptObj, colorDefault, callback ) => {
       // ventanaFamilia.style.opacity = 0
       // ventanaFamilia.style.display = "block"
       e.target.style.fillOpacity = 0
-      callback()
+      //callback()
 
       
     },

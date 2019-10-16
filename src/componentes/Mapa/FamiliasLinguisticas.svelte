@@ -12,17 +12,17 @@
   const dispatch = createEventDispatcher();
 
     
-  const funcionDrag = ( id, x, y ) => {
-      console.log("enviar evento seleccionar", id, x, y);
+  const funcionDrag = ( idZona, x, y, idFamilia ) => {
       
-    dispatch('seleccionar', {id, x, y});
+    dispatch('seleccionar', {idZona, x, y, idFamilia});
     
   }
 
   onMount(() => {
     // aplica funcion drop a area zona linguistica
     zonasFamilias.forEach(zona => {
-      drop("#" + zona.id+"-drop", "#" + zona.id+"-drag", zona.fill, funcionDrag);
+       // console.log(index)
+      drop( zona, funcionDrag );
     });
 
     
