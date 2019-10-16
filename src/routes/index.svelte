@@ -21,7 +21,6 @@
 
   import { fade } from "svelte/transition";
 
-  import familiasFake from "../../datosFalsos/familiasFake";
 
   import posDrag from "../datos/posDrag.js"
 
@@ -67,14 +66,13 @@
       y,
       idFamilia);
     
-    console.log(familias,familiasModule);
     
 
     if (!!idZona) {
-      familiaMostrar = 
+      let familia = 
         familias.find(f=>f.id==idFamilia)
 
-        let v = crearVentana("familia",x,y, { familiaMostrar })
+        let v = crearVentana("familia",x,y, { familia })
         
     } else {
       familiaMostrar = null;

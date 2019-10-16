@@ -9,7 +9,6 @@
 
 
   const cerrar = () => {
-    console.log(familia);
     
     dispatch("cerrar", { familia: !! familia ? familia.id : null })
     
@@ -278,7 +277,9 @@
       <header class="Encabezado">
         <p class="Titulo">FAMILIA</p>
         <!-- <h1 class="Principal">Yuto-nahua</h1> -->
-        <h1 class="Principal">{lenguas.familias[0].nombreOriginario}</h1>
+        <h1 class="Principal" style={`color:#${familia.color}`}>
+          {familia.NOM_FAM}
+        </h1>
       </header>
       <!--  -->
       <div class="BotonMasWrapper">

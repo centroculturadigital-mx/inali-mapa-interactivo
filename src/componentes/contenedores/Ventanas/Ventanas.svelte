@@ -15,16 +15,15 @@
 
     const dispatch = createEventDispatcher();
     
-    import familiasFake from "../../../../datosFalsos/familiasFake";
 
-    let familiaMostrar = familiasFake[0]
 
     export let ventanas = []
 
 
     $: ventanas ? posicionarVentanas() : ()=>{}
 
-
+    $: console.log(ventanas)
+    
     onMount(()=>{
         
         
@@ -245,7 +244,7 @@
                 <TwitterVentana on:cerrar={()=>cerrar(ventana)}/>
             {/if}
             {#if ventana.tipo=="familia"}
-                <FamiliaVentana familia={familiaMostrar} {...ventana.props} on:cerrar={(e)=>cerrar(ventana,e)}/>
+                <FamiliaVentana familia={ventana.props.familia} {...ventana.props} on:cerrar={(e)=>cerrar(ventana,e)}/>
             {/if}
             {#if ventana.tipo=="homenaje"}
                 <Homenaje on:cerrar={()=>cerrar(ventana)}/>
