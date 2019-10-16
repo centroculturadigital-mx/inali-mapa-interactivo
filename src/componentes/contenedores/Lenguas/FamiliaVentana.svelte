@@ -126,8 +126,8 @@
 
 <style>
   article {
-    max-width: 14rem;
-    max-height: 20rem;
+    max-width: 16rem;
+    max-height: 18rem;
   }
 
   .VentanaFamiliaWrapper {
@@ -150,8 +150,18 @@
   .BotonCierraWrapper {
     display: flex;
     justify-content: flex-end;
-    width: 127%;
+    width: 100%;
     /* height: 2rem; */
+  }
+  .BotonConIcono {
+    background-color: transparent;
+    border: none;
+    color: #929191;
+    cursor: pointer;
+    font-size: 22px;
+    padding: .3rem;
+    display: flex;
+    justify-content: flex-end;
     position: absolute;
     z-index: 1;
   }
@@ -195,7 +205,7 @@
     box-sizing: border-box;
     border-radius: 15px;
     color: #e6aa30;
-    width: 25%;
+    width: 30%;
     height: auto;
     cursor: pointer;
     background-color: #f7f7f7;
