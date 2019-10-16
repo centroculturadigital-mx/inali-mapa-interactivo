@@ -9,8 +9,9 @@
 
 
   const cerrar = () => {
+    console.log(familia);
     
-    dispatch("cerrar")
+    dispatch("cerrar", { familia: !! familia ? familia.id : null })
     
   }
   

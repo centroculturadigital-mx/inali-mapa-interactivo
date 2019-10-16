@@ -207,9 +207,8 @@
 
 
 
-    const cerrar = (ventana) => {
-        
-        dispatch("cerrar", {ventana})
+    const cerrar = (ventana,e) => {        
+        dispatch("cerrar", {ventana,e})
     }
 
 
@@ -246,7 +245,7 @@
                 <TwitterVentana on:cerrar={()=>cerrar(ventana)}/>
             {/if}
             {#if ventana.tipo=="familia"}
-                <FamiliaVentana familia={familiaMostrar} {...ventana.props} on:cerrar={()=>cerrar(ventana)}/>
+                <FamiliaVentana familia={familiaMostrar} {...ventana.props} on:cerrar={(e)=>cerrar(ventana,e)}/>
             {/if}
             {#if ventana.tipo=="homenaje"}
                 <Homenaje on:cerrar={()=>cerrar(ventana)}/>

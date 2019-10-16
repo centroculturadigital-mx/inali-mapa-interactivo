@@ -21,7 +21,7 @@
 
   import familiasFake from "../../datosFalsos/familiasFake";
 
-
+  import posDrag from "../datos/posDrag.js"
 
 
 
@@ -176,7 +176,16 @@
   
 
   const cerrarVentana = (e) => {
+    let cerrarEvento = e.detail.e
+    
+    if( !! cerrarEvento && !! cerrarEvento.detail ) {
+      let familia = cerrarEvento.detail.familia
 
+      console.log("familia",familia, posDrag[familia]);
+      
+    }
+
+    
     destruirVentana(e.detail.ventana)
 
   }
