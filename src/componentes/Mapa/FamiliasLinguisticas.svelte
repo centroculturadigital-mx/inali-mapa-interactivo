@@ -41,9 +41,9 @@
       });
       
       dragall.forEach((item, index) => {
-        item.style.webkitTransform = item.style.transform = `translate(${posDrag[index][0]}px, ${posDrag[index][1]}px)`;
-        item.setAttribute("data-x", posDrag[index][0]);
-        item.setAttribute("data-y", posDrag[index][1]);
+        item.style.webkitTransform = item.style.transform = `translate(${posDrag[index].posicion[0]}px, ${posDrag[index].posicion[1]}px)`;
+        item.setAttribute("data-x", posDrag[index].posicion[0]);
+        item.setAttribute("data-y", posDrag[index].posicion[1]);
       });
       
     }

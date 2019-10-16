@@ -1,15 +1,48 @@
 export default [
-    ["-9", "2"], // Yuto-nahua
-    ["5", "-5"], // Oto-mangue
-    ["3", "-10"], // Maya
-    ["-10", "-5"], // Álgica
-    ["-5", "-3"], // Huave
-    ["2", "-10"], // Chontal de Oaxaca
-    ["-5", "2"], // Mixe-zoque
-    ["10", "4"], // Tarasca
-    ["-15", "4"], // Totonaco-tepehua
-    ["10", "4"], // Seri
-    ["15", "8"], // Cochimí-yumana
+    {
+        id: "yutonahua",//"Yuto-nahua",
+        posicion: ["-9", "2"]
+    }, 
+    {
+        id: "otomangue",//"Oto-mangue",
+        posicion: ["5", "-5"]
+    }, 
+    {
+        id: "maya",//"Maya",
+        posicion: ["3", "-10"]
+    }, 
+    {
+        id: "algica",//"Álgica",
+        posicion: ["-10", "-5"]
+    }, 
+    {
+        id: "huave",//"Huave",
+        posicion: ["-5", "-3"]
+    }, 
+    {
+        id: "chontaldeoaxaca",//"Chontal de Oaxaca",
+        posicion: ["2", "-10"]
+    }, 
+    {
+        id: "mixezoque",//"Mixe-zoque",
+        posicion: ["-5", "2"]
+    }, 
+    {
+        id: "tarasca",//"Tarasca",
+        posicion: ["10", "4"]
+    }, 
+    {
+        id: "totonacotepehua",//"Totonaco-tepehua",
+        posicion: ["-15", "4"]
+    }, 
+    {
+        id: "seri",//"Seri",
+        posicion: ["10", "4"]
+    }, 
+    {
+        id: "cochimiyumana",//"Cochimí-yumana",
+        posicion: ["15", "8"]
+    }, 
 ];
 
 
