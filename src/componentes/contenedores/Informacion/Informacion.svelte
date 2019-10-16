@@ -1,6 +1,6 @@
 <script>
-    import IconoInformacion from "./Iconos/IconoInformacion.svelte";
-    import TituloMapa from "./Iconos/TituloMapa.svelte";
+  import IconoInformacion from "./Iconos/IconoInformacion.svelte";
+  import TituloMapa from "./Iconos/TituloMapa.svelte";
 
   import { createEventDispatcher } from 'svelte';
 
@@ -8,6 +8,8 @@
   import interact from 'interactjs'
   import { tap } from '@sveltejs/gestures';
   import { onMount } from 'svelte';
+
+  const info = "icono-info.svg"
 
   const dispatch = createEventDispatcher();
 
@@ -132,13 +134,14 @@
             flex-basis: 45%;
         }
 
-        .IconoCerrarInfo {
+        .Cerrar {
             padding: 1rem;
             background-color: transparent;
             border: none;
             color: #fff;
             cursor: pointer;
             display: flex;
+            font-size: 1.25rem;
         }
 
          .Acerca {
@@ -155,6 +158,9 @@
             font-size: .75rem;
             line-height: 1.5;
         }
+        img {
+          width: 20%;
+        }
         
     
 </style>
@@ -164,7 +170,8 @@
         <div class="TituloMapa">
             <TituloMapa/>
         </div>
-        <button class="IconoInformacion" use:tap on:tap={cerrar}>
+        <img src="{info}"  alt="info">
+        <button class="Cerrar" use:tap on:tap={cerrar}>
             <i class="fa fa-times-circle"/>
         </button>
     </header>
