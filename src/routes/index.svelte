@@ -1,7 +1,9 @@
 <script>
 
+
   import { tap } from '@sveltejs/gestures';
 
+  import { TweenLite, Elastic } from "gsap";
 
 
 	import Cabecera from '../componentes/general/Cabecera/Cabecera.svelte';
@@ -193,12 +195,35 @@
 
   const cerrarVentana = (e) => {
     let cerrarEvento = e.detail.e
+    console.log("cV",cerrarEvento);
     
     if( !! cerrarEvento && !! cerrarEvento.detail ) {
-      let familia = cerrarEvento.detail.familia
+      let familiaId = cerrarEvento.detail.familia
 
-      console.log("familia",familia, posDrag[familia]);
-      
+      if(!!familiaId) {
+        let p = posDrag.find(p=>p.id==familiaId)
+  
+        let item = document.getElementById(`${familiaId}-drag`)
+        let drop = document.getElementById(`${familiaId}-drop`)
+        drop.style.fillOpacity=0 
+        drop.style.strokeOpacity=0 
+        // item.style.webkitTransform = 
+        // item.style.transform = `translate( ${p.posicion[0]}px, ${ p.posicion[1]}px)`
+
+
+        TweenLite.to(item,1.3,{
+          x:p.posicion[0],y:p.posicion[1],          
+        })
+        TweenLite.from(
+          item,2,
+          {rotation:90, ease: Elastic.easeInOut, transformOrigin:"50% 50%"}
+        )
+        
+        // item.setAttribute("data-x", p.posicion[0]);
+        // item.setAttribute("data-y", p.posicion[1]);
+        console.log("cerrar familiaId",familiaId, item, p);
+
+      }
     }
 
     

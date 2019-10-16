@@ -96,8 +96,8 @@ export default (zona, callback ) => {
       
     },
     ondropdeactivate: (e) => {
-      e.target.style.fill = colorArea
-      e.relatedTarget.style.fill = colorDefault
+      // e.target.style.fill = colorArea
+      // e.relatedTarget.style.fill = colorDefault
       e.relatedTarget.style.strokeOpacity = 0
       console.log("drop: odda");
       

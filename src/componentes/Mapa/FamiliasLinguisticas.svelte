@@ -59,6 +59,7 @@
 <style>
   path {
     transform-origin: center;
+    
   }
 
   .dropall {
