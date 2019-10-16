@@ -2,16 +2,32 @@
   import lenguas from "../../../../datosFalsos/lenguasFake.js";
   import Riesgo from "../iconos/Riesgo.svelte";
 
+  export let agrupaciones
+
   const obtenerColorRiesgo = ( riesgo ) => {
     
     const fillRiesgoBajo = "green";
-    const fillRiesgoAlto = "red";
-    let fillRiesgo = fillRiesgoBajo;
+    const fillRiesgoMedio = "yellow";
+    const fillRiesgoAlto = "orange";
+    const fillRiesgoMuyAlto = "red";
 
-    if (riesgo >= 0.5) {
-
-      fillRiesgo = fillRiesgoAlto;
-      
+    let fillRiesgo;
+    switch (riesgo) {
+      case 0:
+        fillRiesgo = fillRiesgoBajo
+        break;
+      case 1:
+        fillRiesgo = fillRiesgoMedio
+        break;
+      case 2:
+        fillRiesgo = fillRiesgoAlto
+        break;
+      case 3:
+        fillRiesgo = fillRiesgoMuyAlto
+        break;
+    
+      default:
+        break;
     }
 
    return fillRiesgo
@@ -80,18 +96,18 @@
   }
 </style>
 
-{#each lenguas.agrupaciones as lengua,i}
+{#each agrupaciones as agrupacion,i}
 
   <div class="Agrupacion">
     <div class="AgrupacionNombre">
-      <p>{lengua.nombreOriginario}</p>
+      <p>{agrupacion.nombre}</p>
     </div>
     <div class="AgrupacionRiesgo">
       <div class="Riesgo">
-        <Riesgo fill={obtenerColorRiesgo(lengua.riesgoDesaparicion)} />
+        <Riesgo fill={obtenerColorRiesgo(agrupacion.riesgo)} />
       </div>
       <div class="CantidadContenedor">
-        <p class="CantidadNumeros">{lengua.datosEstadisticos.cantidadHablantes}</p>
+        <p class="CantidadNumeros">{agrupacion.habitantes}</p>
         <br />
         <p class="CantidadTexto">hablantes</p>
       </div>

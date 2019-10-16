@@ -3,33 +3,27 @@
   import interact from 'interactjs'
   import { tap } from '@sveltejs/gestures';
 
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from 'svelte';  
+
+  import FamiliaDetalle from "./FamiliaDetalle.svelte";
+  import AgrupacionesLista from "./AgrupacionesLista.svelte";
+  import Slider from "../Slider/Slider.svelte";
+  // import Fa from "../../../../node_modules/svelte-fa/dist/svelte-fa.mjs";
+  import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+  import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
+  // datos falsos
+  import lenguas from "../../../../datosFalsos/lenguasFake";
+  
+  export let familia;
 
   const dispatch = createEventDispatcher();
-
 
   const cerrar = () => {
     
     dispatch("cerrar", { familia: !! familia ? familia.id : null })
     
   }
-  
-
-  import FamiliaDetalle from "./FamiliaDetalle.svelte";
-  import AgrupacionesLista from "./AgrupacionesLista.svelte";
-  import Slider from "../Slider/Slider.svelte";
-  // import Fa from "../../../../node_modules/svelte-fa/dist/svelte-fa.mjs";
-  import {
-    
-    faChevronDown
-  } from "@fortawesome/free-solid-svg-icons";
-  import { fade } from "svelte/transition";
-  import { onMount } from "svelte";
-  // datos falsos
-  import lenguas from "../../../../datosFalsos/lenguasFake";
-
-  export let familia;
-
   // let cierraIcono = faTimesCircle;
   let abajoIcono = faChevronDown;
 
@@ -55,7 +49,12 @@
   let ultimoScrollVentanaY = 0
   let ultimoScrollVentanaX = 0
 
-  onMount(()=>{
+  let agrupacionesModule
+
+  $: agrupaciones = agrupacionesModule ? agrupacionesModule.default : []
+  $: agrupacionesFamilia = familia ? agrupaciones.filter(a => familia.agrupaciones.includes(a.id)) : []
+  onMount(async ()=>{
+    agrupacionesModule = await import("../../../datos/agrupaciones.json");
 
     // botonFamiliaVentanaCerrar.addEventListener("touchstart",cerrarVentana)
 
@@ -177,7 +176,7 @@
     text-align: center;
     font-weight: 600;
     font-size: 1.75rem;
-    line-height: 3rem;
+    line-height: 2rem;
     text-align: center;
     color: #e6aa30;
     margin: 0;
@@ -256,8 +255,16 @@
     /* transform: translateX(297px);  */
     z-index: 100;
   }
-
   
+  h1,h5 {
+    margin: 0;
+    padding: 0;
+  }
+
+  .SubTitulo {
+    text-align: center;
+    font-weight: 400;
+  }
 
 </style>
 
@@ -278,12 +285,27 @@
         <p class="Titulo">FAMILIA</p>
         <!-- <h1 class="Principal">Yuto-nahua</h1> -->
         <h1 class="Principal" style={`color:#${familia.color}`}>
-          {familia.NOM_FAM}
+          {familia.nombreOriginario}
         </h1>
+        {#if 
+          familia.nombreCastellanizado && 
+          familia.nombreOriginario != familia.nombreCastellanizado
+        }
+          <h4 class="SubTitulo" style={`color:#${familia.color}`}>
+            ({familia.nombreCastellanizado})
+          </h4>
+        {/if}
       </header>
       <!--  -->
       <div class="BotonMasWrapper">
-        <button class="Saber" use:tap on:tap={mostrarDetalle}>Saber más</button>
+        <button
+          class="Saber"
+          use:tap
+          on:tap={mostrarDetalle}
+          style={`color:#${familia.color}; border-color:#${familia.color};`}
+        >
+          Saber más
+        </button>
       </div>
       
       <!-- </div> -->
@@ -305,7 +327,7 @@
           <h6 class="TituloLista">Riesgo de desaparición</h6>
         </div>
         <section class="ListaAgrupaciones">
-          <AgrupacionesLista />
+          <AgrupacionesLista agrupaciones={agrupacionesFamilia}/>
         </section>
       </div>
     </div>
@@ -315,7 +337,7 @@
   <!-- muestra detalle -->
   {#if detalleMostrar}
     <div class="FamiliaDetalle" transition:fade>
-      <FamiliaDetalle {cerrarDetalle} />
+      <FamiliaDetalle {cerrarDetalle} informacion={familia.informacion} />
     </div>
   {/if}
 </section>
