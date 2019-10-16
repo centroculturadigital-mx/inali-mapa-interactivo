@@ -49,7 +49,6 @@
 	})
 
 
-  let familiaMostrar;
 
 
   const seleccionar = (e) => {
@@ -69,19 +68,14 @@
     
 
     if (!!idZona) {
-      let familia = 
-        familias.find(f=>f.id==idFamilia)
+     
+      let familia = familias.find(f=>f.id==idFamilia)
 
-        let v = crearVentana("familia",x,y, { familia })
+      let v = crearVentana("familia",x,y, { familia })
         
-    } else {
-      familiaMostrar = null;
-    }
+    } 
   };
 
-  const cerrar = () => {
-    familiaMostrar = null;
-  };
 
   let mostrarInformacion = false;
   let mostrarTwitter = false;
@@ -278,9 +272,7 @@
   <!-- <Mapa on:seleccionar={console.log("aosijvieurn")}/> -->
 
   <!-- 
-  {#if !!familiaMostrar}
     <div class="FamiliaVentana" transition:fade>
-      <FamiliaVentana familia={familiaMostrar} cerrar={cerrar} />
     </div>
   {/if}
   {#if mostrarTwitter }
