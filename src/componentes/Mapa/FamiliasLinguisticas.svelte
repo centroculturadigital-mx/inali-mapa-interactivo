@@ -64,6 +64,13 @@
     transform-origin: center;
   }
 
+  .dropall {
+    stroke-opacity: 0;
+    fill-opacity: 0;
+    -webkit-transition: fill-opacity 1s, stroke-opacity 1s;
+    transition: fill-opacity 1s, stroke-opacity 1s;
+  }
+
   /* .zonaDragAnim:hover {
     animation: flota 1s infinite;
     transform-origin: 50% 50%;
@@ -92,7 +99,7 @@
         stroke={zona.fill}
         stroke-width={0.05}
         stroke-linejoin="round"
-        opacity={zona.opacity} />
+         />
     </g>
   {:else}
   <!-- evita animacion en las areas fijas -->
@@ -104,6 +111,6 @@
       stroke={zona.fill}
       stroke-width={0.05}
       stroke-linejoin="round"
-      opacity={zona.opacity} />
+       />
   {/if}
 {/each}

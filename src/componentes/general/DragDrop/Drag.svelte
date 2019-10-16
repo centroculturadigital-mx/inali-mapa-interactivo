@@ -2,9 +2,10 @@
 import interact from 'interactjs'
 import calculaPosicionMapa from '../../../funciones/calculaPosicionMapa'
 //
-const itemDrag = '.dragall'
+const selector = '.dragall'
 const Drag = () => {
-  interact(itemDrag).draggable({
+
+  interact(selector).draggable({
     inertia: true,
     modifiers: [
       interact.modifiers.restrictRect({
@@ -15,14 +16,18 @@ const Drag = () => {
       //   restriction: 'self'            // keep the drag coords within the element
       // })
     ],
+    
+    
     // autoScroll: true,
     onmove: dragMoveListener,
     onend: (e) => {
       e.preventDefault()
       // console.log('Fin Drag')
-    }
+    },
 
   })
+  .on('down', (e)=>mostrarDropZone(e) )
+  .on('up', (e)=>ocultarDropZone(e) )
 }
 
 const dragMoveListener = (e) => {
@@ -45,4 +50,28 @@ const dragMoveListener = (e) => {
 //
 Drag()
 //
+
+
+const mostrarDropZone = (e) => {
+
+  let dropSelector = e.target.getAttribute("id").replace("drag","drop")
+
+  let drop = document.getElementById(dropSelector)
+
+  drop.style.strokeOpacity = 1;
+  
+  
+}
+
+const ocultarDropZone = (e) => {
+
+  let dropSelector = e.target.getAttribute("id").replace("drag","drop")
+
+  let drop = document.getElementById(dropSelector)
+
+  drop.style.strokeOpacity = 0;
+  
+  
+}
+
 </script>

@@ -14,15 +14,17 @@ export default (interactObj, acceptObj, colorDefault, callback ) => {
     accept: acceptObj,
     overlap: 0.2,//10% encima del area
     ondropactivate: (e) => {
-      e.target.style.transition = velocidadTransision
-      e.target.style.fill = colorArrastre// area
-      e.target.style.opacity = 0.7
-      e.relatedTarget.style.fill = colorArrastre//dragged obj
-      e.relatedTarget.style.opacity = 0.7
+      // e.target.style.transition = velocidadTransision
+      // e.target.style.fill = colorArrastre// area
+      // e.target.style.opacity = 0.7
+      // e.relatedTarget.style.fill = colorArrastre//dragged obj
+      // e.relatedTarget.style.opacity = 0.7
     },
     ondragenter: (e) => {
-      e.target.style.fill = colorEntraArea
-      e.relatedTarget.style.fill = colorEntraArea
+      // e.target.style.fill = colorEntraArea
+      // e.relatedTarget.style.fill = colorEntraArea
+      e.target.style.fillOpacity = 1
+
     },
     ondrop: (e) => {
       let dropzone = e.target.getBoundingClientRect()//drop
@@ -58,7 +60,15 @@ export default (interactObj, acceptObj, colorDefault, callback ) => {
       // apare ceventana datos
       // ventanaFamilia.style.display = "block"
       // ventanaFamilia.style.opacity = 1  
+
       let actionX = e.target.getBoundingClientRect().left + e.target.getBoundingClientRect().width / 2
+      
+      if(actionX<window.innerWidth/2) {
+        actionX = e.target.getBoundingClientRect().left-(e.target.getBoundingClientRect().width-300)
+      } else {
+        actionX = e.target.getBoundingClientRect().left + (e.target.getBoundingClientRect().width+48)
+      }
+
       let actionY = e.target.getBoundingClientRect().top + e.target.getBoundingClientRect().height / 2
       
       callback(
@@ -70,18 +80,20 @@ export default (interactObj, acceptObj, colorDefault, callback ) => {
        
     },
     ondragleave: (e) => {
-      e.target.style.fill = colorArrastre
-      e.relatedTarget.style.fill = colorArrastre  
+      // e.target.style.fill = colorArrastre
+      // e.relatedTarget.style.fill = colorArrastre  
       // ventanaFamilia.style.opacity = 0
       // ventanaFamilia.style.display = "block"
+      e.target.style.fillOpacity = 0
       callback()
+
       
     },
     ondropdeactivate: (e) => {
-      e.target.style.opacity = 0
       e.target.style.fill = colorArea
-      e.relatedTarget.style.opacity = 0.9
       e.relatedTarget.style.fill = colorDefault
+      e.relatedTarget.style.strokeOpacity = 0
+      console.log("drop: odda");
       
     }
   })
