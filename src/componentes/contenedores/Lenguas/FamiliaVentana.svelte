@@ -56,9 +56,14 @@
 
   $: agrupacionesFamilia = familia ? agrupaciones.filter(a => familia.agrupaciones.includes(a.id)) : []
 
-  $: imagenesYutonahua = familias.length ? familias.find(f => f.id === 'yutonahua').fotografias : []
-  $: console.log(imagenesYutonahua);
+  $: imagenes = familia && familia.fotografias && familia.fotografias.length ?
+    familia.fotografias :
+    familias && familias.length ? 
+      familias.find(f => f.id === 'yutonahua') .fotografias :
+      []
+  $: console.log(imagenes);
   $: console.log(familias);
+  $: console.log(familia);
   
   onMount(async ()=>{
     agrupacionesModule = await import("../../../datos/agrupaciones.json");
@@ -330,7 +335,7 @@
       <!-- <div class="ContenedorScroll"> -->
 
       <div class="ContenedorCarrusel">
-        <Slider imagenes={imagenesYutonahua}/>
+        <Slider imagenes={imagenes}/>
       </div>
 
       <div class="ContenedorAgrupaciones">
