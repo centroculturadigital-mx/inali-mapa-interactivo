@@ -145,7 +145,7 @@
 
   .Familia {
     /* position: relative; */
-    overflow-y: hidden;
+    overflow: hidden;
     background: #f7f7f7;
     border-radius: 10px;
   }
@@ -213,7 +213,7 @@
     box-sizing: border-box;
     border-radius: 15px;
     color: #e6aa30;
-    width: 30%;
+    width: auto;
     height: auto;
     cursor: pointer;
     background-color: #f7f7f7;
@@ -264,7 +264,7 @@
     position: absolute;
     left: 14.5rem;
     top: -1.5rem;
-    overflow-y: hidden;
+    overflow: hidden;
     height: 18rem;
     width: calc( 100% - 2.5rem );
     /* con slider */

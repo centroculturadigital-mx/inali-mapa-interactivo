@@ -62,13 +62,13 @@ button:active {
 .carousel button.left svg *,
 .carousel button.right svg,
 .carousel button.right svg * {
-	stroke: #2B6EAA;
+	stroke: #fff;
 }
 .carousel button.left {
-	left: 0;
+	left: -1rem;
 }
 .carousel button.right {
-	right: 0;
+	right: -1rem;
 }
 
 
@@ -85,19 +85,19 @@ button:active {
 	/* margin: .5rem; */
 	border-radius: 0 !important;
 	background-color: transparent !important;
-	height: 1.75rem !important;
-	width: 1.75rem !important;
+	height: 1.25rem !important;
+	width: 1.25rem !important;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 .carousel ul li::before {
 	content: '';
-	width: 1rem;
-	height: 1rem;
+	width: .75rem;
+	height: .75rem;
 	display: block;
 	border-radius: 100%;
-	background-color: #ccc;
+	border: 1px solid #bbb;
 	/* background-color: var(--color-texto) !important; */
 }
 

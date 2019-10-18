@@ -20,15 +20,15 @@
   .SlideContent {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: space-between;
     position: relative;
     height: 100%;
     width: 100%;
   }
   .SlideContent img {
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
-    height: 9rem;
+    height: 11rem;
   }
   .Control {
     cursor: pointer;
@@ -40,14 +40,23 @@
     position: absolute;
     bottom: 0;
     color: #fff;
-    left: 1.5rem;
+    left: 0;
     height: auto;
-    width: 90%;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    width: 80%;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.45);
+    padding: 0.5rem 1.5rem;
+  }
+  .TextoFotos p {
+    margin-bottom: 0;
+    margin-top: 0.25rem;
   }
   
-  .TextoFotosSubTitulo {
+  .TextoFotosTitulo {
     font-size: 12px;
+  }
+  .TextoFotosSubTitulo {
+    font-size: 10px;
   }
 </style>
 
@@ -64,7 +73,10 @@
       <img class="Imagen" src={imagen.url} alt="INALI" />
       <div class="TextoFotos">
         <h4 class="TextoFotosTitulo">{imagen.titulo}</h4>
-        <p class="TextoFotosSubTitulo">{imagen.creditos}</p>
+        <p class="TextoFotosSubTitulo">
+        <span>Créditos: </span>
+        <span>{imagen.creditos}</span>
+        </p>
       </div>
     </div>
   {/each}
