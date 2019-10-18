@@ -135,6 +135,7 @@
             background-color: transparent;
             border: none;
             color: #fff;
+            font-size: 1rem;
         }
 
 
@@ -169,7 +170,7 @@
                 Activismo lingüístico
             </h4>
             <button class="IconoCerrar" use:tap on:tap={cerrar}>
-                <i class="fa fa-close fa-lg"></i>
+                <i class="fa fa-close"></i>
             </button>
     </header>
     <div class="ContenedorTweets">

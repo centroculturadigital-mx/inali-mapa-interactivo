@@ -140,8 +140,8 @@
             border: none;
             color: #fff;
             cursor: pointer;
-            display: flex;
-            font-size: 1.25rem;
+            /* display: flex; */
+            font-size: 1rem;
         }
 
          .Acerca {
@@ -172,7 +172,7 @@
         </div>
         <img src="{info}"  alt="info">
         <button class="Cerrar" use:tap on:tap={cerrar}>
-            <i class="fa fa-times-circle"/>
+            <i class="fa fa-close"/>
         </button>
     </header>
     <div class="Acerca">

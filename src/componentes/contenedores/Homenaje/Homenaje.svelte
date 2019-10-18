@@ -139,7 +139,7 @@
             border: none;
             color: #fff;
             cursor: pointer;
-            font-size: 1.25rem;
+            font-size: 1rem;
         }
 
         .Semblanza {
@@ -179,7 +179,7 @@
             </h4>
         </div>
         <button class="Cerrar" use:tap on:tap={cerrar}>
-            <i class="fa fa-times-circle"/>
+            <i class="fa fa-close"/>
         </button>
     </header>
     <div class="Semblanza">

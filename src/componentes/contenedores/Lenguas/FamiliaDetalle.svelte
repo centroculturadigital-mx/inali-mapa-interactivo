@@ -110,7 +110,7 @@
     font-size: 0.65rem;
     line-height: 1rem;
     overflow-y: hidden;
-    text-align: justify;
+    text-align: left;
     color: #454344;
     height: 390px;
   }
