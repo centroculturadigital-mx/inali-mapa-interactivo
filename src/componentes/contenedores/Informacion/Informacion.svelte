@@ -126,7 +126,23 @@
 
         .TituloMapa {
             display: flex;
+            flex-direction: column;
             justify-content: center;
+            padding: 1rem
+        }
+        .Titulo-l1 {
+          text-transform: uppercase;
+          font-size: .75rem;
+          font-weight: 300;
+          line-height: 1.2;
+          color: #fff;
+        }
+        .Titulo-l2 {
+          text-transform: uppercase;
+          font-size: .75rem;
+          font-weight: 500;
+          line-height: 1.2;
+          color: #fff;
         }
 
         .IconoInformacion {
@@ -134,6 +150,9 @@
             flex-basis: 45%;
         }
 
+        img {
+          width: 10%;
+        }
         .Cerrar {
             padding: 1rem;
             background-color: transparent;
@@ -158,9 +177,8 @@
             font-size: .75rem;
             line-height: 1.5;
         }
-        img {
-          width: 20%;
-        }
+        
+        
         
     
 </style>
@@ -168,7 +186,12 @@
 <section class="Informacion">
     <header class="Encabezado">
         <div class="TituloMapa">
-            <TituloMapa/>
+          <h6 class="Titulo-l1">
+            mapa interactivo de
+          </h6>
+          <h6 class="Titulo-l2">
+            lenguas indígenas
+          </h6>
         </div>
         <img src="{info}"  alt="info">
         <button class="Cerrar" use:tap on:tap={cerrar}>

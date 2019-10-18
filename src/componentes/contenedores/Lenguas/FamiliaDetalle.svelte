@@ -127,6 +127,7 @@
   .Ocultar {
     border: 0;
     background-color: #fff;
+    color: #afafaf;
   }
 
   .Texto {

@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
 @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,400,500,600,700&display=swap');
+
 /* Estilos generales customizados */
 
 
@@ -107,4 +108,14 @@ svg {
 }
 svg *{
 	pointer-events:auto;
+}
+
+
+.Titulo-l1 {
+	font-family: IBM Plex Sans, Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+}
+  .Titulo-l2 {
+	font-family: IBM Plex Sans, Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
 }

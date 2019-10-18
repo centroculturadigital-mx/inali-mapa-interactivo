@@ -173,11 +173,9 @@
         <div class="FotoHomenaje">
             <img src="{portilla}"  alt="homenaje">
         </div>
-        <div class="TituloNombre">
-            <h4>
-                Miguel León Portilla
-            </h4>
-        </div>
+        <h4 class="TituloNombre">
+            Miguel León Portilla
+        </h4>
         <button class="Cerrar" use:tap on:tap={cerrar}>
             <i class="fa fa-close"/>
         </button>
