@@ -1,5 +1,5 @@
 <script>
-const logos = ['logos-gobmx-cultura-inah.svg','logo.ccd.svg','logo-inali-blanco.svg']
+const logos = ['logos-gobmx-cultura-inah.svg','logoCcd.svg','logoInali.png']
 </script>
 
 <style>
