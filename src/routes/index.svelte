@@ -242,6 +242,11 @@
 
   }
 
+  const recargaMapa = () => {
+    location.reload(true);
+  }
+
+  
 </script>
 
 <style>
@@ -266,7 +271,27 @@
 		top: 0;
 		left: 0;
 		z-index: -1;
-	}
+  }
+  
+  .Recarga {
+    position: absolute;
+    z-index: 1;
+    top: 5rem;
+    left: 1rem;
+    box-shadow:inset 0px 0px 15px 3px #354554;
+  	background:linear-gradient(to bottom, #3f5163 5%, #5c7791 100%);
+	  border-radius:18px;
+	  border:1px solid #516980;
+	  cursor:pointer;
+	  color:#ffffff;
+	  padding: .25rem .75rem;
+  }
+
+  .Recarga:hover {
+  	background:linear-gradient(to bottom, #5c7791 5%, #3f5163 100%);
+	  background-color:#5c7791;
+  }
+
 
 </style>
 
@@ -294,6 +319,7 @@
   }
   on:tap={(e)=>tapBotones(e)} 
 />
+<button class="Recarga" use:tap on:tap={recargaMapa}>Reinicia</button>
 
 
 <main>
