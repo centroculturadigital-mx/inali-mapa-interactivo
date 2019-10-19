@@ -273,24 +273,29 @@
 		z-index: -1;
   }
   
-  .Recarga {
+  .Reinicia {
     position: absolute;
     z-index: 1;
-    top: 5rem;
-    left: 1rem;
-    box-shadow:inset 0px 0px 15px 3px #354554;
+    top: 4.5rem;
+    left: 0.25rem;
+    /* box-shadow:inset 0px 0px 15px 3px #354554; */
   	background:linear-gradient(to bottom, #3f5163 5%, #5c7791 100%);
-	  border-radius:18px;
+	  border-radius: 18px;
 	  border:1px solid #516980;
 	  cursor:pointer;
-	  color:#ffffff;
-	  padding: .25rem .75rem;
+	  color: rgba(255,255,255,0.2);
   }
 
-  .Recarga:hover {
+  .Reinicia:hover {
   	background:linear-gradient(to bottom, #5c7791 5%, #3f5163 100%);
-	  background-color:#5c7791;
+    background-color:#5c7791;
+    color:#ffffff;
+    border-radius: 18px;
+    padding: .25rem .75rem;
   }
+
+  
+  
 
 
 </style>
@@ -319,7 +324,7 @@
   }
   on:tap={(e)=>tapBotones(e)} 
 />
-<button class="Recarga" use:tap on:tap={recargaMapa}>Reinicia</button>
+<button class="Reinicia" use:tap on:tap={recargaMapa}>Reiniciar</button>
 
 
 <main>
