@@ -61,7 +61,7 @@
             if( v.origen.y < wH/2 ) {
                 vT = Math.max(Math.min((wH/2)-diffY,(wW-2)-240), 0)            
             } else {
-                vT = Math.max(Math.min((wH/2)+diffY,wH-240), wH/2)            
+                vT = Math.max(Math.min((wH/2)+diffY,wH-(240+64)), wH/2)            
             }
 
 
