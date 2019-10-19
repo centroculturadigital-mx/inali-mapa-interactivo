@@ -90,6 +90,12 @@
     
     }
   })
+
+    const datos =  {
+    titulo: "Miguel León-Portilla",
+    fecha: "(22 de febrero de 1926 - 1° de octubre de 2019 )",
+    textoHomenaje: "Impulsor fundamental del estudio y pensamiento de las lenguas indígenas, de la otra realidad no percibida, de lo oculto en la belleza de las flores y el origen de los cantos. Este Mapa se soporta en los pilares que construyó. Tlazocamati, tlamatini.",
+ }
 </script>
 
 <style>
@@ -174,7 +180,7 @@
             <img src="{portilla}"  alt="homenaje">
         </div>
         <h4 class="TituloNombre">
-            Miguel León Portilla
+            {datos.titulo}
         </h4>
         <button class="Cerrar" use:tap on:tap={cerrar}>
             <i class="fa fa-close"/>
@@ -183,13 +189,10 @@
     <div class="Semblanza">
         <div class="Texto" bind:this={contenedor}>
             <p class="Fecha">
-                Ciudad de México, 22 de febrero de 1926, 1 de octubre de 2019.
+                {datos.fecha}
             </p>
             <p>
-                Su nombre aparece en los documentos académicos como Miguel León-Portilla, fue un filósofo e historiador mexicano, experto reconocido en materia del pensamiento y la literatura de la cultura náhuatl.
-            </p>
-            <p>
-                Desde 1988, se desempeñó como investigador emérito de la Universidad Nacional Autónoma de México, recibió la Medalla Belisario Domínguez en 1995, y desde el 23 de marzo de 1971 era miembro de El Colegio Nacional, institución para cuyo ingreso presentó la ponencia La historia y los historiadores en el México antiguo, y fue recibido con discurso de Agustín Yáñez.
+                {datos.textoHomenaje}
             </p>
         </div>
     </div>

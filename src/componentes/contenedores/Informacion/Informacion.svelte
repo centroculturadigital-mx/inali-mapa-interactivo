@@ -9,6 +9,10 @@
   import { tap } from '@sveltejs/gestures';
   import { onMount } from 'svelte';
 
+  const datos = {
+    texto: "El Mapa Interactivo de Lenguas Indígenas de México es una colaboración entre el Centro de Cultura Digital y el Instituto Nacional de Lenguas Indígenas. \n Su creación responde a la realidad: México es un país multilingüe y multinacional, dentro del que se hablan 11 familias lingüísticas indoamericanas, de las que se despliegan 68 agrupaciones lingüísticas, conformadas por 364 variantes."
+  }
+
   const info = "icono-info.svg"
 
   const dispatch = createEventDispatcher();
@@ -177,6 +181,10 @@
             font-size: .75rem;
             line-height: 1.5;
         }
+
+        .Subtitulo {
+          text-transform: uppercase;
+        }
         
         
         
@@ -201,19 +209,10 @@
     <div class="Acerca">
         <div class="Texto" bind:this={contenedor}>
             <h3 class="Subtitulo">
-                ACERCA DE 
+                acerca de 
             </h3>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quod quidem delectus hic aspernatur sit eum rem laborum sequi, recusandae similique ut totam, dolores dignissimos veniam. Voluptatem error ipsam ipsa!
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda veritatis hic illo dolore a voluptate perspiciatis, beatae nisi odit distinctio maiores reiciendis corporis obcaecati veniam, illum possimus at? Delectus, vitae.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit maxime quisquam optio quis aut nihil vero, ex fugiat non totam quidem modi, suscipit laboriosam molestiae placeat eligendi vel qui perspiciatis!
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit maxime quisquam optio quis aut nihil vero, ex fugiat non totam quidem modi, suscipit laboriosam molestiae placeat eligendi vel qui perspiciatis!
-            </p>
-            <p>
-                Lore ipsum dolor sit amet consectetur adipisicing elit. Quo consequuntur autem repudiandae ducimus nobis possimus facere sunt sint vero laudantium ex aperiam ipsa a, beatae neque, nostrum dolor animi sit!
-                Lore ipsum dolor sit amet consectetur adipisicing elit. Quo consequuntur autem repudiandae ducimus nobis possimus facere sunt sint vero laudantium ex aperiam ipsa a, beatae neque, nostrum dolor animi sit!
+              {datos.texto}
             </p>
         </div>
     </div>
