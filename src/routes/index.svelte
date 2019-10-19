@@ -271,10 +271,10 @@
 </style>
 
 
-<!-- <canvas bind:this={canvas}></canvas> -->
+<canvas bind:this={canvas}></canvas>
 
 {#if !! canvas }
-	<!-- <GSAP1 canvas={canvas}/> -->
+	<GSAP1 canvas={canvas}/>
 <!-- 
 <FraseViva canvas={canvas}/> -->
 {/if}
