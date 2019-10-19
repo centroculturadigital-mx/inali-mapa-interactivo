@@ -113,7 +113,7 @@
             background-color: #fff;
             color: #333;
             box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
-            z-index: -1;
+            z-index: 100;
 
         }
 
@@ -175,7 +175,7 @@
         .Texto {
             width: 100%;
             max-height: 13rem;
-            overflow: hidden;
+            overflow: auto;
             color: #5E5E5E;
             font-style: normal;
             font-weight: normal;
@@ -202,7 +202,7 @@
             lenguas indígenas
           </h6>
         </div>
-        <img src="{info}"  alt="info">
+        <img src={info}  alt="info">
         <button class="Cerrar" use:tap on:tap={cerrar}>
             <i class="fa fa-close"/>
         </button>
