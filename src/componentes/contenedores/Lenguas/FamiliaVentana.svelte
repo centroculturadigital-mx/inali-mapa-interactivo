@@ -125,15 +125,7 @@
             
             ultimoTouchMoveY = e.clientY
             ultimoTouchMoveX = e.clientX
-            // const proporcionY = (e.clientY-top)/(bottom-top)
-            // const alturaDestino = document.querySelector(".FamiliaVentana").offsetHeight * proporcionY;
             
-            
-            // contenedor.scrollTo({
-            //   top: alturaDestino,
-            //   behavior: 'smooth'
-  
-            // } )
           }
         }
       })
