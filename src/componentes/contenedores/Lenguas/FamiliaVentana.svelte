@@ -164,7 +164,7 @@
   .BotonConIcono {
     background-color: transparent;
     border: none;
-    color: #afafaf !important;
+    color: #929191;
     cursor: pointer;
     font-size: 22px;
     padding: .3rem;
