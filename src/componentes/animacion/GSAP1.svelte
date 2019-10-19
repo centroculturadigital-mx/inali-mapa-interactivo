@@ -11,7 +11,7 @@
     //Paper.install(window);
     let colW = window.innerWidth / 30
     
-    const numLineas = 20
+    const numLineas = 7
     const numBarras = 8
     const numPuntos = 5
     const barras = []

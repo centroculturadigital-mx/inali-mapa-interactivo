@@ -44,8 +44,8 @@
 
     familiasModule = await import("../datos/familias.json");
 
-		let ctx = canvas.getContext('2d')        
-        ctx.globalCompositeOperation = 'difference';
+		// let ctx = canvas.getContext('2d')        
+    //     ctx.globalCompositeOperation = 'difference';
 
 
 	})
@@ -271,10 +271,10 @@
 </style>
 
 
-<canvas bind:this={canvas}></canvas>
+<!-- <canvas bind:this={canvas}></canvas> -->
 
 {#if !! canvas }
-	<GSAP1 canvas={canvas}/>
+	<!-- <GSAP1 canvas={canvas}/> -->
 <!-- 
 <FraseViva canvas={canvas}/> -->
 {/if}
