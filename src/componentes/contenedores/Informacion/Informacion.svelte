@@ -32,7 +32,7 @@
 
     // botonFamiliaVentanaCerrar.addEventListener("touchstart",cerrarVentana)
 
-    if(!!contenedor) {
+     if(!!contenedor) {
 
       interact(contenedor)
       .draggable({
@@ -41,6 +41,12 @@
           
           ultimoTouchMoveY = e.clientY
           ultimoTouchMoveX = e.clientX
+            
+        },
+        onend: (e) => {
+          
+          ultimoTouchMoveY = null
+          ultimoTouchMoveX = null
             
         },
         onmove: (e) => {
@@ -67,10 +73,12 @@
             
             if( Math.abs(diferenciaX) < Math.abs(diferenciaY) ) {
               
-              ultimoScrollVentanaY += diferenciaY
+              ultimoScrollVentanaY += diferenciaY*3
+
+              ultimoScrollVentanaY = Math.min( ultimoScrollVentanaY, document.querySelector(".VentanaFamilia").offsetHeight - 240 )
 
               contenedor.scrollTo({
-                top: diferenciaY*30,
+                top: ultimoScrollVentanaY,
                 behavior: 'smooth'
               })
             
@@ -78,21 +86,14 @@
             
             ultimoTouchMoveY = e.clientY
             ultimoTouchMoveX = e.clientX
-            // const proporcionY = (e.clientY-top)/(bottom-top)
-            // const alturaDestino = document.querySelector(".FamiliaVentana").offsetHeight * proporcionY;
             
-            
-            // contenedor.scrollTo({
-            //   top: alturaDestino,
-            //   behavior: 'smooth'
-  
-            // } )
           }
         }
       })
     
     }
   })
+
 
 </script>
 
