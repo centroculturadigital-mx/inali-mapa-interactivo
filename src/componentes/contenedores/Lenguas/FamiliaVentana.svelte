@@ -56,9 +56,14 @@
 
   $: agrupacionesFamilia = familia ? agrupaciones.filter(a => familia.agrupaciones.includes(a.id)) : []
 
-  $: imagenesYutonahua = familias.length ? familias.find(f => f.id === 'yutonahua').fotografias : []
-  $: console.log(imagenesYutonahua);
+  $: imagenes = familia && familia.fotografias && familia.fotografias.length ?
+    familia.fotografias :
+    familias && familias.length ? 
+      familias.find(f => f.id === 'yutonahua') .fotografias :
+      []
+  $: console.log(imagenes);
   $: console.log(familias);
+  $: console.log(familia);
   
   onMount(async ()=>{
     agrupacionesModule = await import("../../../datos/agrupaciones.json");
@@ -75,6 +80,12 @@
           
           ultimoTouchMoveY = e.clientY
           ultimoTouchMoveX = e.clientX
+            
+        },
+        onend: (e) => {
+          
+          ultimoTouchMoveY = null
+          ultimoTouchMoveX = null
             
         },
         onmove: (e) => {
@@ -101,10 +112,12 @@
             
             if( Math.abs(diferenciaX) < Math.abs(diferenciaY) ) {
               
-              ultimoScrollVentanaY += diferenciaY
+              ultimoScrollVentanaY += diferenciaY*3
+
+              ultimoScrollVentanaY = Math.min( ultimoScrollVentanaY, document.querySelector(".VentanaFamilia").offsetHeight - 240 )
 
               contenedor.scrollTo({
-                top: diferenciaY*30,
+                top: ultimoScrollVentanaY,
                 behavior: 'smooth'
               })
             
@@ -129,6 +142,16 @@
   })
 
 
+  $: scrollIniciado = ultimoScrollVentanaY > 0
+
+  const iniciarScroll = () => {
+    ultimoScrollVentanaY = 300;
+    contenedor.scrollTo({
+      top: ultimoScrollVentanaY,
+      behavior: 'smooth'
+    })
+    
+  }
 
 </script>
 
@@ -236,14 +259,16 @@
     padding: 1rem;
   }
   .Flecha {
-    font-size: 24px;
-    font-weight: lighter;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #c9c9c9;
-    width: 100%;
+    background: none;
+    position: absolute;
+    bottom: -1.5rem;
+    left: calc( 50% - 1rem );
     height: auto;
+    width: auto;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.3);
   }
   .TitulosLista {
     display: flex;
@@ -330,15 +355,11 @@
       <!-- <div class="ContenedorScroll"> -->
 
       <div class="ContenedorCarrusel">
-        <Slider imagenes={imagenesYutonahua}/>
+        <Slider imagenes={imagenes}/>
       </div>
 
       <div class="ContenedorAgrupaciones">
-        <span class="Flecha">
-          <!-- <Fa class="FlechaIcono" icon={abajoIcono} /> -->
-          <i class="fa fa-chevron-down"/>
-
-        </span>
+        
         <div class="TitulosLista">
           <h6 class="TituloLista">Agrupaciones Lingüísticas</h6>
           <h6 class="TituloLista">Riesgo de desaparición</h6>
@@ -350,6 +371,11 @@
     </div>
       
       <!-- </div> -->
+      {#if ! scrollIniciado}
+        <button class="Flecha" on:click={ iniciarScroll }>
+          <i class="fa fa-chevron-down"/>
+        </button>
+      {/if}
   </article>
   <!-- muestra detalle -->
   {#if detalleMostrar}

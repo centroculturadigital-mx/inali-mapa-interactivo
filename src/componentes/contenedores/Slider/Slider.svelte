@@ -72,11 +72,15 @@
     <div class="SlideContent">
       <img class="Imagen" src={imagen.url} alt="INALI" />
       <div class="TextoFotos">
-        <h4 class="TextoFotosTitulo">{imagen.titulo}</h4>
-        <p class="TextoFotosSubTitulo">
-        <span>Créditos: </span>
-        <span>{imagen.creditos}</span>
-        </p>
+        {#if imagen.titulo}
+          <h4 class="TextoFotosTitulo">{imagen.titulo}</h4>
+        {/if }
+        {#if imagen.creditos}
+          <p class="TextoFotosSubTitulo">
+          <span>Créditos: </span>
+          <span>{imagen.creditos}</span>
+          </p>
+        {/if }
       </div>
     </div>
   {/each}

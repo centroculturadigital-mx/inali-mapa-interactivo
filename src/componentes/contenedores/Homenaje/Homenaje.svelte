@@ -183,10 +183,10 @@
     <div class="Semblanza">
         <div class="Texto" bind:this={contenedor}>
             <p class="Fecha">
-                Ciudad de México, 22 de febrero de 1926-Ibidem, 1 de octubre de 2019.
+                Ciudad de México, 22 de febrero de 1926, 1 de octubre de 2019.
             </p>
             <p>
-                Su nombre aparece en los documentos académicos como Miguel León-Portilla, fue un filósofo e historiador mexicano, experto reconocido en materia del pensamiento y la literatura de la cultura náhuatl.2​ 
+                Su nombre aparece en los documentos académicos como Miguel León-Portilla, fue un filósofo e historiador mexicano, experto reconocido en materia del pensamiento y la literatura de la cultura náhuatl.
             </p>
             <p>
                 Desde 1988, se desempeñó como investigador emérito de la Universidad Nacional Autónoma de México, recibió la Medalla Belisario Domínguez en 1995, y desde el 23 de marzo de 1971 era miembro de El Colegio Nacional, institución para cuyo ingreso presentó la ponencia La historia y los historiadores en el México antiguo, y fue recibido con discurso de Agustín Yáñez.
