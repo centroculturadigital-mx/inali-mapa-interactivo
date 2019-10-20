@@ -317,14 +317,14 @@
         <p class="Titulo">FAMILIA</p>
         <!-- <h1 class="Principal">Yuto-nahua</h1> -->
         <h1 class="Principal" style={`color:#${familia.color}`}>
-          {familia.nombreOriginario}
+          {familia.nombreCastellanizado}
         </h1>
         {#if 
-          familia.nombreCastellanizado && 
+          familia.nombreOriginario && 
           familia.nombreOriginario != familia.nombreCastellanizado
         }
           <h4 class="SubTitulo" style={`color:#${familia.color}`}>
-            ({familia.nombreCastellanizado})
+            ({familia.nombreOriginario})
           </h4>
         {/if}
       </header>
