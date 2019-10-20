@@ -32,6 +32,8 @@
 
   const mostrarDetalle = () => {
     detalleMostrar = !detalleMostrar;
+    console.log(contenedor.getBoundingClientRect());
+    
   };
   const cerrarDetalle = () => {
     detalleMostrar = false;
@@ -288,6 +290,10 @@
     /* sin slider */
     /* transform: translateX(297px);  */
     z-index: 100;
+  }
+
+  .FamiliaDetalle.izquierdo {
+    left: -14.5rem;
   }
   
   h1,h5 {

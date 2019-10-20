@@ -220,7 +220,11 @@
         // item.style.webkitTransform = 
         // item.style.transform = `translate( ${p.posicion[0]}px, ${ p.posicion[1]}px)`
 
-
+  console.log("to!!");
+  
+        TweenLite.set(item,{
+          x:item.getBoundingClientRect().left,y:item.getBoundingClientRect().top,ease: Circ.ease          
+        })
         TweenLite.to(item,1.3,{
           x:p.posicion[0],y:p.posicion[1],ease: Circ.ease          
         })
@@ -230,9 +234,13 @@
           {rotation:0, ease: Elastic.easeOut, transformOrigin:"50% 50%"}
         )
         
+        setTimeout(() => {
+          item.style.webkitTransform = item.style.transform = `translate(${p.posicion[0]}px, ${p.posicion[1]}px)`;
+
+        }, 600)
         // item.setAttribute("data-x", p.posicion[0]);
         // item.setAttribute("data-y", p.posicion[1]);
-        console.log("cerrar familiaId",familiaId, item, p);
+        // console.log("cerrar familiaId",familiaId, item, p);
 
       }
     }

@@ -111,7 +111,7 @@ figure {
 }
 </style>
 <!--  -->
-<figure>
+<figure on:click={()=>location.reload()}>
 
 <a id="LogoLink" href={linkUrl} alt="Logo">
 
