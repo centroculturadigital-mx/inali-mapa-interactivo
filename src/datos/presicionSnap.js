@@ -1,47 +1,47 @@
 export default [
     {
         id: "yutonahua",//"Yuto-nahua",
-        posicion: ["-9", "2"]
+        presicion: 0.6
     }, 
     {
         id: "otomangue",//"Oto-mangue",
-        posicion: ["5", "-5"]
+        presicion: 0.5
     }, 
     {
         id: "maya",//"Maya",
-        posicion: ["3", "-10"]
+        presicion: 0.4
     }, 
     {
         id: "algica",//"Álgica",
-        posicion: ["8", "10"]
+        presicion: 0.1
     }, 
     {
         id: "huave",//"Huave",
-        posicion: ["-13", "-4"]
+        presicion: 0.1
     }, 
     {
         id: "chontaldeoaxaca",//"Chontal de Oaxaca",
-        posicion: ["6", "0"]
+        presicion: 0.1
     }, 
     {
         id: "mixezoque",//"Mixe-zoque",
-        posicion: ["-5", "2"]
+        presicion: 0.2
     }, 
     {
         id: "tarasca",//"Tarasca",
-        posicion: ["10", "4"]
+        presicion: 0.1
     }, 
     {
         id: "totonacotepehua",//"Totonaco-tepehua",
-        posicion: ["-15", "4"]
+        presicion: 0.1
     }, 
     {
         id: "seri",//"Seri",
-        posicion: ["-7", "6"]
+        presicion: 0.1
     }, 
     {
         id: "cochimiyumana",//"Cochimí-yumana",
-        posicion: ["15", "8"]
+        presicion: 0.1
     }, 
 ];
 

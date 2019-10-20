@@ -63,9 +63,7 @@
     familias && familias.length ? 
       familias.find(f => f.id === 'yutonahua') .fotografias :
       []
-  $: console.log(imagenes);
-  $: console.log(familias);
-  $: console.log(familia);
+  $: console.log(agrupaciones.length)
   
   onMount(async ()=>{
     agrupacionesModule = await import("../../../datos/agrupaciones.json");
@@ -325,14 +323,14 @@
         <p class="Titulo">FAMILIA</p>
         <!-- <h1 class="Principal">Yuto-nahua</h1> -->
         <h1 class="Principal" style={`color:#${familia.color}`}>
-          {familia.nombreOriginario}
+          {familia.nombreCastellanizado}
         </h1>
         {#if 
-          familia.nombreCastellanizado && 
+          familia.nombreOriginario && 
           familia.nombreOriginario != familia.nombreCastellanizado
         }
           <h4 class="SubTitulo" style={`color:#${familia.color}`}>
-            ({familia.nombreCastellanizado})
+            ({familia.nombreOriginario})
           </h4>
         {/if}
       </header>

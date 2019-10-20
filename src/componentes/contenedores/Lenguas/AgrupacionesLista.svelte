@@ -1,5 +1,4 @@
 <script>
-  import lenguas from "../../../../datosFalsos/lenguasFake.js";
   import Riesgo from "../iconos/Riesgo.svelte";
 
   export let agrupaciones

@@ -21,8 +21,6 @@
 
         const numLineas = anchoMaximo / separacionX
 
-        console.log(numLineas);
-        
         for( let i = 0; i<numLineas; i++) {
             let linea = Paper.Path.Line(100+(i*separacionX),50,100+(i*separacionX),300)
             linea.strokeColor = '#f80'
@@ -59,7 +57,6 @@
 
         interact(contenedor).on("hold",
             ()=>{
-            console.log("on!");
             
             for( const linea of lineas ) {
                 const tlY = new TimelineMax({
