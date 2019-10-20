@@ -1,11 +1,9 @@
 import interact from 'interactjs'
 import calculaPosicionMapa from "./calculaPosicionMapa";
+import presicionSnap from '../datos/presicionSnap'
 //
 const velocidadTransision = '0.5s'
-//Colores
-const colorArea = 'gray'
-const colorArrastre = 'lime'
-const colorEntraArea = 'lightgray'
+
 
 export default (zona, callback ) => {
   // // const ventanaFamilia = document.querySelector('.VentanaFamilia');
@@ -15,9 +13,10 @@ export default (zona, callback ) => {
   const id = zona.id
   const colorDefault = zona.fill
 
+  console.log(zona.id, presicionSnap.find(f => f.id === zona.id).presicion)
   interact(interactObj).dropzone({
     accept: acceptObj,
-    overlap: 0.2,//10% encima del area
+    overlap: presicionSnap.find(f => f.id = zona.id).presicion,
     ondropactivate: (e) => {
       // e.target.style.transition = velocidadTransision
       // e.target.style.fill = colorArrastre// area
