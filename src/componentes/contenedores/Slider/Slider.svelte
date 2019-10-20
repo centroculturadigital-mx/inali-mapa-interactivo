@@ -2,7 +2,6 @@
   import { onMount } from "svelte";
   import Carousel from "@centroculturadigital-mx/svelte-carousel";
   import { ChevronLeftIcon, ChevronRightIcon } from "../../../../node_modules/svelte-feather-icons/src/index.js";
-  // import slides from "../../../../datosFalsos/slidesFake";
 
   export let imagenes
 

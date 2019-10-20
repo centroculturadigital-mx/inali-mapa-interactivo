@@ -76,7 +76,8 @@
 }, {
   "id": "kuahl",
   "nombre": "Ku’ahl",
-  "riesgo": 3
+  "riesgo": 3,
+  "habitantes": "sin dato"
 }, {
   "id": "seri",
   "nombre": "Seri",
@@ -314,27 +315,27 @@
   "habitantes": 9568
 }, {
   "id": "triqui",
+  "nombre": "Triqui",
+  "riesgo": 0,
+  "habitantes": 25674
+  }, {
+  "id": "chol",
   "nombre": "Ch’ol",
   "riesgo": 0,
   "habitantes": 251809
 }, {
-  "id": "chol",
+  "id": "tseltal",
   "nombre": "Tseltal",
   "riesgo": 0,
   "habitantes": 556720
 }, {
-  "id": "tseltal",
-  "nombre": "Triqui",
-  "riesgo": 0,
-  "habitantes": 25674
-}, {
   "id": "tsotsil",
-  "nombre": "Mixe",
-  "riesgo": 0,
-  "habitantes": 133632
-}, {
-  "id": "mixe",
   "nombre": "Tsotsil",
   "riesgo": 0,
   "habitantes": 487898
+}, {
+  "id": "mixe",
+  "nombre": "Mixe",
+  "riesgo": 0,
+  "habitantes": 133632
 }]

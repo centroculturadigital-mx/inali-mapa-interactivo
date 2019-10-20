@@ -61,9 +61,7 @@
     familias && familias.length ? 
       familias.find(f => f.id === 'yutonahua') .fotografias :
       []
-  $: console.log(imagenes);
-  $: console.log(familias);
-  $: console.log(familia);
+  $: console.log(agrupaciones.length)
   
   onMount(async ()=>{
     agrupacionesModule = await import("../../../datos/agrupaciones.json");
