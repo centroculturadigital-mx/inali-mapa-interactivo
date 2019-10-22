@@ -119,7 +119,7 @@
               
               ultimoScrollVentanaY += diferenciaY*3
 
-              ultimoScrollVentanaY = Math.min( ultimoScrollVentanaY, document.querySelector(".VentanaFamilia").offsetHeight - 240 )
+              // ultimoScrollVentanaY = Math.min( ultimoScrollVentanaY, document.querySelector(".VentanaFamilia").offsetHeight + 240 )
 
               contenedor.scrollTo({
                 top: ultimoScrollVentanaY,

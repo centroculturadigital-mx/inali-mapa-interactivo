@@ -132,7 +132,7 @@
   .Texto {
     padding: 0 .75rem;
 
-    padding-bottom: 6rem;
+    padding-bottom: 10rem;
   }
 </style>
 
