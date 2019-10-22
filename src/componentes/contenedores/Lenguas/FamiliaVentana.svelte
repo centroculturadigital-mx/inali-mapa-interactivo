@@ -28,11 +28,16 @@
 
   let detalleMostrar = false;
 
-
+  let posicionDetalle
 
   const mostrarDetalle = () => {
+    const rect = contenedor.getBoundingClientRect()
     detalleMostrar = !detalleMostrar;
-    console.log(contenedor.getBoundingClientRect());
+    if( rect.left > window.innerWidth - rect.width * 2 ) {
+      posicionDetalle = "izquierdo"
+    } else {
+      posicionDetalle = null
+    }
     
   };
   const cerrarDetalle = () => {
@@ -291,7 +296,7 @@
   }
 
   .FamiliaDetalle.izquierdo {
-    left: -14.5rem;
+    left: -12rem;
   }
   
   h1,h5 {
@@ -375,8 +380,8 @@
   </article>
   <!-- muestra detalle -->
   {#if detalleMostrar}
-    <div class="FamiliaDetalle" transition:fade>
-      <FamiliaDetalle {cerrarDetalle} informacion={familia.informacion} />
+    <div class={ "FamiliaDetalle " + posicionDetalle } transition:fade>
+      <FamiliaDetalle {cerrarDetalle} informacion={familia.informacion} orientacion={posicionDetalle} />
     </div>
   {/if}
 </section>

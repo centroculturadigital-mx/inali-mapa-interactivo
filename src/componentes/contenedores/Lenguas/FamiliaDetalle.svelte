@@ -7,9 +7,9 @@
   import { onMount } from 'svelte'
 
   import Fa from '../../../../node_modules/svelte-fa/dist/svelte-fa.mjs';
-  import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
   export let informacion
+  export let orientacion
 
   let contenedor
 
@@ -20,7 +20,6 @@
   let ultimoScrollVentanaX = 0
 
 
-  let cierraIcono = faArrowCircleLeft;
 
   export let cerrarDetalle;
 
@@ -120,6 +119,10 @@
     height: 30px;
     width: 100%;
   }
+  .OcultarWrapper.izquierdo {
+    justify-content: flex-start;
+  }
+
   .Ocultar {
     border: 0;
     background-color: #fff;
@@ -134,10 +137,13 @@
 </style>
 
 <section class="Detalle">
-  <div class="OcultarWrapper">
+  <div class={ "OcultarWrapper " + (orientacion == "izquierdo" ? "izquierdo": "") }>
     <button class="BotonConIcono Ocultar" use:tap on:tap={cerrarDetalle}>
-      <i class="fa fa-arrow-left"></i>
-      <!-- <Fa icon={cierraIcono} /> -->
+      {#if orientacion =="izquierdo"}
+        <i class="fa fa-arrow-right"></i>
+      {:else}
+        <i class="fa fa-arrow-left"></i>
+      {/if}
     </button>
   </div>
   <section class="TextoWrapper" bind:this={contenedor}>
