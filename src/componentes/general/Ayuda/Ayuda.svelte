@@ -1,85 +1,87 @@
 <script>
-import {tap} from "@sveltejs/gestures"
+  import {tap} from "@sveltejs/gestures"
 
-let heightAyuda = 80;
-let widthAyuda = 80;
-let color = 'white'
-//
-const linkUrl = '#'
-//
+  let heightAyuda = 95;
+  let widthAyuda = 95;
+  let color = 'white'
+  //
+  const linkUrl = '#'
+  //
 </script>
 <style>
-button {
-  padding: 0.5rem;
-  margin: 0;
-  position: fixed;
-  top: 0;
-  right: 0;
-  background-color: transparent;
-  border: none;
-  outline: none;
-}
-
-figure {
-  margin: 0;
-}
-#AyudaPathGroup {
-  transition: all 2s;
-  opacity: 0;
-  transform: translate(-75px, 16px);
-  transform-origin: center;
-  animation: ayudaEntra 2s 1;
-  animation-delay:1s;
-  animation-fill-mode: both;
-  cursor: pointer;
-}
-.AyudaSimbolo {
-  transform-origin: center right;
-  animation: ayudaMovimiento 2s infinite;
-  animation-delay:3s;
-}
-@keyframes ayudaEntra {
-  0% {
-    transform: translate(-50%, 8px);
+  button {
+    padding: 0.5rem;
+    margin: 0;
+    position: fixed;
+    /* top: 0; */
+    bottom: 6rem;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
+  
+  figure {
+    margin: 0;
+  }
+  #AyudaPathGroup {
+    transition: all 2s;
     opacity: 0;
+    transform: translate(-75px, 16px);
+    transform-origin: center;
+    animation: ayudaEntra 2s 1;
+    animation-delay:1s;
+    animation-fill-mode: both;
+    cursor: pointer;
+    
   }
-  100% {
-    transform: translate(40%, 8px);
-    opacity: 1;
+  .AyudaSimbolo {
+    transform-origin: center right;
+    animation: ayudaMovimiento 2s infinite;
+    animation-delay:3s;
   }
-}
-@-webkit-keyframes ayudaEntra {
-  0% {
-    transform: translate(-50%, 8px);
-    opacity: 0;
+  @keyframes ayudaEntra {
+    0% {
+      transform: translate(-50%, 8px);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(40%, 8px);
+      opacity: 1;
+    }
   }
-  100% {
-    transform: translate(45%, 8px);
-    opacity: 1;
+  @-webkit-keyframes ayudaEntra {
+    0% {
+      transform: translate(-50%, 8px);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(45%, 8px);
+      opacity: 1;
+    }
   }
-}
-@keyframes ayudaMovimiento {
-  0% {
-    transform: scale(1);
+  @keyframes ayudaMovimiento {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.02);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
-  50% {
-    transform: scale(1.02);
+  @-webkit-keyframes ayudaMovimiento {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.02);
+    }
+    100% {
+      transform: scale(1.01);
+    }
   }
-  100% {
-    transform: scale(1);
-  }
-}
-@-webkit-keyframes ayudaMovimiento {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
-  100% {
-    transform: scale(1.01);
-  }
-}
 </style>
 <!--  -->
 <button class="InformacionBoton" use:tap on:tap>
