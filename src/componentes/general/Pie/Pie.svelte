@@ -1,5 +1,5 @@
 <script>
-const logos = ['logos-gobmx-cultura-inah.svg','logoCcd.svg','logoInali.png']
+const logos = ['logos-gobmx-cultura-inah.svg','logoCcd.svg','logoInali.svg']
 </script>
 
 <style>
@@ -9,16 +9,16 @@ const logos = ['logos-gobmx-cultura-inah.svg','logoCcd.svg','logoInali.png']
     align-items: center;
     position: fixed;
     width: 100%;
-    height: 35px;
+    height: 3rem;
     left: 0;
     bottom: 0;
     /* background: rgba(255, 255, 255, 0.2); */
-    background: #465D72;
+    background: #3c5062;
     
   }
   .PieLogo {
-    margin: 0 1rem;
-    height: 25px;
+    margin: 0 0.5rem;
+    height: 2rem;
     width: auto;
   }
 </style>
