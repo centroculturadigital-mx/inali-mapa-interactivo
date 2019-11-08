@@ -132,7 +132,7 @@
     });
   };
 </script>
-
+  
 <style>
   article {
     max-width: 14rem;
@@ -244,15 +244,34 @@
   .Flecha {
     background: none;
     position: absolute;
-    bottom: -1.5rem;
-    left: calc(50% - 1rem);
+    bottom: -1rem;
+    left: calc( 50% - 1rem );
     height: auto;
     width: auto;
     border: none;
     font-size: 24px;
     color: #fff;
-    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 3px 3px 2px rgba(50, 50, 50, 0.8);
     cursor: pointer;
+  }
+  .Flecha:hover {
+    text-shadow: 3px 3px 3px rgb(50, 50, 50, 1);
+  }
+  .bounce {
+    -moz-animation: bounce 2s infinite;
+    -webkit-animation: bounce 2s infinite;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(5px);
+    }
+    40% {
+      transform: translateY(8px);
+    }
+    60% {
+      transform: translateY(10px);
+    }
   }
   .TitulosLista {
     display: flex;
@@ -357,13 +376,13 @@
         </section>
       </div>
     </div>
-
-    <!-- </div> -->
-    {#if !scrollIniciado}
-      <button class="Flecha" on:click={iniciarScroll}>
-        <i class="fa fa-chevron-down" />
-      </button>
-    {/if}
+      
+      <!-- </div> -->
+      {#if ! scrollIniciado}
+        <button class="Flecha bounce" on:click={ iniciarScroll }>
+          <i class="fa fa-chevron-down"/>
+        </button>
+      {/if}
   </article>
   <!-- muestra detalle -->
   {#if detalleMostrar}

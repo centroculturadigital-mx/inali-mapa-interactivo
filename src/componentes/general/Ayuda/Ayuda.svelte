@@ -35,6 +35,7 @@
     animation: ayudaMovimiento 2s infinite;
     animation-delay:3s;
   }
+  
   @keyframes ayudaEntra {
     0% {
       transform: translate(50%, 8px);
