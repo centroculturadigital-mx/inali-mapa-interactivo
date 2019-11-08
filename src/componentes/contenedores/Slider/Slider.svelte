@@ -57,6 +57,10 @@
   .TextoFotosSubTitulo {
     font-size: 10px;
   }
+  /*  */
+  :global(.carousel ul) {
+    display: none;
+  }
 </style>
 
 <!-- <Carousel perPage={{ 320: 1, 760: 1, 1024: 1, 1200: 1 }} loop> -->
