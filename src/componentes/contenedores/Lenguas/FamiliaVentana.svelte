@@ -205,7 +205,7 @@
     font-weight: 200;
     font-size: 0.6rem;
     line-height: 1;
-    letter-spacing: 0.5rem;
+    letter-spacing: 0.25rem;
     color: #454344;
     margin: 0;
   }
