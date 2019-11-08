@@ -214,7 +214,7 @@
     text-align: center;
     font-weight: 600;
     font-size: 1.25rem;
-    line-height: 2;
+    /*line-height: 2;*/
     text-align: center;
     color: #e6aa30;
     margin: 0;
