@@ -15,7 +15,7 @@
       position: fixed;
       /* top: 4.5rem; */
       bottom: 5rem;
-      right: .75rem;
+      right: 1rem;
       z-index: 10000;
       transition: all 2s;
       /* transform: translate(-75px, 16px); */
@@ -35,8 +35,8 @@
     }
 
     img {
-		  width: 3rem;
-		  height: 3rem;
+		  width: 3.25rem;
+		  height: 3.25rem;
       object-fit: cover;
       border-radius: 50%;
     }
