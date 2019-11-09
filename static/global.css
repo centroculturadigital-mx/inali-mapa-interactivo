@@ -45,6 +45,9 @@ main {
 button:focus {
 	outline: none;
 }
+*:focus {
+	outline: none;
+}
 
 button:active {
 	outline: none;
