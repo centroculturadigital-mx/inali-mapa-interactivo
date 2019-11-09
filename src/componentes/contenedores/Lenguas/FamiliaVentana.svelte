@@ -1,9 +1,8 @@
 <script>
+  import interact from "interactjs";
+  import { tap } from "@sveltejs/gestures";
 
-  import interact from 'interactjs'
-  import { tap } from '@sveltejs/gestures';
-
-  import { createEventDispatcher } from 'svelte';  
+  import { createEventDispatcher } from "svelte";
 
   import FamiliaDetalle from "./FamiliaDetalle.svelte";
   import AgrupacionesLista from "./AgrupacionesLista.svelte";
@@ -13,150 +12,138 @@
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
   // datos falsos
-  
+
   export let familia;
 
   const dispatch = createEventDispatcher();
 
   const cerrar = () => {
-    
-    dispatch("cerrar", { familia: !! familia ? familia.id : null })
-    
-  }
+    dispatch("cerrar", { familia: !!familia ? familia.id : null });
+  };
   // let cierraIcono = faTimesCircle;
   let abajoIcono = faChevronDown;
 
   let detalleMostrar = false;
 
-  let posicionDetalle
+  let posicionDetalle;
 
   const mostrarDetalle = () => {
-    const rect = contenedor.getBoundingClientRect()
+    const rect = contenedor.getBoundingClientRect();
     detalleMostrar = !detalleMostrar;
-    if( rect.left > window.innerWidth - rect.width * 2 ) {
-      posicionDetalle = "izquierdo"
+    if (rect.left > window.innerWidth - rect.width * 2) {
+      posicionDetalle = "izquierdo";
     } else {
-      posicionDetalle = null
+      posicionDetalle = null;
     }
-    
   };
   const cerrarDetalle = () => {
     detalleMostrar = false;
   };
-  
-
 
   // let botonFamiliaVentanaCerrar
-  let contenedor
+  let contenedor;
 
-  let ultimoTouchMoveY
-  let ultimoTouchMoveX
+  let ultimoTouchMoveY;
+  let ultimoTouchMoveX;
 
-  let ultimoScrollVentanaY = 0
-  let ultimoScrollVentanaX = 0
+  let ultimoScrollVentanaY = 0;
+  let ultimoScrollVentanaX = 0;
 
-  let agrupacionesModule
-  let familiasModule
+  let agrupacionesModule;
+  let familiasModule;
 
-  $: agrupaciones = agrupacionesModule ? agrupacionesModule.default : []
-  $: familias = familiasModule ? familiasModule.default : []
+  $: agrupaciones = agrupacionesModule ? agrupacionesModule.default : [];
+  $: familias = familiasModule ? familiasModule.default : [];
 
-  $: agrupacionesFamilia = familia ? agrupaciones.filter(a => familia.agrupaciones.includes(a.id)) : []
+  $: agrupacionesFamilia = familia
+    ? agrupaciones.filter(a => familia.agrupaciones.includes(a.id))
+    : [];
 
-  $: imagenes = familia && familia.fotografias && familia.fotografias.length ?
-    familia.fotografias :
-    familias && familias.length ? 
-      familias.find(f => f.id === 'yutonahua') .fotografias :
-      []
-  $: console.log(agrupaciones.length)
-  
-  onMount(async ()=>{
+  $: imagenes =
+    familia && familia.fotografias && familia.fotografias.length
+      ? familia.fotografias
+      : familias && familias.length
+      ? familias.find(f => f.id === "yutonahua").fotografias
+      : [];
+  $: console.log(agrupaciones.length);
+
+  onMount(async () => {
     agrupacionesModule = await import("../../../datos/agrupaciones.json");
     familiasModule = await import("../../../datos/familias.json");
 
     // botonFamiliaVentanaCerrar.addEventListener("touchstart",cerrarVentana)
 
-    if(!!contenedor) {
-
-      interact(contenedor)
-      .draggable({
-        autoScroll:true,
-        onstart: (e) => {
-          
-          ultimoTouchMoveY = e.clientY
-          ultimoTouchMoveX = e.clientX
-            
+    if (!!contenedor) {
+      interact(contenedor).draggable({
+        autoScroll: true,
+        onstart: e => {
+          ultimoTouchMoveY = e.clientY;
+          ultimoTouchMoveX = e.clientX;
         },
-        onend: (e) => {
-          
-          ultimoTouchMoveY = null
-          ultimoTouchMoveX = null
-            
+        onend: e => {
+          ultimoTouchMoveY = null;
+          ultimoTouchMoveX = null;
         },
-        onmove: (e) => {
-          
-          let top=contenedor.getBoundingClientRect().top
-          let right=contenedor.getBoundingClientRect().right
-          let bottom=contenedor.getBoundingClientRect().bottom
-          let left=contenedor.getBoundingClientRect().left
-          if(
+        onmove: e => {
+          let top = contenedor.getBoundingClientRect().top;
+          let right = contenedor.getBoundingClientRect().right;
+          let bottom = contenedor.getBoundingClientRect().bottom;
+          let left = contenedor.getBoundingClientRect().left;
+          if (
             // adentro verticalmente
-            e.clientY > top && e.clientY < bottom
-            &&
+            e.clientY > top &&
+            e.clientY < bottom &&
             // adentro horizontalmente
-            e.clientX > left && e.clientX < right
+            e.clientX > left &&
+            e.clientX < right
             // &&
             // extremo derecho
             // e.clientX > right - 50
-          )  {
+          ) {
+            let diferenciaY = ultimoTouchMoveY - e.clientY;
+            let diferenciaX = ultimoTouchMoveX - e.clientX;
 
-            
-            let diferenciaY = (ultimoTouchMoveY-e.clientY)
-            let diferenciaX = (ultimoTouchMoveX-e.clientX)
-            
-            
-            if( Math.abs(diferenciaX) < Math.abs(diferenciaY) ) {
-              
-              ultimoScrollVentanaY += diferenciaY*3
+            if (Math.abs(diferenciaX) < Math.abs(diferenciaY)) {
+              ultimoScrollVentanaY += diferenciaY * 3;
 
               // ultimoScrollVentanaY = Math.min( ultimoScrollVentanaY, document.querySelector(".VentanaFamilia").offsetHeight + 240 )
 
               contenedor.scrollTo({
                 top: ultimoScrollVentanaY,
-                behavior: 'smooth'
-              })
-            
+                behavior: "smooth"
+              });
             }
-            
-            ultimoTouchMoveY = e.clientY
-            ultimoTouchMoveX = e.clientX
-            
+
+            ultimoTouchMoveY = e.clientY;
+            ultimoTouchMoveX = e.clientX;
           }
         }
-      })
-    
+      });
     }
-  })
+  });
 
-
-  $: scrollIniciado = ultimoScrollVentanaY > 0
+  $: scrollIniciado = ultimoScrollVentanaY > 0;
 
   const iniciarScroll = () => {
     ultimoScrollVentanaY = 300;
     contenedor.scrollTo({
       top: ultimoScrollVentanaY,
-      behavior: 'smooth'
-    })
-    
-  }
-
+      behavior: "smooth"
+    });
+  };
 </script>
 
 <style>
   article {
     max-width: 14rem;
     max-height: 18rem;
-  }
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    }
 
   .VentanaFamiliaWrapper {
     width: auto;
@@ -187,7 +174,7 @@
     color: #929191;
     cursor: pointer;
     font-size: 22px;
-    padding: .3rem;
+    padding: 0.3rem;
     display: flex;
     justify-content: flex-end;
     position: absolute;
@@ -241,11 +228,10 @@
 
   .ContenedorCarrusel {
     width: 100%;
-    height: 13rem;
+    height: 12rem;
     padding: 0 1rem;
     box-sizing: border-box;
   }
-
 
   /* .Carrousel {
     padding: 8px 0;
@@ -259,13 +245,13 @@
     background: none;
     position: absolute;
     bottom: -1.5rem;
-    left: calc( 50% - 1rem );
+    left: calc(50% - 1rem);
     height: auto;
     width: auto;
     border: none;
     font-size: 24px;
     color: #fff;
-    text-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
   }
   .TitulosLista {
@@ -275,7 +261,7 @@
     width: 100%;
     height: auto;
   }
-   .TituloLista {
+  .TituloLista {
     font-weight: bold;
     padding: 0 0.25rem;
   }
@@ -289,7 +275,7 @@
     top: -1.5rem;
     overflow: hidden;
     height: 18rem;
-    width: calc( 100% - 2.5rem );
+    width: calc(100% - 2.5rem);
     /* con slider */
     /* sin slider */
     /* transform: translateX(297px);  */
@@ -299,8 +285,9 @@
   .FamiliaDetalle.izquierdo {
     left: -12rem;
   }
-  
-  h1,h5 {
+
+  h1,
+  h5 {
     margin: 0;
     padding: 0;
   }
@@ -310,6 +297,9 @@
     font-weight: 400;
   }
 
+  :global(.carousel ul) {
+    display: none;
+  }
 </style>
 
 <section class="VentanaFamiliaWrapper">
@@ -321,7 +311,7 @@
       <div class="BotonCierraWrapper">
         <button class="BotonConIcono" use:tap on:tap={cerrar}>
           <!-- <Fa icon={cierraIcono} class="BotonIcono" /> -->
-          <i class="fa fa-times-circle"/>
+          <i class="fa fa-times-circle" />
         </button>
       </div>
       <!--  -->
@@ -331,10 +321,7 @@
         <h1 class="Principal" style={`color:#${familia.color}`}>
           {familia.nombreCastellanizado}
         </h1>
-        {#if 
-          familia.nombreOriginario && 
-          familia.nombreOriginario != familia.nombreCastellanizado
-        }
+        {#if familia.nombreOriginario && familia.nombreOriginario != familia.nombreCastellanizado}
           <h4 class="SubTitulo" style={`color:#${familia.color}`}>
             ({familia.nombreOriginario})
           </h4>
@@ -346,43 +333,45 @@
           class="Saber"
           use:tap
           on:tap={mostrarDetalle}
-          style={`color:#${familia.color}; border-color:#${familia.color};`}
-        >
+          style={`color:#${familia.color}; border-color:#${familia.color};`}>
           Saber más
         </button>
       </div>
-      
+
       <!-- </div> -->
       <!--  -->
       <!-- <div class="ContenedorScroll"> -->
 
       <div class="ContenedorCarrusel">
-        <Slider imagenes={imagenes}/>
+        <Slider {imagenes} />
       </div>
 
       <div class="ContenedorAgrupaciones">
-        
+
         <div class="TitulosLista">
           <h6 class="TituloLista">Agrupaciones Lingüísticas</h6>
           <h6 class="TituloLista">Riesgo de desaparición</h6>
         </div>
         <section class="ListaAgrupaciones">
-          <AgrupacionesLista agrupaciones={agrupacionesFamilia}/>
+          <AgrupacionesLista agrupaciones={agrupacionesFamilia} />
         </section>
       </div>
     </div>
-      
-      <!-- </div> -->
-      {#if ! scrollIniciado}
-        <button class="Flecha" on:click={ iniciarScroll }>
-          <i class="fa fa-chevron-down"/>
-        </button>
-      {/if}
+
+    <!-- </div> -->
+    {#if !scrollIniciado}
+      <button class="Flecha" on:click={iniciarScroll}>
+        <i class="fa fa-chevron-down" />
+      </button>
+    {/if}
   </article>
   <!-- muestra detalle -->
   {#if detalleMostrar}
-    <div class={ "FamiliaDetalle " + posicionDetalle } transition:fade>
-      <FamiliaDetalle {cerrarDetalle} informacion={familia.informacion} orientacion={posicionDetalle} />
+    <div class={'FamiliaDetalle ' + posicionDetalle} transition:fade>
+      <FamiliaDetalle
+        {cerrarDetalle}
+        informacion={familia.informacion}
+        orientacion={posicionDetalle} />
     </div>
   {/if}
 </section>
