@@ -17,7 +17,7 @@
 
   .HomenajeBoton {
     display: flex;
-    transform-origin: center right;
+    transform-origin: center;
     animation: homenajeMovimiento 2s infinite;
     animation-delay: 3s;
   }
@@ -30,7 +30,7 @@
     transition: all 2s;
     opacity: 0;
     transform-origin: center;
-    animation: homenajeEntra 2s 1;
+    animation: homenajeEntra 3s 1;
     animation-delay: 1s;
     animation-fill-mode: both;
   }
@@ -78,5 +78,5 @@
 </style>
 
 <button class="HomenajeBoton" use:tap on:tap>
-  <img src={portilla} alt="homenaje" />
+  <img src={portilla} alt="Homenaje a Miguel León Portilla" />
 </button>
