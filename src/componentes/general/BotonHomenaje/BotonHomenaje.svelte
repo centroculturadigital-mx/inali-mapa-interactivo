@@ -9,7 +9,7 @@
     background-color: transparent;
     border: none;
     position: fixed;
-    bottom: 7rem;
+    bottom: 8rem;
     right: 1rem;
     z-index: 10000;
     cursor: pointer;

@@ -192,7 +192,7 @@
     font-weight: 200;
     font-size: 0.6rem;
     line-height: 1;
-    letter-spacing: 0.5rem;
+    letter-spacing: 0.25rem;
     color: #454344;
     margin: 0;
   }
@@ -201,7 +201,7 @@
     text-align: center;
     font-weight: 600;
     font-size: 1.25rem;
-    line-height: 2;
+    /*line-height: 2;*/
     text-align: center;
     color: #e6aa30;
     margin: 0;

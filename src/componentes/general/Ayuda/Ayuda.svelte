@@ -14,7 +14,7 @@
     margin: 0;
     position: fixed;
     /* top: 0; */
-    bottom: 2rem;
+    bottom: 3rem;
     right: 1rem;
     background-color: transparent;
     border: none;
@@ -35,7 +35,7 @@
     animation: ayudaMovimiento 2s infinite;
     animation-delay:3s;
   }
-  
+
   @keyframes ayudaEntra {
     0% {
       transform: translate(50%, 8px);
