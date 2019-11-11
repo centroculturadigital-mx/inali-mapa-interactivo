@@ -160,8 +160,8 @@
   <!-- <MexicoPaths1366x768 /> -->
   <FamiliasLinguisticas on:seleccionar />
 
-  <!-- <TwitterBoton posIniX={0} posIniY={0.75} on:tap />
-  <TwitterBoton posIniX={0.98} posIniY={0.27} on:tap /> -->
+  <TwitterBoton posIniX={0} posIniY={0.75} on:tap />
+  <TwitterBoton posIniX={0.98} posIniY={0.27} on:tap />
   <!--  -->
   <!-- <VolutaBoton posIniX={0} posIniY={0.18} on:tap />
   <VolutaBoton posIniX={0.27} posIniY={0.9} on:tap />

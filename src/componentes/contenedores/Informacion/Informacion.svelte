@@ -160,7 +160,7 @@
     color: #5e5e5e;
     font-style: normal;
     font-weight: normal;
-    font-size: 1rem;
+    font-size: 0.75rem;
     line-height: 1.5;
     box-sizing: border-box;
     padding: 1rem;

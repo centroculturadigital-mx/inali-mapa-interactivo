@@ -1,84 +1,83 @@
 <script>
+  import tweetsData from "../../../datos/tweetsData.js";
 
+  // let nombre;
+  // let fotoUsuario;
+  // let usuario;
+  // let contenido;
+  // let menciones;
+  // let hashtags;
+
+  let tweet = tweetsData[Math.floor(Math.random() * tweetsData.length)];
+  // console.log(tweet.status.toUpperCase());
 </script>
 
-
-
 <style>
+  article {
+    width: 13rem;
+    height: 11rem;
+    background-color: rgb(255, 255, 255);
+  }
 
+  .Contenedor-1 {
+    display: flex;
+    flex-flow: row nowrap;
+  }
 
-        article {
-            width: 13rem;
-            height: 11rem;
-            background-color: rgb(255, 255, 255);
-        }
+  .ContenedorTweet {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
 
-        .Contenedor-1 {
-            display: flex;
-            flex-flow: row nowrap;
-        }
+  .NombreActivista {
+    font-weight: 700;
+    font-size: 0.75rem;
+  }
 
-        .ContenedorTweet {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding: .5rem;
-        }
+  .TwitterCuenta {
+    font-weight: 200;
+    font-size: 0.75rem;
+  }
 
-        .NombreActivista {
-            font-weight: 700;
-            font-size: .75rem;
-        }
+  .ContenidoTweet {
+    font-size: 0.75rem;
+  }
 
-        .TwitterCuenta {
-            font-weight: 200;
-            font-size: .75rem;
-        }
+  .FotoPerfil {
+    display: flex;
+    padding-top: 0.5rem;
+  }
 
-        .ContenidoTweet {
-            font-size: .75rem;
-        }
-
-        .FotoPerfil {
-            display: flex;
-            padding-top: .5rem;
-        }
-
-        img {
-		    width: 2.75rem;
-		    height: 2.75rem;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
+  img {
+    width: 2.75rem;
+    height: 2.75rem;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 </style>
 
-
 <article class="Tweet">
-    <div class="Contenedor-1">
-        <div class="FotoPerfil">
-            <img class="Imagen" src={`http://unsplash.it/300/${100+Math.floor(Math.random()*500)}`} alt="img"/>
-        </div>
-        <div class="ContenedorTweet">
-            <header class="EncabezadoActivista">
-                <p class="NombreActivista">
-                    Nombre del activista
-                </p>
-                <p class="TwitterCuenta">
-                    @cuenta
-                </p>
-            </header>
-    
-            <div class="ContenidoTweet">
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium laborum eaque optio repellendus sint quos ab voluptate 
-                </p>
-            </div>
+  <div class="Contenedor-1">
+    <div class="FotoPerfil">
+      <img
+        class="Imagen"
+        src={tweet.imagen_usuario_url}
+        alt="Twitter " />
+    </div>
+    <div class="ContenedorTweet">
+      <header class="EncabezadoActivista">
+        <p class="NombreActivista">{tweet.nombre_usuario}</p>
+        <p class="TwitterCuenta">@{tweet.usuario}</p>
+      </header>
 
-        </div>
+      <div class="ContenidoTweet">
+        <p>{tweet.texto}</p>
+      </div>
 
     </div>
 
+  </div>
+
 </article>
-
-
