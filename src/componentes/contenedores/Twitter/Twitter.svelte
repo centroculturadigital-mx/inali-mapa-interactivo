@@ -117,6 +117,7 @@
 
   .ContenedorTweets {
     padding-top: 0.5rem;
+    width: 100%;
   }
 
   .Tweets {
@@ -148,7 +149,7 @@
     <div class="Tweets" bind:this={contenedor}>
 
         <Tweet />
-        
+
     </div>
   </div>
 </section>
