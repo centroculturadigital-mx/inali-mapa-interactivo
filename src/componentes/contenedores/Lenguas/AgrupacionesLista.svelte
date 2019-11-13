@@ -33,7 +33,6 @@
 
 }
  
-
 </script>
 
 <style>
@@ -101,8 +100,9 @@
     margin: 0;
     line-height: 1;
   }
-</style>
 
+</style>
+<ul>
 {#each agrupaciones as agrupacion,i}
 
   <li class="Agrupacion">
@@ -121,3 +121,4 @@
   </li>
 
 {/each}
+</ul>

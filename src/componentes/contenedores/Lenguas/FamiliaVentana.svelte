@@ -67,6 +67,8 @@
       : [];
   $: console.log(agrupaciones.length);
 
+  let tituloAgrupaciones = "Agrupaciones lingüísticas \n de esta familia:";
+
   onMount(async () => {
     agrupacionesModule = await import("../../../datos/agrupaciones.json");
     familiasModule = await import("../../../datos/familias.json");
@@ -132,18 +134,18 @@
     });
   };
 </script>
-  
+
 <style>
   article {
     max-width: 14rem;
     max-height: 18rem;
     -webkit-touch-callout: none;
-    -webkit-user-select: none; 
-    -khtml-user-select: none; 
-    -moz-user-select: none; 
-    -ms-user-select: none; 
-    user-select: none; 
-    }
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
   .VentanaFamiliaWrapper {
     width: auto;
@@ -239,13 +241,13 @@
   } */
 
   .ContenedorAgrupaciones {
-    padding: 1rem;
+    padding: 0 1rem 1rem;
   }
   .Flecha {
     background: none;
     position: absolute;
     bottom: -1rem;
-    left: calc( 50% - 1rem );
+    left: calc(50% - 1rem);
     height: auto;
     width: auto;
     border: none;
@@ -263,7 +265,11 @@
     animation: bounce 2s infinite;
   }
   @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
       transform: translateY(5px);
     }
     40% {
@@ -319,6 +325,11 @@
   :global(.carousel ul) {
     display: none;
   }
+  .TituloAgrupaciones {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
 </style>
 
 <section class="VentanaFamiliaWrapper">
@@ -366,7 +377,7 @@
       </div>
 
       <div class="ContenedorAgrupaciones">
-
+        <h5 class="TituloAgrupaciones">{tituloAgrupaciones}</h5>
         <div class="TitulosLista">
           <h6 class="TituloLista">Agrupaciones Lingüísticas</h6>
           <h6 class="TituloLista">Riesgo de desaparición</h6>
@@ -376,13 +387,13 @@
         </section>
       </div>
     </div>
-      
-      <!-- </div> -->
-      {#if ! scrollIniciado}
-        <button class="Flecha bounce" on:click={ iniciarScroll }>
-          <i class="fa fa-chevron-down"/>
-        </button>
-      {/if}
+
+    <!-- </div> -->
+    {#if !scrollIniciado}
+      <button class="Flecha bounce" on:click={iniciarScroll}>
+        <i class="fa fa-chevron-down" />
+      </button>
+    {/if}
   </article>
   <!-- muestra detalle -->
   {#if detalleMostrar}
