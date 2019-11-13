@@ -108,6 +108,7 @@
     text-align: left;
     color: #454344;
     height: 390px;
+    background-color: rgba(236, 236, 236, 1);
   }
   .Texto p {
     padding: 0 0.5rem;
@@ -118,6 +119,7 @@
     justify-content: flex-end;
     height: 30px;
     width: 100%;
+    background-color: rgba(236, 236, 236, 1);
   }
   .OcultarWrapper.izquierdo {
     justify-content: flex-start;
@@ -125,8 +127,8 @@
 
   .Ocultar {
     border: 0;
-    background-color: #fff;
-    color: #afafaf;
+    background-color: transparent;
+    color: #afafaf; 
   }
 
   .Texto {
