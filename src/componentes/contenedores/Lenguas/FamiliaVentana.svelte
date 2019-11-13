@@ -9,7 +9,7 @@
   import Slider from "../Slider/Slider.svelte";
   // import Fa from "../../../../node_modules/svelte-fa/dist/svelte-fa.mjs";
   import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-  import { fade } from "svelte/transition";
+  import { fade, fly } from "svelte/transition";
   import { onMount } from "svelte";
   // datos falsos
 
@@ -298,7 +298,8 @@
     /* con slider */
     /* sin slider */
     /* transform: translateX(297px);  */
-    z-index: 100;
+    /* z-index: 100; */
+    z-index: -1;
   }
 
   .FamiliaDetalle.izquierdo {
@@ -386,7 +387,7 @@
   </article>
   <!-- muestra detalle -->
   {#if detalleMostrar}
-    <div class={'FamiliaDetalle ' + posicionDetalle} transition:fade>
+    <div class={'FamiliaDetalle ' + posicionDetalle} transition:fly="{{ x: -200, duration: 1000 }}">
       <FamiliaDetalle
         {cerrarDetalle}
         informacion={familia.informacion}
