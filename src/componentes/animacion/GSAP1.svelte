@@ -11,9 +11,9 @@
     //Paper.install(window);
     let colW = window.innerWidth / 30
     
-    const numLineas = 7
-    const numBarras = 8
-    const numPuntos = 5
+    const numLineas = 30
+    const numBarras = 12
+    const numPuntos = 7
     const barras = []
     const lineas = []
 
@@ -31,7 +31,7 @@
         const paper = Paper.setup(canvas);
 
         crearLineas()
-        // crearBarras()
+        crearBarras()
 
 
         setupClickLineas()
@@ -196,21 +196,21 @@
     const setupClickLineas = () => {
 
         document.body.addEventListener("click", (e)=>{
-            // for(const barra of barras) {
-            //     let tl = new TimelineMax({
-            //         delay:Math.random()/4
-            //     });
+            for(const barra of barras) {
+                let tl = new TimelineMax({
+                    delay:Math.random()/4
+                });
 
-            //     if( Math.abs(barra.position.x - e.clientX) > 100 ) {
-            //         tl.to(barra, Math.random()*10, {
-            //             strokeWidth: Math.random()*400,
-            //         });
-            //     } else {
-            //         tl.to(barra, Math.random()*10, {
-            //             strokeWidth: 100-Math.abs(barra.position.x - e.clientX),
-            //         });
-            //     }
-            // }
+                if( Math.abs(barra.position.x - e.clientX) > 100 ) {
+                    tl.to(barra, Math.random()*10, {
+                        strokeWidth: Math.random()*400,
+                    });
+                } else {
+                    tl.to(barra, Math.random()*10, {
+                        strokeWidth: 100-Math.abs(barra.position.x - e.clientX),
+                    });
+                }
+            }
             for(const linea of lineas) {
                 
                 var tl = new TimelineMax({

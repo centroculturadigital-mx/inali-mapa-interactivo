@@ -9,8 +9,8 @@
 
   const win = window;
 
-  $: height = win.innerHeight; //altura default
-  $: width = win.innerWidth; // ancho default
+  $: height = win.innerHeight;
+  $: width = win.innerWidth;
 </script>
 
 <style>

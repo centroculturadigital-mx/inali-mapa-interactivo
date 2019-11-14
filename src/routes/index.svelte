@@ -28,6 +28,7 @@
 
 
 
+	import FondoLineas from "../componentes/animacion/FondoLineas.svelte";
 	import GSAP1 from "../componentes/animacion/GSAP1.svelte";
 	import FormaAudio from "../componentes/animacion/FormaAudio.svelte";
 	import FraseViva from "../componentes/animacion/FraseViva.svelte";
@@ -38,6 +39,11 @@
   
   let familiasModule
   
+  const win = window;
+
+  $: height = win.innerHeight;
+  $: width = win.innerWidth;
+
   $: familias = familiasModule ? familiasModule.default : [];
 
 	onMount( async ()=>{
@@ -274,18 +280,32 @@
 		top: 0;
 		left: 0;
 		z-index: -1;
-	}
+  }
+  
+  #fondoLineas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+		z-index: -1;
+  }
 
 </style>
 
 
-<!-- <canvas bind:this={canvas}></canvas> -->
+<canvas bind:this={canvas}></canvas>
+
+<FondoLineas canvas={canvas}/>
 
 {#if !! canvas }
-	<!-- <GSAP1 canvas={canvas}/> -->
-<!-- 
-<FraseViva canvas={canvas}/> -->
+	<GSAP1 canvas={canvas}/>
 {/if}
+
+
+  <FraseViva/>
+
+  <FormaAudio/>
+  <FormaAudio/>
 
 
 <svelte:head>
@@ -303,6 +323,14 @@
   on:tap={(e)=>tapBotones(e)} 
 />
 
+<svg
+  viewBox="37.47777777777779 37.591661213362585 35.5 19.959004392386532"
+  width={width + 'px'}
+  height={height + 'px'}
+  id="fondoLineas">
+  
+</svg>
+<!--  -->
 
 <main>
   <!-- Interactividad -->
@@ -347,11 +375,6 @@
 
 
 
-  {#if !! canvas }
-    <!-- <FormaAudio canvas={canvas}/> -->
-  {/if}
-
-
 </main>
 
 
@@ -360,3 +383,5 @@
 
 <Pie />
         
+
+
