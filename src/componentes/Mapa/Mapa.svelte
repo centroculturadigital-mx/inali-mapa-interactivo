@@ -17,6 +17,7 @@
   #SVGMapa {
     position: fixed;
     transform-origin: 50% 50%;
+    /* height: calc(100% - 3rem); */
     height: 100%;
     width: 100%;
     z-index: 50;
