@@ -74,10 +74,10 @@ button:active {
 	stroke: #fff;
 }
 .carousel button.left {
-	left: -1rem;
+	left: -0.25rem;
 }
 .carousel button.right {
-	right: -1rem;
+	right: -0.25rem;
 }
 
 

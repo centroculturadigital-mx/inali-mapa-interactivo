@@ -41,10 +41,10 @@
     height: 3rem;
     margin-bottom: 1rem;
     padding: 0 0.5rem;
-    border: 1px solid #dbdbdb;
     box-sizing: border-box;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.06);
-    border-radius: 4px;
+    /* box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.06);
+    border: 1px solid #dbdbdb; */
+    border-radius: 4px; 
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -59,6 +59,7 @@
   .AgrupacionNombre .Titulo {
     margin: 0;
     font-size: .75rem;
+    font-weight: bold;
   }
   .AgrupacionRiesgo {
     width: 50%;
@@ -90,12 +91,12 @@
     font-weight: bold;
     width: 100%;
     margin: 0;
-    font-size: 0.7rem;
+    font-size: 1rem;
     line-height: 1;
   }
   .CantidadTexto {
     font-weight: lighter;
-    font-size: 0.5rem;
+    font-size: 0.75rem;
     width: 100%;
     margin: 0;
     line-height: 1;

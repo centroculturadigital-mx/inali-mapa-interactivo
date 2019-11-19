@@ -192,11 +192,12 @@
   .Titulo {
     text-align: center;
     font-weight: 200;
-    font-size: 0.6rem;
+    font-size: 0.75rem;
     line-height: 1;
     letter-spacing: 0.25rem;
     color: #454344;
     margin: 0;
+    margin-bottom: 0.25rem;
   }
 
   .Principal {
@@ -231,7 +232,7 @@
   .ContenedorCarrusel {
     width: 100%;
     height: 12rem;
-    padding: 0 1rem;
+    padding: 0;
     box-sizing: border-box;
   }
 
@@ -241,7 +242,7 @@
   } */
 
   .ContenedorAgrupaciones {
-    padding: 0 1rem 1rem;
+    padding: 0 0.5rem 1rem;
   }
   .Flecha {
     background: none;
@@ -285,10 +286,17 @@
     margin-bottom: 8px;
     width: 100%;
     height: auto;
+    text-align: center;
+  }
+  .TituloLista:nth-child(1) {
+    border-right: 1px solid rgb(175,175,175,0.9) !important;
   }
   .TituloLista {
     font-weight: bold;
-    padding: 0 0.25rem;
+    padding: 0 0.5rem;
+    font-size: 0.5rem;
+    width: 50%;
+    display: table-cell;
   }
   .ListaAgrupaciones {
     width: 100%;
@@ -325,6 +333,7 @@
   :global(.carousel ul) {
     display: none;
   }
+
   .TituloAgrupaciones {
     text-align: center;
     font-weight: bold;
@@ -379,8 +388,8 @@
       <div class="ContenedorAgrupaciones">
         <h5 class="TituloAgrupaciones">{tituloAgrupaciones}</h5>
         <div class="TitulosLista">
-          <h6 class="TituloLista">Agrupaciones Lingüísticas</h6>
-          <h6 class="TituloLista">Riesgo de desaparición</h6>
+          <h6 class="TituloLista ">Nombre la agrupación</h6>
+          <h6 class="TituloLista">Riesgo de desaparición por agrupación</h6>
         </div>
         <section class="ListaAgrupaciones">
           <AgrupacionesLista agrupaciones={agrupacionesFamilia} />
