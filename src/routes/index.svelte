@@ -286,7 +286,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0.3;
+    opacity: 1;
 		z-index: -1;
   }
 
@@ -295,7 +295,6 @@
 
 <canvas bind:this={canvas}></canvas>
 
-<FondoLineas canvas={canvas}/>
 
 {#if !! canvas }
 	<GSAP1 canvas={canvas}/>
@@ -307,6 +306,7 @@
   <FormaAudio/>
   <FormaAudio/>
 
+<FondoLineas/>
 
 <svelte:head>
   <title>INALI | Mapa interactivo</title>
