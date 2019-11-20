@@ -30,13 +30,13 @@
     // console.log(path);
     let index = 0;
     setInterval(()=>{
-      let letraX = (index*50)
+      let letraX = (index*55)
       const path = draw.path(textoFake[index])
       .stroke('rgba(100,140,230)').fill('rgba(100,140,230,0.1)').move(letraX,200)
     
-      for( let i=0; i<6; i++) {
+      for( let i=0; i<60; i++) {
         
-        const step = 8;
+        const step = 3;
         // const step = width / 40;
         const line  = draw.line(letraX+offsetX+(i*step), 0,letraX+offsetX+(i*step), 386).stroke('none')
         
@@ -53,16 +53,25 @@
                 pares.push([p]);
                 break;
             case 1:
+              const ultimo = pares[pares.length-1][0];
+              if(
+                (Math.abs(p.x - ultimo.x)<1)
+                &&
+                (Math.abs(p.y - ultimo.y)>3)
+                &&
+                (p.y > ultimo.y)
+              ) {
                 pares[pares.length-1].push(p);
-                break;
+              }
+              break;
           }
         })
 
         pares.forEach(p=>{
           if( p.length == 2 ) {
-            const x = letraX + offsetX + (i*step);
+            const x = 1 + letraX + offsetX + (i*step);
             const lineaForma = draw.line(x, p[0].y,x, p[1].y).stroke({
-                width: 6,
+                width: 1,
                 color: 'rgba(100,140,230,0.6)'
             })
             // console.log(scaleY);
@@ -87,16 +96,9 @@
             }
             setInterval(()=>{
               animarLineas()
-            },1200)
-              animarLineas()
-            // const tl = new TimelineMax({
-            //     yoyo: true,
-            //     repeat: -1,
-            // });
+            },2000)
+            animarLineas()
             
-            // tl.to(lineaForma,4,{
-            //     transform: scaleY((x+30+Math.sin((i*4))*2.8)),
-            // })
             
 
               

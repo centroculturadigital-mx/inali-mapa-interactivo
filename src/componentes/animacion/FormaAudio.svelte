@@ -17,7 +17,7 @@
     
     const path1 = draw.path('M30 30 L75 200 L125 170 L225 200 Z')
     .stroke('none').fill('rgba(200,0,30,0.3)')
-    
+
     const path = draw.path('M30 30 L75 200 L125 170 L225 200 Z')
     .stroke('none').fill('none')
 
@@ -44,8 +44,15 @@
               pares.push([p]);
               break;
           case 1:
+            const ultimo = pares[pares.length-1][0];
+            if(
+              (Math.abs(p.x - ultimo.x)<1)
+              &&
+              (p.y < ultimo.y)
+            ) {
               pares[pares.length-1].push(p);
-              break;
+            }
+            break;
         }
       })
 
@@ -81,16 +88,9 @@
           }
           setInterval(()=>{
             animarLineas()
-          },1200)
-            animarLineas()
-          // const tl = new TimelineMax({
-          //     yoyo: true,
-          //     repeat: -1,
-          // });
+          },1600)
+          animarLineas()
           
-          // tl.to(lineaForma,4,{
-          //     transform: scaleY((x+30+Math.sin((i*4))*2.8)),
-          // })
           
 
             
