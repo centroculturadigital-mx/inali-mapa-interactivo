@@ -11,9 +11,10 @@
   import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
-  // datos falsos
 
   export let familia;
+
+  let iconoCierra = "cerrar.svg";
 
   const dispatch = createEventDispatcher();
 
@@ -162,13 +163,18 @@
   .VentanaFamilia {
     width: 100%;
     height: 100%;
+    position: relative;
   }
 
   .BotonCierraWrapper {
     display: flex;
     justify-content: flex-end;
-    width: 100%;
+    width: auto;
     /* height: 2rem; */
+    position: absolute;
+    right: 0;
+    top: 0.125rem;
+    z-index: 1;
   }
   .BotonConIcono {
     background-color: transparent;
@@ -178,15 +184,24 @@
     font-size: 22px;
     padding: 0.3rem;
     display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    z-index: 1;
+  }
+  .BotonCierraWrapper span {
+    font-size: 0.5rem;
+    font-weight: 100;
+    display: flex;
+    align-items: center;
+    color: rgba(69, 67, 68, 0.5);
+    height: auto;
+    width: auto;
+  }
+  .BotonConIcono img {
+    width: 1.25rem;
   }
 
   .Encabezado {
     width: 100%;
     height: auto;
-    padding-top: 1rem;
+    padding-top: 0.75rem;
   }
 
   .Titulo {
@@ -227,6 +242,7 @@
     height: auto;
     cursor: pointer;
     background-color: #f7f7f7;
+    font-size: 0.75rem; 
   }
 
   .ContenedorCarrusel {
@@ -289,7 +305,7 @@
     text-align: center;
   }
   .TituloLista:nth-child(1) {
-    border-right: 1px solid rgb(175,175,175,0.9) !important;
+    border-right: 1px solid rgb(175, 175, 175, 0.9) !important;
   }
   .TituloLista {
     font-weight: bold;
@@ -348,9 +364,11 @@
     <div class="VentanaFamilia">
       <!-- <div class="ContenedorHeader"> -->
       <div class="BotonCierraWrapper">
+        <span>Cerrar</span>
         <button class="BotonConIcono" use:tap on:tap={cerrar}>
           <!-- <Fa icon={cierraIcono} class="BotonIcono" /> -->
-          <i class="fa fa-times-circle" />
+          <!-- <i class="fa fa-times-circle" /> -->
+          <img src={iconoCierra} alt="Cierra ventana de Familia Lingüistica" />
         </button>
       </div>
       <!--  -->

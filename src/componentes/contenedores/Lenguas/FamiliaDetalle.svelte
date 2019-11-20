@@ -1,93 +1,76 @@
 <script>
+  import { tap } from "@sveltejs/gestures";
 
-  import { tap } from '@sveltejs/gestures';
+  import interact from "interactjs";
+  import { onMount } from "svelte";
 
+  import Fa from "../../../../node_modules/svelte-fa/dist/svelte-fa.mjs";
 
-  import interact from 'interactjs'
-  import { onMount } from 'svelte'
+  export let informacion;
+  export let orientacion;
 
-  import Fa from '../../../../node_modules/svelte-fa/dist/svelte-fa.mjs';
+  let contenedor;
 
-  export let informacion
-  export let orientacion
+  let iconoOcultaIzquierda = "ocultar.izquierda.svg";
+  let iconoOcultaDerecha = "ocultar.derecha.svg";
 
-  let contenedor
+  let ultimoTouchMoveY;
+  let ultimoTouchMoveX;
 
-  let ultimoTouchMoveY
-  let ultimoTouchMoveX
-
-  let ultimoScrollVentanaY = 0
-  let ultimoScrollVentanaX = 0
-
-
+  let ultimoScrollVentanaY = 0;
+  let ultimoScrollVentanaX = 0;
 
   export let cerrarDetalle;
 
-
-  onMount(()=>{
-
-     if(!!contenedor) {
-
-      interact(contenedor)
-      .draggable({
-        autoScroll:true,
-        onstart: (e) => {
-          
-          ultimoTouchMoveY = e.clientY
-          ultimoTouchMoveX = e.clientX
-            
+  onMount(() => {
+    if (!!contenedor) {
+      interact(contenedor).draggable({
+        autoScroll: true,
+        onstart: e => {
+          ultimoTouchMoveY = e.clientY;
+          ultimoTouchMoveX = e.clientX;
         },
-        onend: (e) => {
-          
-          ultimoTouchMoveY = null
-          ultimoTouchMoveX = null
-            
+        onend: e => {
+          ultimoTouchMoveY = null;
+          ultimoTouchMoveX = null;
         },
-        onmove: (e) => {
-          
-          let top=contenedor.getBoundingClientRect().top
-          let right=contenedor.getBoundingClientRect().right
-          let bottom=contenedor.getBoundingClientRect().bottom
-          let left=contenedor.getBoundingClientRect().left
-          if(
+        onmove: e => {
+          let top = contenedor.getBoundingClientRect().top;
+          let right = contenedor.getBoundingClientRect().right;
+          let bottom = contenedor.getBoundingClientRect().bottom;
+          let left = contenedor.getBoundingClientRect().left;
+          if (
             // adentro verticalmente
-            e.clientY > top && e.clientY < bottom
-            &&
+            e.clientY > top &&
+            e.clientY < bottom &&
             // adentro horizontalmente
-            e.clientX > left && e.clientX < right
+            e.clientX > left &&
+            e.clientX < right
             // &&
             // extremo derecho
             // e.clientX > right - 50
-          )  {
+          ) {
+            let diferenciaY = ultimoTouchMoveY - e.clientY;
+            let diferenciaX = ultimoTouchMoveX - e.clientX;
 
-            
-            let diferenciaY = (ultimoTouchMoveY-e.clientY)
-            let diferenciaX = (ultimoTouchMoveX-e.clientX)
-            
-            
-            if( Math.abs(diferenciaX) < Math.abs(diferenciaY) ) {
-              
-              ultimoScrollVentanaY += diferenciaY*3
+            if (Math.abs(diferenciaX) < Math.abs(diferenciaY)) {
+              ultimoScrollVentanaY += diferenciaY * 3;
 
               // ultimoScrollVentanaY = Math.min( ultimoScrollVentanaY, document.querySelector(".VentanaFamilia").offsetHeight - 240 )
 
               contenedor.scrollTo({
                 top: ultimoScrollVentanaY,
-                behavior: 'smooth'
-              })
-            
+                behavior: "smooth"
+              });
             }
-            
-            ultimoTouchMoveY = e.clientY
-            ultimoTouchMoveX = e.clientX
-            
+
+            ultimoTouchMoveY = e.clientY;
+            ultimoTouchMoveX = e.clientX;
           }
         }
-      })
-    
+      });
     }
-  })
-
+  });
 </script>
 
 <style>
@@ -110,8 +93,12 @@
     height: 390px;
     background-color: rgba(236, 236, 236, 1);
   }
+  .TextoWrapper h3 {
+    padding: 0 0.75rem;
+    font-weight: bold;
+  }
   .Texto p {
-    padding: 0 0.5rem;
+    /* padding: 0 0.5rem; */
     white-space: pre-line;
   }
   .OcultarWrapper {
@@ -120,6 +107,7 @@
     height: 30px;
     width: 100%;
     background-color: rgba(236, 236, 236, 1);
+    
   }
   .OcultarWrapper.izquierdo {
     justify-content: flex-start;
@@ -128,31 +116,53 @@
   .Ocultar {
     border: 0;
     background-color: transparent;
-    color: #afafaf; 
+    color: #afafaf;
+  }
+  .OcultarWrapper img {
+    width: 1.25rem;
+  }
+  .OcultarWrapper span {
+    font-size: 0.5rem;
+    font-weight: 100;
+    display: flex;
+    align-items: center;
+    color: rgba(69, 67, 68, 0.5);
+    height: auto;
+    width: auto;
   }
 
   .Texto {
-    padding: 0 .75rem;
+    padding: 0 0.75rem;
 
     padding-bottom: 10rem;
   }
 </style>
 
 <section class="Detalle">
-  <div class={ "OcultarWrapper " + (orientacion == "izquierdo" ? "izquierdo": "") }>
+  <div
+    class={'OcultarWrapper ' + (orientacion == 'izquierdo' ? 'izquierdo' : '')}>
+      {#if orientacion == 'izquierdo'}
     <button class="BotonConIcono Ocultar" use:tap on:tap={cerrarDetalle}>
-      {#if orientacion =="izquierdo"}
-        <i class="fa fa-arrow-right"></i>
-      {:else}
-        <i class="fa fa-arrow-left"></i>
-      {/if}
+        <!-- <i class="fa fa-arrow-right"></i> -->
+        <img
+          src={iconoOcultaIzquierda}
+          alt="Oculta ventana de Familia Lingüistica" />
     </button>
+        <span>Ocultar</span>
+      {:else}
+        <span>Ocultar</span>
+    <button class="BotonConIcono Ocultar" use:tap on:tap={cerrarDetalle}>
+        <!-- <i class="fa fa-arrow-left"></i> -->
+        <img
+          src={iconoOcultaDerecha}
+          alt="Oculta ventana de Familia Lingüistica" />
+    </button>
+      {/if}
   </div>
   <section class="TextoWrapper" bind:this={contenedor}>
+    <h3>Sobre esta familia</h3>
     <div class="Texto">
-      <p>
-        {informacion}
-      </p>
+      <p>{informacion}</p>
     </div>
   </section>
 </section>
