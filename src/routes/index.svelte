@@ -28,7 +28,9 @@
 
 
 
-	import FondoLineas from "../componentes/animacion/FondoLineas.svelte";
+  import FondoLineas from "../componentes/animacion/FondoLineas.svelte";
+  
+	import CanvasSetup from "../componentes/animacion/CanvasSetup.svelte";
 	import GSAP1 from "../componentes/animacion/GSAP1.svelte";
 	import FormaAudio from "../componentes/animacion/FormaAudio.svelte";
 	import FraseViva from "../componentes/animacion/FraseViva.svelte";
@@ -36,6 +38,7 @@
 	import { onMount } from "svelte"
 
   let canvas;
+  let canvas2;
   
   let familiasModule
   
@@ -272,14 +275,18 @@
 		color: var(--color-texto);
   }
   
-	canvas {
-		background-color: #465D72;
-		width: 100vw;
-		height: 100vh;
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: -1;
+	
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* opacity: 0.5; */
+  }
+
+  #texto {
+    visibility: hidden;
   }
   
   #fondoLineas {
@@ -296,12 +303,18 @@
 
 
 
-  <FraseViva/>
+  {#if !! canvas }
 
-  <FormaAudio/>
-  <FormaAudio/>
+    <CanvasSetup canvas={canvas}/>
+    <GSAP1 canvas={canvas}/>
+    <FondoLineas canvas={canvas}/>
 
-<FondoLineas/>
+    <FraseViva/>
+
+    <FormaAudio canvas={canvas}/>
+    <FormaAudio canvas={canvas}/>
+    
+  {/if}
 
 <svelte:head>
   <title>INALI | Mapa interactivo</title>
@@ -335,7 +348,7 @@
 
 
   <!-- Elementos -->
-  <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} />
+  <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} canvas={canvas}/>
   <!-- <Mapa on:seleccionar={console.log("aosijvieurn")}/> -->
 
   <!-- 
@@ -369,6 +382,7 @@
   {/if}
 
 
+  <canvas id="fondo" bind:this={canvas}></canvas>
 
 </main>
 

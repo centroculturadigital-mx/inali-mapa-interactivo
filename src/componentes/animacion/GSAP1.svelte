@@ -11,9 +11,9 @@
     //Paper.install(window);
     let colW = window.innerWidth / 30
     
-    const numLineas = 30
+    const numLineas = 60
     const numBarras = 12
-    const numPuntos = 7
+    const numPuntos = 8
     const barras = []
     const lineas = []
 
@@ -27,8 +27,6 @@
 
         let frame;
         let count=0;
-
-        const paper = Paper.setup(canvas);
 
         crearLineas()
         crearBarras()
@@ -214,16 +212,16 @@
             for(const linea of lineas) {
                 
                 var tl = new TimelineMax({
-                    delay:Math.random()/4
+                    delay:Math.random()/2
                 });
 
                 if( linea.position.x - e.clientX > 0 ) {
                     tl.to(linea.position, Math.random()*4, {
-                        x: linea.position.x + Math.abs(linea.position.x-e.clientX)/8
+                        x: linea.position.x + Math.abs(linea.position.x-e.clientX)/1.8
                     });
                 } else {
                     tl.to(linea.position, Math.random()*4, {
-                        x: linea.position.x - Math.abs(linea.position.x-e.clientX)/8
+                        x: linea.position.x - Math.abs(linea.position.x-e.clientX)/1.8
                     });
                 }
     

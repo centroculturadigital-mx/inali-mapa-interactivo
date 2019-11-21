@@ -23,8 +23,6 @@
     onMount(()=>{
 
 
-        const paper = Paper.setup(canvas);
-
         // crearLineas(pares)
 
         
@@ -47,10 +45,10 @@
                             new Paper.Point(lineaX,p[1].y)
                         );
 
-                        let r = 0.2+(i%4==0?0.2:0) + Math.random()/8
-                        let g = 0.2+(i%4==0?0.4:0) + Math.random()/3
-                        let b = 0.7+((i%14)/14)/6
-                        let opacity = ((1/4)+Math.random()/4)
+                        let r = (155/255)+Math.random()*0.05
+                        let g = (173/255)+Math.random()*0.1
+                        let b = (192/255)+Math.random()*0.25
+                        let opacity = ((2/3)+Math.random()/3)
 
                         linea.strokeColor = new Paper.Color(r,g,b,opacity);
                         
@@ -68,18 +66,63 @@
                             repeat: -1,
                         });
                         
-                        tl.to(linea.segments[0].point,(Math.random()/2),{
-                            y: p[0].y-(30+Math.sin((i%12*12))*0.15),
+                        tl
+                        .to(linea.segments[0].point,1/8+(Math.random()/2),{
+                            y: p[0].y-(10+Math.sin((i%12*12))*0.15),
                         })
-                        tl.to(linea.segments[1].point,(Math.random()/2),{
-                            y: p[1].y+(30+Math.sin((i%12*12))*0.15),
+                        .to(linea.segments[0].point,1/8+(Math.random()/2),{
+                            y: p[0].y-(30+Math.sin((i%12*12))*1.5),
                         })
+                        .to(linea.segments[0].point,1/8+(Math.random()/2),{
+                            y: p[0].y,
+                        })
+                        .to(linea.segments[0].point,1/8+(Math.random()/2),{
+                            y: p[0].y-(10+Math.sin((i%12*12))*0.25),
+                        })
+                        
+                        tl
+                        .to(linea.segments[1].point,1/8+(Math.random()/2),{
+                            y: p[1].y+(10+Math.sin((i%12*12))*0.15),
+                        })
+                        .to(linea.segments[1].point,1/8+(Math.random()/2),{
+                            y: p[1].y+(30+Math.sin((i%12*12))*1.5),
+                        })
+                        .to(linea.segments[1].point,1/8+(Math.random()/2),{
+                            y: p[1].y,
+                        })
+                        .to(linea.segments[1].point,1/8+(Math.random()/2),{
+                            y: p[1].y+(10+Math.sin((i%12*12))*0.25),
+                        })
+                        
 
-                        tlSW.to(linea,10*Math.random(),{
-                            strokeWidth: 1+parseInt(Math.random()*3),
-                        }).to(linea,10*Math.random(),{
-                            strokeWidth: 1+parseInt(Math.random()*3),
-                        })
+
+                        // const targetVals = [
+                        //     Math.round(Math.random()*18),
+                        //     Math.round(Math.random()*3),
+                        //     Math.round(Math.random()*2),
+                        //     Math.round(Math.random()*4),
+                        // ]
+
+
+                        // tlSW.to(linea,10*Math.random(),{
+                        //     strokeWidth: 1+targetVals[0],
+                        //     opacity: 1-((targetVals[0]/18)*(3/4)),
+                        // })
+                        // .to(linea,10*Math.random(),{
+                        //     strokeWidth: 1+targetVals[0],
+                        //     opacity: 1-((targetVals[0]/18)*(3/4)),
+                        // })
+                        // .to(linea,10*Math.random(),{
+                        //     strokeWidth: 1,
+                        // })
+                        // .to(linea,10*Math.random(),{
+                        //     strokeWidth: 1+targetVals[0],
+                        //     opacity: 1-((targetVals[0]/18)*(3/4)),
+                        // })
+                        // .to(linea,10*Math.random(),{
+                        //     // strokeWidth: 1+targetVals[0],
+                        //     opacity: 1-((targetVals[0]/18)*(3/4)),
+                        // })
                         
 
                         lineas.push(linea);

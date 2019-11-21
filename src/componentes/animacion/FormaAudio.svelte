@@ -56,6 +56,7 @@
         }
       })
 
+      /* 
       pares.forEach(p=>{
         if( p.length == 2 ) {
           const x = offsetX+(i*step);
@@ -100,8 +101,7 @@
 
         }
       })
-
-      
+       */
 
     }
     // const circle = draw.circle(100).move(0, 100)

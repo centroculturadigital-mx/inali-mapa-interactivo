@@ -21,8 +21,6 @@
     onMount(()=>{
 
 
-        const paper = Paper.setup(canvas);
-
         crearLineas()
 
         
@@ -45,9 +43,11 @@
 
 
 
-        let r = 100/255
-        let g = 140/255
-        let b = 180/255
+
+
+        let r = 130/255
+        let g = 153/255
+        let b = 174/255
         let opacity = (1/2+Math.random()/2)
 
         linea.strokeColor = new Paper.Color(r,g,b,opacity);

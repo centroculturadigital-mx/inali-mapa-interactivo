@@ -96,6 +96,7 @@
         stroke={zona.fill}
         stroke-width={0.05}
         stroke-linejoin="round"
+        opacity="0.6"
       />
     </g>
     <path
