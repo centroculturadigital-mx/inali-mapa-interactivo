@@ -147,8 +147,8 @@
     draw.path(path)
     .stroke({
       width: 0.5,
-      color: 'rgba(145,163,184,0.85)'
-    }).fill('rgba(100,123,154,0.25)').move(x,100)
+      color: 'rgba(145,163,184,0.95)'
+    }).fill('rgba(100,123,154,0.02)').move(x,100)
 
   });
   
