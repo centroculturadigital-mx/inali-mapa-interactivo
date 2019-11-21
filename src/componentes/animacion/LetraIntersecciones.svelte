@@ -12,14 +12,17 @@
 
 
   export let canvas;
+  export let opacidad=1;
 
   export let x = 0;
   export let path;
   
   
   $: letraX = parseInt(x);
+  $: ((x)=>dibujoLetra?dibujoLetra.animate(500).x(x):x)(x);
 
   let lineasPares = [];
+  let dibujoLetra;
 
   onMount(async() => {
     
@@ -144,11 +147,11 @@
     lineasPares = lineasPares;
     
     
-    draw.path(path)
+    dibujoLetra = draw.path(path)
     .stroke({
       width: 0.5,
-      color: 'rgba(145,163,184,0.95)'
-    }).fill('rgba(100,123,154,0.02)').move(x,100)
+      color: 'rgba(145,163,184,'+0.95*opacidad+')'
+    }).fill('rgba(100,123,154,'+0.02*opacidad+')').move(x,100)
 
   });
   

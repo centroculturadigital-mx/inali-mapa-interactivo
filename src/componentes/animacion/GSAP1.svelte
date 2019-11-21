@@ -13,7 +13,7 @@
     
     const numLineas = 160
     const numBarras = 9
-    const numPuntos = 3
+    const numPuntos = 4
     const barras = []
     const lineas = []
 
