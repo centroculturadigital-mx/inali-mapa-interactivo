@@ -12,6 +12,11 @@
     window.dispatchEvent(new Event("resize"));
   });
 
+  const escalarImagenCloudinary = src => {
+    const partes = src.split("upload/")
+    return partes[0] + "upload/w_192/" + partes[1]
+  }
+
 
 </script>
 
@@ -73,7 +78,7 @@
 
   {#each imagenes as imagen}
     <div class="SlideContent">
-      <img class="Imagen" src={imagen.url} alt="INALI" />
+      <img class="Imagen" src={escalarImagenCloudinary(imagen.url)} alt="INALI" />
       <div class="TextoFotos">
         {#if imagen.titulo}
           <h4 class="TextoFotosTitulo">{imagen.titulo}</h4>
