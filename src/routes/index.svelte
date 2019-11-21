@@ -141,7 +141,7 @@
     let otra = ventanas.find(v=>v.tipo=="homenaje")
     
     if( ! ventana ) {
-      crearVentana("informacion",window.innerWidth-(240+80),48)
+      crearVentana("informacion",window.innerWidth-(336),window.innerHeight-320)
     } else {
       destruirVentana(ventana)
     }
@@ -157,7 +157,7 @@
     let otra = ventanas.find(v=>v.tipo=="informacion")
 
     if( ! ventana ) {
-      crearVentana("homenaje",window.innerWidth-(240+80),48)
+      crearVentana("homenaje",window.innerWidth-(336),window.innerHeight-390);
     } else {
       destruirVentana(ventana)
     }

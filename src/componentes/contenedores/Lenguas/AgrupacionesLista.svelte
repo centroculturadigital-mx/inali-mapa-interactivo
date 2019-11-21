@@ -1,10 +1,9 @@
 <script>
   import Riesgo from "../iconos/Riesgo.svelte";
 
-  export let agrupaciones
+  export let agrupaciones;
 
-  const obtenerColorRiesgo = ( riesgo ) => {
-    
+  const obtenerColorRiesgo = riesgo => {
     const fillRiesgoBajo = "green";
     const fillRiesgoMedio = "yellow";
     const fillRiesgoAlto = "orange";
@@ -13,27 +12,24 @@
     let fillRiesgo;
     switch (riesgo) {
       case 0:
-        fillRiesgo = fillRiesgoBajo
+        fillRiesgo = fillRiesgoBajo;
         break;
       case 1:
-        fillRiesgo = fillRiesgoMedio
+        fillRiesgo = fillRiesgoMedio;
         break;
       case 2:
-        fillRiesgo = fillRiesgoAlto
+        fillRiesgo = fillRiesgoAlto;
         break;
       case 3:
-        fillRiesgo = fillRiesgoMuyAlto
+        fillRiesgo = fillRiesgoMuyAlto;
         break;
-    
+
       default:
         break;
     }
 
-   return fillRiesgo
-
-}
- 
-
+    return fillRiesgo;
+  };
 </script>
 
 <style>
@@ -42,9 +38,9 @@
     height: 3rem;
     margin-bottom: 1rem;
     padding: 0 0.5rem;
-    border: 1px solid #dbdbdb;
     box-sizing: border-box;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.06);
+    /* box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.06);
+    border: 1px solid #dbdbdb; */
     border-radius: 4px;
     display: flex;
     flex-direction: row;
@@ -52,15 +48,23 @@
     justify-content: space-between;
   }
   .AgrupacionNombre {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    /* justify-content: center;
+    align-items: center; */
     height: 100%;
   }
   .AgrupacionNombre .Titulo {
     margin: 0;
-    font-size: .75rem;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: bold;
   }
+  .AgrupacionNombre p {
+    margin-bottom: 0;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+  }
+
   .AgrupacionRiesgo {
     width: 50%;
     display: flex;
@@ -72,13 +76,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
   .CantidadContenedor {
     height: 100%;
     width: auto;
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -91,33 +94,36 @@
     font-weight: bold;
     width: 100%;
     margin: 0;
-    font-size: 0.7rem;
+    font-size: 1rem;
     line-height: 1;
   }
   .CantidadTexto {
     font-weight: lighter;
-    font-size: 0.5rem;
+    font-size: 0.75rem;
     width: 100%;
     margin: 0;
     line-height: 1;
   }
 </style>
 
-{#each agrupaciones as agrupacion,i}
-
-  <li class="Agrupacion">
-    <div class="AgrupacionNombre">
-      <h6 class="Titulo">{agrupacion.nombre}</h6>
-    </div>
-    <div class="AgrupacionRiesgo">
-      <div class="Riesgo" style={`color:${obtenerColorRiesgo(agrupacion.riesgo)}`}>
-        <i class="fa fa-exclamation-circle"></i>
+<ul>
+  {#each agrupaciones as agrupacion, i}
+    <li class="Agrupacion">
+      <div class="AgrupacionNombre">
+        <h6 class="Titulo">{agrupacion.nombre}</h6>
+        <p>({agrupacion.nombre})</p>
       </div>
-      <div class="CantidadContenedor">
-        <span class="CantidadNumeros">{agrupacion.habitantes}</span>
-        <span class="CantidadTexto">hablantes</span>
+      <div class="AgrupacionRiesgo">
+        <div
+          class="Riesgo"
+          style={`color:${obtenerColorRiesgo(agrupacion.riesgo)}`}>
+          <i class="fa fa-exclamation-circle" />
+        </div>
+        <div class="CantidadContenedor">
+          <span class="CantidadNumeros">{agrupacion.habitantes}</span>
+          <span class="CantidadTexto">hablantes</span>
+        </div>
       </div>
-    </div>
-  </li>
-
-{/each}
+    </li>
+  {/each}
+</ul>
