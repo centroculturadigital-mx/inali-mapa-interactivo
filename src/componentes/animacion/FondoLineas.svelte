@@ -1,48 +1,96 @@
 <script>
-  import interact from 'interactjs'
 
-  import SVG from "svg.js";
-  import { onMount } from "svelte";
-
-  import { TimelineMax } from 'gsap';
-  import textoFake from '../../datos/textoFake';
+    import { onMount } from 'svelte'
 
 
-  onMount(async() => {
+    import { TweenLite, TimelineMax } from 'gsap';
+
+    import Paper from 'paper';
+
+    export let canvas;
+
+    let step = 6;
     
-    let intersections = await import("svg.intersections.js");
-    // let text2svg = await import("text-to-svg");
-    
-    intersections = intersections.default
-    // text2svg = text2svg.default
+    let numLineas = Math.floor( window.innerWidth / step )
+   
+    const lineas = []
 
-    const draw = SVG('fondoLineas')
-    // 
+    
     
 
-    // console.log(text2svg(path.node));
+    onMount(()=>{
+
+
+        const paper = Paper.setup(canvas);
+
+        crearLineas()
+
+        
+    })
     
 
-    const offsetX = 0;
-    
-    // console.log(path);
-    let index = 0;
-    
-    const step = 0.2;
-    const numLineas = 500;
+    const crearLineas = () => {
 
-    for( let i=0; i<numLineas; i++) {
-    
-        const line  = draw.line((i*step), 0,(i*step), 400).stroke({
-            width: 0.03,
-            color: 'rgba(100,140,230,0.2)'
+      for( let i = 0; i<numLineas; i++) {
+
+
+        
+        const lineaX = (i*step);
+            
+        const linea = new Paper.Path.Line(
+            new Paper.Point(lineaX,0),
+            new Paper.Point(lineaX,window.innerHeight)
+        );
+
+
+
+
+        let r = 100/255
+        let g = 140/255
+        let b = 180/255
+        let opacity = (1/2+Math.random()/2)
+
+        linea.strokeColor = new Paper.Color(r,g,b,opacity);
+        
+        linea.strokeWidth = 1
+
+        
+
+        let tl = new TimelineMax({
+            yoyo: true,
+            repeat: -1,
+        });
+        
+        tl.to(linea,1.5+(1.0*Math.random()),{
+            opacity: Math.random()
         })
+        tl.to(linea,1.5+(1.0*Math.random()),{
+            opacity: 0.1
+        })
+        tl.to(linea,1.5+(1.0*Math.random()),{
+            opacity: Math.random()
+        })
+        tl.to(linea,1.5+(1.0*Math.random()),{
+            opacity: 0.5+(i%8)/16
+        })
+        tl.to(linea,1.5+(1.0*Math.random()),{
+            opacity: Math.random()
+        })
+        tl.to(linea,1.5+(1.0*Math.random()),{
+            opacity: 0.3+Math.random()/3
+        })
+
+        lineas.push(linea);
+                    
+          
+      }
+
 
     }
 
-  });
+
+
 </script>
 
-<style>
 
-</style>
+

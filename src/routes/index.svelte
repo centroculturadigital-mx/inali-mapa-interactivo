@@ -293,12 +293,7 @@
 </style>
 
 
-<canvas bind:this={canvas}></canvas>
 
-
-{#if !! canvas }
-	<GSAP1 canvas={canvas}/>
-{/if}
 
 
   <FraseViva/>

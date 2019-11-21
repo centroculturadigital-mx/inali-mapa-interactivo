@@ -72,7 +72,7 @@
 
           const offsetsY = alturasDestino.map(a=> (a - alturaOriginal)/2 );
           
-          const animarLineas = () => {
+          const animarLinea = () => {
             lineaForma.animate(200).size(100,alturasDestino[0]).animate(200).size(100,alturasDestino[1]).after(function(){
               lineaForma.animate(200).size(100,alturasDestino[2]).animate(200).size(100,alturasDestino[3]).after(function(){
                 lineaForma.animate(200).size(100,alturasDestino[4]).animate(200).size(100,alturaOriginal)
@@ -87,9 +87,9 @@
             })
           }
           setInterval(()=>{
-            animarLineas()
+            animarLinea()
           },1600)
-          animarLineas()
+          animarLinea()
           
           
 

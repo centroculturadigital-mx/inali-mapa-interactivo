@@ -8,6 +8,19 @@
   import textoFake from '../../datos/textoFake';
 
 
+  import LetraLineas from "./LetraLineas.svelte";
+
+
+  export let canvas;
+
+  export let x = 0;
+  export let path;
+  
+  
+  $: letraX = parseInt(x);
+
+  let lineasPares = [];
+
   onMount(async() => {
     
     let intersections = await import("svg.intersections.js");
@@ -16,11 +29,12 @@
     intersections = intersections.default
     // text2svg = text2svg.default
 
-    const draw = SVG('svgfraseviva').size(800, 800)
+    const draw = SVG('svgfraseviva').size(window.innerWidth,window.innerHeight)
     // 
     
+    const minH = 1;
 
-    // console.log(text2svg(path.node));
+    // console.log(text2svg(letraPath.node));
     
 
     const offsetX = 0;
@@ -30,105 +44,119 @@
     // console.log(path);
     let index = 0;
 
-    let letraX = (index*55)
-    const path = draw.path("M 0 296 L 0 0 L 59.2 0 L 59.2 168 L 62 168 L 89.6 135.6 L 132.8 89.6 L 200.8 89.6 L 120.8 171.2 L 209.2 296 L 138.8 296 L 78.8 204.8 L 59.2 224.4 L 59.2 296 L 0 296 Z")
-    .stroke('none').fill('rgba(100,140,230,0.1)').move(letraX,200)
+    const step = 6;
+
+
+    const letraPath = draw.path(path)
+    .stroke({
+      width: 0,
+      color: 'none'
+    }).fill('none').move(0,100)
     // .stroke('rgba(100,140,230)').fill('rgba(100,140,230,0.1)').move(letraX,200)
   
-    for( let i=0; i<50; i++) {
+    const animaciones = []
+
+    for( let i=0; i<30; i++) {
       
-      const step = 6;
       // const step = width / 40;
-      const line  = draw.line(letraX+offsetX+(i*step), 0,letraX+offsetX+(i*step), 586).stroke('none')
+      const lineaX = 1+(i*step)
+      const line  = draw.line(lineaX, 0,lineaX, window.innerHeight).stroke('none')
       
-      const intersecciones = path.intersectsLine(line);
+      const intersecciones = letraPath.intersectsLine(line);
       
       // intersecciones.forEach(p=>draw.circle(5).move(p.x-2.5,p.y-2.5).fill ('none').stroke('red'))
 
 
-      const pares = []
+      const paresLinea = []
 
       intersecciones.forEach((p,i)=>{
         
-        draw.circle(4).move(p.x,p.y).fill('none').stroke('#8ac')
+        // draw.circle(4).move(p.x,p.y).fill('none').stroke('#8ac')
 
         switch(i%2){
           case 0:
-              pares.push([p]);
+              paresLinea.push([p]);
               break;
           case 1:
-            const ultimo = pares[pares.length-1][0];
+            const ultimo = paresLinea[paresLinea.length-1][0];
             if(
+              paresLinea[paresLinea.length-1].length < 2
+              &&
               (Math.abs(p.x - ultimo.x)<1)
               &&
-              (Math.abs(p.y - ultimo.y)>3)
-              &&
-              (p.y > ultimo.y)
+              (Math.abs(p.y - ultimo.y)>minH)
             ) {
-              pares[pares.length-1].push(p);
+              
+              paresLinea[paresLinea.length-1].push(p);
+              
+              let par = [...paresLinea[paresLinea.length-1]]
+              par = par.sort((a,b)=>(a.y-b.y))
+              paresLinea[paresLinea.length-1] = par
+
             }
             break;
         }
       })
 
-      console.log("pares",pares);
       
-
-      pares.forEach(p=>{
+     /*  
+      paresLinea.forEach(p=>{
         if( p.length == 2 ) {
-          const x = 1 + letraX + offsetX + (i*step);
-          const lineaForma = draw.line(x, p[0].y,x, p[1].y).stroke({
-              width: 1,
-              color: 'rgba(100,240,230,0.6)'
+          
+          draw.circle(4).move(p[0].x,p[0].y).fill('none').stroke('#fff')
+          draw.circle(4).move(p[1].x,p[1].y).fill('none').stroke('#000')
+
+          const lineaX = (i*step);
+          const lineaForma = draw.line(lineaX, p[0].y,lineaX, p[1].y).stroke({
+            width: 1,
+            color: '#fa0'
           })
           // console.log(scaleY);
-          const alturaOriginal = p[0].y-p[1].y;
-          const alturasDestino = [
-            alturaOriginal * Math.max(Math.random()*1.3,1/3),
-            alturaOriginal * Math.max(Math.random()*1.3,1/3),
-            alturaOriginal * Math.max(Math.random()*1.3,1/3),
-          ];
+          // let alturaOriginal = (p[0].y>p[1].y) ? p[0].y-p[1].y : p[1].y-p[0].y;
 
-          const offsetsY = alturasDestino.map(a=> -(a - alturaOriginal)/2 );
-          
-          const animarLineas = () => {
-            lineaForma.animate(200).size(100,alturasDestino[0]).animate(200).size(100,alturasDestino[1]).after(function(){
-              lineaForma.animate(200).size(100,alturasDestino[2])
-            })
+          // const alturasDestino = [
+          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
+          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
+          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
+          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
+          // ];
 
-            
-            lineaForma.animate(200).y(p[0].y-offsetsY[0]).animate(200).y(p[1].y-offsetsY[1]).after(function(){
-              lineaForma.animate(200).y(p[1].y-offsetsY[2])
-            })
-          }
-          setInterval(()=>{
-            animarLineas()
-          },2000)
-          animarLineas()
-          
+          // const offsetsY = alturasDestino.map(a=> (a - alturaOriginal)/2 );
           
 
-            
+          
+
           lineasForma.push(
             lineaForma
           )
 
+        } else {
+          p.forEach(pp=>draw.circle(4).move(pp.x,pp.y).fill('none').stroke('#f00'))
         }
       })
-
+      */
       
+      
+      lineasPares.push(paresLinea)
 
     }
 
-    // const circle = draw.circle(100).move(0, 100)
+    lineasPares = lineasPares;
+    
+    draw.path(path)
+    .stroke({
+      width: 0.5,
+      color: 'rgba(130,180,250,0.7)'
+    }).fill('none').move(x,100)
 
   });
+  
 </script>
 
 <style>
 
 </style>
 
-<svg id="svgfraseviva" >
-  <!-- <path d="M150 0 L75 200 L225 200 Z" /> -->
-</svg>
+{#if !! canvas}
+  <LetraLineas x={x} canvas={canvas} pares={lineasPares}/>
+{/if}
