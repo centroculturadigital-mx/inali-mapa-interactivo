@@ -32,7 +32,7 @@
     intersections = intersections.default
     // text2svg = text2svg.default
 
-    const draw = SVG('svgfraseviva').size(window.innerWidth,window.innerHeight)
+    const draw = SVG('svg-intersecciones').size(window.innerWidth,window.innerHeight)
     // 
     
     const minH = 1;

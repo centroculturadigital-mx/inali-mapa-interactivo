@@ -5,114 +5,163 @@
   import { onMount } from "svelte";
 
   import { TimelineMax } from 'gsap';
+  import textoFake from '../../datos/textoFake';
 
+
+  import LetraLineas from "./LetraLineas.svelte";
+
+
+  export let canvas;
+  export let opacidad=1;
+  export let escala;
+
+  export let x = 0;
+  export let path;
+  
+  
+  $: formaX = parseInt(x);
+  $: ((x)=>dibujoForma?dibujoForma.animate(500).x(x):x)(x);
+
+  let lineasPares = [];
+  let dibujoForma;
 
   onMount(async() => {
     
     let intersections = await import("svg.intersections.js");
+    // let text2svg = await import("text-to-svg");
     
     intersections = intersections.default
+    // text2svg = text2svg.default
 
-    const draw = SVG('drawing').size(400, 400)
+    const draw = SVG('svg-intersecciones').size(window.innerWidth,window.innerHeight)
+    // 
     
-    const path1 = draw.path('M30 30 L75 200 L125 170 L225 200 Z')
-    .stroke('none').fill('rgba(200,0,30,0.3)')
+    const minH = 1;
 
-    const path = draw.path('M30 30 L75 200 L125 170 L225 200 Z')
-    .stroke('none').fill('none')
+    // console.log(text2svg(formaPath.node));
+    
 
     const offsetX = 0;
     
     const lineasForma = []
-    
-    for( let i=0; i<40; i++) {
+
+    // console.log(path);
+    let index = 0;
+
+    const step = 6;
+
+
+    const formaPath = draw.path(path)
+    .stroke({
+      width: 0,
+      color: 'none'
+    }).fill('none').move(0,100)
+    // .stroke('rgba(100,140,230)').fill('rgba(100,140,230,0.1)').move(formaX,200)
+  
+    const animaciones = []
+
+    for( let i=0; i<30; i++) {
       
-      const step = 6;
       // const step = width / 40;
-      const line  = draw.line(offsetX+(i*step), 0,offsetX+(i*step), 386).stroke('none')
+      const lineaX = 1+(i*step)
+      const line  = draw.line(lineaX, 0,lineaX, window.innerHeight).stroke('none')
       
-      const intersecciones = path.intersectsLine(line);
+      const intersecciones = formaPath.intersectsLine(line);
       
       // intersecciones.forEach(p=>draw.circle(5).move(p.x-2.5,p.y-2.5).fill ('none').stroke('red'))
 
 
-      const pares = []
+      const paresLinea = []
 
       intersecciones.forEach((p,i)=>{
+        
+        draw.circle(4).move(p.x,p.y).fill('none').stroke('#f00')
+
         switch(i%2){
           case 0:
-              pares.push([p]);
+              paresLinea.push([p]);
               break;
           case 1:
-            const ultimo = pares[pares.length-1][0];
+            const ultimo = paresLinea[paresLinea.length-1][0];
             if(
+              paresLinea[paresLinea.length-1].length < 2
+              &&
               (Math.abs(p.x - ultimo.x)<1)
               &&
-              (p.y < ultimo.y)
+              (Math.abs(p.y - ultimo.y)>minH)
             ) {
-              pares[pares.length-1].push(p);
+              
+              paresLinea[paresLinea.length-1].push(p);
+              
+              let par = [...paresLinea[paresLinea.length-1]]
+              par = par.sort((a,b)=>(a.y-b.y))
+              paresLinea[paresLinea.length-1] = par
+
             }
             break;
         }
       })
 
-      /* 
-      pares.forEach(p=>{
+      
+     /*  
+      paresLinea.forEach(p=>{
         if( p.length == 2 ) {
-          const x = offsetX+(i*step);
-          const lineaForma = draw.line(x, p[0].y,x, p[1].y).stroke('red')
+          
+          draw.circle(4).move(p[0].x,p[0].y).fill('none').stroke('#fff')
+          draw.circle(4).move(p[1].x,p[1].y).fill('none').stroke('#000')
+
+          const lineaX = (i*step);
+          const lineaForma = draw.line(lineaX, p[0].y,lineaX, p[1].y).stroke({
+            width: 1,
+            color: '#fa0'
+          })
           // console.log(scaleY);
-          const alturaOriginal = p[0].y-p[1].y;
-          const alturasDestino = [
-            alturaOriginal * Math.max(Math.random()*1.3,1/3),
-            alturaOriginal * Math.max(Math.random()*1.3,1/3),
-            alturaOriginal * Math.max(Math.random()*1.3,1/3),
-            alturaOriginal * Math.max(Math.random()*2.5,1/3),
-            alturaOriginal * Math.max(Math.random()*2.5,1/3)
-          ];
+          // let alturaOriginal = (p[0].y>p[1].y) ? p[0].y-p[1].y : p[1].y-p[0].y;
 
-          const offsetsY = alturasDestino.map(a=> (a - alturaOriginal)/2 );
-          
-          const animarLinea = () => {
-            lineaForma.animate(200).size(100,alturasDestino[0]).animate(200).size(100,alturasDestino[1]).after(function(){
-              lineaForma.animate(200).size(100,alturasDestino[2]).animate(200).size(100,alturasDestino[3]).after(function(){
-                lineaForma.animate(200).size(100,alturasDestino[4]).animate(200).size(100,alturaOriginal)
-              })
-            })
+          // const alturasDestino = [
+          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
+          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
+          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
+          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
+          // ];
 
-            
-            lineaForma.animate(200).y(p[1].y-offsetsY[0]).animate(200).y(p[1].y-offsetsY[1]).after(function(){
-                lineaForma.animate(200).y(p[1].y-offsetsY[2]).animate(200).y(p[1].y-offsetsY[3]).after(function(){
-                lineaForma.animate(200).y(p[1].y-offsetsY[4]).animate(200).y(p[1].y)
-              })
-            })
-          }
-          setInterval(()=>{
-            animarLinea()
-          },1600)
-          animarLinea()
-          
+          // const offsetsY = alturasDestino.map(a=> (a - alturaOriginal)/2 );
           
 
-            
+          
+
           lineasForma.push(
             lineaForma
           )
 
+        } else {
+          p.forEach(pp=>draw.circle(4).move(pp.x,pp.y).fill('none').stroke('#f00'))
         }
       })
-       */
+      */
+      
+      
+      lineasPares.push(paresLinea)
 
     }
-    // const circle = draw.circle(100).move(0, 100)
+
+    lineasPares = lineasPares;
+    
+    
+    dibujoForma = draw.path(path)
+    .stroke({
+      width: 0.5,
+      color: 'rgba(145,163,184,'+0.95*opacidad+')'
+    }).fill('rgba(100,123,154,'+0.02*opacidad+')').move(x,100)
 
   });
+  
 </script>
 
 <style>
 
 </style>
 
-<svg id="drawing" >
-  <!-- <path d="M150 0 L75 200 L225 200 Z" /> -->
-</svg>
+{#if !! canvas}
+  <LetraLineas x={x} canvas={canvas} pares={lineasPares}/>
+{/if}
