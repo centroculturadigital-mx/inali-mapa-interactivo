@@ -188,7 +188,7 @@
 
     setTimeout(()=>{
       mostrarFrase = false;
-    }, 1500 )
+    }, 3000 )
     
   }
 
@@ -274,6 +274,9 @@
 <style>
 
 
+  svg {
+    transition: opacity 3s ease-in-out;
+  }
 
   .activo,
   canvas.activo,
@@ -283,7 +286,6 @@
   svg.inactivo {
     opacity: 0.1 !important;
   }
-
 
 	main {
 		background-color: transparent;
@@ -374,9 +376,9 @@
   <GSAP1 canvas={canvas}/> 
   <FondoLineas canvas={canvas}/>
 
-  <FraseViva canvas={canvasFrases} svg={svgFrases} mostrar={mostrarFrase}/>
-  <!-- <FormaAudio canvas={canvas}/> -->
-
+  {#if !! mostrarFrase }
+    <FraseViva canvas={canvasFrases} svg={svgFrases} mostrar={mostrarFrase}/>
+  {/if}
   
 {/if}
 
@@ -388,11 +390,9 @@
 
 
   <!-- Elementos -->
-  {#if ! mostrarFrase }
 
-    <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)}/>
+  <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} mostrar={ ! mostrarFrase  }/>
   
-  {/if}
   <!-- <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} canvas={canvas}/> -->
 
   <!-- <Mapa on:seleccionar={console.log("aosijvieurn")}/> -->

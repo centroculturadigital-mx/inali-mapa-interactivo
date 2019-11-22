@@ -7,6 +7,7 @@
   import TwitterBoton from "../TwitterBoton.svelte";
   import VolutaBoton from "../VolutaBoton.svelte";
 
+  export let mostrar = true;
   let canvas;
 
   $: height = window.innerHeight;
@@ -15,6 +16,22 @@
 </script>
 
 <style>
+
+  svg {
+    transition: opacity 2s ease-in-out;
+  }
+
+  .activo,
+  canvas.activo,
+  svg.activo {
+    opacity: 1 !important;
+  }
+  svg.inactivo {
+    opacity: 0.1 !important;
+  }
+
+
+
   #SVGMapa {
     position: fixed;
     transform-origin: 50% 50%;
@@ -41,6 +58,7 @@
 
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg
+  class={ mostrar ? "activo": "inactivo" }
   xmlns:dc="http://purl.org/dc/elements/1.1/"
   xmlns:cc="http://creativecommons.org/ns#"
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"

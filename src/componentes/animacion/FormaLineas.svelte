@@ -1,6 +1,6 @@
 <script>
 
-    import { onMount } from 'svelte'
+    import { onMount, onDestroy } from 'svelte'
 
 
     import { TweenLite, TimelineMax } from 'gsap';
@@ -22,13 +22,13 @@
 
     let lineasDibujadas = []
 
-    
     // $: !! canvas ? crearLineas(lineas,x) : null
 
 
     onMount(()=>{
 
         crearLineas(lineas)
+        console.log("crear");
         
         // setInterval(animarLineas,10000)
 
@@ -36,20 +36,46 @@
 
     })
     
-    // const animarLineas = () => {
-    //     lineasDibujadas.forEach((linea,i)=>{
-    //         // console.log(linea);
+
+
+    onDestroy(()=>{
+
+        
+        setTimeout(()=>{
+            lineasDibujadas.forEach((l,i)=>{
+                l.remove()
+                delete lineas[i]
+            })
+
+        },3000)
+
+        animarLineas()
+
+        // animarLineas()
+
+    })
+    
+    const animarLineas = () => {
+        lineasDibujadas.forEach((linea,i)=>{
+            // console.log(linea);
             
-    //         let tl = new TimelineMax();
-    //         const lineaX = 3 + parseInt(posX) + (i*step);
+            let tl = new TimelineMax();
+            // let tl2 = new TimelineMax();
+            const lineaX = 3 + parseInt(posX) + (i*step);
 
-    //         tl
-    //         .to(linea.position,10,{
-    //             x: lineaX,
-    //         })
+            tl
+            .set(linea,{
+                strokeColor: 'rgba(10, 193, 214,1)'
+            })
+            tl
+            .to(linea,3,{
+                // position: {x: lineaX + Math.random()*30},
+                strokeColor: 'rgba(70, 93, 114,0)'
+            })
 
-    //     })
-    // }
+
+        })
+    }
 
     const crearLineas = pares => {
 

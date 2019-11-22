@@ -13,11 +13,12 @@
   import FondoLineas from "./FondoLineas.svelte";
   import FormaLineas from "./FormaLineas.svelte";
 
-	import { onMount } from "svelte"
+	import { onMount, onDestroy } from "svelte"
 	import puntosFake from "../../datos/puntosFake"
 	import textoFake from "../../datos/textoFake.holamundo"
 
 
+  export let mostrar = true;
   export let canvas;
   export let svg;
 
@@ -94,6 +95,12 @@
 // },1000)
   })
 
+
+  onDestroy(()=>{
+
+    
+
+  })
      
 
 
@@ -127,7 +134,7 @@ canvas {
 
 {#each letras as letra, indice ("letra_"+indice) }
   
-  <FormaLineas x={ posX +(90*(indice%18))} y={(Math.floor(indice/18)*170)} canvas={canvas} lineas={letra}/>
+  <FormaLineas x={ posX +(90*(indice%18))} y={(Math.floor(indice/18)*170)} canvas={canvas} lineas={letra} opacidad={mostrar?1:0}/>
   
 {/each}
  
