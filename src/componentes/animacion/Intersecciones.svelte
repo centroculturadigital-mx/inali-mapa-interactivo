@@ -17,6 +17,7 @@
 
   export let x = 0;
   export let path;
+  export let escala = 1;
   
   
   $: letraX = parseInt(x);
@@ -49,10 +50,13 @@
     let index = 0;
 
     const step = 6;
-    const numLineas = 30;//Math.floor(window.innerWidth / step);
+    const numLineas = Math.floor(window.innerWidth / step);
 
 
     const letraPath = draw.path(path)
+    .transform({
+      scale: escala
+    })
     .stroke({
       width: 0,
       color: '#eee'

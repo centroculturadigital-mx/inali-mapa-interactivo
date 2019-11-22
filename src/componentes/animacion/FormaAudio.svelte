@@ -1,191 +1,120 @@
 <script>
-  import interact from 'interactjs'
-
-  import SVG from "svg.js";
-  import { onMount } from "svelte";
-
-  import { TimelineMax } from 'gsap';
-  import textoFake from '../../datos/textoFake';
 
 
+  import { tap } from '@sveltejs/gestures';
+
+  import { TweenLite, Elastic, Circ } from "gsap";
+
+
+  import Cabecera from '../general/Cabecera/Cabecera.svelte';
+  import Pie from '../general/Pie/Pie.svelte'
+
+  import FondoLineas from "./FondoLineas.svelte";
   import LetraLineas from "./LetraLineas.svelte";
+
+	import { onMount } from "svelte"
+	import zonasFake from "../../datos/zonasFake"
 
 
   export let canvas;
-  export let opacidad=1;
-  export let escala;
 
-  export let x = 0;
-  export let path;
+
+
+  // let letras = []
+  $: letras = zonasFake
+  // $: console.log(letras);
+  // $: letras.forEach(l=>console.log(l));
   
   
-  $: formaX = parseInt(x);
-  $: ((x)=>dibujoForma?dibujoForma.animate(500).x(x):x)(x);
-
-  let lineasPares = [];
-  let dibujoForma;
-
-  onMount(async() => {
-    
-    let intersections = await import("svg.intersections.js");
-    // let text2svg = await import("text-to-svg");
-    
-    intersections = intersections.default
-    // text2svg = text2svg.default
-
-    const draw = SVG('svg-intersecciones-familias');//.size(window.innerWidth,window.innerHeight)
-    // 
-    
-    const minH = 1;
-
-    // console.log(text2svg(formaPath.node));
-    
-
-    const offsetX = 0;
-    
-    const lineasForma = []
-
-    // console.log(path);
-    let index = 0;
-
-    const step = 6;
-    const numLineas = Math.floor(window.innerWidth / 6);
 
 
-    const formaPath = draw.path(path)
-    .stroke({
-      width: 0,
-      color: 'none'
-    })
-    // .fill('none').move(0,100)
-    .stroke('rgba(200,140,230)')
-    // .fill('rgba(200,140,230,1)')
-    // .transform({
-    //   scale: 40
-    // })
-    // .translate(-1817,-1499)
-    .move(217,169)
-
-    const animaciones = []
-
-    for( let i=0; i<numLineas; i++) {
-      
-      // const step = width / 40;
-      const lineaX = 1+(i*step)
-      
-      const line  = draw.line(
-        lineaX,
-        0,
-        lineaX,
-        window.innerHeight
-      )
-      .stroke({
-        color: 'none',
-        width: 0.1
-      })
-      // .stroke('none')
-      
-      const intersecciones = formaPath.intersectsLine(line);
-      
-      console.log("intersecciones",intersecciones);
-      
-      // intersecciones.forEach(p=>draw.circle(5).move(p.x-2.5,p.y-2.5).fill ('none').stroke('red'))
-
-
-      const paresLinea = []
-
-      intersecciones.forEach((p,i)=>{
-        
-        draw.circle(4).move(p.x,p.y).fill('none').stroke('#f00')
-
-        switch(i%2){
-          case 0:
-              paresLinea.push([p]);
-              break;
-          case 1:
-            const ultimo = paresLinea[paresLinea.length-1][0];
-            if(
-              paresLinea[paresLinea.length-1].length < 2
-              &&
-              (Math.abs(p.x - ultimo.x)<1)
-              &&
-              (Math.abs(p.y - ultimo.y)>minH)
-            ) {
-              
-              paresLinea[paresLinea.length-1].push(p);
-              
-              let par = [...paresLinea[paresLinea.length-1]]
-              par = par.sort((a,b)=>(a.y-b.y))
-              paresLinea[paresLinea.length-1] = par
-
-            }
-            break;
-        }
-      })
-
-      
-     /*  
-      paresLinea.forEach(p=>{
-        if( p.length == 2 ) {
-          
-          draw.circle(4).move(p[0].x,p[0].y).fill('none').stroke('#fff')
-          draw.circle(4).move(p[1].x,p[1].y).fill('none').stroke('#000')
-
-          const lineaX = (i*step);
-          const lineaForma = draw.line(lineaX, p[0].y,lineaX, p[1].y).stroke({
-            width: 1,
-            color: '#fa0'
-          })
-          // console.log(scaleY);
-          // let alturaOriginal = (p[0].y>p[1].y) ? p[0].y-p[1].y : p[1].y-p[0].y;
-
-          // const alturasDestino = [
-          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
-          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
-          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
-          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
-          // ];
-
-          // const offsetsY = alturasDestino.map(a=> (a - alturaOriginal)/2 );
-          
-
-          
-
-          lineasForma.push(
-            lineaForma
-          )
-
-        } else {
-          p.forEach(pp=>draw.circle(4).move(pp.x,pp.y).fill('none').stroke('#f00'))
-        }
-      })
-      */
-      
-      
-      lineasPares.push(paresLinea)
-
-    }
-
-    lineasPares = lineasPares;
-    
-    
-    dibujoForma = draw.path(path)
-    .stroke({
-      width: 0.1,
-      color: 'rgba(245,163,184,'+0.95*opacidad+')'
-    }).fill('none')
-    //.move(x,100)
-    .transform({
-      scale: 50
-    })
-  });
+  $: height = window.innerHeight;
+  $: width = window.innerWidth;
   
+  
+  const pathInfo = {x: 120};
+
+  let contador = 0;
+
+  onMount(()=>{
+  
+      let tl = new TimelineMax({
+          yoyo: true,
+          repeat: -1,
+      });
+      
+      // tl.to(pathInfo,1.5+(1.0*Math.random()),{
+      //     x: 120
+      // })
+      // tl.to(pathInfo,1.5+(1.0*Math.random()),{
+      //     x: -1800
+      // })
+  //   const letrasPaths = document.querySelectorAll('#texto path')
+
+  //   letrasPaths.forEach(l=>letras.push(l.getAttribute("d")))
+  //   // const letraPath = document.querySelector('#texto path')
+  //   // letras.push(letraPath.getAttribute("d"))
+
+    
+    letras = letras
+
+// setInterval(()=>{
+//   letras.forEach((l,i)=>{
+//     l.opacidad = ((letras.length-Math.abs(contador/i))/letras.length)/2
+//   })
+//   letras[contador].opacidad = 1
+//   letras=letras
+//   contador++
+//   contador%=letras.length
+// },1000)
+  })
+
+     
+
+
 </script>
 
 <style>
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* opacity: 0.5; */
+}
+
+#texto {
+  visibility: hidden;
+}
 
 </style>
 
-{#if !! canvas}
-  <LetraLineas x={x} canvas={canvas} pares={lineasPares}/>
-{/if}
+
+
+<svelte:head>
+<title>INALI | Mapa interactivo</title>
+</svelte:head>
+
+
+<main>
+
+
+{#each letras as letra, indice ("letra_"+indice) }
+  
+  <LetraLineas x={pathInfo.x+(120*indice)} canvas={canvas} lineas={letra}/>
+  
+{/each}
+ 
+  <!-- {#if !! letras[0] }
+    <LetraLineas x={pathInfo.x+(156)} canvas={canvas} lineasPares={letras[0]}/>
+  {/if} -->
+
+
+
+</main>
+
+
+<Pie />        
+
+

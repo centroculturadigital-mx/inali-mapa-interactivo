@@ -14,6 +14,7 @@
 	import textoFake from "../datos/textoFake"
 
 
+    let escala = 40;
 
   let canvas;
   
@@ -40,7 +41,7 @@
     const mostrarLineas = (lineas,indice) => {
         
         resultado[indice]=lineas
-        
+
         if( resultado.length == textoFake.length ) {
             
             console.log(resultado);
@@ -72,7 +73,7 @@
   {#each textoFake as letra, i ("letra_"+i) }
     {#if !! canvas }
 
-        <Intersecciones mostrar={mostrarLineas} x={0} path={ letra } indice={i}/>
+        <Intersecciones mostrar={mostrarLineas} x={0} path={ letra } indice={i} escala={escala}/>
 
     {/if}
   {/each}

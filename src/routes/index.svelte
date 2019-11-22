@@ -323,6 +323,7 @@
     <FondoLineas canvas={canvas}/>
 
     <FraseViva canvas={canvas}/>
+    <FormaAudio canvas={canvas}/>
 
     
   {/if}
