@@ -6,7 +6,7 @@
   import { TweenLite, Elastic, Circ } from "gsap";
 
 
-	import Intersecciones from "../componentes/animacion/Intersecciones.svelte";
+	// import Intersecciones from "../componentes/animacion/Intersecciones.svelte";
 
 	import { onMount } from "svelte"
 

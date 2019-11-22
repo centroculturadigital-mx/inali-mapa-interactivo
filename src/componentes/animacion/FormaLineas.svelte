@@ -44,7 +44,7 @@
         setTimeout(()=>{
             lineasDibujadas.forEach((l,i)=>{
                 l.remove()
-                delete lineas[i]
+                delete lineasDibujadas[i]
             })
 
         },3000)
@@ -125,10 +125,26 @@
                             repeat: -1,
                         });
                         
+                        let tlC = new TimelineMax();
+                        
                         let tlSW = new TimelineMax({
                             yoyo: true,
                             repeat: -1,
                         });
+                        
+                        // tlC
+                        // .set(linea,{
+                        //     // position: {x: lineaX + Math.random()*30},
+                        //     strokeColor: 'rgba(255, 93, 114,0)'
+                        // })
+                        // tlC.from(linea,1,{
+                        //     // position: {x: lineaX + Math.random()*30},
+                        //     strokeColor: 'rgba(255, 93, 114,0)'
+                        // })
+                        // tlC.to(linea,3,{
+                        //     // position: {x: lineaX + Math.random()*30},
+                        //     strokeColor: 'rgba(70, 93, 114,1)'
+                        // })
                         
                         tl
                         .to(linea.segments[0].point,1/8+(Math.random()/2),{
