@@ -17,21 +17,41 @@
     export let y=0;
     export let step = 6;
     
-    $: console.log(x,y)
+    $: posX = x
+    $: posY = y
 
-   
+    $: console.log(posX,y);
+    
     let lineasDibujadas = []
 
     
-    // $: crearLineas(lineas)
+    // $: !! canvas ? crearLineas(lineas,x) : null
 
 
     onMount(()=>{
 
         crearLineas(lineas)
         
+        // setInterval(animarLineas,10000)
+
+        // animarLineas()
+
     })
     
+    // const animarLineas = () => {
+    //     lineasDibujadas.forEach((linea,i)=>{
+    //         // console.log(linea);
+            
+    //         let tl = new TimelineMax();
+    //         const lineaX = 3 + parseInt(posX) + (i*step);
+
+    //         tl
+    //         .to(linea.position,10,{
+    //             x: lineaX,
+    //         })
+
+    //     })
+    // }
 
     const crearLineas = pares => {
 
@@ -56,9 +76,9 @@
                     if( p.length == 2 ) {
 
                         
-                        const lineaX = 3 + parseInt(x) + (i*step);
-                        const y0 = parseInt(y) + p[0].y;
-                        const y1 = parseInt(y) + p[1].y;
+                        const lineaX = 3 + parseInt(posX) + (i*step);
+                        const y0 = parseInt(posY) + p[0].y;
+                        const y1 = parseInt(posY) + p[1].y;
                             
                         const linea = new Paper.Path.Line(
                             new Paper.Point(lineaX,y0),

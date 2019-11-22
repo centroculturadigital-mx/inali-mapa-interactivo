@@ -37,8 +37,8 @@
 
 	import { onMount } from "svelte"
 
+  let svgFrases;
   let canvas;
-  let canvas2;
   
   let familiasModule
   
@@ -307,8 +307,7 @@
   <canvas id="fondo" bind:this={canvas}></canvas>
 
     <!-- viewBox="37.47777777777779 37.591661213362585 35.5 19.959004392386532" -->
-  <svg id="svg-intersecciones-familias"
-  ></svg>
+  <svg id="svg-frasesvivas"  bind:this={svgFrases}></svg>
   <!--
   width={width + 'px'}
   height={height + 'px'} -->
@@ -323,7 +322,7 @@
     <GSAP1 canvas={canvas}/> 
     <FondoLineas canvas={canvas}/>
 
-    <FraseViva canvas={canvas}/>
+    <FraseViva canvas={canvas} svg={svgFrases}/>
     <!-- <FormaAudio canvas={canvas}/> -->
 
     
