@@ -12,7 +12,7 @@
 
     export let canvas;
     export let lineas;
-    export let color = "#fff"
+    export let color = "rgb(179, 199, 217)"
     export let x=0;
     export let y=0;
     export let step = 6;

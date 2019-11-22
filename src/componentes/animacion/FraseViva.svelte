@@ -26,13 +26,15 @@
   // let letras = []
   $: letras = puntosFake
   $: !! draw ? textoFake.forEach((path,indice)=>{
-    console.log(path);
+    
+    const x= posX +(90*(indice%18))
+    const y= 200+Math.floor((indice/18)*140)
     
     draw.path(path)
     .stroke({
       width: 1,
       color: 'rgba(149, 169, 187,0.85)'
-    }).fill('none').move(pathInfo.x+(120*indice),400)
+    }).fill('none').move(x,y)
     
   }) : null
   // $: console.log(letras);
@@ -125,7 +127,7 @@ canvas {
 
 {#each letras as letra, indice ("letra_"+indice) }
   
-  <FormaLineas x={ posX +(120*indice)} y={300} canvas={canvas} lineas={letra}/>
+  <FormaLineas x={ posX +(90*(indice%18))} y={100+Math.floor((indice/18)*140)} canvas={canvas} lineas={letra}/>
   
 {/each}
  
