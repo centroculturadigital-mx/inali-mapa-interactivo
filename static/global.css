@@ -45,6 +45,14 @@ main {
 button:focus {
 	outline: none;
 }
+* {
+	-webkit-touch-callout: none;
+    -webkit-user-select: none; 
+    -khtml-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
 
 button:active {
 	outline: none;
@@ -66,10 +74,10 @@ button:active {
 	stroke: #fff;
 }
 .carousel button.left {
-	left: -1rem;
+	left: -0.25rem;
 }
 .carousel button.right {
-	right: -1rem;
+	right: -0.25rem;
 }
 
 

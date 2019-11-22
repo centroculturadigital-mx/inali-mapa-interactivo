@@ -48,8 +48,12 @@
     height: auto;
     width: 80%;
     text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
-    background-color: rgba(0,0,0,0.45);
+    /* background-color: rgba(0,0,0,0.45); */
     padding: 0.5rem 1.5rem;
+    background: -moz-linear-gradient(bottom,  rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(bottom,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to top,  rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+
   }
   .TextoFotos p {
     margin-bottom: 0;

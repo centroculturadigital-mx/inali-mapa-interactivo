@@ -217,7 +217,8 @@
 <style>
     .Ventanas {
         width: 100vw;
-        height: 100vh;
+        /* height: 95vh; */
+        height: calc(100vh - 3rem);
         display: block;
         position: absolute;
         z-index: 60;
