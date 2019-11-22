@@ -28,7 +28,7 @@
   $: !! draw ? textoFake.forEach((path,indice)=>{
     
     const x= posX +(90*(indice%18))
-    const y= 200+Math.floor((indice/18)*140)
+    const y= 100+(Math.floor(indice/18)*170)
     
     draw.path(path)
     .stroke({
@@ -59,7 +59,7 @@
   onMount(()=>{
   
 
-      draw = SVG('svg-intersecciones').size(window.innerWidth,window.innerHeight)
+      draw = SVG('svg-frasesvivas').size(window.innerWidth,window.innerHeight)
 
       
       // let tl = new TimelineMax({
@@ -127,7 +127,7 @@ canvas {
 
 {#each letras as letra, indice ("letra_"+indice) }
   
-  <FormaLineas x={ posX +(90*(indice%18))} y={100+Math.floor((indice/18)*140)} canvas={canvas} lineas={letra}/>
+  <FormaLineas x={ posX +(90*(indice%18))} y={(Math.floor(indice/18)*170)} canvas={canvas} lineas={letra}/>
   
 {/each}
  

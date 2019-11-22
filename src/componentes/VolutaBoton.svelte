@@ -20,7 +20,7 @@
   path {
     position: relative;
     cursor: pointer;
-    fill: #ffffff;
+    fill: var(--color-fondo-claro-2);
   }
 
 

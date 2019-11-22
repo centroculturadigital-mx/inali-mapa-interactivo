@@ -73,7 +73,7 @@
   {#each textoFake as letra, i ("letra_"+i) }
     {#if !! canvas }
 
-        <Intersecciones mostrar={mostrarLineas} x={0} path={ letra } indice={i} escala={escala}/>
+        <!-- <Intersecciones mostrar={mostrarLineas} x={0} path={ letra } indice={i} escala={escala}/> -->
 
     {/if}
   {/each}

@@ -20,8 +20,6 @@
     $: posX = x
     $: posY = y
 
-    $: console.log(posX,y);
-    
     let lineasDibujadas = []
 
     
@@ -108,6 +106,9 @@
                         
                         tl
                         .to(linea.segments[0].point,1/8+(Math.random()/2),{
+                            y: y0,
+                        })
+                        .to(linea.segments[0].point,1/8+(Math.random()/2),{
                             y: y0-(10+Math.sin((i%12*12))*0.15),
                         })
                         .to(linea.segments[0].point,1/8+(Math.random()/2),{
@@ -122,10 +123,10 @@
                         
                         tl
                         .to(linea.segments[1].point,1/8+(Math.random()/2),{
-                            y: y1+(10+Math.sin((i%12*12))*0.15),
+                            y: y1+(10+Math.sin((i%12*12))*0.01),
                         })
                         .to(linea.segments[1].point,1/8+(Math.random()/2),{
-                            y: y1+(30+Math.sin((i%12*12))*1.5),
+                            y: y1+(30+Math.sin((i%12*12))*2.5),
                         })
                         .to(linea.segments[1].point,1/8+(Math.random()/2),{
                             y: y1,

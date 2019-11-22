@@ -14,7 +14,7 @@
   import Informacion from "../componentes/contenedores/Informacion/Informacion.svelte";
   import Homenaje from "../componentes/contenedores/Homenaje/Homenaje.svelte";
   
-  import VolutaTexto from "../componentes/VolutaTexto.svelte";
+  // import VolutaTexto from "../componentes/VolutaTexto.svelte";
 
   import Ventanas from "../componentes/contenedores/Ventanas/Ventanas.svelte";
 
@@ -39,6 +39,7 @@
 
   let svgFrases;
   let canvas;
+  let canvasFrases;
   
   let familiasModule
   
@@ -95,6 +96,7 @@
   let mostrarTwitter = false;
   let mostrarHomenaje = false;
   let mostrarVolutaTexto = false;
+  let mostrarFrase = false;
 
   const crearVentana = (tipo, x, y, props={}) => {
     
@@ -180,9 +182,14 @@
 
   }
 
-  const alternarVolutaTexto = (x,y) => {
-    // mostrarVolutaTexto = !mostrarVolutaTexto;
-    console.log("alternarVolutaTexto",mostrarVolutaTexto);
+  const encenderFrase = (x,y) => {
+    
+    mostrarFrase = true;
+
+    setTimeout(()=>{
+      mostrarFrase = false;
+    }, 1500 )
+    
   }
 
   const CerrarTwitter = () => {
@@ -195,7 +202,7 @@
     }
 
     if(e.target.getAttribute("class").includes("VolutaBoton") ) {
-      alternarVolutaTexto(e.detail.x,e.detail.y)
+      encenderFrase(e.detail.x,e.detail.y)
     }
 
     if(e.target.getAttribute("class").includes("HomenajeBoton") ) {
@@ -266,6 +273,18 @@
 
 <style>
 
+
+
+  .activo,
+  canvas.activo,
+  svg.activo {
+    opacity: 1 !important;
+  }
+  svg.inactivo {
+    opacity: 0.1 !important;
+  }
+
+
 	main {
 		background-color: transparent;
 		box-sizing: border-box;
@@ -288,8 +307,10 @@
     /* opacity: 0.5; */
   }
 
-  #texto {
-    visibility: hidden;
+  canvas#frases {
+    z-index: 70;
+    pointer-events: none;
+    /* background-color: rgba(99, 119, 137,0.3); */
   }
   
   svg {
@@ -298,16 +319,15 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    opacity: 1;
+    /* opacity: 1; */
 		/* z-index: -1; */
   }
-
 </style>
 
   <canvas id="fondo" bind:this={canvas}></canvas>
 
     <!-- viewBox="37.47777777777779 37.591661213362585 35.5 19.959004392386532" -->
-  <svg id="svg-frasesvivas"  bind:this={svgFrases}></svg>
+  <svg class={ mostrarFrase ? "activo" : "inactivo" } id="svg-frasesvivas"  bind:this={svgFrases}></svg>
   <!--
   width={width + 'px'}
   height={height + 'px'} -->
@@ -317,15 +337,11 @@
 
 
   {#if !! canvas }
-
     <CanvasSetup canvas={canvas}/>
-    <GSAP1 canvas={canvas}/> 
-    <FondoLineas canvas={canvas}/>
+  {/if}
 
-    <FraseViva canvas={canvas} svg={svgFrases}/>
-    <!-- <FormaAudio canvas={canvas}/> -->
-
-    
+  {#if !! canvasFrases }
+    <CanvasSetup canvas={canvasFrases}/>
   {/if}
 
 <svelte:head>
@@ -352,6 +368,17 @@
 </svg> -->
   
 <!--  -->
+{#if !! canvas }
+
+  <CanvasSetup canvas={canvas}/>
+  <GSAP1 canvas={canvas}/> 
+  <FondoLineas canvas={canvas}/>
+
+  <FraseViva canvas={canvasFrases} svg={svgFrases} mostrar={mostrarFrase}/>
+  <!-- <FormaAudio canvas={canvas}/> -->
+
+  
+{/if}
 
 <main>
   <!-- Interactividad -->
@@ -361,7 +388,11 @@
 
 
   <!-- Elementos -->
-  <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)}/>
+  {#if ! mostrarFrase }
+
+    <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)}/>
+  
+  {/if}
   <!-- <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} canvas={canvas}/> -->
 
   <!-- <Mapa on:seleccionar={console.log("aosijvieurn")}/> -->
@@ -390,13 +421,11 @@
   {/if} -->
 
 
-  {#if mostrarVolutaTexto }
-  <!-- <div class="VolutaTexto" transition:fade>
-    <VolutaTexto/>
-  </div> -->
-  {/if}
+  <!-- {#if ! mostrarFrase }
+  {/if} -->
 
 
+  <canvas class={ mostrarFrase ? "activo" : "inactivo" } id="frases" bind:this={canvasFrases}></canvas>
 
 </main>
 
