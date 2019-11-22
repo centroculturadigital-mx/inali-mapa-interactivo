@@ -12,8 +12,8 @@
     let colW = window.innerWidth / 30
     
     const numLineas = 160
-    const numBarras = 9
-    const numPuntos = 4
+    const numBarras = 11
+    const numPuntos = 5
     const barras = []
     const lineas = []
 

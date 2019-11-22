@@ -33,7 +33,7 @@
     intersections = intersections.default
     // text2svg = text2svg.default
 
-    const draw = SVG('svg-intersecciones').size(window.innerWidth,window.innerHeight)
+    const draw = SVG('svg-intersecciones-familias');//.size(window.innerWidth,window.innerHeight)
     // 
     
     const minH = 1;
@@ -49,24 +49,45 @@
     let index = 0;
 
     const step = 6;
+    const numLineas = Math.floor(window.innerWidth / 6);
 
 
     const formaPath = draw.path(path)
     .stroke({
       width: 0,
       color: 'none'
-    }).fill('none').move(0,100)
-    // .stroke('rgba(100,140,230)').fill('rgba(100,140,230,0.1)').move(formaX,200)
-  
+    })
+    // .fill('none').move(0,100)
+    .stroke('rgba(200,140,230)')
+    // .fill('rgba(200,140,230,1)')
+    // .transform({
+    //   scale: 40
+    // })
+    // .translate(-1817,-1499)
+    .move(217,169)
+
     const animaciones = []
 
-    for( let i=0; i<30; i++) {
+    for( let i=0; i<numLineas; i++) {
       
       // const step = width / 40;
       const lineaX = 1+(i*step)
-      const line  = draw.line(lineaX, 0,lineaX, window.innerHeight).stroke('none')
+      
+      const line  = draw.line(
+        lineaX,
+        0,
+        lineaX,
+        window.innerHeight
+      )
+      .stroke({
+        color: 'none',
+        width: 0.1
+      })
+      // .stroke('none')
       
       const intersecciones = formaPath.intersectsLine(line);
+      
+      console.log("intersecciones",intersecciones);
       
       // intersecciones.forEach(p=>draw.circle(5).move(p.x-2.5,p.y-2.5).fill ('none').stroke('red'))
 
@@ -150,10 +171,13 @@
     
     dibujoForma = draw.path(path)
     .stroke({
-      width: 0.5,
-      color: 'rgba(145,163,184,'+0.95*opacidad+')'
-    }).fill('rgba(100,123,154,'+0.02*opacidad+')').move(x,100)
-
+      width: 0.1,
+      color: 'rgba(245,163,184,'+0.95*opacidad+')'
+    }).fill('none')
+    //.move(x,100)
+    .transform({
+      scale: 50
+    })
   });
   
 </script>

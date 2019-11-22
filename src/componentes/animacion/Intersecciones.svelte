@@ -11,8 +11,9 @@
   import LetraLineas from "./LetraLineas.svelte";
 
 
-  export let canvas;
+  export let mostrar;
   export let opacidad=1;
+  export let indice=0;
 
   export let x = 0;
   export let path;
@@ -54,7 +55,7 @@
     const letraPath = draw.path(path)
     .stroke({
       width: 0,
-      color: 'none'
+      color: '#eee'
     }).fill('none').move(0,100)
     // .stroke('rgba(100,140,230)').fill('rgba(100,140,230,0.1)').move(letraX,200)
   
@@ -75,7 +76,7 @@
 
       intersecciones.forEach((p,i)=>{
         
-        // draw.circle(4).move(p.x,p.y).fill('none').stroke('#8ac')
+        draw.circle(4).move(p.x,p.y).fill('none').stroke('#fa0')
 
         switch(i%2){
           case 0:
@@ -95,6 +96,7 @@
               
               let par = [...paresLinea[paresLinea.length-1]]
               par = par.sort((a,b)=>(a.y-b.y))
+              
               paresLinea[paresLinea.length-1] = par
 
             }
@@ -103,65 +105,20 @@
       })
 
       
-     /*  
-      paresLinea.forEach(p=>{
-        if( p.length == 2 ) {
-          
-          draw.circle(4).move(p[0].x,p[0].y).fill('none').stroke('#fff')
-          draw.circle(4).move(p[1].x,p[1].y).fill('none').stroke('#000')
-
-          const lineaX = (i*step);
-          const lineaForma = draw.line(lineaX, p[0].y,lineaX, p[1].y).stroke({
-            width: 1,
-            color: '#fa0'
-          })
-          // console.log(scaleY);
-          // let alturaOriginal = (p[0].y>p[1].y) ? p[0].y-p[1].y : p[1].y-p[0].y;
-
-          // const alturasDestino = [
-          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
-          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
-          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
-          //   alturaOriginal * (((Math.random()*1.3)/2)+0.5),
-          // ];
-
-          // const offsetsY = alturasDestino.map(a=> (a - alturaOriginal)/2 );
-          
-
-          
-
-          lineasForma.push(
-            lineaForma
-          )
-
-        } else {
-          p.forEach(pp=>draw.circle(4).move(pp.x,pp.y).fill('none').stroke('#f00'))
-        }
-      })
-      */
+      if(paresLinea.length>0) {
+          lineasPares.push(paresLinea)
+      }
       
       
-      lineasPares.push(paresLinea)
 
     }
 
     lineasPares = lineasPares;
     
-    
-    dibujoLetra = draw.path(path)
-    .stroke({
-      width: 0.5,
-      color: 'rgba(145,163,184,'+0.95*opacidad+')'
-    }).fill('rgba(100,123,154,'+0.02*opacidad+')').move(x,100)
+    if( !! mostrar ) {
+        mostrar(lineasPares,indice)
+    }
 
   });
   
 </script>
-
-<style>
-
-</style>
-
-{#if !! canvas}
-  <LetraLineas x={x} canvas={canvas} pares={lineasPares}/>
-{/if}

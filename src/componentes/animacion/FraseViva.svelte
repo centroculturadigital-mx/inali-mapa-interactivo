@@ -10,22 +10,27 @@
   import Pie from '../general/Pie/Pie.svelte'
 
   import FondoLineas from "./FondoLineas.svelte";
-  import LetraIntersecciones from "./LetraIntersecciones.svelte";
+  import LetraLineas from "./LetraLineas.svelte";
 
 	import { onMount } from "svelte"
-	import textoFake from "../../datos/textoFake"
+	import puntosFake from "../../datos/puntosFake"
 
 
-  let canvas;
+  export let canvas;
 
 
 
   // let letras = []
-  let letras = textoFake.map(path=>({path}))
+  $: letras = puntosFake
+  // $: console.log(letras);
+  // $: letras.forEach(l=>console.log(l));
+  
+  
 
 
   $: height = window.innerHeight;
   $: width = window.innerWidth;
+  
   
   const pathInfo = {x: 120};
 
@@ -38,12 +43,12 @@
           repeat: -1,
       });
       
-      tl.to(pathInfo,1.5+(1.0*Math.random()),{
-          x: 120
-      })
-      tl.to(pathInfo,1.5+(1.0*Math.random()),{
-          x: -1800
-      })
+      // tl.to(pathInfo,1.5+(1.0*Math.random()),{
+      //     x: 120
+      // })
+      // tl.to(pathInfo,1.5+(1.0*Math.random()),{
+      //     x: -1800
+      // })
   //   const letrasPaths = document.querySelectorAll('#texto path')
 
   //   letrasPaths.forEach(l=>letras.push(l.getAttribute("d")))
@@ -51,17 +56,17 @@
   //   // letras.push(letraPath.getAttribute("d"))
 
     
-  //   letras = letras
+    letras = letras
 
-setInterval(()=>{
-  letras.forEach((l,i)=>{
-    l.opacidad = ((letras.length-Math.abs(contador/i))/letras.length)/2
-  })
-  letras[contador].opacidad = 1
-  letras=letras
-  contador++
-  contador%=letras.length
-},1000)
+// setInterval(()=>{
+//   letras.forEach((l,i)=>{
+//     l.opacidad = ((letras.length-Math.abs(contador/i))/letras.length)/2
+//   })
+//   letras[contador].opacidad = 1
+//   letras=letras
+//   contador++
+//   contador%=letras.length
+// },1000)
   })
 
      
@@ -94,16 +99,17 @@ canvas {
 
 <main>
 
+
 {#each letras as letra, indice ("letra_"+indice) }
   
-  {#if !! letra}
-    <LetraIntersecciones canvas={canvas} x={pathInfo.x+(156*indice)} path={ letra.path } opacidad={ letra.opacidad ? letra.opacidad  : 1 }/>
-    {/if}
+  <LetraLineas x={pathInfo.x+(120*indice)} canvas={canvas} lineas={letra}/>
   
-  {/each}
+{/each}
+ 
+  <!-- {#if !! letras[0] }
+    <LetraLineas x={pathInfo.x+(156)} canvas={canvas} lineasPares={letras[0]}/>
+  {/if} -->
 
-
-  <canvas id="frases-vivas__canvas" bind:this={canvas}></canvas>
 
 
 </main>

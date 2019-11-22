@@ -7,37 +7,29 @@
 
     import Paper from 'paper';
 
-	// import puntosFake from "../../datos/puntosFake"
-
-
     export let canvas;
-    export let lineas;
+    export let pares;
+    export let step = 6;
     export let x;
     
-    let step = 6;
    
-    let lineasDibujadas = []
+    const lineas = []
 
     
-    // $: crearLineas(lineas)
+    $: crearLineas(pares)
+
 
 
     onMount(()=>{
 
-        crearLineas(lineas)
+
+        // crearLineas(pares)
+
         
     })
     
 
-    const crearLineas = pares => {
-
-
-        // console.log("craerlineas",pares);
-        
-        
-        lineasDibujadas = []
-
-
+    const crearLineas = (pares) => {
         if(!!pares){
 
             pares.forEach((lineaPares,i)=>{
@@ -133,7 +125,7 @@
                         // })
                         
 
-                        lineasDibujadas.push(linea);
+                        lineas.push(linea);
                     }
                 })
             })
@@ -146,3 +138,6 @@
 
 
 </script>
+
+
+
