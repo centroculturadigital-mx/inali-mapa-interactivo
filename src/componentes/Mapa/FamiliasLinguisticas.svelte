@@ -5,13 +5,45 @@
   import { onMount } from "svelte";
   import { createEventDispatcher } from 'svelte';
 
+  import audios from "../../datos/zonasAudioFamiliasPuntos";
   import zonasFamilias from "../../datos/zonasFamilias";
   import posArea from "../../datos/posArea";
   import posDrag from "../../datos/posDrag";
 
+  import CanvasSetup from "../animacion/CanvasSetup.svelte";
+  import FormaLineas from "../animacion/FormaLineas.svelte";
+
   const dispatch = createEventDispatcher();
 
-    
+
+  // let canvas;
+  export let canvas;
+  
+  const zonaDrop = []
+  $: cajasDrop = !! canvas ? zonaDrop.map(
+    z=>({
+      x: ((canvas.clientWidth/1368)*(1368/35.5))*(z.getBBox().x-37.47777777777779),
+      y: ((canvas.clientHeight/768)*(768/19.959004392386532))*(z.getBBox().y-37.591661213362585)-(100*dY)
+    })
+  ) : []
+
+  $: dX = window.innerWidth / 1368
+  $: dY = window.innerHeight / 768
+  $: dMX = 1368/35.5
+  $: dMY = 768/19.959004392386532
+  $: zonasAudios = audios.map(lns=>lns.map(lnsprs=>lnsprs.map(prs=>prs.map(p=>({x:p.x*dX,y:p.y*dY})))))
+  $: cajasDrag = !! canvas ? zonaDrop.map(
+    (z,i)=>({
+      x: (dX*dMX)*(z.getBBox().x+parseInt(posDrag.find(p=>p.id==zonasFamilias[i].id).posicion[0])-37.47777777777779),
+      y: (dY*dMY)*(z.getBBox().y+parseInt(posDrag.find(p=>p.id==zonasFamilias[i].id).posicion[1])-37.591661213362585)-(95*dY)
+    })
+  ) : []
+
+  // $: zonasAudios = audios.map(lns=>lns.map(prs=>prs.map(p=>({x:p.x*dX,y:p.y*dY}))))
+  // $: zonasAudios = audios.map(prs=>prs.map(p=>({x:p.x*dX,y:p.y*dY})))
+  // $: console.log(zonasAudios);
+  
+  
   const funcionDrag = ( idZona, x, y, idFamilia ) => {
       
     dispatch('seleccionar', {idZona, x, y, idFamilia});
@@ -51,12 +83,25 @@
     if (typeof window != "undefined") {
       distribucionAreas();
     }
+
+
+    zonaDrop = zonaDrop
+    
   }); //onMount
+
+  const zonasM = zonasFamilias.map(z=>({
+    x: z.d.split(/\b(\s)/)[0].split("M")[1].split(",")[0],
+    y: z.d.split(/\b(\s)/)[0].split("M")[1].split(",")[1]
+  }))
+
+  console.log("zonasM",zonasM);
+  
 
 
 </script>
 
 <style>
+
   path {
     transform-origin: center;
     
@@ -86,7 +131,7 @@
   } */
 </style>
 
-{#each zonasFamilias as zona}
+{#each zonasFamilias as zona,i}
     <g class="zonaDragAnim">
       <path
         id={zona.id+"-drag"}
@@ -107,5 +152,33 @@
       stroke={zona.fill}
       stroke-width={0.05}
       stroke-linejoin="round"
+      bind:this={zonaDrop[i]}
     />
+    
+
 {/each}
+
+{#if !! canvas && !! dX && !! cajasDrop.length>0 }
+  
+  <CanvasSetup canvas={canvas}/>
+
+  {#each zonasFamilias as zona,i}
+      <FormaLineas
+        x={cajasDrop[i].x}
+        y={cajasDrop[i].y}
+        canvas={canvas}
+        lineas={zonasAudios[i]}
+        color={zona.fill}
+        step={ 6 * dX }
+      />
+      <FormaLineas
+        x={cajasDrag[i].x}
+        y={cajasDrag[i].y}
+        canvas={canvas}
+        lineas={zonasAudios[i]}
+        color={zona.fill}
+        step={ 6 * dX }
+      />
+  {/each}
+{/if}
+

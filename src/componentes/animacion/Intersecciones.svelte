@@ -8,7 +8,7 @@
   import textoFake from '../../datos/textoFake';
 
 
-  import LetraLineas from "./LetraLineas.svelte";
+  import FormaLineas from "./FormaLineas.svelte";
 
 
   export let mostrar;

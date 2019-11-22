@@ -8,7 +8,7 @@
   import textoFake from '../../datos/textoFake';
 
 
-  import LetraLineas from "./LetraLineas.svelte";
+  import FormaLineas from "./FormaLineas.svelte";
 
 
   export let canvas;
@@ -163,5 +163,5 @@
 </style>
 
 {#if !! canvas}
-  <LetraLineas x={x} canvas={canvas} pares={lineasPares}/>
+  <FormaLineas x={x} canvas={canvas} pares={lineasPares}/>
 {/if}

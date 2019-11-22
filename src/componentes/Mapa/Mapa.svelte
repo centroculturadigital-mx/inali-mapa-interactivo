@@ -7,10 +7,11 @@
   import TwitterBoton from "../TwitterBoton.svelte";
   import VolutaBoton from "../VolutaBoton.svelte";
 
-  const win = window;
+  let canvas;
 
-  $: height = win.innerHeight;
-  $: width = win.innerWidth;
+  $: height = window.innerHeight;
+  $: width = window.innerWidth;
+  
 </script>
 
 <style>
@@ -20,6 +21,18 @@
     height: 100%;
     width: 100%;
     z-index: 50;
+  }
+
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99;
+    pointer-events: none
+
   }
 
 
@@ -160,7 +173,9 @@
     49.4375,47.24338693087913 49.71875,47.76039401177325Z" />
   <!-- <MexicoPaths /> -->
   <!-- <MexicoPaths1366x768 /> -->
-  <FamiliasLinguisticas on:seleccionar />
+  {#if !! canvas }
+    <FamiliasLinguisticas on:seleccionar canvas={canvas}/>
+  {/if}
 
   <!-- <TwitterBoton posIniX={0} posIniY={0.75} on:tap />
   <TwitterBoton posIniX={0.98} posIniY={0.27} on:tap /> -->
@@ -172,3 +187,6 @@
 
 </svg>
 <!--  -->
+
+
+<canvas bind:this={canvas}/>

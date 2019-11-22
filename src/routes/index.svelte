@@ -304,6 +304,7 @@
 
 </style>
 
+  <canvas id="fondo" bind:this={canvas}></canvas>
 
     <!-- viewBox="37.47777777777779 37.591661213362585 35.5 19.959004392386532" -->
   <svg id="svg-intersecciones-familias"
@@ -323,7 +324,7 @@
     <FondoLineas canvas={canvas}/>
 
     <FraseViva canvas={canvas}/>
-    <FormaAudio canvas={canvas}/>
+    <!-- <FormaAudio canvas={canvas}/> -->
 
     
   {/if}
@@ -361,7 +362,9 @@
 
 
   <!-- Elementos -->
-  <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} canvas={canvas}/>
+  <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)}/>
+  <!-- <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} canvas={canvas}/> -->
+
   <!-- <Mapa on:seleccionar={console.log("aosijvieurn")}/> -->
 
   <!-- 
@@ -395,7 +398,6 @@
   {/if}
 
 
-  <canvas id="fondo" bind:this={canvas}></canvas>
 
 </main>
 

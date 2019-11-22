@@ -10,7 +10,7 @@
   import Pie from '../general/Pie/Pie.svelte'
 
   import FondoLineas from "./FondoLineas.svelte";
-  import LetraLineas from "./LetraLineas.svelte";
+  import FormaLineas from "./FormaLineas.svelte";
 
 	import { onMount } from "svelte"
 	import puntosFake from "../../datos/puntosFake"
@@ -102,12 +102,12 @@ canvas {
 
 {#each letras as letra, indice ("letra_"+indice) }
   
-  <LetraLineas x={pathInfo.x+(120*indice)} canvas={canvas} lineas={letra}/>
+  <FormaLineas x={pathInfo.x+(120*indice)} canvas={canvas} lineas={letra}/>
   
 {/each}
  
   <!-- {#if !! letras[0] }
-    <LetraLineas x={pathInfo.x+(156)} canvas={canvas} lineasPares={letras[0]}/>
+    <FormaLineas x={pathInfo.x+(156)} canvas={canvas} lineasPares={letras[0]}/>
   {/if} -->
 
 
