@@ -47,7 +47,7 @@
                 delete lineasDibujadas[i]
             })
 
-        },3000)
+        },6000)
 
         animarLineas()
 
@@ -64,15 +64,20 @@
             const lineaX = 3 + parseInt(posX) + (i*step);
 
             tl
-            .set(linea,{
-                strokeColor: 'rgba(10, 193, 214,1)'
-            })
-            tl
-            .to(linea,3,{
+            .set(linea.strokeColor,{
                 // position: {x: lineaX + Math.random()*30},
-                strokeColor: 'rgba(70, 93, 114,0)'
+                red: 70,
+                green: 93,
+                blue: 114,
+                alpha:1
             })
-
+            .to(linea.strokeColor,3,{
+                // position: {x: lineaX + Math.random()*30},
+                red: 70,
+                green: 93,
+                blue: 114,
+                alpha:0
+            })
 
         })
     }
@@ -132,19 +137,32 @@
                             repeat: -1,
                         });
                         
-                        // tlC
-                        // .set(linea,{
-                        //     // position: {x: lineaX + Math.random()*30},
-                        //     strokeColor: 'rgba(255, 93, 114,0)'
-                        // })
-                        // tlC.from(linea,1,{
-                        //     // position: {x: lineaX + Math.random()*30},
-                        //     strokeColor: 'rgba(255, 93, 114,0)'
-                        // })
-                        // tlC.to(linea,3,{
-                        //     // position: {x: lineaX + Math.random()*30},
-                        //     strokeColor: 'rgba(70, 93, 114,1)'
-                        // })
+                        // if( color != "rgb(179, 199, 217)" ) {
+
+                        //     tlC
+                        //     .set(linea.strokeColor,{
+                        //         // position: {x: lineaX + Math.random()*30},
+                        //         red: 255,
+                        //         green: 93,
+                        //         blue: 114,
+                        //         alpha:0
+                        //     })
+                        //     // tlC.from(linea.strokeColor,1,{
+                        //     //     // position: {x: lineaX + Math.random()*30},
+                        //     //     red: 255,
+                        //     //     green: 93,
+                        //     //     blue: 114,
+                        //     //     alpha:0
+                        //     // })
+                        //     .to(linea.strokeColor,3,{
+                        //         // position: {x: lineaX + Math.random()*30},
+                        //         red: 70,
+                        //         green: 93,
+                        //         blue: 114,
+                        //         alpha:1
+                        //     })
+                        // }
+
                         
                         tl
                         .to(linea.segments[0].point,1/8+(Math.random()/2),{

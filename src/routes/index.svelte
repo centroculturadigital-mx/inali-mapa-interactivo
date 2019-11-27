@@ -188,7 +188,7 @@
 
     setTimeout(()=>{
       mostrarFrase = false;
-    }, 3000 )
+    }, 7000 )
     
   }
 

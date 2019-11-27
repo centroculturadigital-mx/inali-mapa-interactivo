@@ -6,6 +6,9 @@
   import { TweenLite, Elastic, Circ } from "gsap";
 
   import SVG from "svg.js";
+  
+  import { fade } from "svelte/transition";
+
 
   import Cabecera from '../general/Cabecera/Cabecera.svelte';
   import Pie from '../general/Pie/Pie.svelte'
@@ -98,8 +101,8 @@
 
   onDestroy(()=>{
 
-    
 
+    
   })
      
 
@@ -118,6 +121,31 @@ canvas {
 
 #texto {
   visibility: hidden;
+}
+
+.Info {
+  position: absolute;
+  bottom: 3rem;
+  right: 0;
+  padding: 5rem 2rem;
+  height: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background-color: rgba(179, 199, 217,0.3); */
+  color: rgba(179, 199, 217,0.3);
+
+  text-shadow: 3px 3px 3px var(--color-fondo);
+  z-index: 80;
+}
+.Info .Significado {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.Info .NombreLengua {
+  font-size: 1.75rem;
+  font-weight: bolder;
 }
 
 </style>
@@ -150,3 +178,10 @@ canvas {
 <Pie />        
 
 
+<div class="Info" transition:fade>
+
+  <p class="Significado">No hay día y no hay noche, no hay lluvia y no hay Sol, y no hay hambre, van sin detenerse. </p>
+  <h6 class="NombreLengua">
+    Lengua: Tu'un savi
+  </h6>
+</div>
