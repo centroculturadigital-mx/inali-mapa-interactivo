@@ -48,14 +48,30 @@
   let ingreso;
 
 
+
+
+
   $: height = win.innerHeight;
   $: width = win.innerWidth;
 
   $: familias = familiasModule ? familiasModule.default : [];
+  
+
+
+
+  $: drags = !! familias ? familias.map(f=>({id: f.id, x:0,y:0})) : []
+
+  let currentDrag
+
 
 	onMount( async ()=>{
 
     familiasModule = await import("../datos/familias.json");
+
+  
+    setTimeout(()=>{
+      drags = drags;
+    })
 
 		// let ctx = canvas.getContext('2d')        
     //     ctx.globalCompositeOperation = 'difference';
@@ -384,14 +400,34 @@
 
 <main>
   <!-- Interactividad -->
-  <Drag />
+  <Drag drag={(id,d)=>{
+    
+    let drag = drags.find(drag=>drag.id==id)
+    
+    drag = {
+      ...drag,
+      x:d.x,
+      y:d.y,
+    }
+
+    currentDrag = drag
+
+
+
+  }}/>
 
 
 
 
   <!-- Elementos -->
 
-  <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} mostrar={ ! mostrarFrase  }/>
+  <Mapa
+  on:seleccionar={seleccionar}
+  on:tap={(e)=>tapBotones(e)} 
+  mostrar={!mostrarFrase} 
+  drags={drags}
+  currentDrag={currentDrag}
+  />
   
   <!-- <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} canvas={canvas}/> -->
 

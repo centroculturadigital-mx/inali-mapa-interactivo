@@ -18,8 +18,16 @@
 
   // let canvas;
   export let canvas;
+  export let drags;
+  export let currentDrag = { x: 0, y: 0 };
+  
+  // $: console.log(currentDrag);
+  
+
+  $: console.log("drags changes", drags)
   
   const zonaDrop = []
+  
   $: cajasDrop = !! canvas ? zonaDrop.map(
     z=>({
       x: ((canvas.clientWidth/1368)*(1368/35.5))*(z.getBBox().x-37.47777777777779),
@@ -29,9 +37,12 @@
 
   $: dX = window.innerWidth / 1368
   $: dY = window.innerHeight / 768
+  
   $: dMX = 1368/35.5
   $: dMY = 768/19.959004392386532
+
   $: zonasAudios = audios.map(lns=>lns.map(lnsprs=>lnsprs.map(prs=>prs.map(p=>({x:p.x*dX,y:p.y*dY})))))
+  
   $: cajasDrag = !! canvas ? zonaDrop.map(
     (z,i)=>({
       x: (dX*dMX)*(z.getBBox().x+parseInt(posDrag.find(p=>p.id==zonasFamilias[i].id).posicion[0])-37.47777777777779),
@@ -93,6 +104,7 @@
     x: z.d.split(/\b(\s)/)[0].split("M")[1].split(",")[0],
     y: z.d.split(/\b(\s)/)[0].split("M")[1].split(",")[1]
   }))
+
 
   console.log("zonasM",zonasM);
   
@@ -171,6 +183,10 @@
         color={zona.fill}
         step={ 6 * dX }
       />
+      
+      <!-- x={cajasDrag[i].x}
+      y={cajasDrag[i].y} -->
+
       <FormaLineas
         x={cajasDrag[i].x}
         y={cajasDrag[i].y}
@@ -178,6 +194,7 @@
         lineas={zonasAudios[i]}
         color={zona.fill}
         step={ 6 * dX }
+        drag={currentDrag}
       />
   {/each}
 {/if}

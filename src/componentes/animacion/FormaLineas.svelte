@@ -3,7 +3,7 @@
     import { onMount, onDestroy } from 'svelte'
 
 
-    import { TweenLite, TimelineMax } from 'gsap';
+    import { TweenLite, TimelineMax, TweenMax } from 'gsap';
 
     import Paper from 'paper';
 
@@ -16,6 +16,7 @@
     export let x=0;
     export let y=0;
     export let step = 6;
+    export let drag;
     
     $: posX = x
     $: posY = y
@@ -24,11 +25,54 @@
 
     // $: !! canvas ? crearLineas(lineas,x) : null
 
+    $: moverLineas(drag);
+
+    let moviendo = false
+
+    const moverLineas = (drag)=>{
+    
+        if( !! drag && ! moviendo ) {
+
+            moviendo = setTimeout(()=>{
+                console.log("mover",lineasDibujadas);
+                
+                // crearLineas(lineas);
+                lineasDibujadas.forEach((linea,i)=>{
+                    
+                    if(!!linea.segments[0].point&&!!linea.segments[1].point){
+                        
+                        let t = new TimelineMax();
+                        
+                        const lineaX = 3 + parseInt(posX) + (i*step);
+
+                        t
+                        
+                        .to(linea.position,0.1,{
+                            x: lineaX + drag.x,
+                        })
+                        // .to(linea.segments[0].point,1,{
+                        //     x: lineaX + drag.x,
+                        // })
+                        // t
+                        // .to(linea.segments[1].point,1,{
+                        //     x: lineaX + drag.x,
+                        // })
+
+                    }
+                })
+                
+                moviendo = false;
+
+            }, 100 )
+
+        }
+        
+    }
 
     onMount(()=>{
 
         crearLineas(lineas)
-        console.log("crear");
+        // console.log("crear");
         
         // setInterval(animarLineas,10000)
 
@@ -42,6 +86,7 @@
 
         
         setTimeout(()=>{
+            
             lineasDibujadas.forEach((l,i)=>{
                 l.remove()
                 delete lineasDibujadas[i]

@@ -8,11 +8,25 @@
   import VolutaBoton from "../VolutaBoton.svelte";
 
   export let mostrar = true;
+  
+  export let drags = [];
+
+  export let currentDrag
+
+
   let canvas;
 
   $: height = window.innerHeight;
   $: width = window.innerWidth;
   
+
+  onMount(()=>{
+    
+    console.log("drags",drags);
+
+  })
+
+
 </script>
 
 <style>
@@ -193,7 +207,12 @@
   <!-- <MexicoPaths /> -->
   <!-- <MexicoPaths1366x768 /> -->
   {#if !! canvas }
-    <FamiliasLinguisticas on:seleccionar canvas={canvas}/>
+    <FamiliasLinguisticas
+    on:seleccionar
+    canvas={canvas}
+    drags={drags}
+    currentDrag={currentDrag}
+    />
   {/if}
 
   <TwitterBoton posIniX={0} posIniY={0.75} on:tap />
