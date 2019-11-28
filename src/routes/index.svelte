@@ -315,6 +315,15 @@
 
   }
 
+
+  const manejarDragEnd = (id) => {
+    
+    delete zonasDrag[id.split("-drag")[0]]
+
+    zonasDrag = zonasDrag
+
+  }
+
 </script>
 
 <style>
@@ -430,7 +439,7 @@
 
 <main>
   <!-- Interactividad -->
-  <Drag drag={manejarDrag}/>
+  <Drag drag={manejarDrag} dragEnd={manejarDragEnd}/>
 
 
 

@@ -3,6 +3,7 @@ import interact from 'interactjs'
 import calculaPosicionMapa from '../../../funciones/calculaPosicionMapa'
 
 export let drag
+export let dragEnd
 
 //
 const selector = '.dragall'
@@ -24,8 +25,18 @@ const Drag = () => {
     // autoScroll: true,
     onmove: dragMoveListener,
     onend: (e) => {
-      e.preventDefault()
-      // console.log('Fin Drag')
+      
+      console.log(dragEnd);
+      
+
+      // if(typeof(dragEnd)=="function") {
+        
+        dragEnd(e.target.id)
+
+      // }
+
+      // e.preventDefault()
+      
     },
 
   })

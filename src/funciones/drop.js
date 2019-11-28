@@ -13,7 +13,6 @@ export default (zona, callback ) => {
   const id = zona.id
   const colorDefault = zona.fill
 
-  console.log(zona.id, presicionSnap.find(f => f.id === zona.id).presicion)
   interact(interactObj).dropzone({
     accept: acceptObj,
     overlap: presicionSnap.find(f => f.id = zona.id).presicion,
@@ -98,7 +97,6 @@ export default (zona, callback ) => {
       // e.target.style.fill = colorArea
       // e.relatedTarget.style.fill = colorDefault
       e.relatedTarget.style.strokeOpacity = 0
-      console.log("drop: odda");
       
     }
   })

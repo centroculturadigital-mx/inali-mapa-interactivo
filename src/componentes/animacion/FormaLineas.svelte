@@ -150,8 +150,10 @@
         },6000)
 
         animarLineas()
-
-        unsubscribe();
+        
+        if( typeof(unsubscribe) == "function" ) {
+            unsubscribe();
+        }
         // animarLineas()
 
     })

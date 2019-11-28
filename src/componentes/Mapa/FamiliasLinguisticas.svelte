@@ -68,7 +68,16 @@
       
     dispatch('seleccionar', {idZona, x, y, idFamilia});
     
-    delete zonasDrag[ idZona ]
+  }
+  
+  const funcionDropFuera = ( idZona ) => {
+      
+    delete zonasDrag[ idZona.split("-drop")[0] ]
+
+    zonasDrag = zonasDrag
+
+    console.log(idZona,zonasDrag);
+    
 
   }
 
@@ -76,7 +85,7 @@
     // aplica funcion drop a area zona linguistica
     zonasFamilias.forEach(zona => {
        // console.log(index)
-      drop( zona, funcionDrop );
+      drop( zona, funcionDrop, funcionDropFuera );
     });
 
     
