@@ -35,7 +35,7 @@
 	import FormaAudio from "../componentes/animacion/FormaAudio.svelte";
 	import FraseViva from "../componentes/animacion/FraseViva.svelte";
 
-	import { onMount } from "svelte"
+	import { onMount, setContext } from 'svelte';
 
   let svgFrases;
   let canvas;
@@ -63,6 +63,12 @@
 
   let currentDrag
 
+  import { daDrags } from '../stores/drags.js';
+
+	
+  setContext('drag',{
+    getDrags: () => daDrags
+  })
 
 	onMount( async ()=>{
 
@@ -285,6 +291,29 @@
 
   }
 
+
+
+  const manejarDrag = (id,d)=>{
+    
+    let drag = drags.find(drag=>drag.id==id)
+    
+    drag = {
+      ...drag,
+      x:d.x,
+      y:d.y,
+    }
+
+    currentDrag = drag.id
+
+    drags = drags
+
+    // console.log("manejarDrag",drag.id,d.x,d.y);
+    
+    daDrags[id].set( drag );
+    
+
+  }
+
 </script>
 
 <style>
@@ -400,21 +429,7 @@
 
 <main>
   <!-- Interactividad -->
-  <Drag drag={(id,d)=>{
-    
-    let drag = drags.find(drag=>drag.id==id)
-    
-    drag = {
-      ...drag,
-      x:d.x,
-      y:d.y,
-    }
-
-    currentDrag = drag
-
-
-
-  }}/>
+  <Drag drag={manejarDrag}/>
 
 
 
@@ -426,7 +441,6 @@
   on:tap={(e)=>tapBotones(e)} 
   mostrar={!mostrarFrase} 
   drags={drags}
-  currentDrag={currentDrag}
   />
   
   <!-- <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} canvas={canvas}/> -->

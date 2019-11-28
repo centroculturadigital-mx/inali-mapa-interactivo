@@ -11,8 +11,6 @@
   
   export let drags = [];
 
-  export let currentDrag
-
 
   let canvas;
 
@@ -211,7 +209,6 @@
     on:seleccionar
     canvas={canvas}
     drags={drags}
-    currentDrag={currentDrag}
     />
   {/if}
 

@@ -16,15 +16,23 @@
   const dispatch = createEventDispatcher();
 
 
+  import { daDrags } from "../../stores/drags"
+
+  // const daDrags = getDrags();
+
+  
+  $: console.log("dadrags",daDrags);
+  
+
   // let canvas;
   export let canvas;
   export let drags;
-  export let currentDrag = { x: 0, y: 0 };
   
-  // $: console.log(currentDrag);
   
 
-  $: console.log("drags changes", drags)
+  $: dragArray = zonasFamilias.map(f=>drags[f.id])
+
+  $: !! drags ? (()=>{dragArray=dragArray})() : null
   
   const zonaDrop = []
   
@@ -194,7 +202,7 @@
         lineas={zonasAudios[i]}
         color={zona.fill}
         step={ 6 * dX }
-        drag={currentDrag}
+        dragW={ !! daDrags ? daDrags[ zonasFamilias[i].id ] : null }
       />
   {/each}
 {/if}

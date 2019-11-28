@@ -8,7 +8,11 @@
     import Paper from 'paper';
 
 	// import puntosFake from "../../datos/puntosFake"
+	// import { getContext } from 'svelte';
 
+    // const { getDrags } = getContext('drag');
+
+    
 
     export let canvas;
     export let lineas;
@@ -16,25 +20,32 @@
     export let x=0;
     export let y=0;
     export let step = 6;
-    export let drag;
     
+    export let dragW;
+    
+    
+    let dragX;
+    let dragY;
+    
+
+
     $: posX = x
     $: posY = y
 
     let lineasDibujadas = []
+    let lineasPosiciones = []
 
     // $: !! canvas ? crearLineas(lineas,x) : null
 
-    $: moverLineas(drag);
+    $: moverLineas(dragX,dragY);
 
     let moviendo = false
 
-    const moverLineas = (drag)=>{
+    const moverLineas = (dragX,dragY)=>{
     
-        if( !! drag && ! moviendo ) {
+        if( !! dragX && ! moviendo ) {
 
             moviendo = setTimeout(()=>{
-                console.log("mover",lineasDibujadas);
                 
                 // crearLineas(lineas);
                 lineasDibujadas.forEach((linea,i)=>{
@@ -42,36 +53,57 @@
                     if(!!linea.segments[0].point&&!!linea.segments[1].point){
                         
                         let t = new TimelineMax();
+                        // let t2 = new TimelineMax();
+                        // let t3 = new TimelineMax();
                         
-                        const lineaX = 3 + parseInt(posX) + (i*step);
+                        // const lineaX = 3 + parseInt(posX) + (i*step);
 
-                        t
-                        
-                        .to(linea.position,0.1,{
-                            x: lineaX + drag.x,
+                        t                        
+                        .to(linea.position,0.6,{
+                            // x: dragX,
+                            x: ((dragX)-(lineasPosiciones[lineasPosiciones.length-1].x-lineasPosiciones[0].x)/2)+(lineasPosiciones[i].x-lineasPosiciones[0].x),
+                            // y: dragY,
+                            y: ((dragY)-(lineasPosiciones[lineasPosiciones.length-1].y-lineasPosiciones[0].y)/2)+(lineasPosiciones[i].y-lineasPosiciones[0].y),
                         })
-                        // .to(linea.segments[0].point,1,{
-                        //     x: lineaX + drag.x,
+                        
+                        // t2                        
+                        // .to(linea.segments[0].point,0.3,{
+                        //     x: lineaX + dragX,
+                        //     y: dragY+linea.segments[0].point.y,
                         // })
-                        // t
-                        // .to(linea.segments[1].point,1,{
-                        //     x: lineaX + drag.x,
+                        // t3                        
+                        // .to(linea.segments[1].point,0.3,{
+                        //     x: lineaX + dragX,
+                        //     y: dragY+linea.segments[1].point.y,
                         // })
+                        
 
                     }
                 })
                 
                 moviendo = false;
 
-            }, 100 )
+            }, 30 )
 
         }
         
     }
 
+    let unsubscribe;
+
     onMount(()=>{
 
         crearLineas(lineas)
+
+        if(!!dragW){
+
+            unsubscribe = dragW.subscribe(d=>{
+                
+                dragX = d.x
+                dragY = d.y
+            })
+
+        }
         // console.log("crear");
         
         // setInterval(animarLineas,10000)
@@ -96,6 +128,7 @@
 
         animarLineas()
 
+        unsubscribe();
         // animarLineas()
 
     })
@@ -272,6 +305,7 @@
                         
 
                         lineasDibujadas.push(linea);
+                        lineasPosiciones.push(linea.position);
                     }
                 })
             })
