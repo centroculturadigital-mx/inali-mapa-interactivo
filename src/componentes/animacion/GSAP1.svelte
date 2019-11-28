@@ -59,9 +59,9 @@
                 
             let linea = new Paper.Path.Line(new Paper.Point(x,0),new Paper.Point(x,window.innerHeight));
 
-            let r = 0.02+(i%4==0?0.3:0) + Math.random()/4
-            let g = 0.7+(i%4==0?0.03:0)
-            let b = 0.7+(i%14)/44
+            let r = 0.02+(i%4==0?0.2:0) + Math.random()/4
+            let g = 0.4+(i%4==0?0.06:0)
+            let b = 0.5+(i%14)/44
             let opacity = (((i%8)/12)+Math.random()/6)/2
 
             linea.strokeColor = new Paper.Color(r,g,b,opacity);

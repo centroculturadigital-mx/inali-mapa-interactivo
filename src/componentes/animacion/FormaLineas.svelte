@@ -49,7 +49,7 @@
             moviendo = setTimeout(()=>{
                 
                 // crearLineas(lineas);
-                console.log( lineasPosiciones[10] );
+                // console.log( lineasPosiciones[10] );
                 
                 lineasDibujadas.forEach((linea,i)=>{
                     
@@ -62,23 +62,32 @@
                         // const lineaX = 3 + parseInt(posX) + (i*step);
 
                         const rangoX = (lineasPosiciones[lineasPosiciones.length-1].x-lineasPosiciones[0].x)/2
-                        const offsetX = (lineasPosiciones[i].x-lineasPosiciones[0].x)
+                        const offsetX = (lineasPosiciones[i].x-lineasPosiciones[0].x)-rangoX
 
-                        const rangoY = (linea.segments[1].point.y-linea.segments[0].point.y)/2
-                        // const offsetY = (linea.segments[0].point.y-lineasPosiciones[0].y)
+                        const minY = Math.min(...lineasPosiciones.map(lp=>(lp.y-lp.rangoY/2)))
+                        const maxY = Math.max(...lineasPosiciones.map(lp=>(lp.y+lp.rangoY/2)))
+                        const rangoY = maxY-minY
+                        
+                        const offsetY = lineasPosiciones[i].y-lineasPosiciones[i].rangoY/2 - minY - rangoY/2
+
+                        // const rangoY = lineasPosiciones[i].rangoY
                         
                         lineasTiempo[i].clear()
-                        lineasTiempo[i] = aplicarLineasTiempo(
-                            linea,
-                            linea.position.y,
-                            linea.segments[1].point.y,i
-                        )
+
+                        
 
                         t                        
-                        .to(linea.position,0.2,{
-                            x: dragX-rangoX+offsetX,
-                            y: dragY,
+                        .to(linea.position,0.05,{
+                            x: dragX+offsetX,
+                            y: dragY+offsetY,
+                            // y: dragY,
                         })
+                        lineasTiempo[i] = aplicarLineasTiempo(
+                            linea,
+                            dragY+offsetY,//-lineasPosiciones[i].rangoY/4,//-rangoY/2,
+                            dragY+offsetY,//+lineasPosiciones[i].rangoY/4,
+                            i
+                        )
                         
                         // t2                        
                         // .to(linea.segments[0].point,0.3,{
@@ -206,10 +215,10 @@
                             new Paper.Point(lineaX,y1)
                         );
 
-                        console.log("posY",(linea.position.y-(y0+((y0-y1)/2))));
+                        // console.log("posY",(linea.position.y-(y0+((y0-y1)/2))));
                         
-                        let c = new Paper.Path.Circle(new Paper.Point(lineaX,linea.position.y),2);
-                        c.strokeColor = color
+                        // let c = new Paper.Path.Circle(new Paper.Point(lineaX,linea.position.y),2);
+                        // c.strokeColor = color
 
                         // let r = (155/255)+Math.random()*0.05
                         // let g = (173/255)+Math.random()*0.1
@@ -227,7 +236,11 @@
                         lineasTiempo.push(tl);
 
                         lineasDibujadas.push(linea);
-                        lineasPosiciones.push(linea.position);
+                        lineasPosiciones.push({
+                            x: linea.position.x,
+                            y: linea.position.y,
+                            rangoY: linea.segments[1].point.y - linea.segments[0].point.y,
+                        });
                         
                     }
                 })
@@ -252,10 +265,13 @@
             y: y0,
         })
         .to(linea.segments[0].point,1/8+(Math.random()/2),{
-            y: y0-(10+Math.sin((i%12*12))*0.15),
+            y: y0-(10+Math.sin((i%12*12))*0.75),
         })
         .to(linea.segments[0].point,1/8+(Math.random()/2),{
-            y: y0-(30+Math.sin((i%12*12))*1.5),
+            y: y0-(30+Math.sin((i%12*12))*1),
+        })
+        .to(linea.segments[0].point,1/8+(Math.random()/2),{
+            y: y0-(30+Math.sin((i%12*12))*1.25),
         })
         .to(linea.segments[0].point,1/8+(Math.random()/2),{
             y: y0,
