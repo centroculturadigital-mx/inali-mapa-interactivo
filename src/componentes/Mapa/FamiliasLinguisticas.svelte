@@ -21,18 +21,19 @@
   // const daDrags = getDrags();
 
   
-  $: console.log("dadrags",daDrags);
+  // $: console.log("dadrags",daDrags);
   
 
   // let canvas;
   export let canvas;
-  export let drags;
+  export let zonasDrag = {};
+  // export let drags;
   
   
 
-  $: dragArray = zonasFamilias.map(f=>drags[f.id])
+  // $: dragArray = zonasFamilias.map(f=>drags[f.id])
 
-  $: !! drags ? (()=>{dragArray=dragArray})() : null
+  // $: !! drags ? (()=>{dragArray=dragArray})() : null
   
   const zonaDrop = []
   
@@ -63,17 +64,19 @@
   // $: console.log(zonasAudios);
   
   
-  const funcionDrag = ( idZona, x, y, idFamilia ) => {
+  const funcionDrop = ( idZona, x, y, idFamilia ) => {
       
     dispatch('seleccionar', {idZona, x, y, idFamilia});
     
+    delete zonasDrag[ idZona ]
+
   }
 
   onMount(() => {
     // aplica funcion drop a area zona linguistica
     zonasFamilias.forEach(zona => {
        // console.log(index)
-      drop( zona, funcionDrag );
+      drop( zona, funcionDrop );
     });
 
     
@@ -114,8 +117,11 @@
   }))
 
 
-  console.log("zonasM",zonasM);
+  // console.log("zonasM",zonasM);
   
+  const manejarMoverZona = id => {
+    zonasDrag[id] = true
+  }
 
 
 </script>
@@ -183,27 +189,30 @@
   <CanvasSetup canvas={canvas}/>
 
   {#each zonasFamilias as zona,i}
-      <FormaLineas
-        x={cajasDrop[i].x}
-        y={cajasDrop[i].y}
-        canvas={canvas}
-        lineas={zonasAudios[i]}
-        color={zona.fill}
-        step={ 6 * dX }
-      />
-      
-      <!-- x={cajasDrag[i].x}
-      y={cajasDrag[i].y} -->
+    {#if zonasDrag[zona.id]}
+          <FormaLineas
+            x={cajasDrop[i].x}
+            y={cajasDrop[i].y}
+            canvas={canvas}
+            lineas={zonasAudios[i]}
+            color={zona.fill}
+            step={ 6 * dX }
+          />
+          
+          <!-- x={cajasDrag[i].x}
+          y={cajasDrag[i].y} -->
 
-      <FormaLineas
-        x={cajasDrag[i].x}
-        y={cajasDrag[i].y}
-        canvas={canvas}
-        lineas={zonasAudios[i]}
-        color={zona.fill}
-        step={ 6 * dX }
-        dragW={ !! daDrags ? daDrags[ zonasFamilias[i].id ] : null }
-      />
+          <FormaLineas
+            x={cajasDrag[i].x}
+            y={cajasDrag[i].y}
+            canvas={canvas}
+            lineas={zonasAudios[i]}
+            color={zona.fill}
+            step={ 6 * dX }
+            dragW={ !! daDrags ? daDrags[ zonasFamilias[i].id ] : null }
+          />
+    {/if}
   {/each}
+
 {/if}
 

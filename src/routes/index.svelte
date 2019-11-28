@@ -48,7 +48,7 @@
   let ingreso;
 
 
-
+  const zonasDrag = {}
 
 
   $: height = win.innerHeight;
@@ -232,7 +232,7 @@
     }
 
     if(e.target.getAttribute("class").includes("InformacionBoton") ) {
-      console.log("InformacionBoton");
+      // console.log("InformacionBoton");
       
       alternarInformacion(e.detail.x,e.detail.y)
     }
@@ -246,7 +246,7 @@
 
   const cerrarVentana = (e) => {
     let cerrarEvento = e.detail.e
-    console.log("cV",cerrarEvento);
+    // console.log("cV",cerrarEvento);
     
     if( !! cerrarEvento && !! cerrarEvento.detail ) {
       let familiaId = cerrarEvento.detail.familia
@@ -261,7 +261,7 @@
         // item.style.webkitTransform = 
         // item.style.transform = `translate( ${p.posicion[0]}px, ${ p.posicion[1]}px)`
 
-  console.log("to!!");
+  // console.log("to!!");
   
         TweenLite.set(item,{
           x:item.getBoundingClientRect().left,y:item.getBoundingClientRect().top,ease: Circ.ease          
@@ -311,6 +311,7 @@
     
     daDrags[id].set( drag );
     
+    zonasDrag[id] = true
 
   }
 
@@ -440,7 +441,7 @@
   on:seleccionar={seleccionar}
   on:tap={(e)=>tapBotones(e)} 
   mostrar={!mostrarFrase} 
-  drags={drags}
+  zonasDrag={zonasDrag}
   />
   
   <!-- <Mapa on:seleccionar={seleccionar} on:tap={(e)=>tapBotones(e)} canvas={canvas}/> -->

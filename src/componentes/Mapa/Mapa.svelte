@@ -9,7 +9,7 @@
 
   export let mostrar = true;
   
-  export let drags = [];
+  export let zonasDrag = {};
 
 
   let canvas;
@@ -17,12 +17,6 @@
   $: height = window.innerHeight;
   $: width = window.innerWidth;
   
-
-  onMount(()=>{
-    
-    console.log("drags",drags);
-
-  })
 
 
 </script>
@@ -208,11 +202,10 @@
     <FamiliasLinguisticas
     on:seleccionar
     canvas={canvas}
-    drags={drags}
+    zonasDrag={zonasDrag}
     />
   {/if}
 
-  <TwitterBoton posIniX={0} posIniY={0.75} on:tap />
   <TwitterBoton posIniX={0.98} posIniY={0.27} on:tap />
   <!--  -->
 
