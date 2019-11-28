@@ -68,6 +68,11 @@
                         // const offsetY = (linea.segments[0].point.y-lineasPosiciones[0].y)
                         
                         lineasTiempo[i].clear()
+                        lineasTiempo[i] = aplicarLineasTiempo(
+                            linea,
+                            linea.position.y,
+                            linea.segments[1].point.y,i
+                        )
 
                         t                        
                         .to(linea.position,0.2,{
@@ -217,108 +222,10 @@
 
                         
 
-                        let tl = new TimelineMax({
-                            yoyo: true,
-                            repeat: -1,
-                        });
-                        
-                        // let tlC = new TimelineMax();
-                        
-                        // let tlSW = new TimelineMax({
-                        //     yoyo: true,
-                        //     repeat: -1,
-                        // });
-                        
-                        // if( color != "rgb(179, 199, 217)" ) {
-
-                        //     tlC
-                        //     .set(linea.strokeColor,{
-                        //         // position: {x: lineaX + Math.random()*30},
-                        //         red: 255,
-                        //         green: 93,
-                        //         blue: 114,
-                        //         alpha:0
-                        //     })
-                        //     // tlC.from(linea.strokeColor,1,{
-                        //     //     // position: {x: lineaX + Math.random()*30},
-                        //     //     red: 255,
-                        //     //     green: 93,
-                        //     //     blue: 114,
-                        //     //     alpha:0
-                        //     // })
-                        //     .to(linea.strokeColor,3,{
-                        //         // position: {x: lineaX + Math.random()*30},
-                        //         red: 70,
-                        //         green: 93,
-                        //         blue: 114,
-                        //         alpha:1
-                        //     })
-                        // }
-
-                        
-                        tl
-                        .to(linea.segments[0].point,1/8+(Math.random()/2),{
-                            y: y0,
-                        })
-                        .to(linea.segments[0].point,1/8+(Math.random()/2),{
-                            y: y0-(10+Math.sin((i%12*12))*0.15),
-                        })
-                        .to(linea.segments[0].point,1/8+(Math.random()/2),{
-                            y: y0-(30+Math.sin((i%12*12))*1.5),
-                        })
-                        .to(linea.segments[0].point,1/8+(Math.random()/2),{
-                            y: y0,
-                        })
-                        .to(linea.segments[0].point,1/8+(Math.random()/2),{
-                            y: y0-(10+Math.sin((i%12*12))*0.25),
-                        })
-                        
-                        tl
-                        .to(linea.segments[1].point,1/8+(Math.random()/2),{
-                            y: y1+(10+Math.sin((i%12*12))*0.01),
-                        })
-                        .to(linea.segments[1].point,1/8+(Math.random()/2),{
-                            y: y1+(30+Math.sin((i%12*12))*2.5),
-                        })
-                        .to(linea.segments[1].point,1/8+(Math.random()/2),{
-                            y: y1,
-                        })
-                        .to(linea.segments[1].point,1/8+(Math.random()/2),{
-                            y: y1+(10+Math.sin((i%12*12))*0.25),
-                        })
-                        
-
-
-                        // const targetVals = [
-                        //     Math.round(Math.random()*18),
-                        //     Math.round(Math.random()*3),
-                        //     Math.round(Math.random()*2),
-                        //     Math.round(Math.random()*4),
-                        // ]
-
-
-                        // tlSW.to(linea,10*Math.random(),{
-                        //     strokeWidth: 1+targetVals[0],
-                        //     opacity: 1-((targetVals[0]/18)*(3/4)),
-                        // })
-                        // .to(linea,10*Math.random(),{
-                        //     strokeWidth: 1+targetVals[0],
-                        //     opacity: 1-((targetVals[0]/18)*(3/4)),
-                        // })
-                        // .to(linea,10*Math.random(),{
-                        //     strokeWidth: 1,
-                        // })
-                        // .to(linea,10*Math.random(),{
-                        //     strokeWidth: 1+targetVals[0],
-                        //     opacity: 1-((targetVals[0]/18)*(3/4)),
-                        // })
-                        // .to(linea,10*Math.random(),{
-                        //     // strokeWidth: 1+targetVals[0],
-                        //     opacity: 1-((targetVals[0]/18)*(3/4)),
-                        // })
-                        
+                        const tl = aplicarLineasTiempo(linea,y0,y1,i)
 
                         lineasTiempo.push(tl);
+
                         lineasDibujadas.push(linea);
                         lineasPosiciones.push(linea.position);
                         
@@ -329,6 +236,50 @@
 
         
         }
+    }
+
+
+    const aplicarLineasTiempo = (linea,y0,y1,i) => {
+        
+        const tl = new TimelineMax({
+            yoyo: true,
+            repeat: -1,
+        });
+                        
+                        
+        tl
+        .to(linea.segments[0].point,1/8+(Math.random()/2),{
+            y: y0,
+        })
+        .to(linea.segments[0].point,1/8+(Math.random()/2),{
+            y: y0-(10+Math.sin((i%12*12))*0.15),
+        })
+        .to(linea.segments[0].point,1/8+(Math.random()/2),{
+            y: y0-(30+Math.sin((i%12*12))*1.5),
+        })
+        .to(linea.segments[0].point,1/8+(Math.random()/2),{
+            y: y0,
+        })
+        .to(linea.segments[0].point,1/8+(Math.random()/2),{
+            y: y0-(10+Math.sin((i%12*12))*0.25),
+        })
+        
+        tl
+        .to(linea.segments[1].point,1/8+(Math.random()/2),{
+            y: y1+(10+Math.sin((i%12*12))*0.01),
+        })
+        .to(linea.segments[1].point,1/8+(Math.random()/2),{
+            y: y1+(30+Math.sin((i%12*12))*2.5),
+        })
+        .to(linea.segments[1].point,1/8+(Math.random()/2),{
+            y: y1,
+        })
+        .to(linea.segments[1].point,1/8+(Math.random()/2),{
+            y: y1+(10+Math.sin((i%12*12))*0.25),
+        })
+
+        return tl
+
     }
 
 
