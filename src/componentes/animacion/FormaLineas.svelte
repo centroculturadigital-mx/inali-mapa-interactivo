@@ -32,6 +32,7 @@
     $: posX = x
     $: posY = y
 
+    let lineasTiempo = []
     let lineasDibujadas = []
     let lineasPosiciones = []
 
@@ -48,6 +49,8 @@
             moviendo = setTimeout(()=>{
                 
                 // crearLineas(lineas);
+                console.log( lineasPosiciones[10] );
+                
                 lineasDibujadas.forEach((linea,i)=>{
                     
                     if(!!linea.segments[0].point&&!!linea.segments[1].point){
@@ -58,12 +61,18 @@
                         
                         // const lineaX = 3 + parseInt(posX) + (i*step);
 
+                        const rangoX = (lineasPosiciones[lineasPosiciones.length-1].x-lineasPosiciones[0].x)/2
+                        const offsetX = (lineasPosiciones[i].x-lineasPosiciones[0].x)
+
+                        const rangoY = (linea.segments[1].point.y-linea.segments[0].point.y)/2
+                        // const offsetY = (linea.segments[0].point.y-lineasPosiciones[0].y)
+                        
+                        lineasTiempo[i].clear()
+
                         t                        
-                        .to(linea.position,0.6,{
-                            // x: dragX,
-                            x: ((dragX)-(lineasPosiciones[lineasPosiciones.length-1].x-lineasPosiciones[0].x)/2)+(lineasPosiciones[i].x-lineasPosiciones[0].x),
-                            // y: dragY,
-                            y: ((dragY)-(lineasPosiciones[lineasPosiciones.length-1].y-lineasPosiciones[0].y)/2)+(lineasPosiciones[i].y-lineasPosiciones[0].y),
+                        .to(linea.position,0.2,{
+                            x: dragX-rangoX+offsetX,
+                            y: dragY,
                         })
                         
                         // t2                        
@@ -192,6 +201,11 @@
                             new Paper.Point(lineaX,y1)
                         );
 
+                        console.log("posY",(linea.position.y-(y0+((y0-y1)/2))));
+                        
+                        let c = new Paper.Path.Circle(new Paper.Point(lineaX,linea.position.y),2);
+                        c.strokeColor = color
+
                         // let r = (155/255)+Math.random()*0.05
                         // let g = (173/255)+Math.random()*0.1
                         // let b = (192/255)+Math.random()*0.25
@@ -208,12 +222,12 @@
                             repeat: -1,
                         });
                         
-                        let tlC = new TimelineMax();
+                        // let tlC = new TimelineMax();
                         
-                        let tlSW = new TimelineMax({
-                            yoyo: true,
-                            repeat: -1,
-                        });
+                        // let tlSW = new TimelineMax({
+                        //     yoyo: true,
+                        //     repeat: -1,
+                        // });
                         
                         // if( color != "rgb(179, 199, 217)" ) {
 
@@ -304,8 +318,10 @@
                         // })
                         
 
+                        lineasTiempo.push(tl);
                         lineasDibujadas.push(linea);
                         lineasPosiciones.push(linea.position);
+                        
                     }
                 })
             })
