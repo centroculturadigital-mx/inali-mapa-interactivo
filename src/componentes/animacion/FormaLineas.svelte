@@ -143,14 +143,16 @@
         setTimeout(()=>{
             
             lineasDibujadas.forEach((l,i)=>{
-                l.remove()
-                delete lineasDibujadas[i]
-            })
+                    setTimeout(()=>{
+                        l.remove()
+                        delete lineasDibujadas[i]
+                    },30+Math.random(666))
+                })
 
-        },6000)
+        },1000)
 
         animarLineas()
-        
+
         if( typeof(unsubscribe) == "function" ) {
             unsubscribe();
         }
@@ -166,19 +168,25 @@
             // let tl2 = new TimelineMax();
             const lineaX = 3 + parseInt(posX) + (i*step);
 
+            const c = new Paper.Color(color).components;
+            const {red,green,blue} = c
+            
+            console.log(c);
+            
+            
             tl
             .set(linea.strokeColor,{
                 // position: {x: lineaX + Math.random()*30},
-                red: 70,
-                green: 93,
-                blue: 114,
+                red: c[0],
+                green: c[1],
+                blue: c[2],
                 alpha:1
             })
             .to(linea.strokeColor,3,{
                 // position: {x: lineaX + Math.random()*30},
-                red: 70,
-                green: 93,
-                blue: 114,
+                red: c[0],
+                green: c[1],
+                blue: c[2],
                 alpha:0
             })
 
