@@ -4,6 +4,7 @@
   import shuffle from "../../funciones/shuffle";
   import { onMount } from "svelte";
   import { createEventDispatcher } from 'svelte';
+  import { fade } from "svelte/transition";
 
   import audios from "../../datos/zonasAudioFamiliasPuntos";
   import zonasFamilias from "../../datos/zonasFamilias";
@@ -168,16 +169,23 @@
 
 {#each zonasFamilias as zona,i}
     <g class="zonaDragAnim">
-      <path
-        id={zona.id+"-drag"}
-        class="dragall"
-        d={zona.d}
-        fill={zona.fill}
-        stroke={zona.fill}
-        stroke-width={0.05}
-        stroke-linejoin="round"
-        opacity="0.85"
-      />
+      
+    <!-- {#if ! zonasDrag[zona.id]} -->
+
+        <path
+          id={zona.id+"-drag"}
+          class="dragall"
+          d={zona.d}
+          fill={zona.fill}
+          stroke={zona.fill}
+          stroke-width={0.05}
+          stroke-linejoin="round"
+          opacity={ ! zonasDrag[zona.id] ? 0.85 : 0 }
+          transition:fade
+        />
+    <!-- {/if} -->
+
+
     </g>
     <path
       id={zona.id+"-drop"}
