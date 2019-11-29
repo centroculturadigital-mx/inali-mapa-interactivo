@@ -53,6 +53,16 @@
   let agrupacionesModule;
   let familiasModule;
 
+  function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array
+}
+
   $: agrupaciones = agrupacionesModule ? agrupacionesModule.default : [];
   $: familias = familiasModule ? familiasModule.default : [];
 
@@ -61,12 +71,22 @@
     : [];
 
   $: imagenes =
-    familia && familia.fotografias && familia.fotografias.length
-      ? familia.fotografias
-      : familias && familias.length
-      ? familias.find(f => f.id === "yutonahua").fotografias
+    familia && ( (familia.fotografias && familia.fotografias.length) || (familia.textiles && familia.textiles.length) )
+      ? juntaImagenes(familia.fotografias, familia.textiles)
       : [];
   $: console.log(agrupaciones.length);
+
+  const juntaImagenes = (fotografias, textiles) => {
+    
+    let imagenes = []
+    
+    if (Array.isArray(fotografias)) imagenes = fotografias
+    if (Array.isArray(textiles)) imagenes = [...imagenes, ...textiles]
+    
+    // return imagens
+    return shuffleArray(imagenes)
+     
+  }
 
   let tituloAgrupaciones = "Agrupaciones lingüísticas \n de esta familia:";
 

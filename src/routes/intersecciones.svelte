@@ -44,7 +44,7 @@
 
         if( resultado.length == textoFake.length ) {
             
-            console.log(resultado);
+            // console.log(resultado);
             
         }
     }

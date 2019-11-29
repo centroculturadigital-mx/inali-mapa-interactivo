@@ -82,7 +82,7 @@
   height={height + 'px'}
   id="SVGMapa">
   <path
-    fill="rgba(130, 153, 174,0.5)"
+    fill="rgba(130, 153, 174,0.4)"
     stroke="rgba(210,210,210,0.3)"
     stroke-width="0.05"
     opacity="0.8"
