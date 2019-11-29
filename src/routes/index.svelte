@@ -43,7 +43,7 @@
   
   let familiasModule
   
-  const win = window;
+  const win = typeof window !== "undefined" ? window : null;
 
   let ingreso;
 
@@ -51,8 +51,8 @@
   const zonasDrag = {}
 
 
-  $: height = win.innerHeight;
-  $: width = win.innerWidth;
+  $: height = win ? win.innerHeight : 0;
+  $: width = win ? win.innerWidth : 0;
 
   $: familias = familiasModule ? familiasModule.default : [];
   
@@ -405,6 +405,7 @@
   <title>INALI | Mapa interactivo</title>
 </svelte:head>
 
+{#if typeof window !== "undefined" }
 
 
 <Cabecera
@@ -425,6 +426,10 @@
 </svg> -->
   
 <!--  -->
+<!-- {#if typeof window !== "undefined" }
+  <Drag drag={manejarDrag} dragEnd={manejarDragEnd}/>
+{/if} -->
+
 {#if !! canvas }
 
   <CanvasSetup canvas={canvas}/>
@@ -439,7 +444,6 @@
 
 <main>
   <!-- Interactividad -->
-  <Drag drag={manejarDrag} dragEnd={manejarDragEnd}/>
 
 
 
@@ -494,3 +498,5 @@
 
 
 <Pie />
+
+{/if}
