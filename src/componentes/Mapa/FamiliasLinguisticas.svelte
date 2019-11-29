@@ -140,6 +140,7 @@
 
   path {
     transform-origin: center;
+    transition: fill-opacity 1s, stroke-opacity 1s, opacity 1s;
     
   }
 
