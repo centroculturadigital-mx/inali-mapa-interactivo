@@ -45,10 +45,10 @@
 
 
 
-        let r = 130/255
-        let g = 153/255
-        let b = 174/255
-        let opacity = (1/2+Math.random()/2)
+        let r = 110/255
+        let g = 133/255
+        let b = 154/255
+        let opacity = (1/2+Math.random()/4)
 
         linea.strokeColor = new Paper.Color(r,g,b,opacity);
         
@@ -65,7 +65,7 @@
             opacity: Math.random()
         })
         tl.to(linea,1.5+(1.0*Math.random()),{
-            opacity: 0.1
+            opacity: 0.3
         })
         tl.to(linea,1.5+(1.0*Math.random()),{
             opacity: Math.random()
@@ -74,10 +74,10 @@
             opacity: 0.5+(i%8)/16
         })
         tl.to(linea,1.5+(1.0*Math.random()),{
-            opacity: Math.random()
+            opacity: 0.3+ Math.random()/2
         })
         tl.to(linea,1.5+(1.0*Math.random()),{
-            opacity: 0.3+Math.random()/3
+            opacity: 0.5+(i%24)/48
         })
 
         lineas.push(linea);
