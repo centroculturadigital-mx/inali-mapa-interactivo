@@ -66,7 +66,7 @@
 
 <svg id="svg-intersecciones" />
 
-{#each palabras as palabra, h ('palabra_' + h)}
+<!-- {#each palabras as palabra, h ('palabra_' + h)}
   {#each palabra.letras as letra, i ('letra_' + i)}
     {#if !!canvas}
       <Intersecciones
@@ -78,7 +78,7 @@
         {escala} />
     {/if}
   {/each}
-{/each}
+{/each} -->
 
 <svelte:head>
   <title>INALI | Mapa interactivo</title>

@@ -30,20 +30,41 @@
   // let letras = []
   $: textoVivo = (!!textosVivos && textosVivos.length > 0) ? textosVivos[0] : { letras: [] }
   $: palabras = textoVivo ? textoVivo.svg.ids.map(id=>textoVivo.xy[id]) : {}
-  // $: console.log("palabras",palabras);
+  $: palabrasSVG = textoVivo ? textoVivo.svg.ids.map(id=>textoVivo.svg.palabras.find(p=>p.id==id)) : []
+  $: console.log("palabras",palabrasSVG);
   
-  // $: !! draw ? textoVivo.letras.forEach((path,indice)=>{
+  $: !! draw ? palabrasSVG.forEach( (p,h)=>{
+    console.log(p.id,p.letras.length);
+    setTimeout(()=>{
     
-  //   const x= posX +(90*(indice%18))
-  //   const y= 100+(Math.floor(indice/18)*170)
-    
-  //   draw.path(path)
-  //   .stroke({
-  //     width: 1,
-  //     color: 'rgba(149, 169, 187,0.85)'
-  //   }).fill('none').move(x,y)
-    
-  // }) : null
+      p.letras.forEach((path,i)=>{
+        
+        
+        
+        setTimeout(()=>{
+          
+          // const x= 300*(i+1)
+          // const y= 0
+          const posL = posicionLetra(palabras,h,i, { x: 50, y: 150, w: 1700 })
+          
+          const x= posL.x
+          const y= posL.y
+
+          
+          console.log(p.id[i],posL.x,posL.y);
+          draw.path(path)
+          .stroke({
+            width: 1,
+            color: 'rgba(149, 169, 187,0.85)'
+          }).fill('none').move(x,y)
+
+        },50*i)
+
+      })  
+  
+    },300*(h))
+
+  }) : null
   // $: console.log(letras);
   // $: letras.forEach(l=>console.log(l));
   
@@ -88,7 +109,7 @@
   //   // letras.push(letraPath.getAttribute("d"))
 
     
-    letras = letras
+    // letras = letras
 
 // setInterval(()=>{
 //   letras.forEach((l,i)=>{
@@ -107,8 +128,44 @@
 
     
   })
-     
+      
+  const posicionLetra = ( palabras, palabra, letra, rect ) => {
 
+
+      const posicion = { x:rect.x, y:rect.y }
+      const maxW = rect.w + rect.x
+
+
+      for(let h = 0; h<=palabra; h++) {
+        
+        
+        let limite = palabras[h].length
+        
+        if( palabra == h ) limite = letra
+
+        for(let i = 0; i<=limite; i++) {
+          
+          if( letra > 0 ) {
+            posicion.x += 50;
+          }
+
+        } 
+      
+        if( h>0 ) {
+          posicion.x += 100;
+        }
+        
+        if(posicion.x > maxW) {
+          posicion.y += 150
+          posicion.x = 100
+        }
+
+      }
+
+      return posicion
+
+
+  }
 
 </script>
 
@@ -164,14 +221,21 @@ canvas {
 <main>
 
 
+<!--
 {#each palabras as palabra, h ("palabra_"+h) }
-  {#each palabra as letra, indice ("palabra_"+h+"_letra_"+indice) }
+  {#each palabra as letra, i ("palabra_"+h+"_letra_"+i) }
     
-    <FormaLineas x={ posX +(90*(h%4))} y={(Math.floor(h/4)*170)} canvas={canvas} lineas={letra} opacidad={mostrar?1:0}/>
-    <!-- <FormaLineas x={ posX +(90*(indice%18))} y={(Math.floor(indice/18)*170)} canvas={canvas} lineas={letra} opacidad={mostrar?1:0}/> -->
+    <FormaLineas
+    x={ posicionLetra(palabras,h,i).x }
+    y={ posicionLetra(palabras,h,i).y }
+    canvas={canvas}
+    lineas={letra}
+    opacidad={mostrar?1:0}
+    />
     
   {/each}
 {/each}
+-->
  
   <!-- {#if !! letras[0] }
     <FormaLineas x={pathInfo.x+(156)} canvas={canvas} lineasPares={letras[0]}/>
