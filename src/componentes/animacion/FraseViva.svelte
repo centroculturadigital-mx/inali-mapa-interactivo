@@ -31,10 +31,10 @@
   $: textoVivo = (!!textosVivos && textosVivos.length > 0) ? textosVivos[0] : { letras: [] }
   $: palabras = textoVivo ? textoVivo.svg.ids.map(id=>textoVivo.xy[id]) : {}
   $: palabrasSVG = textoVivo ? textoVivo.svg.ids.map(id=>textoVivo.svg.palabras.find(p=>p.id==id)) : []
-  $: console.log("palabras",palabrasSVG);
+  // $: console.log("palabras",palabrasSVG);
   
   $: !! draw ? palabrasSVG.forEach( (p,h)=>{
-    console.log(p.id,p.letras.length);
+    // console.log(p.id,p.letras.length);
     setTimeout(()=>{
     
       p.letras.forEach((path,i)=>{
@@ -51,7 +51,7 @@
           const y= posL.y
 
           
-          console.log(p.id[i],posL.x,posL.y);
+          // console.log(p.id[i],posL.x,posL.y);
           draw.path(path)
           .stroke({
             width: 1,

@@ -213,6 +213,11 @@
     }, 17000 )
     
   }
+  const apagarFrase = (x,y) => {
+    
+    mostrarFrase = false;
+
+  }
 
   const CerrarTwitter = () => {
     mostrarTwitter = false;
@@ -379,6 +384,22 @@
     /* opacity: 1; */
 		/* z-index: -1; */
   }
+
+
+  .FraseViva__Cerrar {
+    position: absolute;
+    right: 6rem;
+    top: 6rem;
+    background: none;
+    color: #fff;
+    opacity: 0.3;
+    font-size: 1.35rem;
+    
+    z-index: 200;
+    border: none;
+    cursor: pointer;
+  }
+
 </style>
 
   <canvas id="fondo" bind:this={canvas}></canvas>
@@ -417,18 +438,10 @@
   }
   on:tap={(e)=>tapBotones(e)} 
 />
-<!-- 
-<svg
-  viewBox="37.47777777777779 37.591661213362585 35.5 19.959004392386532"
-  width={width + 'px'}
-  height={height + 'px'}
-  id="fondoLineas">
-</svg> -->
-  
-<!--  -->
-<!-- {#if typeof window !== "undefined" }
-  <Drag drag={manejarDrag} dragEnd={manejarDragEnd}/>
-{/if} -->
+
+
+<Drag drag={manejarDrag} dragEnd={manejarDragEnd}/>
+
 
 {#if !! canvas }
 
@@ -437,6 +450,12 @@
   <FondoLineas canvas={canvas}/>
 
   {#if !! mostrarFrase }
+    <button class="FraseViva__Cerrar" on:click={apagarFrase}>
+      <span>
+        Cerrar
+      </span>
+      <i class="fa fa-close"></i>
+    </button>
     <FraseViva canvas={canvasFrases} svg={svgFrases} mostrar={mostrarFrase}/>
   {/if}
   

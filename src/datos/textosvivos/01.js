@@ -11,7 +11,7 @@ export default [
         xy: xy01,
     },
     {
-        texto: "Bɨnaj nhua yɨdziluyú, lesnha rala saru baꞋalula, ga ti kuilhiru lhen tsajɨtaru lhen guna kuiniru ziꞋ.",
+        texto: "B-inaj nhua y-idziluyú, lesnha rala saru ba'alula, ga ti kuilhiru lhen tsaj-itaru lhen guna kuiniru zi'.",
         significado: "El mundo está lleno de moho, por eso hay que transitarlo con cuidado para no resbalar y caer, y así evitar lastimarse.",
         lengua: "didza_xidza",
         svg: svg01,

@@ -171,7 +171,7 @@
             const c = new Paper.Color(color).components;
             const {red,green,blue} = c
             
-            console.log(c);
+            // console.log(c);
             
             
             tl
