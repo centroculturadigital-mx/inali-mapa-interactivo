@@ -118,7 +118,7 @@
   let mostrarTwitter = false;
   let mostrarHomenaje = false;
   let mostrarVolutaTexto = false;
-  let mostrarFrase = true;
+  let mostrarFrase = false;
 
   const crearVentana = (tipo, x, y, props={}) => {
     
@@ -210,7 +210,7 @@
 
     setTimeout(()=>{
       mostrarFrase = false;
-    }, 7000 )
+    }, 17000 )
     
   }
 

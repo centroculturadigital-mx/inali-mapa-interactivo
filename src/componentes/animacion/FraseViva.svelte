@@ -55,14 +55,14 @@
           draw.path(path)
           .stroke({
             width: 1,
-            color: 'rgba(149, 169, 187,0.85)'
-          }).fill('none').move(x,y)
+            color: 'rgba(169, 194 , 217,0.85)'
+          }).fill('rgba(149, 169, 187,0.2)').move(x,y)
 
-        },50*i)
+        },80*i)
 
       })  
   
-    },300*(h))
+    },400*(h))
 
   }) : null
   // $: console.log(letras);
@@ -90,36 +90,6 @@
       draw = SVG('svg-frasesvivas').size(window.innerWidth,window.innerHeight)
 
       
-      // let tl = new TimelineMax({
-      //     yoyo: true,
-      //     repeat: -1,
-      // });
-      
-      // tl.to(pathInfo,1.5+(1.0*Math.random()),{
-      //     x: 1200
-      // })
-      // tl.to(pathInfo,1.5+(1.0*Math.random()),{
-      //     x: -1800
-      // })
-
-  //   const letrasPaths = document.querySelectorAll('#texto path')
-
-  //   letrasPaths.forEach(l=>letras.push(l.getAttribute("d")))
-  //   // const letraPath = document.querySelector('#texto path')
-  //   // letras.push(letraPath.getAttribute("d"))
-
-    
-    // letras = letras
-
-// setInterval(()=>{
-//   letras.forEach((l,i)=>{
-//     l.opacidad = ((letras.length-Math.abs(contador/i))/letras.length)/2
-//   })
-//   letras[contador].opacidad = 1
-//   letras=letras
-//   contador++
-//   contador%=letras.length
-// },1000)
   })
 
 
@@ -129,37 +99,39 @@
     
   })
       
-  const posicionLetra = ( palabras, palabra, letra, rect ) => {
+  const posicionLetra = ( palabras, palabraIndice, letraIndice, rect ) => {
 
 
-      const posicion = { x:rect.x, y:rect.y }
+      const posicion = { ...rect }
       const maxW = rect.w + rect.x
 
 
-      for(let h = 0; h<=palabra; h++) {
+      for(let h = 0; h<=palabraIndice; h++) {
         
-        
-        let limite = palabras[h].length
-        
-        if( palabra == h ) limite = letra
+        if(posicion.x > maxW) {
+          posicion.y = posicion.y+180
+          posicion.x = 80
+        }
 
-        for(let i = 0; i<=limite; i++) {
+
+        
+        let limite = !! palabras[h] ? palabras[h].length : 0
+        // console.log(palabras[h],h);
+        
+        if( palabraIndice == h ) limite = letraIndice
+
+        for(let i = 0; i<limite; i++) {
           
-          if( letra > 0 ) {
-            posicion.x += 50;
-          }
+          // if( letraIndice > 0 ) {
+            posicion.x = posicion.x+80;
+          // }
 
         } 
       
         if( h>0 ) {
-          posicion.x += 100;
+          posicion.x = posicion.x+100;
         }
         
-        if(posicion.x > maxW) {
-          posicion.y += 150
-          posicion.x = 100
-        }
-
       }
 
       return posicion
@@ -221,13 +193,13 @@ canvas {
 <main>
 
 
-<!--
+
 {#each palabras as palabra, h ("palabra_"+h) }
   {#each palabra as letra, i ("palabra_"+h+"_letra_"+i) }
     
     <FormaLineas
-    x={ posicionLetra(palabras,h,i).x }
-    y={ posicionLetra(palabras,h,i).y }
+    x={ posicionLetra(palabras,h,i, { x: 50, y: 50, w: 1700 }).x }
+    y={ posicionLetra(palabras,h,i, { x: 50, y: 50, w: 1700 }).y }
     canvas={canvas}
     lineas={letra}
     opacidad={mostrar?1:0}
@@ -235,7 +207,7 @@ canvas {
     
   {/each}
 {/each}
--->
+
  
   <!-- {#if !! letras[0] }
     <FormaLineas x={pathInfo.x+(156)} canvas={canvas} lineasPares={letras[0]}/>
