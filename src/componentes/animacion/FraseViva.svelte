@@ -41,14 +41,16 @@
   $: palabrasSVG = textoVivo ? textoVivo.svg.ids.map(id=>textoVivo.svg.palabras.find(p=>p.id==id)) : []
   // $: console.log("palabras",palabrasSVG);
   
+
+  const timeouts = []
   $: !! draw ? palabrasSVG.forEach( (p,h)=>{
-    
-    setTimeout(()=>{
+    let t
+    t = setTimeout(()=>{
     
       p.letras.forEach((path,i)=>{
         
         
-        setTimeout(()=>{
+        let tt = setTimeout(()=>{
           
 
           const posL = posicionLetra(palabras,h,i, { x: 50, y: 150, w: 1700 })
@@ -66,8 +68,12 @@
         },80*i)
 
       })  
+
+      timeouts.push(tt)
   
     },400*(h))
+
+    timeouts.push(t)
 
   }) : null
 
@@ -92,6 +98,8 @@
 
 
   onDestroy(()=>{
+
+    timeouts.forEach(t=>clearTimeout(t));
 
     draw.clear();
 
