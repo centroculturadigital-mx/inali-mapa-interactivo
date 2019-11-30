@@ -25,33 +25,38 @@
   export let canvas;
   export let svg;
 
+  export let texto=0
+  $: resetearTextos(texto)
+
+  const resetearTextos = () => {
+
+  }
+
 
 
   // let letras = []
-  $: textoVivo = (!!textosVivos && textosVivos.length > 0) ? textosVivos[0] : { letras: [] }
+  $: textoVivo = (!!textosVivos && textosVivos.length > 1) ? textosVivos[texto] : { letras: [] }
+
   $: palabras = textoVivo ? textoVivo.svg.ids.map(id=>textoVivo.xy[id]) : {}
   $: palabrasSVG = textoVivo ? textoVivo.svg.ids.map(id=>textoVivo.svg.palabras.find(p=>p.id==id)) : []
   // $: console.log("palabras",palabrasSVG);
   
   $: !! draw ? palabrasSVG.forEach( (p,h)=>{
-    // console.log(p.id,p.letras.length);
+    
     setTimeout(()=>{
     
       p.letras.forEach((path,i)=>{
         
         
-        
         setTimeout(()=>{
           
-          // const x= 300*(i+1)
-          // const y= 0
+
           const posL = posicionLetra(palabras,h,i, { x: 50, y: 150, w: 1700 })
           
           const x= posL.x
           const y= posL.y
 
           
-          // console.log(p.id[i],posL.x,posL.y);
           draw.path(path)
           .stroke({
             width: 1,
@@ -65,10 +70,6 @@
     },400*(h))
 
   }) : null
-  // $: console.log(letras);
-  // $: letras.forEach(l=>console.log(l));
-  
-  
 
 
   $: height = window.innerHeight;
@@ -84,19 +85,16 @@
 
   let draw;
 
+
   onMount(()=>{
-  
-
-      draw = SVG('svg-frasesvivas').size(window.innerWidth,window.innerHeight)
-
-      
+      draw = SVG('svg-frasesvivas').size(window.innerWidth,window.innerHeight)      
   })
 
 
   onDestroy(()=>{
 
+    draw.clear();
 
-    
   })
       
   const posicionLetra = ( palabras, palabraIndice, letraIndice, rect ) => {
@@ -138,6 +136,13 @@
 
 
   }
+
+
+function ucfirst(string) 
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 
 </script>
 
@@ -220,11 +225,14 @@ canvas {
 
 <Pie />        
 
+{#if !! textoVivo}
 
-<div class="Info" transition:fade>
+  <div class="Info" transition:fade>
 
-  <p class="Significado">No hay día y no hay noche, no hay lluvia y no hay Sol, y no hay hambre, van sin detenerse. </p>
-  <h6 class="NombreLengua">
-    <em>Aforismo <strong>Tu'un savi</strong></em>
-  </h6>
-</div>
+    <p class="Significado">{textoVivo.significado}</p>
+    <h6 class="NombreLengua">
+      <em>Aforismo <strong>{ucfirst(textoVivo.lengua.replace("_"," "))}</strong></em>
+    </h6>
+  </div>
+
+{/if}

@@ -1,5 +1,7 @@
 import svg01 from "./svg/01"
 import xy01 from "./xy/01"
+import svg02 from "./svg/02"
+import xy02 from "./xy/02"
 
 
 export default [
@@ -14,7 +16,7 @@ export default [
         texto: "B-inaj nhua y-idziluyú, lesnha rala saru ba'alula, ga ti kuilhiru lhen tsaj-itaru lhen guna kuiniru zi'.",
         significado: "El mundo está lleno de moho, por eso hay que transitarlo con cuidado para no resbalar y caer, y así evitar lastimarse.",
         lengua: "didza_xidza",
-        svg: svg01,
-        xy: xy01,
+        svg: svg02,
+        xy: xy02,
     },
 ]

@@ -37,15 +37,24 @@
 
 	import { onMount, setContext } from 'svelte';
 
+
+	import textosVivos from "../datos/textosvivos/01"
+
+
+
   let svgFrases;
   let canvas;
   let canvasFrases;
   
   let familiasModule
   
+  let timeoutFrase
+
   const win = typeof window !== "undefined" ? window : null;
 
   let ingreso;
+
+  let textoVivo=0;
 
 
   const zonasDrag = {}
@@ -208,14 +217,23 @@
     
     mostrarFrase = true;
 
-    setTimeout(()=>{
+    timeoutFrase = setTimeout(()=>{
       mostrarFrase = false;
     }, 17000 )
+
+
+    textoVivo++
+
+    textoVivo %= textosVivos.length
+
+
     
   }
   const apagarFrase = (x,y) => {
     
     mostrarFrase = false;
+    
+    clearTimeout(timeoutFrase)
 
   }
 
@@ -392,7 +410,8 @@
     top: 6rem;
     background: none;
     color: #fff;
-    opacity: 0.3;
+    font-weight:bold;
+    opacity: 0.6;
     font-size: 1.35rem;
     
     z-index: 200;
@@ -456,7 +475,14 @@
       </span>
       <i class="fa fa-close"></i>
     </button>
-    <FraseViva canvas={canvasFrases} svg={svgFrases} mostrar={mostrarFrase}/>
+    
+    <FraseViva
+    canvas={canvasFrases}
+    svg={svgFrases}
+    mostrar={mostrarFrase}
+    texto={textoVivo}
+    />
+
   {/if}
   
 {/if}
