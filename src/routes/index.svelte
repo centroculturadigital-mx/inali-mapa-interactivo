@@ -106,11 +106,6 @@
       idFamilia
     } = {...e.detail}
 
-    console.log(idZona,
-      x,
-      y,
-      idFamilia);
-    
     
 
     if (!!idZona) {
@@ -469,7 +464,7 @@
   <FondoLineas canvas={canvas}/>
 
   {#if !! mostrarFrase }
-    <button class="FraseViva__Cerrar" on:click={apagarFrase}>
+    <button class="FraseViva__Cerrar" use:tap on:tap={apagarFrase}>
       <span>
         Cerrar
       </span>
