@@ -51,13 +51,13 @@ export default [
         svg: svg04,
         xy: xy04,
     },
-    // {
-    //     texto: "Jantu k'ama'anin ba sat'ik'ak'atio yu lakamanakpa' bachapucha le'echa.",
-    //     significado: "No te pongas triste, aún eres joven, la vida es bella.",
-    //     lengua: "Tepehua de Tlachichilco, Veracruz",
-    //     svg: svg05,
-    //     xy: xy05,
-    // },
+    {
+        texto: "Jantu k'ama'anin ba sat'ik'ak'atio yu lakamanakpa' bachapucha le'echa.",
+        significado: "No te pongas triste, aún eres joven, la vida es bella.",
+        lengua: "Tepehua de Tlachichilco, Veracruz",
+        svg: svg05,
+        xy: xy05,
+    },
     {
         texto: "Mulkatán, mulkísín.",
         significado: "Donde viven muchos, vive el diablo.",
