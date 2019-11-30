@@ -18,7 +18,7 @@
 
 	import { onMount, onDestroy } from "svelte"
 	import puntosFake from "../../datos/puntosFake"
-	import textoFake from "../../datos/textoFake.holamundo"
+	import textosVivos from "../../datos/textosvivos/01"
 
 
   export let mostrar = true;
@@ -28,19 +28,22 @@
 
 
   // let letras = []
-  $: letras = puntosFake
-  $: !! draw ? textoFake.forEach((path,indice)=>{
+  $: textoVivo = (!!textosVivos && textosVivos.length > 0) ? textosVivos[0] : { letras: [] }
+  $: palabras = textoVivo ? textoVivo.svg.ids.map(id=>textoVivo.xy[id]) : {}
+  // $: console.log("palabras",palabras);
+  
+  // $: !! draw ? textoVivo.letras.forEach((path,indice)=>{
     
-    const x= posX +(90*(indice%18))
-    const y= 100+(Math.floor(indice/18)*170)
+  //   const x= posX +(90*(indice%18))
+  //   const y= 100+(Math.floor(indice/18)*170)
     
-    draw.path(path)
-    .stroke({
-      width: 1,
-      color: 'rgba(149, 169, 187,0.85)'
-    }).fill('none').move(x,y)
+  //   draw.path(path)
+  //   .stroke({
+  //     width: 1,
+  //     color: 'rgba(149, 169, 187,0.85)'
+  //   }).fill('none').move(x,y)
     
-  }) : null
+  // }) : null
   // $: console.log(letras);
   // $: letras.forEach(l=>console.log(l));
   
@@ -128,15 +131,16 @@ canvas {
   bottom: 3rem;
   right: 0;
   padding: 5rem 2rem;
+  width: 100%;
   height: 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   /* background-color: rgba(179, 199, 217,0.3); */
-  color: rgba(179, 199, 217,0.3);
+  color: rgba(179, 199, 217,0.9);
 
-  text-shadow: 3px 3px 3px var(--color-fondo);
+  text-shadow: 6px 6px 6px var(--color-fondo);
   z-index: 80;
 }
 .Info .Significado {
@@ -160,10 +164,13 @@ canvas {
 <main>
 
 
-{#each letras as letra, indice ("letra_"+indice) }
-  
-  <FormaLineas x={ posX +(90*(indice%18))} y={(Math.floor(indice/18)*170)} canvas={canvas} lineas={letra} opacidad={mostrar?1:0}/>
-  
+{#each palabras as palabra, h ("palabra_"+h) }
+  {#each palabra as letra, indice ("palabra_"+h+"_letra_"+indice) }
+    
+    <FormaLineas x={ posX +(90*(h%4))} y={(Math.floor(h/4)*170)} canvas={canvas} lineas={letra} opacidad={mostrar?1:0}/>
+    <!-- <FormaLineas x={ posX +(90*(indice%18))} y={(Math.floor(indice/18)*170)} canvas={canvas} lineas={letra} opacidad={mostrar?1:0}/> -->
+    
+  {/each}
 {/each}
  
   <!-- {#if !! letras[0] }
@@ -182,6 +189,6 @@ canvas {
 
   <p class="Significado">No hay día y no hay noche, no hay lluvia y no hay Sol, y no hay hambre, van sin detenerse. </p>
   <h6 class="NombreLengua">
-    Lengua: Tu'un savi
+    <em>Aforismo <strong>Tu'un savi</strong></em>
   </h6>
 </div>

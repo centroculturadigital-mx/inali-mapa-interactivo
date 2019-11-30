@@ -11,6 +11,7 @@
   import FormaLineas from "./FormaLineas.svelte";
 
 
+  export let id;
   export let mostrar;
   export let opacidad=1;
   export let indice=0;
@@ -120,7 +121,7 @@
     lineasPares = lineasPares;
     
     if( !! mostrar ) {
-        mostrar(lineasPares,indice)
+        mostrar(lineasPares,id,indice)
     }
 
   });

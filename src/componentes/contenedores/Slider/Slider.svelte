@@ -14,7 +14,7 @@
 
   const escalarImagenCloudinary = src => {
     const partes = src.split("upload/")
-    return partes[0] + "upload/w_192/" + partes[1]
+    return partes[0] + "upload/w_448/" + partes[1]
   }
 
 

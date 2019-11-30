@@ -118,7 +118,7 @@
   let mostrarTwitter = false;
   let mostrarHomenaje = false;
   let mostrarVolutaTexto = false;
-  let mostrarFrase = false;
+  let mostrarFrase = true;
 
   const crearVentana = (tipo, x, y, props={}) => {
     
