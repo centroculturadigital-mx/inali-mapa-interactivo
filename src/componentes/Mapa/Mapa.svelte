@@ -210,7 +210,7 @@
   <!--  -->
 
   <VolutaBoton posIniX={0.27} posIniY={0.9} on:tap />
-  <!-- <VolutaBoton posIniX={0.73} posIniY={0.4} on:tap /> -->
+  <VolutaBoton posIniX={0.93} posIniY={0.75} on:tap />
 
 
 </svg>

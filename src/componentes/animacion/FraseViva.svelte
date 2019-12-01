@@ -45,12 +45,12 @@
   const timeouts = []
   $: !! draw ? palabrasSVG.forEach( (p,h)=>{
     let t
-    t = setTimeout(()=>{
+    // t = setTimeout(()=>{
     
       p.letras.forEach((path,i)=>{
         
         
-        let tt = setTimeout(()=>{
+        // let tt = setTimeout(()=>{
           
 
           const posL = posicionLetra(palabras,h,i, { x: 200, y: 250, w: 1500 })
@@ -65,16 +65,16 @@
             color: 'rgba(169, 194 , 217,0.85)'
           }).fill('rgba(149, 169, 187,0.2)').move(x,y)
 
-        }, 80*i)
+        // }, 80*i)
 
-        timeouts.push(tt)
+        // timeouts.push(tt)
 
       })  
 
   
-    },400*(h))
+    // },400*(h))
 
-    timeouts.push(t)
+    // timeouts.push(t)
 
   }) : null
 
