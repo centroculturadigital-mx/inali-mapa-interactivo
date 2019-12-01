@@ -22,7 +22,6 @@
 
     $: ventanas ? posicionarVentanas() : ()=>{}
 
-    $: console.log(ventanas)
     
     onMount(()=>{
         

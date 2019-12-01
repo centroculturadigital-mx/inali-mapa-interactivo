@@ -26,7 +26,7 @@ const Drag = () => {
     onmove: dragMoveListener,
     onend: (e) => {
       
-      console.log(dragEnd);
+      // console.log(dragEnd);
       
 
       // if(typeof(dragEnd)=="function") {

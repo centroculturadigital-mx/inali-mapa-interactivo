@@ -30,7 +30,7 @@
 	
 		progresoFalso = setInterval(()=>{
 			
-			console.log( progreso );
+			// console.log( progreso );
 			if(progreso>=1.2) {
 				
 				cargando=false

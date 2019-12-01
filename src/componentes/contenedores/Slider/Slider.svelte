@@ -5,7 +5,7 @@
 
   export let imagenes
 
-  $: console.log(imagenes)
+  // $: console.log(imagenes)
   
   onMount(() => {
     // fix para carga erronea de imagen

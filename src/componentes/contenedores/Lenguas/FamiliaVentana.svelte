@@ -74,7 +74,7 @@
     familia && ( (familia.fotografias && familia.fotografias.length) || (familia.textiles && familia.textiles.length) )
       ? juntaImagenes(familia.fotografias, familia.textiles)
       : [];
-  $: console.log(agrupaciones.length);
+  // $: console.log(agrupaciones.length);
 
   const juntaImagenes = (fotografias, textiles) => {
     
