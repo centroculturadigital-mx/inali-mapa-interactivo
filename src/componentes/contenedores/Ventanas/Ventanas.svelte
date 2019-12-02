@@ -22,7 +22,7 @@
 
     $: ventanas ? posicionarVentanas() : ()=>{}
 
-    
+
     onMount(()=>{
         
         
@@ -76,18 +76,18 @@
 
         })
         
-        ventanas = ventanas.map((v,i)=>{
+        // ventanas = ventanas.map((v,i)=>{
         
-            let newV = {
-                ...v
-            }
+        //     let newV = {
+        //         ...v
+        //     }
 
-            acomodarSinColisiones(newV)
+        //     acomodarSinColisiones(newV)
 
 
-            return {...newV};
+        //     return {...newV};
 
-        })
+        // })
 
         ventanas = ventanas
 
@@ -115,13 +115,13 @@
             
             if( v.indice != otra.indice ) {
 
-                console.log(
-                    v.origen.x,otra.origen.x,
-                    "posX",posX,
-                    "posY",posY,
-                    "posOtraX",posOtraX,
-                    "posOtraY",posOtraY
-                );
+                // console.log(
+                //     v.origen.x,otra.origen.x,
+                //     "posX",posX,
+                //     "posY",posY,
+                //     "posOtraX",posOtraX,
+                //     "posOtraY",posOtraY
+                // );
                 
                 return (
                     Math.abs( posX - posOtraX ) <= 240 &&
