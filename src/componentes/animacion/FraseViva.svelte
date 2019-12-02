@@ -53,7 +53,7 @@
         // let tt = setTimeout(()=>{
           
 
-          const posL = posicionLetra(palabras,h,i, { x: 200, y: 250, w: 1500 })
+          const posL = posicionLetra(palabras,h,i, { x: 75, y: 200, w: 1300 })
           
           const x= posL.x
           const y= posL.y
@@ -117,7 +117,7 @@
       for(let h = 0; h<=palabraIndice; h++) {
         
         if( posicion.x > maxW) {
-          posicion.y = posicion.y+180
+          posicion.y = posicion.y+130
           posicion.x = rect.x
         }
 
@@ -131,13 +131,13 @@
         for(let i = 0; i<limite; i++) {
           
           // if( letraIndice > 0 ) {
-            posicion.x = posicion.x+80;
+            posicion.x = posicion.x+64;
           // }
 
         } 
       
         if( h>0 ) {
-          posicion.x = posicion.x+100;
+          posicion.x = posicion.x+85;
         }
         
       }
@@ -213,8 +213,9 @@ canvas {
   {#each palabra as letra, i ("palabra_"+h+"_letra_"+i) }
     
     <FormaLineas
-    x={ posicionLetra(palabras,h,i, { x: 200, y: 150, w: 1500 }).x }
-    y={ posicionLetra(palabras,h,i, { x: 200, y: 150, w: 1500 }).y }
+    x={ posicionLetra(palabras,h,i, { x: 75, y: 100, w: 1300 }).x }
+    y={ posicionLetra(palabras,h,i, { x: 75, y: 100, w: 1300 }).y }
+    
     canvas={canvas}
     lineas={letra}
     opacidad={mostrar?1:0}
