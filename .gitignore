@@ -3,4 +3,8 @@
 /src/node_modules/@sapper/
 yarn-error.log
 /cypress/screenshots/
+.config
+.env.local.js
+.env.dev.js
+.config
 /__sapper__/

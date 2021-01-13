@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  inali-mapa-interactivo:
+    container_name: inali-mapa-interactivo-simple
+    build: 
+      context: ./
+      dockerfile: ./Dockerfile.simple.dev
+    ports:
+      - 4000:4000
+    # volumes:
+    #   - ./:/src/inali-mapa-interactivo

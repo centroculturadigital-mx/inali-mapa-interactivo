@@ -1,0 +1,35 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'dev' ]
+2 info using npm@6.7.0
+3 info using node@v11.15.0
+4 verbose config Skipping project config: /src/inali-mapa-interactivo/.npmrc. (matches userconfig)
+5 verbose run-script [ 'predev', 'dev', 'postdev' ]
+6 info lifecycle TODO@0.0.1~predev: TODO@0.0.1
+7 info lifecycle TODO@0.0.1~dev: TODO@0.0.1
+8 verbose lifecycle TODO@0.0.1~dev: unsafe-perm in lifecycle true
+9 verbose lifecycle TODO@0.0.1~dev: PATH: /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/src/inali-mapa-interactivo/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+10 verbose lifecycle TODO@0.0.1~dev: CWD: /src/inali-mapa-interactivo
+11 silly lifecycle TODO@0.0.1~dev: Args: [ '-c', 'sapper dev' ]
+12 silly lifecycle TODO@0.0.1~dev: Returned: code: 139  signal: null
+13 info lifecycle TODO@0.0.1~dev: Failed to exec dev script
+14 verbose stack Error: TODO@0.0.1 dev: `sapper dev`
+14 verbose stack Exit status 139
+14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/index.js:301:16)
+14 verbose stack     at EventEmitter.emit (events.js:193:13)
+14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/lib/spawn.js:55:14)
+14 verbose stack     at ChildProcess.emit (events.js:193:13)
+14 verbose stack     at maybeClose (internal/child_process.js:999:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:266:5)
+15 verbose pkgid TODO@0.0.1
+16 verbose cwd /src/inali-mapa-interactivo
+17 verbose Linux 4.15.0-64-generic
+18 verbose argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "dev"
+19 verbose node v11.15.0
+20 verbose npm  v6.7.0
+21 error code ELIFECYCLE
+22 error errno 139
+23 error TODO@0.0.1 dev: `sapper dev`
+23 error Exit status 139
+24 error Failed at the TODO@0.0.1 dev script.
+24 error This is probably not a problem with npm. There is likely additional logging output above.
+25 verbose exit [ 139, true ]
