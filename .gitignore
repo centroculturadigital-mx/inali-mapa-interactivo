@@ -7,4 +7,5 @@ yarn-error.log
 .env.local.js
 .env.dev.js
 .config
-/__sapper__/
+/__sapper__/build
+/__sapper__/dev
