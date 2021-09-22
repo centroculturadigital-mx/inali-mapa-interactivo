@@ -181,7 +181,7 @@
           stroke={zona.fill}
           stroke-width={0.05}
           stroke-linejoin="round"
-          opacity={ ! zonasDrag[zona.id] ? 0.85 : 0 }
+          opacity={ ! zonasDrag[zona.id] ? 0.85 : 0.5 }
           transition:fade
         />
     <!-- {/if} -->
