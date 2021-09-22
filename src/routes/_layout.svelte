@@ -1,6 +1,6 @@
 <script>
 	import Animacion1 from '../componentes/animacion/Animacion1.svelte'
-	import env from '../.env.local.js'
+	// import env from '../.env.local.js'
 
 	import { tweened } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
@@ -17,7 +17,8 @@
 		easing: cubicOut
 	});
 
-	$: ingresoDev = env.modo == "dev"
+	// $: ingresoDev = env.modo == "dev"
+	$: ingresoDev = true
 	$: ingreso = (nombreUsuario=='ccd' && contrasenna == 'ccdinali' && ingresado) || ingresoDev
 	
 	let progreso = 0;
