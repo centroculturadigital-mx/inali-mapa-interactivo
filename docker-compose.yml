@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  inali-mapa-interactivo:
+    container_name: inali-mapa-interactivo
+    image: registry.gitlab.com/centroculturadigital-mx/inali-mapa-interactivo-dev
+    build: 
+      context: ./
