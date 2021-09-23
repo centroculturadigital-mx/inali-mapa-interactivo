@@ -22,7 +22,7 @@
 
     $: ventanas ? posicionarVentanas() : ()=>{}
 
-
+    $: console.log('ventanas', ventanas)
     onMount(()=>{
         
         
@@ -237,9 +237,9 @@
 <div class="Ventanas">
 
 
-    {#each ventanas as ventana,i ("ventana_"+i)}
+    {#each ventanas as ventana,i (ventana)}
 
-        <Ventana {...ventana}>
+        <Ventana {...ventana} key>
             {#if ventana.tipo=="twitter"}
                 <TwitterVentana on:cerrar={()=>cerrar(ventana)}/>
             {/if}

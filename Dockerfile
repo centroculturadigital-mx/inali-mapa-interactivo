@@ -1,16 +1,4 @@
-FROM node:11
-    
+FROM nginx:alpine
 
-RUN mkdir /usr/src/app
-
-COPY . /usr/src/app/
-
-WORKDIR /usr/src/app
-
-RUN npm install
-
-ENV PORT=4000
-EXPOSE 4000
-
-
-CMD ["node", "__sapper__/build"]
+COPY ./__sapper__/export /usr/share/nginx/html
+EXPOSE 80

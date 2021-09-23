@@ -80,7 +80,7 @@
     <ChevronLeftIcon />
   </span>
 
-  {#each imagenes as imagen}
+  {#each imagenes as imagen (imagen)}
     <div class="SlideContent">
       <img class="Imagen" src={escalarImagenCloudinary(imagen.url)} alt="INALI" />
       <div class="TextoFotos">
