@@ -460,8 +460,10 @@
 {#if !! canvas }
 
   <CanvasSetup canvas={canvas}/>
-  <!-- <GSAP1 canvas={canvas}/> 
-  <FondoLineas canvas={canvas}/> -->
+  
+  <GSAP1 canvas={canvas}/> 
+  <FondoLineas canvas={canvas}/>
+  
 
   {#if !! mostrarFrase }
     <button class="FraseViva__Cerrar" use:tap on:tap={apagarFrase}>
