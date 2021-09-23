@@ -204,8 +204,8 @@
 
 {#if !! canvas && !! dX && !! cajasDrop.length>0 }
   
+  <!-- 
   <CanvasSetup canvas={canvas}/>
-<!-- 
   {#each zonasFamilias as zona,i}
     {#if zonasDrag[zona.id]}
           <FormaLineas
@@ -228,7 +228,8 @@
             dragW={ !! daDrags ? daDrags[ zonasFamilias[i].id ] : null }
           />
     {/if}
-  {/each} -->
+  {/each}
+  -->
 
 {/if}
 
