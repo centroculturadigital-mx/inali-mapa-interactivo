@@ -181,7 +181,7 @@
           stroke={zona.fill}
           stroke-width={0.05}
           stroke-linejoin="round"
-          opacity={ ! zonasDrag[zona.id] ? 0.85 : 0.5 }
+          opacity={ ! zonasDrag[zona.id] ? 0.85 : 0 }
           transition:fade
         />
     <!-- {/if} -->
@@ -204,7 +204,6 @@
 
 {#if !! canvas && !! dX && !! cajasDrop.length>0 }
   
-  <!-- 
   <CanvasSetup canvas={canvas}/>
   {#each zonasFamilias as zona,i}
     {#if zonasDrag[zona.id]}
@@ -229,7 +228,6 @@
           />
     {/if}
   {/each}
-  -->
 
 {/if}
 
